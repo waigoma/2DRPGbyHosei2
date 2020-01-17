@@ -23,7 +23,7 @@ public class Main extends PApplet {
     }
 
     @Override
-    public void keyPressed() {
+    public void keyPressed(){
         if (keyCode == RIGHT) right = true;
         if (keyCode == LEFT) left = true;
         if (keyCode == UP) up = true;
