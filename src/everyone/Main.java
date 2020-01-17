@@ -7,7 +7,7 @@ public class Main extends PApplet {
     //以下processingと同様に書く
 
     @Override//Overrideは継承したクラスの中身を使う宣言
-    public void settings(){
+    public void settings(){//settingsメソッド
         //processingだとvoid setup()でやっていたがここではsettings()でsize指定
         size(480,480);
     }

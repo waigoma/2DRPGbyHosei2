@@ -24,7 +24,7 @@
 
 - **メソッド**
 <br>```public void main(String[] args){}```みたいなもの
-<br>```public void 好きな名前(){}```これでメソッドの出来上がり
+<br>```public void 好きな名前(){ ここにやりたい処理を書く }```これでメソッドの出来上がり
 <br>同じクラス内で処理を分けたいときなどに使う
 
 >processing
