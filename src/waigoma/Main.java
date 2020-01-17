@@ -2,8 +2,6 @@ package waigoma;
 
 import processing.core.PApplet;
 
-import java.awt.event.KeyEvent;
-
 public class Main extends PApplet {
     boolean right = false;
     boolean left = false;
