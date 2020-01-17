@@ -24,7 +24,6 @@ public class Main extends PApplet {
 
     //Javaは下にある "public static void main(String[] args){}" が必ず最初に呼ばれる
     public static void main(String[] args){
-
         //PAppletのmain(最初に読み込むところ)はeveryoneフォルダの中のMainっていうファイルですよと指定してあげる
         PApplet.main("everyone.Main");
     }
