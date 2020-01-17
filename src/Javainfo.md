@@ -25,6 +25,7 @@
 - **メソッド**
 <br>```public void main(String[] args){}```みたいなもの
 <br>```public void 好きな名前(){ ここにやりたい処理を書く }```これでメソッドの出来上がり
+<br>Pythonで言うdef 好きな名前():
 <br>同じクラス内で処理を分けたいときなどに使う
 
 >processing
