@@ -27,4 +27,9 @@ public class Main extends PApplet {
         //PAppletのmain(最初に読み込むところ)はeveryoneフォルダの中のMainっていうファイルですよと指定してあげる
         PApplet.main("everyone.Main");
     }
+    /*Pythonで書くと
+    def main(String[] args):
+        PApplet.main("everyone.Main")
+        みたいな感じになると思う
+     */
 }
