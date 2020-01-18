@@ -1,17 +1,17 @@
 package waigoma;
 
 import processing.core.PApplet;
+import processing.core.PImage;
+import waigoma.Title.Title;
 
 public class Main extends PApplet {
-    boolean right = false;
-    boolean left = false;
-    boolean up = false;
-    boolean down = false;
-
-    float x = 0;
-    float y = 0;
+    boolean right, left, up, down = false;
+    float x, y = 0;
     double speed = 3.0;
 
+    Title title;
+
+    PImage img;
     @Override
     public void settings(){
         size(1280,720);
@@ -20,6 +20,8 @@ public class Main extends PApplet {
     @Override
     public void setup(){
         noStroke();
+        title = new Title();
+        img = loadImage("D:\\Programming\\2DRPGbyHosei2\\src\\waigoma\\test.png");
     }
 
     @Override
@@ -40,7 +42,7 @@ public class Main extends PApplet {
 
     @Override
     public void draw(){
-        background(128,128,128);
+        image(img,0,0);
         translate(width/2,height/2);
 
         if (right){
