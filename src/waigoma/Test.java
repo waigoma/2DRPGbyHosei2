@@ -2,19 +2,20 @@ package waigoma;
 
 import processing.core.PApplet;
 
-public class Test {
+public class Test {//四角い箱を真ん中に召喚→w,a,s,d,up,left,down,rightで自由自在に動かす
     PApplet plet;
 
     boolean right, left, up, down = false;
     float x, y;
-    double speed = 3.0;
+    double speed = 3.0;//箱の動く速度
 
-    public Test(PApplet papplet){
+    public Test(PApplet papplet){//processingをmainから受け継ぎ
         this.plet = papplet;
-        x = plet.width/2;
-        y = plet.height/2;
+        x = plet.width/2;//画面の左右真ん中座標
+        y = plet.height/2;//画面の上下真ん中座標
     }
 
+    //キー入力解放受付されたらここが呼ばれる
     public void keyPressed(){
         if (plet.keyCode == plet.RIGHT || plet.key == 'd' || plet.key == 'D') right = true;
         if (plet.keyCode == plet.LEFT || plet.key == 'a' || plet.key == 'A') left = true;
@@ -29,10 +30,11 @@ public class Test {
     }
 
 
-    public void display(){
+    public void display(){//描写する指示
         plet.background(128);
         plet.fill(0);
 
+        //各入力それぞれの処理
         if (right){
             x += speed;
         }
@@ -46,7 +48,7 @@ public class Test {
             y += speed;
         }
 
-        plet.rect(x, y, 30, 30);
+        plet.rect(x, y, 30, 30);//四角の場所と大きさ指定
     }
 
 }
