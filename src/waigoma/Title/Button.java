@@ -12,10 +12,10 @@ public class Button{
     public Button(PApplet papplet, float x, float y, float sizeX, float sizeY, String str){
         this.plet = papplet;
         this.x = x;
-        this.y=y;
-        this.sizeX=sizeX;
-        this.sizeY=sizeY;
-        this.str=str;
+        this.y = y;
+        this.sizeX = sizeX;
+        this.sizeY = sizeY;
+        this.str = str;
     }
 
     public void run(){

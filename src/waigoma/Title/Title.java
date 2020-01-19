@@ -1,47 +1,30 @@
 package waigoma.Title;
 
 import processing.core.PApplet;
+import waigoma.Main;
 
-public class Title extends PApplet {
+public class Title{
     Button button;
+    PApplet plet;
+
     int scene = 0;
 
-    public void test(){
+    public Title(PApplet papplet){
+        this.plet = papplet;
 
+        plet.rectMode(plet.CENTER);
+        plet.textAlign(plet.CENTER, plet.CENTER);
+        plet.noStroke();
+        button = new Button(plet, plet.width/2, plet.height/2, 200, 100, "PUSH!");
     }
 
-    @Override
-    public void settings(){
-        size(1280, 720);
+
+    public void display(){
+        plet.background(128,128,128);
+        plet.fill(0, 0, 0);
+        plet.text("scene " + scene, plet.width/2, plet.height/4);
+
+        button.run();
+        if (button.isPush()) Main.scene = 1;
     }
-
-    @Override
-    public void setup(){
-        rectMode(CENTER);
-        textAlign(CENTER, CENTER);
-        noStroke();
-
-        button = new Button(this, width/2, height/2, 200, 100, "PUSH!");
-    }
-
-    @Override
-    public void draw(){
-        background(128,128,128);
-        fill(0, 0, 0);
-        text("scene " + scene, width/2, height/4);
-
-        switch (scene){
-            case 0:
-                button.run();
-                if (button.isPush()) scene = 1;
-                break;
-            case 1:
-                break;
-        }
-    }
-
-    public static void main(String[] args){
-        PApplet.main("waigoma.Title.Title");
-    }
-
 }

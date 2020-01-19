@@ -1,17 +1,14 @@
 package waigoma;
 
 import processing.core.PApplet;
-import processing.core.PImage;
 import waigoma.Title.Title;
 
 public class Main extends PApplet {
-    boolean right, left, up, down = false;
-    float x, y = 0;
-    double speed = 3.0;
+    public static int scene = 0;
 
     Title title;
+    Test test;
 
-    PImage img;
     @Override
     public void settings(){
         size(1280,720);
@@ -19,46 +16,31 @@ public class Main extends PApplet {
 
     @Override
     public void setup(){
+        test = new Test(this);
+        title = new Title(this);
         noStroke();
-        title = new Title();
-        img = loadImage("D:\\Programming\\2DRPGbyHosei2\\src\\waigoma\\test.png");
     }
 
     @Override
     public void keyPressed(){
-        if (keyCode == RIGHT) right = true;
-        if (keyCode == LEFT) left = true;
-        if (keyCode == UP) up = true;
-        if (keyCode == DOWN) down = true;
+        if (scene == 1) test.keyPressed();
     }
 
     @Override
     public void keyReleased(){
-        if (keyCode == RIGHT) right = false;
-        if (keyCode == LEFT) left = false;
-        if (keyCode == UP) up = false;
-        if (keyCode == DOWN) down = false;
+        if (scene == 1) test.keyReleased();
     }
 
     @Override
     public void draw(){
-        image(img,0,0);
-        translate(width/2,height/2);
-
-        if (right){
-            x += speed;
+        switch (scene){
+            case 0:
+                title.display();
+                break;
+            case 1:
+                test.display();
+                break;
         }
-        if (left){
-            x -= speed;
-        }
-        if (up){
-            y -= speed;
-        }
-        if (down){
-            y += speed;
-        }
-
-        rect(x, y, 30, 30);
     }
 
     public static void main(String[] args){
