@@ -3,12 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="1b765673-398e-413b-bfe5-e27867b7728d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2DRPGbyHosei2/waigoma/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/2DRPGbyHosei2/waigoma/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2DRPGbyHosei2/waigoma/Title/Title.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/2DRPGbyHosei2/waigoma/Title/Title.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/waigoma/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/waigoma/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/waigoma/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/waigoma/Test.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/waigoma/Title/Button.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/waigoma/Title/Button.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/waigoma/Title/Title.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/waigoma/Title/Title.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2DRPGbyHosei2/META-INF/2DRPGbyHosei2.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2DRPGbyHosei2/waigoma/Title/Button.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/2DRPGbyHosei2/waigoma/Title/Button.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/kotone/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/kotone/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,13 +56,26 @@
       <recent name="D:\Programming\2DRPGbyHosei2\src" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="Application.Main (2)">
     <configuration name="Main (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="everyone.Main" />
       <module name="2DRPGbyHosei2" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="everyone.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main (2)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="kotone.Main" />
+      <module name="2DRPGbyHosei2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="kotone.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -101,6 +111,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Main (2)" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.Title" />
         <item itemvalue="Application.Main (1)" />
@@ -238,21 +249,25 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040/1920.-11.1920.1040@0.0.1920.1040" timestamp="1579276146003" />
-    <state width="1877" height="212" key="GridCell.Tab.0.bottom" timestamp="1579442402815">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1323" height="179" key="GridCell.Tab.0.bottom" timestamp="1579567289940">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
+    <state width="1323" height="179" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1579567289940" />
     <state width="1877" height="212" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.-11.1920.1040@0.0.1920.1040" timestamp="1579442402815" />
-    <state width="1877" height="212" key="GridCell.Tab.0.center" timestamp="1579442402815">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1323" height="179" key="GridCell.Tab.0.center" timestamp="1579567289940">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
+    <state width="1323" height="179" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1579567289940" />
     <state width="1877" height="212" key="GridCell.Tab.0.center/0.0.1920.1040/1920.-11.1920.1040@0.0.1920.1040" timestamp="1579442402815" />
-    <state width="1877" height="212" key="GridCell.Tab.0.left" timestamp="1579442402814">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1323" height="179" key="GridCell.Tab.0.left" timestamp="1579567289940">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
+    <state width="1323" height="179" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1579567289940" />
     <state width="1877" height="212" key="GridCell.Tab.0.left/0.0.1920.1040/1920.-11.1920.1040@0.0.1920.1040" timestamp="1579442402814" />
-    <state width="1877" height="212" key="GridCell.Tab.0.right" timestamp="1579442402815">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1323" height="179" key="GridCell.Tab.0.right" timestamp="1579567289940">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
+    <state width="1323" height="179" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1579567289940" />
     <state width="1877" height="212" key="GridCell.Tab.0.right/0.0.1920.1040/1920.-11.1920.1040@0.0.1920.1040" timestamp="1579442402815" />
     <state x="540" y="256" key="IDE.errors.dialog" timestamp="1579267908619">
       <screen x="0" y="0" width="1920" height="1040" />
@@ -266,9 +281,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="552" y="254" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.-11.1920.1040@0.0.1920.1040" timestamp="1579440886355" />
-    <state x="635" y="345" key="com.intellij.ide.util.TipDialog" timestamp="1579419529747">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="452" y="242" key="com.intellij.ide.util.TipDialog" timestamp="1579566399707">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
+    <state x="452" y="242" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1579566399707" />
     <state x="635" y="345" key="com.intellij.ide.util.TipDialog/0.0.1920.1040/1920.-11.1920.1040@0.0.1920.1040" timestamp="1579419529747" />
     <state x="692" y="414" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1579254469245">
       <screen x="0" y="0" width="1920" height="1040" />
@@ -278,9 +294,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="769" y="438" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040/1920.-11.1920.1040@0.0.1920.1040" timestamp="1579439077192" />
-    <state x="684" y="312" key="git4idea.merge.GitPullDialog" timestamp="1579363423211">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="487" y="218" key="git4idea.merge.GitPullDialog" timestamp="1579567180749">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
+    <state x="487" y="218" key="git4idea.merge.GitPullDialog/0.0.1366.728@0.0.1366.728" timestamp="1579567180749" />
     <state x="684" y="312" key="git4idea.merge.GitPullDialog/0.0.1920.1040/1920.-11.1920.1040@0.0.1920.1040" timestamp="1579363423211" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1579271878543">
       <screen x="0" y="0" width="1920" height="1040" />
