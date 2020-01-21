@@ -1,4 +1,4 @@
-package waigoma.Title;
+package waigoma.Title.TitleMenu;
 
 import processing.core.PApplet;
 
