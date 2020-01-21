@@ -11,8 +11,8 @@ public class Test {//四角い箱を真ん中に召喚→w,a,s,d,up,left,down,ri
 
     public Test(PApplet papplet){//processingをmainから受け継ぎ
         this.plet = papplet;
-        x = plet.width/2;//画面の左右真ん中座標
-        y = plet.height/2;//画面の上下真ん中座標
+        x = plet.width/2f;//画面の左右真ん中座標
+        y = plet.height/2f;//画面の上下真ん中座標
     }
 
     //キー入力解放受付されたらここが呼ばれる
@@ -21,12 +21,14 @@ public class Test {//四角い箱を真ん中に召喚→w,a,s,d,up,left,down,ri
         if (plet.keyCode == plet.LEFT || plet.key == 'a' || plet.key == 'A') left = true;
         if (plet.keyCode == plet.UP || plet.key == 'w' || plet.key == 'W') up = true;
         if (plet.keyCode == plet.DOWN || plet.key == 's' || plet.key == 'S') down = true;
+        if (plet.keyCode == plet.SHIFT) speed = 10.0;
     }
     public void keyReleased(){
         if (plet.keyCode == plet.RIGHT || plet.key == 'd' || plet.key == 'D') right = false;
         if (plet.keyCode == plet.LEFT || plet.key == 'a' || plet.key == 'A') left = false;
         if (plet.keyCode == plet.UP || plet.key == 'w' || plet.key == 'W') up = false;
         if (plet.keyCode == plet.DOWN || plet.key == 's' || plet.key == 'S') down = false;
+        if (plet.keyCode == plet.SHIFT) speed = 3.0;
     }
 
 
