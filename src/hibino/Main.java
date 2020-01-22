@@ -10,6 +10,7 @@ public class Main extends PApplet {
 
     @Override
     public void setup(){
+        noStroke();
 
     }
 
