@@ -5,7 +5,7 @@ import processing.core.PApplet;
 public class Main extends PApplet {
     @Override
     public void settings(){
-
+        size(1280, 720);
     }
 
     @Override
