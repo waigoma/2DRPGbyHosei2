@@ -37,7 +37,7 @@ public void settings() {
 
     public void startWindow () {
         title();
-        drawStar(width / 2, height / 2);
+        //drawStar(width / 2, height / 2);
         startWord();
     }
 
@@ -72,11 +72,11 @@ public void settings() {
 
         }
         if(a==1) boll_x-=speedx;
-        if(boll_x,=5){
+        if(boll_x==5){
             a = 0;
             speedx = random(3);
         }
-        if (b==0) bpll_y+=speedy;
+        if (b==0) boll_y+=speedy;
 
         }
     public static void main(String[] args){
