@@ -1,6 +1,7 @@
 package waigoma.Title;
 
 import processing.core.PApplet;
+import processing.core.PFont;
 import waigoma.Title.TitleMenu.TitleMenu;
 
 public class Title {//最初に表示されるタイトル画面
@@ -8,6 +9,7 @@ public class Title {//最初に表示されるタイトル画面
 
     float fadeAlpha = 255f;//フェードアウト用
     float fadeSpeed = 1.75f;//フェードアウト速度
+    PFont font;
 
     PApplet plet;
     TitleMenu titlemenu;
@@ -15,6 +17,7 @@ public class Title {//最初に表示されるタイトル画面
     public Title(PApplet papplet){
     this.plet = papplet;
     titlemenu = new TitleMenu(papplet, titleScene);
+    font = plet.createFont("waigoma/data/PixelMplus12-Regular.ttf", 24);
 
     plet.textAlign(plet.CENTER, plet.CENTER);
     }
@@ -31,7 +34,7 @@ public class Title {//最初に表示されるタイトル画面
     public void display(){//固定表示display
         plet.background(0);//背景色：黒
         plet.fill(230);//文字の色：白
-        plet.textSize(72);//フォントサイズ
+        plet.textFont(font, 72);//フォント指定・フォントサイズ指定
         plet.text("2DRPG by Hosei2", plet.width/2f, plet.height/3.8f);
 
         if (plet.keyPressed || plet.mousePressed){//いずれかのキーorマウスが押された時の処理
@@ -40,7 +43,7 @@ public class Title {//最初に表示されるタイトル画面
     }
 
     public void fadeDisplay(){//フェードアウトするdisplay
-        plet.textSize(36);
+        plet.textFont(font, 36);
         plet.fill(230,fadeAlpha);//アルファ値でフェードアウトさせる
         plet.text("Press any key...", plet.width/2f, plet.height/1.4f);
 
