@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="1b765673-398e-413b-bfe5-e27867b7728d" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/kotone/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/kotone/Test.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IgnoredFileRootStore">
+    <option name="generatedRoots">
+      <set>
+        <option value="D:\Programming\2DRPGbyHosei2\.idea" />
+      </set>
+    </option>
+  </component>
+  <component name="ProjectId" id="1WW9EPl9dwKnZUtqcJEkwVGdi1T" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
+    <property name="Repository.Attach.Annotations" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="project.structure.last.edited" value="SDKs" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="settings.github" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Programming\2DRPGbyHosei2\src" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.Test">
+    <configuration name="Main (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="everyone.Main" />
+      <module name="2DRPGbyHosei2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="everyone.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="waigoma.Main" />
+      <module name="2DRPGbyHosei2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="waigoma.Title.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="kotone.Main" />
+      <module name="2DRPGbyHosei2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="kotone.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="kotone.Test" />
+      <module name="2DRPGbyHosei2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="kotone.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Title" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="waigoma.Title.Title" />
+      <module name="2DRPGbyHosei2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="waigoma.Title.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Test" />
+        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.Title" />
+        <item itemvalue="Application.Main (1)" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration>C:\Users\waichi\AppData\Roaming\Subversion</configuration>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="1b765673-398e-413b-bfe5-e27867b7728d" name="Default Changelist" comment="" />
+      <created>1579254372304</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1579254372304</updated>
+    </task>
+    <task id="LOCAL-00001" summary="first commit">
+      <created>1579255708053</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1579255708053</updated>
+    </task>
+    <task id="LOCAL-00002" summary="commit">
+      <created>1579263639574</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1579263639574</updated>
+    </task>
+    <task id="LOCAL-00003" summary="commit">
+      <created>1579263928529</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1579263928529</updated>
+    </task>
+    <task id="LOCAL-00004" summary="commit">
+      <created>1579264057867</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1579264057867</updated>
+    </task>
+    <task id="LOCAL-00005" summary="commit">
+      <created>1579264127794</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1579264127794</updated>
+    </task>
+    <task id="LOCAL-00006" summary="waigom commit">
+      <created>1579267741584</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1579267741584</updated>
+    </task>
+    <task id="LOCAL-00007" summary="waigom commit">
+      <created>1579267898142</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1579267898142</updated>
+    </task>
+    <task id="LOCAL-00008" summary="waigom commit">
+      <created>1579275521546</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1579275521546</updated>
+    </task>
+    <task id="LOCAL-00009" summary="waigom commit">
+      <created>1579354481754</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1579354481754</updated>
+    </task>
+    <task id="LOCAL-00010" summary="waigom commit">
+      <created>1579362475503</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1579362475503</updated>
+    </task>
+    <task id="LOCAL-00011" summary="waigom commit">
+      <created>1579440882852</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1579440882852</updated>
+    </task>
+    <task id="LOCAL-00012" summary="kotone commit">
+      <created>1579567378074</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1579567378074</updated>
+    </task>
+    <task id="LOCAL-00013" summary="kotone commit">
+      <created>1579661995095</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1579661995095</updated>
+    </task>
+    <task id="LOCAL-00014" summary="kotone commit">
+      <created>1579664711681</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1579664711681</updated>
+    </task>
+    <task id="LOCAL-00015" summary="kotone commit">
+      <created>1579666964252</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1579666964252</updated>
+    </task>
+    <task id="LOCAL-00016" summary="kotone commit">
+      <created>1579673681958</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1579673681958</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
+    <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="first commit" />
+    <MESSAGE value="commit" />
+    <MESSAGE value="waigom commit" />
+    <MESSAGE value="kotone commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="kotone commit" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="414" y="176" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1579255539262">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="414" y="176" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040/1920.-11.1920.1040@0.0.1920.1040" timestamp="1579255539262" />
+    <state x="765" y="230" key="#com.intellij.ide.util.MemberChooser" timestamp="1579433480025">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="765" y="230" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040/1920.-11.1920.1040@0.0.1920.1040" timestamp="1579433480025" />
+    <state x="690" y="268" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1579439250572">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="690" y="268" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040/1920.-11.1920.1040@0.0.1920.1040" timestamp="1579439250572" />
+    <state x="430" y="0" key="CommitChangelistDialog2" timestamp="1579790085180">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="430" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1579790085180" />
+    <state x="604" y="117" key="CommitChangelistDialog2/0.0.1920.1040/1920.-11.1920.1040@0.0.1920.1040" timestamp="1579440882272" />
+    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1579276146003">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040/1920.-11.1920.1040@0.0.1920.1040" timestamp="1579276146003" />
+    <state width="1323" height="179" key="GridCell.Tab.0.bottom" timestamp="1579790085336">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="179" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1579790085336" />
+    <state width="1877" height="212" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.-11.1920.1040@0.0.1920.1040" timestamp="1579442402815" />
+    <state width="1323" height="179" key="GridCell.Tab.0.center" timestamp="1579790085336">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="179" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1579790085336" />
+    <state width="1877" height="212" key="GridCell.Tab.0.center/0.0.1920.1040/1920.-11.1920.1040@0.0.1920.1040" timestamp="1579442402815" />
+    <state width="1323" height="179" key="GridCell.Tab.0.left" timestamp="1579790085336">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="179" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1579790085336" />
+    <state width="1877" height="212" key="GridCell.Tab.0.left/0.0.1920.1040/1920.-11.1920.1040@0.0.1920.1040" timestamp="1579442402814" />
+    <state width="1323" height="179" key="GridCell.Tab.0.right" timestamp="1579790085336">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="179" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1579790085336" />
+    <state width="1877" height="212" key="GridCell.Tab.0.right/0.0.1920.1040/1920.-11.1920.1040@0.0.1920.1040" timestamp="1579442402815" />
+    <state x="540" y="256" key="IDE.errors.dialog" timestamp="1579267908619">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="540" y="256" key="IDE.errors.dialog/0.0.1920.1040/1920.-11.1920.1040@0.0.1920.1040" timestamp="1579267908619" />
+    <state x="515" y="76" key="RollbackChangesDialog" timestamp="1579788537436">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="515" y="76" key="RollbackChangesDialog/0.0.1366.728@0.0.1366.728" timestamp="1579788537436" />
+    <state x="440" y="95" key="SettingsEditor" timestamp="1579276150235">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="440" y="95" key="SettingsEditor/0.0.1920.1040/1920.-11.1920.1040@0.0.1920.1040" timestamp="1579276150235" />
+    <state x="326" y="118" key="Vcs.Push.Dialog.v2" timestamp="1579569158935">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="326" y="118" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1579569158935" />
+    <state x="552" y="254" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.-11.1920.1040@0.0.1920.1040" timestamp="1579440886355" />
+    <state x="452" y="242" key="com.intellij.ide.util.TipDialog" timestamp="1579786170607">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="452" y="242" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1579786170607" />
+    <state x="635" y="345" key="com.intellij.ide.util.TipDialog/0.0.1920.1040/1920.-11.1920.1040@0.0.1920.1040" timestamp="1579419529747" />
+    <state x="692" y="414" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1579254469245">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="692" y="414" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.0.1920.1040/1920.-11.1920.1040@0.0.1920.1040" timestamp="1579254469245" />
+    <state x="769" y="438" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1579439077192">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="769" y="438" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040/1920.-11.1920.1040@0.0.1920.1040" timestamp="1579439077192" />
+    <state x="487" y="218" key="git4idea.merge.GitPullDialog" timestamp="1579567180749">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="487" y="218" key="git4idea.merge.GitPullDialog/0.0.1366.728@0.0.1366.728" timestamp="1579567180749" />
+    <state x="684" y="312" key="git4idea.merge.GitPullDialog/0.0.1920.1040/1920.-11.1920.1040@0.0.1920.1040" timestamp="1579363423211" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1579271878543">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/1920.-11.1920.1040@0.0.1920.1040" timestamp="1579271878543" />
+  </component>
+</project>

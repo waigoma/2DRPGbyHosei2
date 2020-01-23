@@ -62,7 +62,7 @@ public void settings() {
         text(startWord[startWordCount], width / 2, height / 2);
     }
 
-    void game() {
+    void game(){
         frameRate(100);
 
         if (a == 0) boll_x += speedx;
@@ -95,6 +95,7 @@ public void settings() {
                 point += 100;
                 speedx = random(3);
                 speedy = random(3, 5);
+            }
         }
 
         if (boll_x >= mouseX - 30 && boll_y >= 565 && boll_y <= 585 && boll_x < mouseX - 10) a = 1;
@@ -112,29 +113,76 @@ public void settings() {
             if (GAMEOVER_count <= GAMEOVER_number) point += 100;
         }
 
-        //GAMEOVER();
+     }
 
+    void aboutBall(){
+        noStroke();
+        ellipse(boll_x,boll_y,10,10);
+        fill(255);
+        rect(mouseX,580,50,10);
     }
 
-//    void aboutBAll(){
-//    noStroke();
-//    ellipse(boll_x,boll_y,10,10);
-//    fill(255);
-//    rect(mouseX,580,50,10);
-//    }
-
-   // void drawStar(int px,int py){
+    void drawStar(int px,int py){
     noStroke();
     smooth();
     fill(255,255,0);
     beginShape();
-    //vertex(px    ,py - 20);
-    //vertex(px - 12,py + 15);
-    //vertex(px + 18,py - 8);
+    vertex(px    ,py - 20);
+    vertex(px - 12,py + 15);
+    vertex(px + 18,py - 8);
+    vertex(px - 18 , py - 8);
+    vertex(px + 12 , py + 15);
+   endShape(CLOSE);
     }
 
-    //void GAMEOVER(){
+    void beforeGAMEOVER_Display(){
+            LIFE = GAMEOVER_number - (GAMEOVER_count - 1);
+            textSize(16);
+            text("POINT:", 40, 20);
+            text(point, 100, 20);
+            text("LIFE:", 140, 20);
+            text(LIFE, 170, 20);
+    }
 
+    void afterGAMEOVER(){
+            background(0);
+            GAMEOVER_Comment();
+            finishStar();
+            reStartGame();
+        }
+
+    void GAMEOVER(){
+            if(GAMEOVER_count > GAMEOVER_number) afterGAMEOVER();
+            else beforeGAMEOVER_Display();
+        }
+
+    void GAMEOVER_Comment(){
+      textAlign(CENTER);
+      textSize(30);
+      text("GAME OVER",width/2,height/3);
+      text("GET",width/2-100,height/3+28);
+      text(point,width/2,height/3+28);
+      text("point",width/2+100,height/3+28);
+    }
+
+    void reStartGame(){
+      fill(255);
+      textAlign(CENTER);
+      textSize(12);
+      text("You click screen and finish this game",width/2,height*2/3);
+    }
+    void finishStar(){
+       frameRate(60);
+       drawStar(width/2,height/2);
+    }
+
+    void setMouseClickCount(){
+       mouseClickCount++;
+       println(mouseClickCount);
+       if(quiteNumber==1){
+           exit();
+       }
+    }
 
     public static void main(String[] args){
         PApplet.main("kotone.test");
