@@ -37,7 +37,7 @@ public void settings() {
 
     public void startWindow () {
         title();
-        //drawStar(width / 2, height / 2);
+        drawStar(width / 2, height / 2);
         startWord();
     }
 
@@ -185,6 +185,6 @@ public void settings() {
     }
 
     public static void main(String[] args){
-        PApplet.main("kotone.test");
+        PApplet.main("kotone.Test");
     }
 }
