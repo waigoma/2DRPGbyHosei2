@@ -56,10 +56,21 @@ public void settings() {
     }
 
     void goGame(){
+    if(startWordCount >= startWord.length){
+        aboutBall();
+        game();
+    }else{
+        areYouReady();
+        startWordCount++;
+    }
+    }
+
+    void areYouReady(){
         frameRate(1);
         textSize(100);
         textAlign(CENTER);
         text(startWord[startWordCount], width / 2, height / 2);
+
     }
 
     void game(){
@@ -72,7 +83,7 @@ public void settings() {
 
         }
         if (a == 1) boll_x -= speedx;
-        if (boll_x == 5) {
+        if (boll_x <= 5) {
             a = 0;
             speedx = random(3);
         }
@@ -82,7 +93,7 @@ public void settings() {
             GAMEOVER_count++;
         }
 
-        if (b == 1) boll_y += speedy;
+        if (b == 1) boll_y -= speedy;
         if (boll_y <= 5) {
             b = 0;
             speedy = random(3, 5);
@@ -112,7 +123,7 @@ public void settings() {
             b = 1;
             if (GAMEOVER_count <= GAMEOVER_number) point += 100;
         }
-
+        GAMEOVER();
      }
 
     void aboutBall(){
@@ -170,13 +181,16 @@ public void settings() {
       textAlign(CENTER);
       textSize(12);
       text("You click screen and finish this game",width/2,height*2/3);
+      quiteNumber=1;
     }
+
     void finishStar(){
        frameRate(60);
        drawStar(width/2,height/2);
     }
 
-    void setMouseClickCount(){
+    @Override
+    public void mouseClicked(){
        mouseClickCount++;
        println(mouseClickCount);
        if(quiteNumber==1){
