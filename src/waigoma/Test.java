@@ -35,6 +35,7 @@ public class Test {//四角い箱を真ん中に召喚→w,a,s,d,up,left,down,ri
     public void display(){//描写する指示
         plet.background(128);
         plet.fill(0);
+        plet.noStroke();
 
         //各入力それぞれの処理
         if (right){

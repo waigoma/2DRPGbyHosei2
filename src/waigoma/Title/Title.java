@@ -26,8 +26,11 @@ public class Title {//最初に表示されるタイトル画面
         if (titleScene == 0){
             display();
             fadeDisplay();
-        }else if (titleScene == 1){
-            titlemenu.display();
+        }else if (titleScene == 1){//連続クリック対策
+            plet.delay(500);//0.5秒遅延
+            titleScene = 2;
+        }else if (titleScene == 2){
+            titlemenu.display();//titlemenuのdisplay表示
         }
     }
 

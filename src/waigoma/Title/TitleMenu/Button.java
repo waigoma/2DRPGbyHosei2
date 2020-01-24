@@ -1,6 +1,7 @@
 package waigoma.Title.TitleMenu;
 
 import processing.core.PApplet;
+import processing.core.PImage;
 
 public class Button{//ボタンの描写&動作処理
     float x, y;//座標
@@ -8,6 +9,7 @@ public class Button{//ボタンの描写&動作処理
     private int state;//押されたか判断
     private PApplet plet;
     String str;
+    PImage buttonFrame;
 
     public Button(PApplet papplet, float x, float y, float sizeX, float sizeY, String str){
         this.plet = papplet;//mainからprocessing引継ぎ
@@ -16,6 +18,7 @@ public class Button{//ボタンの描写&動作処理
         this.sizeX = sizeX;
         this.sizeY = sizeY;
         this.str = str;
+
     }
 
     public void run(){//Titleクラスのdisplayで呼ばれる
@@ -24,11 +27,15 @@ public class Button{//ボタンの描写&動作処理
     }
 
     private void display(){//ボタンの描写//runで呼び出し
-        changeColor();
+        plet.fill(35);
+        plet.stroke(40);
+        plet.strokeWeight(10);
+        plet.strokeJoin(plet.BEVEL);
         plet.rect(x, y, sizeX, sizeY);
-        plet.fill(0, 0, 100);
-        plet.textSize(30);
+        plet.fill(255);
+        plet.textSize(36);
         plet.text(str, x, y);
+        changeColor();
     }
 
     private boolean checkInMouse(){//マウスがボタンの上に乗ってるか乗ってないか判別
@@ -41,9 +48,9 @@ public class Button{//ボタンの描写&動作処理
     }
 
     private int checkState(){//判別した結果を数字で返す
-        if (!checkInMouse()) return 0;
-        if (!plet.mousePressed) return 1;
-        return 2;
+        if (!checkInMouse()) return 0;//ボタンにマウスが乗ってないとき
+        if (!plet.mousePressed) return 1;//ボタンにマウスが乗ってるとき
+        return 2;//クリックしたとき
     }
 
     public boolean isPush(){
@@ -56,17 +63,14 @@ public class Button{//ボタンの描写&動作処理
 
     private void changeColor(){//判別結果でボタンの色変更
         switch (state){
-            case 0:
-                plet.fill(100,128,100);
+            case 0://default
                 break;
-            case 1:
-                plet.fill(50,128,50);
+            case 1://マウスが乗っかってるとき
+                plet.text("> "+ str + " <", x, y);
                 break;
-            case 2:
-                plet.fill(25,64,25);
+            case 2://押したとき
+                plet.fill(0);
                 break;
-            default:
-                plet.fill(0, 0, 0);
         }
     }
 
