@@ -16,7 +16,7 @@ public class Presentation extends PApplet {
     @Override
     public void setup(){
         background(255);
-        paint(Graphics );
+        //paint(Graphics );
 
     }
 
