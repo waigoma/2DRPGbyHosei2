@@ -3,7 +3,6 @@ package kotone;
 import processing.core.PApplet;
 import processing.core.PImage;
 
-import java.awt.*;
 
 public class Presentation extends PApplet {
 PImage img;
@@ -15,8 +14,7 @@ PImage img;
 
     @Override
     public void setup(){
-        background(255);
-        img = loadImage("heigen3.gif");
+        img = loadImage("C:\\Users\\tkoto\\Downloads\\heigen3.gif");
     }
 
     @Override
