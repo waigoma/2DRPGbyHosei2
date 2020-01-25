@@ -6,7 +6,7 @@ import processing.core.PImage;
 import java.awt.*;
 
 public class Presentation extends PApplet {
-
+PImage img;
 
     @Override
     public void settings(){
@@ -16,15 +16,12 @@ public class Presentation extends PApplet {
     @Override
     public void setup(){
         background(255);
-        //paint(Graphics );
-
+        img = loadImage("heigen3.gif");
     }
 
-    public void paint(Graphics g){
-        g.setColor(Color.red);
-        g.fillOval(10,10,100,50);
-
-
+    @Override
+    public void draw(){
+        image(img,0,0);
     }
     public static void main(String[] args){
         PApplet.main("kotone.Presentation");

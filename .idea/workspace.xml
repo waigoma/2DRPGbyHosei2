@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1b765673-398e-413b-bfe5-e27867b7728d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/kotone/Img.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/kotone/Image.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/kotone/Img.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/kotone/Img.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/kotone/Presentation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/kotone/Presentation.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,7 +59,7 @@
       <recent name="D:\Programming\2DRPGbyHosei2\src" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Test">
+  <component name="RunManager" selected="Application.Presentation">
     <configuration name="Main (2)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="kotone.Main" />
       <module name="2DRPGbyHosei2" />
@@ -138,8 +140,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Test" />
         <item itemvalue="Application.Presentation" />
+        <item itemvalue="Application.Test" />
         <item itemvalue="Application.Main (2)" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.Title" />
@@ -316,7 +318,14 @@
       <option name="project" value="LOCAL" />
       <updated>1579837134581</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="kotone commit">
+      <created>1579923311012</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1579923311012</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -340,34 +349,34 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="268" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040/1920.-11.1920.1040@0.0.1920.1040" timestamp="1579439250572" />
-    <state x="430" y="0" key="CommitChangelistDialog2" timestamp="1579837132688">
+    <state x="430" y="0" key="CommitChangelistDialog2" timestamp="1579923308467">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="430" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1579837132688" />
+    <state x="430" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1579923308467" />
     <state x="604" y="117" key="CommitChangelistDialog2/0.0.1920.1040/1920.-11.1920.1040@0.0.1920.1040" timestamp="1579440882272" />
     <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1579276146003">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040/1920.-11.1920.1040@0.0.1920.1040" timestamp="1579276146003" />
-    <state width="1323" height="179" key="GridCell.Tab.0.bottom" timestamp="1579920889645">
+    <state width="1323" height="179" key="GridCell.Tab.0.bottom" timestamp="1579928043648">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="179" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1579920889645" />
+    <state width="1323" height="179" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1579928043648" />
     <state width="1877" height="212" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.-11.1920.1040@0.0.1920.1040" timestamp="1579442402815" />
-    <state width="1323" height="179" key="GridCell.Tab.0.center" timestamp="1579920889645">
+    <state width="1323" height="179" key="GridCell.Tab.0.center" timestamp="1579928043648">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="179" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1579920889645" />
+    <state width="1323" height="179" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1579928043648" />
     <state width="1877" height="212" key="GridCell.Tab.0.center/0.0.1920.1040/1920.-11.1920.1040@0.0.1920.1040" timestamp="1579442402815" />
-    <state width="1323" height="179" key="GridCell.Tab.0.left" timestamp="1579920889645">
+    <state width="1323" height="179" key="GridCell.Tab.0.left" timestamp="1579928043648">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="179" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1579920889645" />
+    <state width="1323" height="179" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1579928043648" />
     <state width="1877" height="212" key="GridCell.Tab.0.left/0.0.1920.1040/1920.-11.1920.1040@0.0.1920.1040" timestamp="1579442402814" />
-    <state width="1323" height="179" key="GridCell.Tab.0.right" timestamp="1579920889645">
+    <state width="1323" height="179" key="GridCell.Tab.0.right" timestamp="1579928043648">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="179" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1579920889645" />
+    <state width="1323" height="179" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1579928043648" />
     <state width="1877" height="212" key="GridCell.Tab.0.right/0.0.1920.1040/1920.-11.1920.1040@0.0.1920.1040" timestamp="1579442402815" />
     <state x="540" y="256" key="IDE.errors.dialog" timestamp="1579267908619">
       <screen x="0" y="0" width="1920" height="1040" />
@@ -416,6 +425,17 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/1920.-11.1920.1040@0.0.1920.1040" timestamp="1579271878543" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/kotone/Img.java</url>
+          <line>9</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Programming$Test.ic" NAME="Test Coverage Results" MODIFIED="1579790765415" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">

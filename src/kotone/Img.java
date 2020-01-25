@@ -6,8 +6,8 @@ import javax.imageio.ImageIO;
 
 public class Img {
     public static void main(String[] args){
-        String inputname = "Presentation.bmp";
-        String outputname = ".png";
+        String inputname = "heigen3.gif.bmp";
+        String outputname = "P.png";
         try{
             BufferedImage bImage = ImageIO.read(new File(inputname));
 
