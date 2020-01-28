@@ -3,9 +3,9 @@ package kotone;
 import processing.core.PApplet;
 import processing.core.PImage;
 
-
 public class Presentation extends PApplet {
-PImage img;
+PImage haikei;
+//PImage monster;
 
     @Override
     public void settings(){
@@ -14,14 +14,24 @@ PImage img;
 
     @Override
     public void setup(){
-        img = loadImage("C:\\Users\\tkoto\\Downloads\\heigen3.gif");
+        haikei = loadImage("src/waigoma/data/img/600x300frame.png");
+        imageMode(CENTER);
+        haikei.resize(width,height);
     }
 
     @Override
     public void draw(){
-        image(img,0,0);
+        image(haikei,width/2,height/2);
     }
     public static void main(String[] args){
         PApplet.main("kotone.Presentation");
     }
+
+    //@Override
+    //public void
+   // monster = loadImage("C:\Users\tkoto\Downloads\dorako.png");
+
+
 }
+
+

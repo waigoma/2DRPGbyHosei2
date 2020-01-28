@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1b765673-398e-413b-bfe5-e27867b7728d" name="Default Changelist" comment="">
+    <list default="true" id="1b765673-398e-413b-bfe5-e27867b7728d" name="Default Changelist" comment="kotone commit">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/kotone/Presentation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/kotone/Presentation.java" afterDir="false" />
     </list>
@@ -22,6 +22,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="IgnoredFileRootStore">
     <option name="generatedRoots">
@@ -330,7 +331,14 @@
       <option name="project" value="LOCAL" />
       <updated>1579928242195</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="kotone commit">
+      <created>1579932649503</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1579932649503</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -354,39 +362,43 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="268" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040/1920.-11.1920.1040@0.0.1920.1040" timestamp="1579439250572" />
-    <state x="430" y="0" key="CommitChangelistDialog2" timestamp="1579928239973">
+    <state x="430" y="0" key="CommitChangelistDialog2" timestamp="1580171011961">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="430" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1579928239973" />
+    <state x="430" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1580171011961" />
     <state x="604" y="117" key="CommitChangelistDialog2/0.0.1920.1040/1920.-11.1920.1040@0.0.1920.1040" timestamp="1579440882272" />
     <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1579276146003">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040/1920.-11.1920.1040@0.0.1920.1040" timestamp="1579276146003" />
-    <state width="1323" height="179" key="GridCell.Tab.0.bottom" timestamp="1579932596770">
+    <state width="1323" height="179" key="GridCell.Tab.0.bottom" timestamp="1580171531758">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="179" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1579932596770" />
+    <state width="1323" height="179" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1580171531758" />
     <state width="1877" height="212" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.-11.1920.1040@0.0.1920.1040" timestamp="1579442402815" />
-    <state width="1323" height="179" key="GridCell.Tab.0.center" timestamp="1579932596770">
+    <state width="1323" height="179" key="GridCell.Tab.0.center" timestamp="1580171531758">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="179" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1579932596770" />
+    <state width="1323" height="179" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1580171531758" />
     <state width="1877" height="212" key="GridCell.Tab.0.center/0.0.1920.1040/1920.-11.1920.1040@0.0.1920.1040" timestamp="1579442402815" />
-    <state width="1323" height="179" key="GridCell.Tab.0.left" timestamp="1579932596770">
+    <state width="1323" height="179" key="GridCell.Tab.0.left" timestamp="1580171531758">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="179" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1579932596770" />
+    <state width="1323" height="179" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1580171531758" />
     <state width="1877" height="212" key="GridCell.Tab.0.left/0.0.1920.1040/1920.-11.1920.1040@0.0.1920.1040" timestamp="1579442402814" />
-    <state width="1323" height="179" key="GridCell.Tab.0.right" timestamp="1579932596770">
+    <state width="1323" height="179" key="GridCell.Tab.0.right" timestamp="1580171531758">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="179" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1579932596770" />
+    <state width="1323" height="179" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1580171531758" />
     <state width="1877" height="212" key="GridCell.Tab.0.right/0.0.1920.1040/1920.-11.1920.1040@0.0.1920.1040" timestamp="1579442402815" />
     <state x="540" y="256" key="IDE.errors.dialog" timestamp="1579267908619">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="540" y="256" key="IDE.errors.dialog/0.0.1920.1040/1920.-11.1920.1040@0.0.1920.1040" timestamp="1579267908619" />
+    <state x="395" y="81" key="MultipleFileMergeDialog" timestamp="1580171313752">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="395" y="81" key="MultipleFileMergeDialog/0.0.1366.728@0.0.1366.728" timestamp="1580171313752" />
     <state x="515" y="76" key="RollbackChangesDialog" timestamp="1579788537436">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -395,6 +407,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="440" y="95" key="SettingsEditor/0.0.1920.1040/1920.-11.1920.1040@0.0.1920.1040" timestamp="1579276150235" />
+    <state x="470" y="81" key="VCS.ChangeListViewerDialog" timestamp="1579932672466">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="470" y="81" key="VCS.ChangeListViewerDialog/0.0.1366.728@0.0.1366.728" timestamp="1579932672466" />
     <state x="326" y="118" key="Vcs.Push.Dialog.v2" timestamp="1579569158935">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -409,10 +425,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="692" y="414" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.0.1920.1040/1920.-11.1920.1040@0.0.1920.1040" timestamp="1579254469245" />
-    <state x="547" y="307" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1579932641884">
+    <state x="547" y="307" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1580171189469">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="547" y="307" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728@0.0.1366.728" timestamp="1579932641884" />
+    <state x="547" y="307" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728@0.0.1366.728" timestamp="1580171189469" />
     <state x="769" y="438" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040/1920.-11.1920.1040@0.0.1920.1040" timestamp="1579439077192" />
     <state x="487" y="218" key="git4idea.merge.GitPullDialog" timestamp="1579567180749">
       <screen x="0" y="0" width="1366" height="728" />
