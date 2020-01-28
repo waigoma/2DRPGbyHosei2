@@ -57,7 +57,7 @@ public class Main extends PApplet {
     @Override
     public void keyPressed(){    //キーボード対応
         if (key =='A')    //もしAが押されたら
-            h = h - 10;    //実行
+            h = h - 10;    //実行する
 
 
         if (key == 'E'  || key == 'e') {
