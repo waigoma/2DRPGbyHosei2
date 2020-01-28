@@ -5,7 +5,7 @@ import processing.core.PImage;
 
 public class Presentation extends PApplet {
 PImage haikei;
-//PImage monster;
+PImage monster;
 
     @Override
     public void settings(){
@@ -14,22 +14,21 @@ PImage haikei;
 
     @Override
     public void setup(){
-        haikei = loadImage("src/waigoma/data/img/600x300frame.png");
+        haikei = loadImage("C:\\Users\\tkoto\\Downloads\\heigen3.gif");
         imageMode(CENTER);
         haikei.resize(width,height);
+        monster = loadImage("C:\\Users\\tkoto\\Downloads\\dorako.png");
+        monster.resize(150,240);
     }
 
     @Override
     public void draw(){
         image(haikei,width/2,height/2);
+        image(monster,width/2,150);
     }
     public static void main(String[] args){
         PApplet.main("kotone.Presentation");
     }
-
-    //@Override
-    //public void
-   // monster = loadImage("C:\Users\tkoto\Downloads\dorako.png");
 
 
 }
