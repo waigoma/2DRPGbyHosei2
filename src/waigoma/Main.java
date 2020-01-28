@@ -39,10 +39,10 @@ public class Main extends PApplet {
     @Override
     public void draw(){//ステートマシン
         switch (state){
-            case 0://タイトル画面
+            case StateType.TITLE_STATE://タイトル画面
                 title.run();
                 break;
-            case 1:
+            case StateType.LOCAL_STATE:
                 test.display();
                 break;
         }

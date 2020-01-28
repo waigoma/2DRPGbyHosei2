@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.2" tiledversion="1.3.2" orientation="orthogonal" renderorder="right-down" compressionlevel="-1" width="50" height="50" tilewidth="16" tileheight="16" infinite="0" nextlayerid="11" nextobjectid="25">
- <tileset firstgid="1" source="../tsx/map1218_04_.tsx"/>
- <tileset firstgid="153" source="../tsx/map1218_05_.tsx"/>
- <tileset firstgid="305" source="../tsx/shunkashuutouTile.tsx"/>
- <tileset firstgid="1073" source="../tsx/shunkaTree.tsx"/>
- <tileset firstgid="1329" source="../tsx/map1218_09.tsx"/>
- <tileset firstgid="1521" source="../tsx/map1218_07.tsx"/>
- <tileset firstgid="1745" source="../tsx/map1218_08.tsx"/>
+ <tileset firstgid="1" source="src/waigoma/data/tsx/map1218_04_.tsx"/>
+ <tileset firstgid="153" source="src/waigoma/data/tsx/map1218_05_.tsx"/>
+ <tileset firstgid="305" source="src/waigoma/data/tsx/shunkashuutouTile.tsx"/>
+ <tileset firstgid="1073" source="src/waigoma/data/tsx/shunkaTree.tsx"/>
+ <tileset firstgid="1329" source="src/waigoma/data/tsx/map1218_09.tsx"/>
+ <tileset firstgid="1521" source="src/waigoma/data/tsx/map1218_07.tsx"/>
+ <tileset firstgid="1745" source="src/waigoma/data/tsx/map1218_08.tsx"/>
  <layer id="3" name="Background" width="50" height="50">
   <data encoding="csv">
 754,754,754,754,754,754,754,754,754,754,754,754,754,754,754,754,754,754,754,754,754,754,754,754,754,754,754,754,754,754,754,754,754,754,754,754,754,754,754,754,754,754,754,754,754,754,754,754,754,754,
