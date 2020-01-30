@@ -28,10 +28,8 @@ public class TMXLoader {//map情報の読み込み
 
             int width = Integer.parseInt(sWidth);//cast to int
             int height = Integer.parseInt(sHeight);//cast to int
-            int tilewidth = Integer.parseInt(sTilewidth);//cast to int
-            int tileheight = Integer.parseInt(sTileheight);//cast to int
-
-//            System.out.println(width+height+tileheight+tilewidth);
+            int tileWidth = Integer.parseInt(sTilewidth);//cast to int
+            int tileHeight = Integer.parseInt(sTileheight);//cast to int
 
             for (int i = 0; i < nodeList.getLength(); i++) {
                 Node node = nodeList.item(i);//子要素i番目取得
@@ -68,9 +66,9 @@ public class TMXLoader {//map情報の読み込み
             String sTilecount = element.getAttribute("tilecount");//タイル数
 
             //cast to int
-            int tilewidth = Integer.parseInt(sTilewidth);
-            int tileheight = Integer.parseInt(sTileheight);
-            int tilecount = Integer.parseInt(sTilecount);
+            int tileWidth = Integer.parseInt(sTilewidth);
+            int tileHeight = Integer.parseInt(sTileheight);
+            int tileCount = Integer.parseInt(sTilecount);
 
             NodeList nodeList = element.getElementsByTagName("image");
             for (int i = 0; i < nodeList.getLength(); i++){
