@@ -28,25 +28,29 @@ float speedY;
 
     @Override
     public void draw(){
-        image(haikei,width/2,height/2);
-        image(monster,pointX,pointY);
+        image(haikei,width/2,height/2);//背景の大きさ
+        image(monster,pointX,pointY);//敵の位置
         monsterMove();
+
+        tint(255,127,31);//敵が攻撃を受けたときに赤い色を付ける
+        noTint();
     }
 
 
     public void monsterMove(){
         pointY += speedY;
 
-        if(pointY < 140){
+        if(pointY < 145){
             speedY = 1;
         }
 
-        if(pointY > 160){
+        if(pointY > 155){
             speedY = -1;
         }
-
-
     }
+
+
+
     public static void main(String[] args){
         PApplet.main("kotone.Presentation");
     }
