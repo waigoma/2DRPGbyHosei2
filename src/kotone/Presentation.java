@@ -6,8 +6,9 @@ import processing.core.PImage;
 public class Presentation extends PApplet {
 PImage haikei;
 PImage monster;
-int pointX;
-int pointY;
+//PImage efect;
+float pointX;
+float pointY;
 float speedY;
 
     @Override
@@ -23,29 +24,42 @@ float speedY;
         monster = loadImage("C:\\Users\\tkoto\\Downloads\\dorako.png");
         monster.resize(150,240);pointX = width/2;
         pointY = 150;
-        speedY = 1;
+        speedY = 0.5f;
+        //efect = loadImage("C:\\Users\\tkoto\\Downloads\\kaenbeameffect\\火炎ビームエフェクトアニメ\\m\\kaenbeam.png\\");
     }
 
     @Override
     public void draw(){
         image(haikei,width/2,height/2);//背景の大きさ
-        image(monster,pointX,pointY);//敵の位置
+        image(monster,pointX,pointY);
         monsterMove();
 
-        tint(255,127,31);//敵が攻撃を受けたときに赤い色を付ける
-        noTint();
+        if(mousePressed) {
+            tint(255, 80, 31);//敵が攻撃を受けたときに赤い色を付ける
+            image(monster, pointX, pointY);
+        }
+
+        noTint();//色を消す
+
+        //if(mousePressed 攻撃を受けたら){//クリックしたらエフェクト表示
+            //image(efect,0,0);
+
+
     }
 
+    public void mouseClicked(){
 
-    public void monsterMove(){
+    }
+
+    public void monsterMove(){//普通のモンスターのスピード
         pointY += speedY;
 
         if(pointY < 145){
-            speedY = 1;
+            speedY = 0.5f;
         }
 
         if(pointY > 155){
-            speedY = -1;
+            speedY = -0.5f;
         }
     }
 
