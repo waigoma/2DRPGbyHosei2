@@ -18,15 +18,10 @@ public class Main extends PApplet {
     int start = 0;    //開始時間の初期化
     int keika;    //経過時間
 
-    @Override
-    public void keyPressed(KeyEvent event) {
-
-    }
-
 
     @Override
     public void settings(){
-        size(1280, 720);
+        size(1280,750);
 
     }
 
@@ -72,7 +67,7 @@ public class Main extends PApplet {
 
         fill(0);    //～の色
         textSize(23);    //文字の大きさ
-        text(p_name, 110,150);     //文字、x座標、y座標]                         ここはプレイヤーの四角内
+        text(p_name, 110,150);     //文字、x座標、y座標　　　                      ここはプレイヤーの四角内
         text("HP : "+ p_hp , 110, 170);
         text("＜ 攻撃 (A) ＞", 120,200);
         text("＜ 逃げる (E) ＞", 120,250);
@@ -80,19 +75,20 @@ public class Main extends PApplet {
         text(m_name, 1010,150);                                                   //ここは敵の四角内
         text("HP : " + m_hp,1010,170);
 
+        keika = millis() - start;    //何秒後かの計算
 
         text("敵が現れた",550,450);                                               //ここからメインの流れ
         if (tap_a)    //もしtap_aがtrueなら
             text(p_name +"の攻撃",550,480);    //実行する
-        if ((tap_a) && (1000*3 < keika) && (keika <1000*10))
+        if ((tap_a) && (1000*5 < keika) && (keika <1000*10))
             text("敵に１０ダメージ",550,510);
-        if (tap_a)                                                                         //ここから新しく
+        if ((tap_a) && (1000*13 < keika) && (keika < 1000*20))                                                                        //ここから新しく
             text(m_name + "の攻撃",550,480);
-        if (tap_a)
+        if ((tap_a) && (1000*15 < keika) && (keika < 1000*20))
             text("プレイヤーに１０ダメージ",550,510);
 
-        if (m_hp == 0)
-            text("敵を倒した",550,540);
+        if (m_hp == 0)    //もしm_hpが０なら
+            text("敵を倒した",550,540);    //実行する
 
 
         if (tap_e)    //もしtap_eがtrueなら
@@ -101,13 +97,11 @@ public class Main extends PApplet {
     }
     @Override
     public void keyPressed(){    //キーボード対応
-        if (key =='A' || key == 'a')    //もしAが押されたら
+        if (key =='A' || key == 'a') {   //もしAが押されたら
             tap_a = true;    //tap_aはtrue
-        if (key =='A' || key == 'a')
-            m_hp = m_hp - 10;
-        if (key =='A' || key == 'a')
-            p_hp = p_hp - 10;
-
+            m_hp = m_hp - 10;    //m_hpをー１０する
+            p_hp = p_hp - 10;    //p_hpをー１０する
+        }
 
 
         if (key == 'E'  || key == 'e') {    //もしEが押されたら
