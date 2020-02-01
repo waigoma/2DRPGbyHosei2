@@ -35,54 +35,20 @@ public class TMXLoader {//map情報の読み込み
                 Node node = nodeList.item(i);//子要素i番目取得
                 if (node.getNodeType() == Node.ELEMENT_NODE) {
                     Element name = (Element) node;//cast to element
+                    System.out.println(name.getNodeName());
                     switch (name.getNodeName()) {
                         case "tileset":
                             String sFirstgid = name.getAttribute("firstgid");//タイルの初期値
                             String source = name.getAttribute("source");//タイル画像パス
                             //cast to int
                             int firstgid = Integer.parseInt(sFirstgid);
-                            TSXLoader(source);
+                            TSXLoader tsx = new TSXLoader(source);
                             break;
-                        case "":
+                        case "layer":
                             break;
                     }
                 }
             }
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-    }
-
-    public static void TSXLoader(String source){//mapで用いる画像読み込み
-        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-        try {
-            DocumentBuilder builder = factory.newDocumentBuilder();
-            Document doc = builder.parse(new File(source));
-            Element element = doc.getDocumentElement();
-
-            String name = element.getAttribute("name");//画像名入手
-            String sTilewidth = element.getAttribute("tilewidth");//タイル画像の横幅
-            String sTileheight = element.getAttribute("tileheight");//タイル画像の縦幅
-            String sTilecount = element.getAttribute("tilecount");//タイル数
-
-            //cast to int
-            int tileWidth = Integer.parseInt(sTilewidth);
-            int tileHeight = Integer.parseInt(sTileheight);
-            int tileCount = Integer.parseInt(sTilecount);
-
-            NodeList nodeList = element.getElementsByTagName("image");
-            for (int i = 0; i < nodeList.getLength(); i++){
-                Node node = nodeList.item(i);
-                if (node.getNodeType() == Node.ELEMENT_NODE){
-                    Element element1 = (Element)node;
-                    String sWidth = element1.getAttribute("width");
-                    String sHeight = element1.getAttribute("height");
-                    //cast to int
-                    int width = Integer.parseInt(sWidth);
-                    int height = Integer.parseInt(sHeight);
-                }
-            }
-
         }catch (Exception e){
             e.printStackTrace();
         }
