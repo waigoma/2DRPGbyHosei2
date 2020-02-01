@@ -6,7 +6,7 @@ import processing.core.PImage;
 public class Presentation extends PApplet {
 PImage haikei;
 PImage monster;
-//PImage efect;
+PImage efect;
 float pointX;
 float pointY;
 float speedY;
@@ -25,7 +25,7 @@ float speedY;
         monster.resize(150,240);pointX = width/2;
         pointY = 150;
         speedY = 0.5f;
-        //efect = loadImage("C:\\Users\\tkoto\\Downloads\\kaenbeameffect\\火炎ビームエフェクトアニメ\\m\\kaenbeam.png\\");
+        efect = loadImage("C:\\Users\\tkoto\\Downloads\\kaenbeameffect\\火炎ビームエフェクトアニメ\\m\\kaenbeam.png");
     }
 
     @Override
@@ -41,13 +41,12 @@ float speedY;
 
         noTint();//色を消す
 
-        //if(mousePressed 攻撃を受けたら){//クリックしたらエフェクト表示
+        if(mousePressed) {//クリックしたらエフェクト表示
             //image(efect,0,0);
 
+            //"C:\Users\tkoto\Downloads\kaenbeameffect\火炎ビームエフェクトアニメ\m\kaenbeam.png"    }
 
-    }
-
-    public void mouseClicked(){
+        }
 
     }
 
