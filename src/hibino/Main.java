@@ -14,6 +14,7 @@ import processing.event.KeyEvent;
         boolean tap_e = false;
         boolean p_hit = false;
         boolean m_hit = false;
+        boolean battle = false;
 
         int start = 0;    //開始時間の初期化
         int keika = 0;    //経過時間の初期化
@@ -68,12 +69,12 @@ import processing.event.KeyEvent;
 
         text(m_name + "が現れた", 550, 450);                                           //ここからメインの流れ
 
-        if (tap_a == true) {    //もしtap_aがtrueなら（Aが押されたら）
+        if (tap_a) {    //もしtap_aがtrueなら（Aが押されたら）
             if (keika < 1000 * 10)    //１０秒以内の時
                 text(p_name + "の攻撃", 550, 480);    //実行する
             if ((1000 * 5 < keika) && (keika < 1000 * 10)) {    //５～１０秒の時
                 text("敵に１０ダメージ", 550, 510);
-                if (m_hit == true) {    //もしm_hitがtrueなら（一回実行するため）
+                if (m_hit) {    //もしm_hitがtrueなら（一回実行するため）
                     m_hp = m_hp - 10;    //体力ー１０
                     m_hit = false;    //終了
                 }
@@ -83,31 +84,44 @@ import processing.event.KeyEvent;
                 text(m_name + "の攻撃", 550, 480);
             if ((1000 * 15 < keika) && (keika < 1000 * 20) && (m_hp != 0)) {
                 text("プレイヤーに１０ダメージ", 550, 510);
-                if (p_hit == true) {
-                    p_hp = p_hp - 10;
-                    p_hit = false;
+                if (p_hit) {    //もしp_hitがtrueなら
+                    p_hp = p_hp - 10;    //体力－１０
+                    p_hit = false;    //終了
                 }
             }
 
-            if (m_hp == 0)    //もしm_hpが０ならば
+            if (m_hp == 0) {    //もしm_hpが０ならば
                 text("敵を倒した", 550, 540);    //実行する
+                if (keika > 1000 * 10)    //経過が１２秒以上なら
+                    exit();    //処理終了
+            }
+            if(keika > 1000*20) {
+                battle = false;    //バトル終了
+                tap_a = false;    //tap_a終了
+            }
+        }
 
-            if (tap_e == true)    //もしtap_eがtrueなら
-                text("逃げ出した", 550, 480);    //実行する
+        if (tap_e) {     //もしtap_eがtrueなら
+            text("逃げ出した", 550, 480);    //実行する
+            if(keika > 1000*2)    //経過が１２秒以上なら
+                exit();    //処理終了
         }
     }
 
         @Override
         public void keyPressed () {    //キーボード対応
-            if (key == 'A' || key == 'a') {   //もしAが押されたら
+            if ((key == 'A' || key == 'a') && (!battle)) {   //もしAが押されバトルじゃないとき
                 tap_a = true;    //tap_aはtrue
                 p_hit = true;
                 m_hit = true;
+                battle = true;    //バトル中
                 press_time = millis();    //押された時間の取得
             }
 
-            if (key == 'E' || key == 'e') {    //もしEが押されたら
-                tap_e = true;    //tap_eはtrue　　　
+            if ((key == 'E' || key == 'e') && (!battle)) {     //もしEが押されバトルじゃないとき
+                tap_e = true;    //tap_eはtrue　　
+                battle = true;    //バトル中
+                press_time = millis();    //押された時間の取得
             }
         }
 
