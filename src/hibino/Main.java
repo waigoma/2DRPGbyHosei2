@@ -89,7 +89,7 @@ import processing.event.KeyEvent;
                 }
             }
 
-            if (m_hp == 0)    //もしm_hpが０なら
+            if (m_hp == 0)    //もしm_hpが０ならば
                 text("敵を倒した", 550, 540);    //実行する
 
             if (tap_e == true)    //もしtap_eがtrueなら
