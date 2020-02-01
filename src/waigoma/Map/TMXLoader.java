@@ -7,10 +7,10 @@ import org.w3c.dom.NodeList;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
 import java.io.File;
-import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class TMXLoader {//map情報の読み込み
     String filePath;
@@ -36,7 +36,6 @@ public class TMXLoader {//map情報の読み込み
                 Node node = nodeList.item(i);//子要素i番目取得
                 if (node.getNodeType() == Node.ELEMENT_NODE) {
                     Element name = (Element) node;//cast to element
-//                    System.out.println(name.getNodeName());
                     switch (name.getNodeName()) {
                         case "tileset":
                             String sFirstgid = name.getAttribute("firstgid");//タイルの初期値
@@ -45,20 +44,26 @@ public class TMXLoader {//map情報の読み込み
                             int firstgid = Integer.parseInt(sFirstgid);
                             TSXLoader tsx = new TSXLoader(source);
                             break;
-                        case "layer":
-                            ArrayList<Integer> list = new ArrayList<>();
-                            int[] ints;
-                            String str = name.getTextContent();
-                            String[] nums = str.split(",");
+                        case "layer"://layer内の処理
+                            Node nd = name.getFirstChild();
+                            List<Integer> list = new ArrayList<>();//配列にするための仮list
+                            Integer[] ints;//int配列(MapTemplateのlistへ入れるため)
 
-                            for (String num : nums){
-                                if (num != null) {
-                                    System.out.println(num);
-//                                    int n = Integer.parseInt(num);
-//                                    list.add(n);
+                            while (nd != null){//layerの中身がnullになるまで処理
+                                if (nd.getNodeName().equals("data")){//Nodeがlayerの中のdataの場合
+
+                                    String str = nd.getTextContent();//dataの中の文字列取得
+                                    String[] nums = str.split(",");//","ごとに区切り、String配列に区切られた文字ごと入れる
+                                    for (String num : nums){//nums配列の中身を1つ取り出し、Stringのnumにいれて下を実行(nums回)
+                                        num = num.replaceAll("\\s+","");//改行やスペースを無に置き換え
+                                        int n = Integer.parseInt(num);//cast to int
+                                        list.add(n);
+                                    }
+                                    ints = list.toArray(new Integer[0]);
+                                    MapTemplate.list.add(ints);
                                 }
+                                nd = nd.getNextSibling();
                             }
-                            System.out.println(list);
                             break;
                     }
                 }
