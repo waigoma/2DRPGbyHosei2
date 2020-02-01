@@ -18,7 +18,7 @@ public class TSXLoader {
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         try {
             DocumentBuilder builder = factory.newDocumentBuilder();
-            Document doc = builder.parse(new File("src/waigoma/data/tsx/map1218_04_.tsx"));
+            Document doc = builder.parse(new File(source));
             Element element = doc.getDocumentElement();
 
             String name = element.getAttribute("name");//画像名入手
@@ -59,16 +59,16 @@ public class TSXLoader {
             int rows = image.getHeight() / chunkHeight; //縦幅
             int chunks = cols * rows; //総数
             int count = 0;
-            BufferedImage imgs[] = new BufferedImage[chunks];
+            BufferedImage[] imgs = new BufferedImage[chunks];
             for (int x = 0; x < rows; x++) {
                 for (int y = 0; y < cols; y++) {
                     //Initialize the image array with image chunks
                     imgs[count] = new BufferedImage(chunkWidth, chunkHeight, image.getType());
 
                     // draws the image chunk
-                    Graphics2D gr = imgs[count++].createGraphics();
-                    gr.drawImage(image, 0, 0, chunkWidth, chunkHeight, chunkWidth * y, chunkHeight * x, chunkWidth * y + chunkWidth, chunkHeight * x + chunkHeight, null);
-                    gr.dispose();
+//                    Graphics2D gr = imgs[count++].createGraphics();
+//                    gr.drawImage(image, 0, 0, chunkWidth, chunkHeight, chunkWidth * y, chunkHeight * x, chunkWidth * y + chunkWidth, chunkHeight * x + chunkHeight, null);
+//                    gr.dispose();
                 }
             }
             System.out.println("Splitting done");

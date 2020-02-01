@@ -10,6 +10,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.File;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 
 public class TMXLoader {//map情報の読み込み
     String filePath;
@@ -35,7 +36,7 @@ public class TMXLoader {//map情報の読み込み
                 Node node = nodeList.item(i);//子要素i番目取得
                 if (node.getNodeType() == Node.ELEMENT_NODE) {
                     Element name = (Element) node;//cast to element
-                    System.out.println(name.getNodeName());
+//                    System.out.println(name.getNodeName());
                     switch (name.getNodeName()) {
                         case "tileset":
                             String sFirstgid = name.getAttribute("firstgid");//タイルの初期値
@@ -45,6 +46,19 @@ public class TMXLoader {//map情報の読み込み
                             TSXLoader tsx = new TSXLoader(source);
                             break;
                         case "layer":
+                            ArrayList<Integer> list = new ArrayList<>();
+                            int[] ints;
+                            String str = name.getTextContent();
+                            String[] nums = str.split(",");
+
+                            for (String num : nums){
+                                if (num != null) {
+                                    System.out.println(num);
+//                                    int n = Integer.parseInt(num);
+//                                    list.add(n);
+                                }
+                            }
+                            System.out.println(list);
                             break;
                     }
                 }
