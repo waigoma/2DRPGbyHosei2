@@ -22,12 +22,16 @@ public class TSXLoader {
             Element element = doc.getDocumentElement();
 
             String name = element.getAttribute("name");//画像名入手
-            String sTilewidth = element.getAttribute("tilewidth");//タイル画像の横幅
-            String sTileheight = element.getAttribute("tileheight");//タイル画像の縦幅
+            String sTileWidth = element.getAttribute("tilewidth");//タイル画像の横幅
+            String sTileHeight = element.getAttribute("tileheight");//タイル画像の縦幅
+            String stileCount = element.getAttribute("tilecount");
 
             //cast to int
-            int tileWidth = Integer.parseInt(sTilewidth);
-            int tileHeight = Integer.parseInt(sTileheight);
+            int tileCount = Integer.parseInt(stileCount);
+            int tileWidth = Integer.parseInt(sTileWidth);
+            int tileHeight = Integer.parseInt(sTileHeight);
+
+//            TMXLoader.tileCounter += tileCount;//タイルの総数(小分けver)
 
             imageSplit("src/waigoma/data/img/mapChip/"+name+".png", tileWidth, tileHeight);
 
@@ -49,16 +53,17 @@ public class TSXLoader {
         }
     }
 
-    private static void imageSplit(String filePath, int chunkWidth, int chunkHeight){
+    private static void imageSplit(String filePath, int chunkWidth, int chunkHeight){//画像を指定px*pxで小分けする
         try {
-            File file = new File(filePath);
-            FileInputStream fis = new FileInputStream(file);
-            BufferedImage image = ImageIO.read(fis);
+            File file = new File(filePath);//filePathのファイルを認識(Fileクラスとしておく)
+            FileInputStream fis = new FileInputStream(file);//↑ファイル読み込み
+            BufferedImage image = ImageIO.read(fis);//↑ファイルをimgとして読み込み
 
             int cols = image.getWidth() / chunkWidth; //横幅
             int rows = image.getHeight() / chunkHeight; //縦幅
             int chunks = cols * rows; //総数
             int count = 0;
+            int a = 0;
             BufferedImage[] imgs = new BufferedImage[chunks];
             for (int x = 0; x < rows; x++) {
                 for (int y = 0; y < cols; y++) {
@@ -66,12 +71,17 @@ public class TSXLoader {
                     imgs[count] = new BufferedImage(chunkWidth, chunkHeight, image.getType());
 
                     // draws the image chunk
-//                    Graphics2D gr = imgs[count++].createGraphics();
-//                    gr.drawImage(image, 0, 0, chunkWidth, chunkHeight, chunkWidth * y, chunkHeight * x, chunkWidth * y + chunkWidth, chunkHeight * x + chunkHeight, null);
-//                    gr.dispose();
+                    Graphics2D gr = imgs[count++].createGraphics();
+                    gr.drawImage(image, 0, 0, chunkWidth, chunkHeight, chunkWidth * y, chunkHeight * x, chunkWidth * y + chunkWidth, chunkHeight * x + chunkHeight, null);
+                    gr.dispose();
+                    MapTemplate.listImg.add(imgs[a]);
+                    a++;
                 }
             }
             System.out.println("Splitting done");
+//            for (int i = 0; i < MapTemplate.listImg.size(); i++) {
+//                ImageIO.write(MapTemplate.listImg.get(i), "png", new File("E:\\waichi\\Desktop\\test\\test\\" + i + ".png"));
+//            }
 
         }catch (Exception e){
             e.printStackTrace();

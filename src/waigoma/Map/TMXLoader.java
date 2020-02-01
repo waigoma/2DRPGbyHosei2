@@ -13,7 +13,18 @@ import java.util.Arrays;
 import java.util.List;
 
 public class TMXLoader {//map情報の読み込み
+//    public static int tileCounter = 0;//タイルの総数
     String filePath;
+    public TMXLoader(){
+        File dir = new File("src/waigoma/data/tmx");
+        File[] list = dir.listFiles();
+        if (list != null){
+            for (File file : list){
+                String path = file.getPath();
+                System.out.println(path);
+            }
+        }
+    }
     public static void main(String[] args){
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();// 1. DocumentBuilderFactoryのインスタンスを取得する
         try {
@@ -27,8 +38,8 @@ public class TMXLoader {//map情報の読み込み
             String sTilewidth = element.getAttribute("tilewidth");//mapタイル横幅
             String sTileheight = element.getAttribute("tileheight");//mapタイル縦幅
 
-            int width = Integer.parseInt(sWidth);//cast to int
-            int height = Integer.parseInt(sHeight);//cast to int
+            int mapTileWidth = Integer.parseInt(sWidth);//cast to int
+            int mapTileHeight = Integer.parseInt(sHeight);//cast to int
             int tileWidth = Integer.parseInt(sTilewidth);//cast to int
             int tileHeight = Integer.parseInt(sTileheight);//cast to int
 
