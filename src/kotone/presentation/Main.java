@@ -1,4 +1,4 @@
-package hibino;
+package kotone.presentation;
 
 import processing.core.PApplet;
 import processing.core.PFont;
@@ -19,6 +19,7 @@ import processing.event.KeyEvent;
         int start = 0;    //開始時間の初期化
         int keika = 0;    //経過時間の初期化
         int press_time = 0;    //ボタン押下時間
+
 
         @Override
         public void settings(){
@@ -71,7 +72,8 @@ import processing.event.KeyEvent;
 
         if (tap_a) {    //もしtap_aがtrueなら（Aが押されたら）
             if (keika < 1000 * 10)    //１０秒以内の時
-                text(p_name + "の攻撃", 550, 480);    //実行する
+                text(p_name + "の攻撃", 550, 480);//実行する
+
             if ((1000 * 5 < keika) && (keika < 1000 * 10)) {    //５～１０秒の時
                 text("敵に１０ダメージ", 550, 510);
                 if (m_hit) {    //もしm_hitがtrueなら（一回実行するため）
