@@ -3,7 +3,6 @@ package waigoma.Map;
 import processing.core.PApplet;
 import processing.core.PImage;
 
-import java.awt.image.WritableRaster;
 import java.util.HashMap;
 import java.util.List;
 
@@ -16,7 +15,6 @@ public class MapTemplate {
     private int mapTileWidth, mapTileHeight, tileWidth, tileHeight;
     private PApplet plet;
     private PImage img;
-    private WritableRaster wr;
 
     public MapTemplate(String name, int mapTileWidth, int mapTileHeight, int tileWidth, int tileHeight, List<Integer[]> list, PImage[] imgs, PApplet plet) {
         this.mapName = name;
