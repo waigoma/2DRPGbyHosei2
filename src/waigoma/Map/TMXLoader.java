@@ -15,24 +15,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TMXLoader {//map情報の読み込み
-    private List<Integer[]> mapList = new ArrayList<>();
-    private List<BufferedImage> listBufImg = new ArrayList<>();
-    private List<PImage> PImgList = new ArrayList<>();
-    private PImage[] imgs;
+    private List<Integer[]> mapList = new ArrayList<>();//1つのマップのlayer情報をすべて保存
+    private List<BufferedImage> listBufImg = new ArrayList<>();//解析したBufferedImageを加える
+    private List<PImage> PImgList = new ArrayList<>();//BufferedImageをPImgListに変換
+    private PImage[] imgs;//PImageの配列
     public TSXLoader tsx;
 
-    public TMXLoader(PApplet plet){
-        File dir = new File("src/waigoma/data/tmx");
-        File[] list = dir.listFiles();
-        if (list != null){
-            for (File file : list){
-                String path = file.getPath();
-                String name = file.getName();
+    public TMXLoader(PApplet plet){//TMX(マップデータ)ファイルを取得
+        File dir = new File("src/waigoma/data/tmx");//マップデータのある場所
+        File[] list = dir.listFiles();//Fileの配列にマップデータがある分ロード
+        if (list != null){//ファイルが存在するかどうか確認、あれば↓
+            for (File file : list){//マップデータを1つずつ読み込む
+                String path = file.getPath();//ファイルのPathを取得
+                String name = file.getName();//ファイルの名前を取得
                 loadTmx(path, name, plet);
             }
         }
     }
-    public void loadTmx(String filePath, String mapName, PApplet plet){
+    public void loadTmx(String filePath, String mapName, PApplet plet){//TMXファイルを解析
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();// 1. DocumentBuilderFactoryのインスタンスを取得する
         try {
             DocumentBuilder builder = factory.newDocumentBuilder();// 2. DocumentBuilderのインスタンスを取得する
@@ -52,19 +52,19 @@ public class TMXLoader {//map情報の読み込み
 
             for (int i = 0; i < nodeList.getLength(); i++) {
                 Node node = nodeList.item(i);//子要素i番目取得
-                if (node.getNodeType() == Node.ELEMENT_NODE) {
+                if (node.getNodeType() == Node.ELEMENT_NODE) {//Nodeのタイプを選別
                     Element name = (Element) node;//cast to element
-                    switch (name.getNodeName()) {
+                    switch (name.getNodeName()) {//Nodeの名前で選別
                         case "tileset":
                             String sFirstgid = name.getAttribute("firstgid");//タイルの初期値
                             String source = name.getAttribute("source");//タイル画像パス
                             //cast to int
                             int firstgid = Integer.parseInt(sFirstgid);
-                            tsx = new TSXLoader(source);
-                            listBufImg.addAll(tsx.listImg);
+                            tsx = new TSXLoader(source);//TSXLoaderクラスでsourceのTSXファイルを解析
+                            listBufImg.addAll(tsx.listImg);//解析してsplitが完了したらlistBufImgに画像を加える
                             break;
                         case "layer"://layer内の処理
-                            Node nd = name.getFirstChild();
+                            Node nd = name.getFirstChild();//layerノード内の最初のNodeを取得
                             List<Integer> list = new ArrayList<>();//配列にするための仮list
                             Integer[] ints;//int配列(MapTemplateのlistへ入れるため)
 
@@ -76,22 +76,22 @@ public class TMXLoader {//map情報の読み込み
                                     for (String num : nums){//nums配列の中身を1つ取り出し、Stringのnumにいれて下を実行(nums回)
                                         num = num.replaceAll("\\s+","");//改行やスペースを無に置き換え
                                         int n = Integer.parseInt(num);//cast to int
-                                        list.add(n);
+                                        list.add(n);//listにlayer情報(整数)を加える
                                     }
-                                    ints = list.toArray(new Integer[0]);
-                                    mapList.add(ints);
+                                    ints = list.toArray(new Integer[0]);//加え終わったら配列に変換
+                                    mapList.add(ints);//layer情報を保存
                                 }
-                                nd = nd.getNextSibling();
+                                nd = nd.getNextSibling();//次のnodeを読み込む
                             }
                             break;
                     }
                 }
             }
-            for (BufferedImage bfi : listBufImg){
+            for (BufferedImage bfi : listBufImg){//BufferedImageをPImageに変換
                 PImgList.add(new PImage(bfi));
             }
-            imgs = PImgList.toArray(new PImage[0]);
-            MapTemplate.maps.put(mapName, new MapTemplate(mapName, mapTileWidth, mapTileHeight, tileWidth, tileHeight, mapList, imgs, plet));
+            imgs = PImgList.toArray(new PImage[0]);//PImageのlistを配列に変換
+            MapTemplate.maps.put(mapName, new MapTemplate(mapName, mapTileWidth, mapTileHeight, tileWidth, tileHeight, mapList, imgs, plet));//map情報を保存
         }catch (Exception e){
             e.printStackTrace();
         }

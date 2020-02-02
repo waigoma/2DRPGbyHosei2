@@ -12,15 +12,14 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class TSXLoader {
-    public List<BufferedImage> listImg = new ArrayList<>();
+    public List<BufferedImage> listImg = new ArrayList<>();//splitした画像を一時的に保存しておく場所
 
     public TSXLoader(String source) {//mapで用いる画像読み込み
-        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();//loadTmxと同様
         try {
             DocumentBuilder builder = factory.newDocumentBuilder();
             Document doc = builder.parse(new File(source));
@@ -58,7 +57,7 @@ public class TSXLoader {
         try {
             File file = new File(filePath);//filePathのファイルを認識(Fileクラスとしておく)
             FileInputStream fis = new FileInputStream(file);//↑ファイル読み込み
-            BufferedImage image = ImageIO.read(fis);//↑ファイルをimgとして読み込み
+            BufferedImage image = ImageIO.read(fis);//↑ファイルをBufferedImageとして読み込み
 
             int cols = image.getWidth() / chunkWidth; //横幅
             int rows = image.getHeight() / chunkHeight; //縦幅
@@ -71,7 +70,7 @@ public class TSXLoader {
                     //Initialize the image array with image chunks
                     imgs[count] = new BufferedImage(chunkWidth, chunkHeight, image.getType());
 
-                    // draws the image chunk
+                    // draws the image chunk//TODO あまり理解できていない部分
                     Graphics2D gr = imgs[count++].createGraphics();
                     gr.drawImage(image, 0, 0, chunkWidth, chunkHeight, chunkWidth * y, chunkHeight * x, chunkWidth * y + chunkWidth, chunkHeight * x + chunkHeight, null);
                     gr.dispose();
