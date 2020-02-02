@@ -12,8 +12,13 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class TSXLoader {
+    public List<BufferedImage> listImg = new ArrayList<>();
+
     public TSXLoader(String source) {//mapで用いる画像読み込み
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         try {
@@ -24,14 +29,10 @@ public class TSXLoader {
             String name = element.getAttribute("name");//画像名入手
             String sTileWidth = element.getAttribute("tilewidth");//タイル画像の横幅
             String sTileHeight = element.getAttribute("tileheight");//タイル画像の縦幅
-            String stileCount = element.getAttribute("tilecount");
 
             //cast to int
-            int tileCount = Integer.parseInt(stileCount);
             int tileWidth = Integer.parseInt(sTileWidth);
             int tileHeight = Integer.parseInt(sTileHeight);
-
-//            TMXLoader.tileCounter += tileCount;//タイルの総数(小分けver)
 
             imageSplit("src/waigoma/data/img/mapChip/"+name+".png", tileWidth, tileHeight);
 
@@ -53,7 +54,7 @@ public class TSXLoader {
         }
     }
 
-    private static void imageSplit(String filePath, int chunkWidth, int chunkHeight){//画像を指定px*pxで小分けする
+    private void imageSplit(String filePath, int chunkWidth, int chunkHeight){//画像を指定px*pxで小分けする
         try {
             File file = new File(filePath);//filePathのファイルを認識(Fileクラスとしておく)
             FileInputStream fis = new FileInputStream(file);//↑ファイル読み込み
@@ -74,11 +75,11 @@ public class TSXLoader {
                     Graphics2D gr = imgs[count++].createGraphics();
                     gr.drawImage(image, 0, 0, chunkWidth, chunkHeight, chunkWidth * y, chunkHeight * x, chunkWidth * y + chunkWidth, chunkHeight * x + chunkHeight, null);
                     gr.dispose();
-                    MapTemplate.listImg.add(imgs[a]);
+                    listImg.add(imgs[a]);
                     a++;
                 }
             }
-            System.out.println("Splitting done");
+//            System.out.println("Splitting done");
 //            for (int i = 0; i < MapTemplate.listImg.size(); i++) {
 //                ImageIO.write(MapTemplate.listImg.get(i), "png", new File("E:\\waichi\\Desktop\\test\\test\\" + i + ".png"));
 //            }

@@ -2,6 +2,8 @@ package waigoma;
 
 import processing.core.PApplet;
 import processing.core.PFont;
+import waigoma.Map.MapTemplate;
+import waigoma.Map.TMXLoader;
 import waigoma.Title.Title;
 
 public class Main extends PApplet {
@@ -9,16 +11,18 @@ public class Main extends PApplet {
 
     Title title;
     Test test;
+    TMXLoader tmx;
 
     @Override
     public void settings(){
-        size(1280,720);
+        size(1280,1000);
     }//ウィンドウ作成
 
     @Override
     public void setup(){
         title = new Title(this);//state:0
         test = new Test(this);//state:1
+        tmx = new TMXLoader(this);
 
         noStroke();
 
@@ -43,6 +47,7 @@ public class Main extends PApplet {
                 title.run();
                 break;
             case StateType.LOCAL_STATE:
+                MapTemplate.maps.get("1village.tmx").display();
                 test.display();
                 break;
         }

@@ -17,7 +17,7 @@ public class Title {//最初に表示されるタイトル画面
     public Title(PApplet papplet){
     this.plet = papplet;
     titlemenu = new TitleMenu(papplet, titleScene);
-    font = plet.createFont("waigoma/data/PixelMplus12-Regular.ttf", 24);
+    font = plet.createFont("src/waigoma/data/PixelMplus12-Regular.ttf", 24);
 
     plet.textAlign(plet.CENTER, plet.CENTER);
     }

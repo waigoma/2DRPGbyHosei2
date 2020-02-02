@@ -17,7 +17,7 @@ public class TitleMenu {//タイトルメニュー画面
         this.titleScene = titleScene;
 //        this.titleFrame = plet.loadImage("src/waigoma/img/photo_frame1.png");
 
-        font = plet.createFont("waigoma/data/PixelMplus12-Regular.ttf", 24);
+        font = plet.createFont("src/waigoma/data/PixelMplus12-Regular.ttf", 24);
         plet.rectMode(plet.CENTER);
         plet.textAlign(plet.CENTER, plet.CENTER);
         plet.imageMode(plet.CENTER);

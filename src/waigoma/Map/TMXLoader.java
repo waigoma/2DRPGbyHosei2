@@ -4,28 +4,32 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+import processing.core.PApplet;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class TMXLoader {//map情報の読み込み
-//    public static int tileCounter = 0;//タイルの総数
-    String filePath;
-    public TMXLoader(){
+    private List<Integer[]> mapList = new ArrayList<>();
+    private List<BufferedImage> listImg = new ArrayList<>();
+    public TSXLoader tsx;
+
+    public TMXLoader(PApplet plet){
         File dir = new File("src/waigoma/data/tmx");
         File[] list = dir.listFiles();
         if (list != null){
             for (File file : list){
                 String path = file.getPath();
-                System.out.println(path);
+                String name = file.getName();
+                loadTmx(path, name, plet);
             }
         }
     }
-    public static void main(String[] args){
+    public void loadTmx(String filePath, String mapName, PApplet plet){
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();// 1. DocumentBuilderFactoryのインスタンスを取得する
         try {
             DocumentBuilder builder = factory.newDocumentBuilder();// 2. DocumentBuilderのインスタンスを取得する
@@ -53,7 +57,8 @@ public class TMXLoader {//map情報の読み込み
                             String source = name.getAttribute("source");//タイル画像パス
                             //cast to int
                             int firstgid = Integer.parseInt(sFirstgid);
-                            TSXLoader tsx = new TSXLoader(source);
+                            tsx = new TSXLoader(source);
+                            listImg.addAll(tsx.listImg);
                             break;
                         case "layer"://layer内の処理
                             Node nd = name.getFirstChild();
@@ -71,7 +76,7 @@ public class TMXLoader {//map情報の読み込み
                                         list.add(n);
                                     }
                                     ints = list.toArray(new Integer[0]);
-                                    MapTemplate.list.add(ints);
+                                    mapList.add(ints);
                                 }
                                 nd = nd.getNextSibling();
                             }
@@ -79,6 +84,7 @@ public class TMXLoader {//map情報の読み込み
                     }
                 }
             }
+            MapTemplate.maps.put(mapName, new MapTemplate(mapName, mapTileWidth, mapTileHeight, tileWidth, tileHeight, mapList, listImg, plet));
         }catch (Exception e){
             e.printStackTrace();
         }
