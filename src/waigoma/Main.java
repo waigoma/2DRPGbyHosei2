@@ -49,6 +49,7 @@ public class Main extends PApplet {
             case StateType.LOCAL_STATE:
                 MapTemplate.maps.get("1village.tmx").display();
                 test.display();
+                MapTemplate.maps.get("1village.tmx").topDisplay();
                 break;
         }
     }

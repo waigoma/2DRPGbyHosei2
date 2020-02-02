@@ -55,21 +55,47 @@ public class MapTemplate {
     }
 
     public void display(){
+        int count = 0;
         for (Integer[] mapNums : getList()) {
             int x = 0;
             int y = 0;
-            for (int num : mapNums) {
-                displayImages(num,x,y);
-                if (x < getMapTileWidth()) {
-                    x++;
-                }
-                if (x >= getMapTileWidth()){
-                    x = 0;
-                    y++;
+            count++;
+            if (count != getList().size()) {
+                for (int num : mapNums) {
+                    displayImages(num, x, y);
+                    if (x < getMapTileWidth()) {
+                        x++;
+                    }
+                    if (x >= getMapTileWidth()) {
+                        x = 0;
+                        y++;
+                    }
                 }
             }
         }
     }
+
+    public void topDisplay(){
+        int count = 0;
+        for (Integer[] mapNums : getList()) {
+            int x = 0;
+            int y = 0;
+            count++;
+            if (count == getList().size()) {
+                for (int num : mapNums) {
+                    displayImages(num, x, y);
+                    if (x < getMapTileWidth()) {
+                        x++;
+                    }
+                    if (x >= getMapTileWidth()) {
+                        x = 0;
+                        y++;
+                    }
+                }
+            }
+        }
+    }
+
     public void displayImages(int index, int x, int y){
         float imgX = x * getTileWidth();
         float imgY = y * getTileHeight();
