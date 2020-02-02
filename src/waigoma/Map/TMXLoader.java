@@ -5,6 +5,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import processing.core.PApplet;
+import processing.core.PImage;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -15,7 +16,9 @@ import java.util.List;
 
 public class TMXLoader {//map情報の読み込み
     private List<Integer[]> mapList = new ArrayList<>();
-    private List<BufferedImage> listImg = new ArrayList<>();
+    private List<BufferedImage> listBufImg = new ArrayList<>();
+    private List<PImage> PImgList = new ArrayList<>();
+    private PImage[] imgs;
     public TSXLoader tsx;
 
     public TMXLoader(PApplet plet){
@@ -33,7 +36,7 @@ public class TMXLoader {//map情報の読み込み
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();// 1. DocumentBuilderFactoryのインスタンスを取得する
         try {
             DocumentBuilder builder = factory.newDocumentBuilder();// 2. DocumentBuilderのインスタンスを取得する
-            Document document = builder.parse(new File("src/waigoma/data/tmx/1village.tmx"));// 3. DocumentBuilderにXMLを読み込ませ、Documentを作る
+            Document document = builder.parse(new File(filePath));// 3. DocumentBuilderにXMLを読み込ませ、Documentを作る
             Element element = document.getDocumentElement();// 4. Documentから、ルート要素(1village.tmx)を取得する
             NodeList nodeList = element.getChildNodes();// 5. map配下にある、子要素を取得する
 
@@ -58,7 +61,7 @@ public class TMXLoader {//map情報の読み込み
                             //cast to int
                             int firstgid = Integer.parseInt(sFirstgid);
                             tsx = new TSXLoader(source);
-                            listImg.addAll(tsx.listImg);
+                            listBufImg.addAll(tsx.listImg);
                             break;
                         case "layer"://layer内の処理
                             Node nd = name.getFirstChild();
@@ -84,7 +87,11 @@ public class TMXLoader {//map情報の読み込み
                     }
                 }
             }
-            MapTemplate.maps.put(mapName, new MapTemplate(mapName, mapTileWidth, mapTileHeight, tileWidth, tileHeight, mapList, listImg, plet));
+            for (BufferedImage bfi : listBufImg){
+                PImgList.add(new PImage(bfi));
+            }
+            imgs = PImgList.toArray(new PImage[0]);
+            MapTemplate.maps.put(mapName, new MapTemplate(mapName, mapTileWidth, mapTileHeight, tileWidth, tileHeight, mapList, imgs, plet));
         }catch (Exception e){
             e.printStackTrace();
         }
