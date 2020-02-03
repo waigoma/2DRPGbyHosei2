@@ -15,7 +15,7 @@ public class Main extends PApplet {
 
     @Override
     public void settings(){
-        size(1280,1000);
+        size(1280,720);
     }//ウィンドウ作成
 
     @Override
@@ -24,6 +24,7 @@ public class Main extends PApplet {
         test = new Test(this);//state:1
         tmx = new TMXLoader(this);
 
+        surface.setResizable(true);
         noStroke();
 
         PFont font = createFont("MS Gothic", 50);
@@ -47,9 +48,13 @@ public class Main extends PApplet {
                 title.run();
                 break;
             case StateType.LOCAL_STATE:
-                MapTemplate.maps.get("1village.tmx").display();
+                MapTemplate mapTmp = MapTemplate.maps.get("1village.tmx");
+                int width = mapTmp.getMapTileWidth() * mapTmp.getTileWidth();
+                int height = mapTmp.getMapTileHeight() * mapTmp.getTileHeight();
+                surface.setSize(width-10,height-10);
+                mapTmp.display();
                 test.display();
-                MapTemplate.maps.get("1village.tmx").topDisplay();
+                mapTmp.topDisplay();
                 break;
         }
     }

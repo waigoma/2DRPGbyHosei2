@@ -1,4 +1,4 @@
-package waigoma;
+package waigoma.FreeSpace;
 
 import processing.core.PApplet;
 import processing.core.PImage;
@@ -37,6 +37,6 @@ public class Testt extends PApplet {
         }
     }
     public static void main(String[] args){
-        PApplet.main("waigoma.Testt");
+        PApplet.main("waigoma.FreeSpace.Testt");
     }
 }

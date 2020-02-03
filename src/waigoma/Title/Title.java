@@ -8,7 +8,7 @@ public class Title {//最初に表示されるタイトル画面
     int titleScene = 0;//タイトル画面のシーン番号
 
     float fadeAlpha = 255f;//フェードアウト用
-    float fadeSpeed = 1.75f;//フェードアウト速度
+    final float fadeSpeed = 1.75f;//フェードアウト速度
     PFont font;
 
     PApplet plet;
