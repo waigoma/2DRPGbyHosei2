@@ -1,4 +1,4 @@
-package kotone;
+package kotone.test;
 
 import processing.core.PApplet;
 
@@ -34,6 +34,6 @@ public class Main extends PApplet {
     }
 
     public static void main(String[] args){
-        PApplet.main("kotone.Main");
+        PApplet.main("kotone.test.Main");
     }
 }

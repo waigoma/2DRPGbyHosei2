@@ -2,24 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1b765673-398e-413b-bfe5-e27867b7728d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/kotone/damage.file" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/kotone/presentation/damage/Damage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/kotone/presentation/damage/Mainkotone.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/kotone/presentation/Presenttion2.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/kotone/test/Noname.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/kotone/Image.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/kotone/damage/6wmYIqF.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/kotone/damage/Damage.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/kotone/damage/damage(0).png" beforeDir="false" afterPath="$PROJECT_DIR$/src/kotone/presentation/damage/damage(0).png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/kotone/damage/damage(1).png" beforeDir="false" afterPath="$PROJECT_DIR$/src/kotone/presentation/damage/damage(1).png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/kotone/damage/damage(2).png" beforeDir="false" afterPath="$PROJECT_DIR$/src/kotone/presentation/damage/damage(2).png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/kotone/damage/damage(3).png" beforeDir="false" afterPath="$PROJECT_DIR$/src/kotone/presentation/damage/damage(3).png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/kotone/damage/damage(4).png" beforeDir="false" afterPath="$PROJECT_DIR$/src/kotone/presentation/damage/damage(4).png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/kotone/damage/damage(5).png" beforeDir="false" afterPath="$PROJECT_DIR$/src/kotone/presentation/damage/damage(5).png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/kotone/damage/damage(6).png" beforeDir="false" afterPath="$PROJECT_DIR$/src/kotone/presentation/damage/damage(6).png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/kotone/damage/damage(7).png" beforeDir="false" afterPath="$PROJECT_DIR$/src/kotone/presentation/damage/damage(7).png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/kotone/damage/damage(8).png" beforeDir="false" afterPath="$PROJECT_DIR$/src/kotone/presentation/damage/damage(8).png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/kotone/damage/damage(9).png" beforeDir="false" afterPath="$PROJECT_DIR$/src/kotone/presentation/damage/damage(9).png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/kotone/presentation/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/kotone/presentation/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/kotone/Img.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/kotone/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/kotone/test/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/kotone/Presentation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/kotone/presentation/Presentation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/kotone/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/kotone/test/Test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/kotone/damage.file" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/kotone/presentation/damage/Mainkotone.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,18 +62,18 @@
     <property name="settings.editor.selected.configurable" value="settings.github" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\Programming\2DRPGbyHosei2\src" />
-    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="kotone" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="kotone.presentation" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Programming\src\kotone\damage" />
       <recent name="D:\Programming\src\kotone\deta" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="kotone.presentation" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Programming\2DRPGbyHosei2\src" />
     </key>
   </component>
   <component name="RunManager" selected="Application.Mainkotone">
@@ -91,7 +82,7 @@
       <module name="2DRPGbyHosei2" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="kotone.presentation.damage.*" />
+          <option name="PATTERN" value="kotone.test.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -104,7 +95,7 @@
       <module name="2DRPGbyHosei2" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="kotone.*" />
+          <option name="PATTERN" value="kotone.test.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -126,11 +117,11 @@
       </method>
     </configuration>
     <configuration name="Mainkotone" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="kotone.presentation.damage.Mainkotone" />
+      <option name="MAIN_CLASS_NAME" value="kotone.presentation.Mainkotone" />
       <module name="2DRPGbyHosei2" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="kotone.presentation.damage.*" />
+          <option name="PATTERN" value="kotone.test.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -139,11 +130,11 @@
       </method>
     </configuration>
     <configuration name="Presentation" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="kotone.Presentation" />
+      <option name="MAIN_CLASS_NAME" value="kotone.presentation.Presentation" />
       <module name="2DRPGbyHosei2" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="kotone.*" />
+          <option name="PATTERN" value="kotone.test.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -165,11 +156,11 @@
       </method>
     </configuration>
     <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="kotone.Test" />
+      <option name="MAIN_CLASS_NAME" value="kotone.test.Test" />
       <module name="2DRPGbyHosei2" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="kotone.*" />
+          <option name="PATTERN" value="kotone.test.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -427,7 +418,14 @@
       <option name="project" value="LOCAL" />
       <updated>1580577436082</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="kotone commit">
+      <created>1580636825246</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1580636825246</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -451,42 +449,42 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="765" y="230" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040/1920.-11.1920.1040@0.0.1920.1040" timestamp="1579433480025" />
-    <state x="480" y="250" width="406" height="237" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1580564525487">
+    <state x="480" y="250" width="406" height="237" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1580801298698">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="480" y="250" width="406" height="237" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1366.728@0.0.1366.728" timestamp="1580564525487" />
+    <state x="480" y="250" width="406" height="237" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1366.728@0.0.1366.728" timestamp="1580801298698" />
     <state x="690" y="268" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1579439250572">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="268" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040/1920.-11.1920.1040@0.0.1920.1040" timestamp="1579439250572" />
-    <state x="430" y="0" key="CommitChangelistDialog2" timestamp="1580577432921">
+    <state x="430" y="0" key="CommitChangelistDialog2" timestamp="1580636821825">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="430" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1580577432921" />
+    <state x="430" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1580636821825" />
     <state x="604" y="117" key="CommitChangelistDialog2/0.0.1920.1040/1920.-11.1920.1040@0.0.1920.1040" timestamp="1579440882272" />
     <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1579276146003">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040/1920.-11.1920.1040@0.0.1920.1040" timestamp="1579276146003" />
-    <state width="1323" height="180" key="GridCell.Tab.0.bottom" timestamp="1580636554200">
+    <state width="1323" height="180" key="GridCell.Tab.0.bottom" timestamp="1580801334947">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="180" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1580636554200" />
+    <state width="1323" height="180" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1580801334947" />
     <state width="1877" height="212" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.-11.1920.1040@0.0.1920.1040" timestamp="1579442402815" />
-    <state width="1323" height="180" key="GridCell.Tab.0.center" timestamp="1580636554200">
+    <state width="1323" height="180" key="GridCell.Tab.0.center" timestamp="1580801334947">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="180" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1580636554200" />
+    <state width="1323" height="180" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1580801334947" />
     <state width="1877" height="212" key="GridCell.Tab.0.center/0.0.1920.1040/1920.-11.1920.1040@0.0.1920.1040" timestamp="1579442402815" />
-    <state width="1323" height="180" key="GridCell.Tab.0.left" timestamp="1580636554200">
+    <state width="1323" height="180" key="GridCell.Tab.0.left" timestamp="1580801334947">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="180" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1580636554200" />
+    <state width="1323" height="180" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1580801334947" />
     <state width="1877" height="212" key="GridCell.Tab.0.left/0.0.1920.1040/1920.-11.1920.1040@0.0.1920.1040" timestamp="1579442402814" />
-    <state width="1323" height="180" key="GridCell.Tab.0.right" timestamp="1580636554200">
+    <state width="1323" height="180" key="GridCell.Tab.0.right" timestamp="1580801334947">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="180" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1580636554200" />
+    <state width="1323" height="180" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1580801334947" />
     <state width="1877" height="212" key="GridCell.Tab.0.right/0.0.1920.1040/1920.-11.1920.1040@0.0.1920.1040" timestamp="1579442402815" />
     <state x="540" y="256" key="IDE.errors.dialog" timestamp="1579267908619">
       <screen x="0" y="0" width="1920" height="1040" />
@@ -540,10 +538,10 @@
     </state>
     <state x="487" y="218" key="git4idea.merge.GitPullDialog/0.0.1366.728@0.0.1366.728" timestamp="1579567180749" />
     <state x="684" y="312" key="git4idea.merge.GitPullDialog/0.0.1920.1040/1920.-11.1920.1040@0.0.1920.1040" timestamp="1579363423211" />
-    <state x="103" y="0" key="new project wizard" timestamp="1579921869949">
+    <state x="103" y="0" key="new project wizard" timestamp="1580733361527">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="103" y="0" key="new project wizard/0.0.1366.728@0.0.1366.728" timestamp="1579921869949" />
+    <state x="103" y="0" key="new project wizard/0.0.1366.728@0.0.1366.728" timestamp="1580733361527" />
     <state x="339" y="162" key="run.anything.popup" timestamp="1579790361130">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -552,17 +550,6 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/1920.-11.1920.1040@0.0.1920.1040" timestamp="1579271878543" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/kotone/Img.java</url>
-          <line>9</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Programming$Test.ic" NAME="Test Coverage Results" MODIFIED="1579790765415" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">

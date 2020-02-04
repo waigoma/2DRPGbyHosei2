@@ -1,15 +1,16 @@
-package kotone;
+package kotone.presentation;
 
 import processing.core.PApplet;
 import processing.core.PImage;
 
 public class Presentation extends PApplet {
-PImage haikei;
-PImage monster;
-PImage efect;
-float pointX;
-float pointY;
-float speedY;
+
+    PImage haikei;
+    PImage monster;
+    PImage efect;
+    float pointX;
+    float pointY;
+    float speedY;
 
     @Override
     public void settings(){
@@ -18,23 +19,27 @@ float speedY;
 
     @Override
     public void setup(){
+
         haikei = loadImage("C:\\Users\\tkoto\\Downloads\\heigen3.gif");
         imageMode(CENTER);
         haikei.resize(width,height);
+
         monster = loadImage("C:\\Users\\tkoto\\Downloads\\dorako.png");
         monster.resize(150,240);pointX = width/2;
         pointY = 150;
         speedY = 0.5f;
+
         efect = loadImage("C:\\Users\\tkoto\\Downloads\\kaenbeameffect\\火炎ビームエフェクトアニメ\\m\\kaenbeam.png");
     }
 
     @Override
     public void draw(){
+
         image(haikei,width/2,height/2);//背景の大きさ
         image(monster,pointX,pointY);
         monsterMove();
 
-        if(mousePressed) {
+        if(m_hp > new m_hp) {
             tint(255, 80, 31);//敵が攻撃を受けたときに赤い色を付ける
             image(monster, pointX, pointY);
         }
@@ -65,7 +70,7 @@ float speedY;
 
 
     public static void main(String[] args){
-        PApplet.main("kotone.Presentation");
+        PApplet.main("kotone.presentation.Presentation");
     }
 
 
