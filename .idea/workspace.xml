@@ -2,15 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1b765673-398e-413b-bfe5-e27867b7728d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/kotone/presentation/Presenttion2.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/kotone/test/Noname.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/kotone/presentation/Presentation2.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/kotone/Img.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/kotone/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/kotone/test/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/kotone/Presentation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/kotone/presentation/Presentation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/kotone/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/kotone/test/Test.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/kotone/damage.file" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/kotone/presentation/damage/Mainkotone.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/kotone/presentation/Presentation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/kotone/presentation/Presentation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/kotone/presentation/Presenttion2.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,22 +71,9 @@
       <recent name="D:\Programming\2DRPGbyHosei2\src" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Mainkotone">
+  <component name="RunManager" selected="Application.Presentation2">
     <configuration name="Damage" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="kotone.presentation.damage.Damage" />
-      <module name="2DRPGbyHosei2" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="kotone.test.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="kotone.presentation.Main" />
       <module name="2DRPGbyHosei2" />
       <extension name="coverage">
         <pattern>
@@ -142,6 +124,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Presentation2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="kotone.presentation.Presentation2" />
+      <module name="2DRPGbyHosei2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="kotone.presentation.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="TMXLoader" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="waigoma.Map.TMXLoader" />
       <module name="2DRPGbyHosei2" />
@@ -155,26 +150,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="kotone.test.Test" />
-      <module name="2DRPGbyHosei2" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="kotone.test.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Mainkotone" />
+        <item itemvalue="Application.Presentation2" />
         <item itemvalue="Application.Presentation" />
+        <item itemvalue="Application.Mainkotone" />
         <item itemvalue="Application.Damage" />
         <item itemvalue="Application.TMXLoader" />
-        <item itemvalue="Application.Test" />
       </list>
     </recent_temporary>
   </component>
@@ -425,7 +407,14 @@
       <option name="project" value="LOCAL" />
       <updated>1580636825246</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="kotone commit">
+      <created>1580808271779</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1580808271779</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -457,34 +446,34 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="268" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040/1920.-11.1920.1040@0.0.1920.1040" timestamp="1579439250572" />
-    <state x="430" y="0" key="CommitChangelistDialog2" timestamp="1580636821825">
+    <state x="430" y="0" key="CommitChangelistDialog2" timestamp="1580808262082">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="430" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1580636821825" />
+    <state x="430" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1580808262082" />
     <state x="604" y="117" key="CommitChangelistDialog2/0.0.1920.1040/1920.-11.1920.1040@0.0.1920.1040" timestamp="1579440882272" />
     <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1579276146003">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040/1920.-11.1920.1040@0.0.1920.1040" timestamp="1579276146003" />
-    <state width="1323" height="180" key="GridCell.Tab.0.bottom" timestamp="1580801334947">
+    <state width="1323" height="180" key="GridCell.Tab.0.bottom" timestamp="1580824797480">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="180" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1580801334947" />
+    <state width="1323" height="180" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1580824797480" />
     <state width="1877" height="212" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.-11.1920.1040@0.0.1920.1040" timestamp="1579442402815" />
-    <state width="1323" height="180" key="GridCell.Tab.0.center" timestamp="1580801334947">
+    <state width="1323" height="180" key="GridCell.Tab.0.center" timestamp="1580824797480">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="180" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1580801334947" />
+    <state width="1323" height="180" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1580824797480" />
     <state width="1877" height="212" key="GridCell.Tab.0.center/0.0.1920.1040/1920.-11.1920.1040@0.0.1920.1040" timestamp="1579442402815" />
-    <state width="1323" height="180" key="GridCell.Tab.0.left" timestamp="1580801334947">
+    <state width="1323" height="180" key="GridCell.Tab.0.left" timestamp="1580824797480">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="180" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1580801334947" />
+    <state width="1323" height="180" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1580824797480" />
     <state width="1877" height="212" key="GridCell.Tab.0.left/0.0.1920.1040/1920.-11.1920.1040@0.0.1920.1040" timestamp="1579442402814" />
-    <state width="1323" height="180" key="GridCell.Tab.0.right" timestamp="1580801334947">
+    <state width="1323" height="180" key="GridCell.Tab.0.right" timestamp="1580824797480">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="180" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1580801334947" />
+    <state width="1323" height="180" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1580824797480" />
     <state width="1877" height="212" key="GridCell.Tab.0.right/0.0.1920.1040/1920.-11.1920.1040@0.0.1920.1040" timestamp="1579442402815" />
     <state x="540" y="256" key="IDE.errors.dialog" timestamp="1579267908619">
       <screen x="0" y="0" width="1920" height="1040" />
@@ -524,10 +513,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="692" y="414" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.0.1920.1040/1920.-11.1920.1040@0.0.1920.1040" timestamp="1579254469245" />
-    <state x="547" y="307" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1580626202997">
+    <state x="547" y="307" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1580822688255">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="547" y="307" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728@0.0.1366.728" timestamp="1580626202997" />
+    <state x="547" y="307" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728@0.0.1366.728" timestamp="1580822688255" />
     <state x="769" y="438" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040/1920.-11.1920.1040@0.0.1920.1040" timestamp="1579439077192" />
     <state x="0" y="0" width="732" height="728" key="find.popup" timestamp="1580631974768">
       <screen x="0" y="0" width="1366" height="728" />
