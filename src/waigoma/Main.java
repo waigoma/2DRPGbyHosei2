@@ -2,6 +2,7 @@ package waigoma;
 
 import processing.core.PApplet;
 import processing.core.PFont;
+import waigoma.Map.LocalMap.LocalMap;
 import waigoma.Map.MapTemplate;
 import waigoma.Map.TMXLoader;
 import waigoma.Title.Title;
@@ -9,9 +10,10 @@ import waigoma.Title.Title;
 public class Main extends PApplet {
     public static int state = 0;
 
+    TMXLoader tmx;
     Title title;
     Test test;
-    TMXLoader tmx;
+    LocalMap localMap;
 
     @Override
     public void settings(){
@@ -20,9 +22,10 @@ public class Main extends PApplet {
 
     @Override
     public void setup(){
+        tmx = new TMXLoader(this);//loadMaps
         title = new Title(this);//state:0
-        test = new Test(this);//state:1
-        tmx = new TMXLoader(this);
+        test = new Test(this);
+        localMap = new LocalMap(this);//state:1
 
         surface.setResizable(true);
         noStroke();
@@ -33,12 +36,12 @@ public class Main extends PApplet {
 
     @Override
     public void keyPressed(){//キー入力受付
-        if (state == 1) test.keyPressed();
+        if (state == 1) localMap.keyPressed();
     }
 
     @Override
     public void keyReleased(){//キー解放受付
-        if (state == 1) test.keyReleased();
+        if (state == 1) localMap.keyReleased();
     }
 
     @Override
@@ -48,13 +51,9 @@ public class Main extends PApplet {
                 title.run();
                 break;
             case StateType.LOCAL_STATE:
-                MapTemplate mapTmp = MapTemplate.maps.get("1village.tmx");
-                int width = mapTmp.getMapTileWidth() * mapTmp.getTileWidth();
-                int height = mapTmp.getMapTileHeight() * mapTmp.getTileHeight();
-                surface.setSize(width-10,height-10);
-                mapTmp.display();
-                test.display();
-                mapTmp.topDisplay();
+                localMap.display();
+                break;
+            case StateType.WORLD_STATE:
                 break;
         }
     }

@@ -21,14 +21,14 @@ public class TMXLoader {//map情報の読み込み
     private PImage[] imgs;//PImageの配列
     public TSXLoader tsx;
 
-    public TMXLoader(PApplet plet){//TMX(マップデータ)ファイルを取得
+    public TMXLoader(PApplet papplet){//TMX(マップデータ)ファイルを取得
         File dir = new File("src/waigoma/data/tmx");//マップデータのある場所
         File[] list = dir.listFiles();//Fileの配列にマップデータがある分ロード
         if (list != null){//ファイルが存在するかどうか確認、あれば↓
             for (File file : list){//マップデータを1つずつ読み込む
                 String path = file.getPath();//ファイルのPathを取得
                 String name = file.getName();//ファイルの名前を取得
-                loadTmx(path, name, plet);
+                loadTmx(path, name, papplet);
             }
         }
     }

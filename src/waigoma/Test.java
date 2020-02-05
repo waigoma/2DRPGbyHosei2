@@ -5,9 +5,9 @@ import processing.core.PApplet;
 public class Test {//四角い箱を真ん中に召喚→w,a,s,d,up,left,down,rightで自由自在に動かす
     PApplet plet;
 
-    boolean right, left, up, down = false;
+    public boolean right, left, up, down = false;
     float x, y;
-    double speed = 3.0;//箱の動く速度
+    public double speed = 3.0;//箱の動く速度
 
     public Test(PApplet papplet){//processingをmainから受け継ぎ
         this.plet = papplet;
