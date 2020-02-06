@@ -16,6 +16,7 @@ public class Zikken2 extends PApplet  {
     double DashSpeed = 6.0;
     int Life = 1;
 
+
     @Override
     public void settings(){
         size(1000,600);
@@ -114,18 +115,18 @@ public class Zikken2 extends PApplet  {
     }
     void EnemyMove(){
     }
-    void LifeCount(){
-        if((900==(x+50) || 930==x )&&(300<=(y+30) && 315>=y)){
-            Life = Life - 1;
+    void LifeCount() {
+        if ((x < 930) || ((x+50) > 900)) {
+            Life = -1;
+        }
         }
 
+        void GameOver(){
+            text("Game Over", 500, 200);
+            textAlign(CENTER);
+            textSize(100);
+        }
+        public static void main(String[]args){
+            PApplet.main("nagai.Zikken2");
+        }
     }
-    void GameOver(){
-        text("Game Over",500,200);
-        textAlign(CENTER);
-        textSize(100);
-    }
-    public static void main(String[] args){
-        PApplet.main("nagai.Zikken2");
-    }
-}
