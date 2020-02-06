@@ -116,8 +116,8 @@ public class Zikken2 extends PApplet  {
     void EnemyMove(){
     }
     void LifeCount() {
-        if ((x < 930) || ((x+50) > 900)) {
-            Life = -1;
+        if((x < 930) && ((x+50) > 900) && (y < 315) && ((y+30) > 300)){
+            Life = Life-1;
         }
         }
 
