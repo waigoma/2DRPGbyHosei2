@@ -84,6 +84,21 @@ public class TMXLoader {//map情報の読み込み
                                 nd = nd.getNextSibling();//次のnodeを読み込む
                             }
                             break;
+                        case "objectgroup":
+                            Node nd1 = name.getFirstChild();//layerノード内の最初のNodeを取得
+                            List<Float> colList = new ArrayList<>();//配列にするための仮list
+
+                            while (nd1 != null){//objectの中身がnullになるまで処理
+                                if (nd1.getNodeName().equals("object")){//Nodeがlayerの中のdataの場合
+                                    Element el = (Element)nd1;
+                                    String objXs = el.getAttribute("x");
+                                    String objYs = el.getAttribute("y");
+                                    String objWidths = el.getAttribute("width");
+                                    String objHeights = el.getAttribute("height");
+                                }
+                                nd1 = nd1.getNextSibling();//次のnodeを読み込む
+                            }
+                            break;
                     }
                 }
             }
