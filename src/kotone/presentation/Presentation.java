@@ -2,9 +2,8 @@ package kotone.presentation;
 
 import processing.core.PApplet;
 import processing.core.PImage;
-import kotone.presentation.Main;
 
-public class Presentation extends PApplet {
+public class Presentation {
 
     PImage haikei;
     PImage monster;
@@ -12,67 +11,63 @@ public class Presentation extends PApplet {
     float pointX;
     float pointY;
     float speedY;
-    Main combat;//タイトルクラスのオブジェクトを作る
-    int m_hp = 20;
-    int before = m_hp;
+    PApplet pApplet;
+    Main combat;//Mainクラスのオブジェクトを作る
 
-
-    @Override
-    public void settings(){
-        size(600,400);
+    public Presentation(PApplet pApplet) {
+        this.pApplet = pApplet;
     }
 
-    @Override
     public void setup(){
 
-        haikei = loadImage("C:\\Users\\tkoto\\Downloads\\heigen3.gif");
-        imageMode(CENTER);
-        haikei.resize(width,height);
+        haikei = pApplet.loadImage("C:\\Users\\tkoto\\Downloads\\heigen3.gif");
+        pApplet.imageMode(pApplet.CENTER);
+        haikei.resize(pApplet.width,pApplet.height);
 
-        monster = loadImage("C:\\Users\\tkoto\\Downloads\\dorako.png");
-        monster.resize(150,240);pointX = width/2;
-        pointY = 150;
-        speedY = 0.5f;
+        monster = pApplet.loadImage("C:\\Users\\tkoto\\Downloads\\dorako.png");
+        monster.resize(300,480);pointX = pApplet.width/2;
+        pointY = 300;
+        speedY = 1;
 
-        efect = loadImage("C:\\Users\\tkoto\\Downloads\\kaenbeameffect\\火炎ビームエフェクトアニメ\\m\\kaenbeam.png");
+        efect = pApplet.loadImage("C:\\Users\\tkoto\\Downloads\\kaenbeameffect\\火炎ビームエフェクトアニメ\\m\\kaenbeam.png");
 
-        combat = new Main();//タイトルクラスのオブジェクトにタイトルクラスをインスタンス化していれる
+//        combat = new Main();//タイトルクラスのオブジェクトにタイトルクラスをインスタンス化していれる
     }
 
-    @Override
-    public void draw(){
 
-        combat.draw();//タイトルクラスの中身が使えるようにする
+    public void draw() {
 
-        image(haikei,width/2,height/2);//背景の大きさ
-        image(monster,pointX,pointY);
+//        combat.draw();//タイトルクラスの中身が使えるようにする
+
+        pApplet.image(haikei, pApplet.width / 2, pApplet.height / 2);//背景の大きさ
+        pApplet.image(monster, pointX, pointY);
         monsterMove();
-
-        if(m_hp < before) {
-            tint(255, 80, 31);//敵が攻撃を受けたときに赤い色を付ける
-            image(monster, pointX, pointY);
+        if ((Main.m_hit) && (Main.keika > 1000 * 1) && (Main.keika < 1000 * 2)) {//もしm_hitがtrueなら（一回実行するため）
+            System.out.println("mhit true");
+            pApplet.tint(255, 80, 31);//敵が攻撃を受けたときに赤い色を付ける
+            pApplet.image(monster, pointX, pointY);
+        } else {
+            pApplet.noTint();//色を消す
         }
 
-        noTint();//色を消す
+}
+       // if(m_hp ) {
+            //Applet.tint(255, 80, 31);//敵が攻撃を受けたときに赤い色を付ける
+            //pApplet.image(monster, pointX, pointY);
 
-        if(mousePressed) {//クリックしたらエフェクト表示
-            //image(efect,0,0);
 
-            //"C:\Users\tkoto\Downloads\kaenbeameffect\火炎ビームエフェクトアニメ\m\kaenbeam.png"    }
 
-        }
 
-    }
 
     public void monsterMove(){//普通のモンスターのスピード
         pointY += speedY;
 
-        if(pointY < 145){
-            speedY = 0.5f;
+        if(pointY < 290){
+            speedY = 1;
         }
 
-        if(pointY > 155){
-            speedY = -0.5f;
+        if(pointY > 310){
+            speedY = -1;
         }
     }
 

@@ -10,7 +10,8 @@ public class Presentation2 extends PApplet {
     String m_name;    //モンスター名
     int p_hp;    //数値変数(プレイヤー体力)
     int m_hp;    //モンスター体力
-    int before = m_hp;
+
+
 
     boolean tap_a = false;   //真偽変数（初期化するためにfalseにする)
     boolean tap_e = false;
@@ -46,6 +47,7 @@ public class Presentation2 extends PApplet {
         m_name = "モンスター名";
         m_hp = 20;
 
+
         noStroke();
 
         haikei = loadImage("C:\\Users\\tkoto\\Downloads\\heigen3.gif");
@@ -69,7 +71,6 @@ public class Presentation2 extends PApplet {
         image(haikei,width/2,height/2);//背景の大きさ
         image(monster,pointX,pointY);
         monsterMove();
-        efect();
 
         fill(255, 255, 255, 100);    //～の色（４つ目は透明度）    　　　　　　　　　ここはプレイヤーの四角
         rect(100, 100, 200, 250);    //四角形（x座標、y座標、横の長さ、縦の長さ）
@@ -149,15 +150,8 @@ public class Presentation2 extends PApplet {
         }
     }
 
-    public void efect(){
 
-        if (m_hp < before){
-            tint(255, 80, 31);//敵が攻撃を受けたときに赤い色を付ける
-            image(monster, pointX, pointY);
-        } else if (m_hp == before){
-            noTint();
-        }
-    }
+
 
     @Override
     public void keyPressed () {    //キーボード対応

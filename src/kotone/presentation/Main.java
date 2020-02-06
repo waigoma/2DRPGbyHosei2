@@ -8,17 +8,19 @@ import processing.event.KeyEvent;
         String p_name;    //文字列変数(プレイヤー名)                                                                   （クラス内で変数は定義）
         String m_name;    //モンスター名
         int p_hp;    //数値変数(プレイヤー体力)
-        int m_hp;    //モンスター体力
+        public static int m_hp;    //モンスター体力
 
         boolean tap_a = false;   //真偽変数（初期化するためにfalseにする)
         boolean tap_e = false;
         boolean p_hit = false;
-        boolean m_hit = false;
+        public static boolean m_hit = false;
         boolean battle = false;
 
         int start = 0;    //開始時間の初期化
-        int keika = 0;    //経過時間の初期化
+        public static int keika = 0;    //経過時間の初期化
         int press_time = 0;    //ボタン押下時間
+
+        Presentation presentation;
 
 
         @Override
@@ -39,12 +41,13 @@ import processing.event.KeyEvent;
 
             noStroke();
 
+            presentation = new Presentation(this);
+            presentation.setup();
         }
 
     @Override
     public void draw() {
-        background(0, 255, 0);    //背景色（赤、緑、青）(0:黒、255:白)
-
+        presentation.draw();
         fill(255, 255, 255, 100);    //～の色（４つ目は透明度）    　　　　　　　　　ここはプレイヤーの四角
         rect(100, 100, 200, 250);    //四角形（x座標、y座標、横の長さ、縦の長さ）
         stroke(0);    //枠線、（）内は色
@@ -78,7 +81,7 @@ import processing.event.KeyEvent;
                 text("敵に１０ダメージ", 550, 510);
                 if (m_hit) {    //もしm_hitがtrueなら（一回実行するため）
                     m_hp = m_hp - 10;    //体力ー１０
-                    m_hit = false;    //終了
+                    m_hit = false;//終了
                 }
             }
 
@@ -128,6 +131,6 @@ import processing.event.KeyEvent;
         }
 
         public static void main (String[]args){
-            PApplet.main("hibino.Main");
+            PApplet.main("kotone.presentation.Main");
         }
     }
