@@ -1,5 +1,6 @@
 package kotone.presentation;
 
+import kotone.presentation.damage.Damage;
 import processing.core.PApplet;
 import processing.core.PFont;
 import processing.event.KeyEvent;
@@ -21,6 +22,7 @@ import processing.event.KeyEvent;
         int press_time = 0;    //ボタン押下時間
 
         Presentation presentation;
+        Damage damage;
 
 
         @Override
@@ -43,6 +45,9 @@ import processing.event.KeyEvent;
 
             presentation = new Presentation(this);
             presentation.setup();
+
+            damage = new Damage(this);
+            damage.setup();
         }
 
     @Override
