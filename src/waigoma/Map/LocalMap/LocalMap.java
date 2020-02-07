@@ -1,5 +1,6 @@
 package waigoma.Map.LocalMap;
 
+import nagai.Collision;
 import processing.core.PApplet;
 import waigoma.Map.MapTemplate;
 import waigoma.Test;
@@ -33,6 +34,7 @@ public class LocalMap {
 
     public void display(){
         if (count == 0){
+            plet.rectMode(plet.CORNER);
             mapTmp = MapTemplate.maps.get("1village.tmx");
             int width = mapTmp.getMapTileWidth() * mapTmp.getTileWidth();
             int height = mapTmp.getMapTileHeight() * mapTmp.getTileHeight();
