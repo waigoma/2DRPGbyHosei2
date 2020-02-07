@@ -14,9 +14,10 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 
 public class Bgm {
     public static void main(String[] args) throws Exception {
-    Clip clip = createClip(new File("D:\\Programming\\2DRPGbyHosei2\\src\\nagai\\data.bgm\\cat20.wav"));
+    Clip clip = createClip(new File("src/nagai/data/bgm/cat20.wav"));
     clip.start();
     Thread.sleep(3000);
+    clip.close();
 
 //ここで再生メソッドの呼び出し
 }
