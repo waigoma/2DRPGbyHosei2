@@ -17,7 +17,7 @@ import processing.event.KeyEvent;
         boolean battle = false;
 
         int start = 0;    //開始時間の初期化
-        public static int keika = 0;    //経過時間の初期化
+        public static float keika = 0;    //経過時間の初期化
         int press_time = 0;    //ボタン押下時間
 
         Presentation presentation;
@@ -97,6 +97,7 @@ import processing.event.KeyEvent;
 
             if (m_hp == 0) {    //もしm_hpが０ならば
                 text("敵を倒した", 550, 540);    //実行する
+                Presentation.fadeMode = false;
                 if (keika > 1000 * 10)    //経過が１２秒以上なら
                     exit();    //処理終了
             }
