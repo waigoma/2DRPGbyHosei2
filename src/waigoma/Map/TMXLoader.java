@@ -16,11 +16,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TMXLoader {//map情報の読み込み
-    private List<Integer[]> mapList = new ArrayList<>();//1つのマップのlayer情報をすべて保存
-    private List<BufferedImage> listBufImg = new ArrayList<>();//解析したBufferedImageを加える
-    private List<PImage> PImgList = new ArrayList<>();//BufferedImageをPImgListに変換
-    private List<Collision> colList = new ArrayList<>();
-    private PImage[] imgs;//PImageの配列
+//    private List<Integer[]> mapList = new ArrayList<>();//1つのマップのlayer情報をすべて保存
+//    private List<BufferedImage> listBufImg = new ArrayList<>();//解析したBufferedImageを加える
+//    private List<PImage> PImgList = new ArrayList<>();//BufferedImageをPImgListに変換
+//    private List<Collision> colList = new ArrayList<>();
+//    private PImage[] imgs;//PImageの配列
     public TSXLoader tsx;
 
     public TMXLoader(PApplet papplet){//TMX(マップデータ)ファイルを取得
@@ -35,6 +35,11 @@ public class TMXLoader {//map情報の読み込み
         }
     }
     private void loadTmx(String filePath, String mapName, PApplet plet){//TMXファイルを解析
+        List<Integer[]> mapList = new ArrayList<>();//1つのマップのlayer情報をすべて保存
+        List<BufferedImage> listBufImg = new ArrayList<>();//解析したBufferedImageを加える
+        List<PImage> PImgList = new ArrayList<>();//BufferedImageをPImgListに変換
+        List<Collision> colList = new ArrayList<>();
+        PImage[] imgs;//PImageの配列
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();// 1. DocumentBuilderFactoryのインスタンスを取得する
         try {
             DocumentBuilder builder = factory.newDocumentBuilder();// 2. DocumentBuilderのインスタンスを取得する

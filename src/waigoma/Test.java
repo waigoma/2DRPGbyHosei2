@@ -1,5 +1,6 @@
 package waigoma;
 
+import nagai.Collision;
 import processing.core.PApplet;
 
 public class Test {//四角い箱を真ん中に召喚→w,a,s,d,up,left,down,rightで自由自在に動かす
@@ -35,6 +36,10 @@ public class Test {//四角い箱を真ん中に召喚→w,a,s,d,up,left,down,ri
     public void display(){//描写する指示
         plet.fill(0);
         plet.noStroke();
+        Collision.Playerx = x;
+        Collision.Playery = y;
+        Collision.PlayerWidth = 30;
+        Collision.PlayerHeight = 30;
 
         //各入力それぞれの処理
         if (right){
