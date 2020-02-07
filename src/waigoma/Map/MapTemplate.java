@@ -1,5 +1,6 @@
 package waigoma.Map;
 
+import nagai.Collision;
 import processing.core.PApplet;
 import processing.core.PImage;
 
@@ -13,16 +14,18 @@ public class MapTemplate {
     private List<Integer[]> list;//mapのlayerが入った配列
     private String mapName;//mapの名前
     private int mapTileWidth, mapTileHeight, tileWidth, tileHeight;//map作るのに必要な基本情報
+    private List<Collision> colList;
     private PApplet plet;
     private PImage img;
 
-    public MapTemplate(String name, int mapTileWidth, int mapTileHeight, int tileWidth, int tileHeight, List<Integer[]> list, PImage[] imgs, PApplet plet) {//マップデータ保存
+    public MapTemplate(String name, int mapTileWidth, int mapTileHeight, int tileWidth, int tileHeight, List<Integer[]> list, List<Collision> colList, PImage[] imgs, PApplet plet) {//マップデータ保存
         this.mapName = name;
         this.mapTileWidth = mapTileWidth;
         this.mapTileHeight = mapTileHeight;
         this.tileWidth = tileWidth;
         this.tileHeight = tileHeight;
         this.list = list;
+        this.colList = colList;
         this.imgs = imgs;
         this.plet = plet;
     }
@@ -44,12 +47,19 @@ public class MapTemplate {
     public List<Integer[]> getList() {
         return list;
     }
+    public List<Collision> getColList() {
+        return colList;
+    }
     public PImage[] getPImg() {
         return imgs;
     }
 
     public void display(){//マップの一番手前に出てこないところの描写
         int count = 0;//layerカウント
+        for (Collision col : getColList()){
+            col.ObjectCollision();
+            col.Outside();
+        }
         for (Integer[] mapNums : getList()) {//Listからlayerの情報を引き出す(下のlayerから順に)
             int x = 0;//x座標(何個目か)
             int y = 0;//y座標(↑)

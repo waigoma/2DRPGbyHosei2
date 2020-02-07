@@ -1,5 +1,6 @@
 package waigoma.Map;
 
+import nagai.Collision;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -18,6 +19,7 @@ public class TMXLoader {//map情報の読み込み
     private List<Integer[]> mapList = new ArrayList<>();//1つのマップのlayer情報をすべて保存
     private List<BufferedImage> listBufImg = new ArrayList<>();//解析したBufferedImageを加える
     private List<PImage> PImgList = new ArrayList<>();//BufferedImageをPImgListに変換
+    private List<Collision> colList = new ArrayList<>();
     private PImage[] imgs;//PImageの配列
     public TSXLoader tsx;
 
@@ -86,7 +88,6 @@ public class TMXLoader {//map情報の読み込み
                             break;
                         case "objectgroup":
                             Node nd1 = name.getFirstChild();//layerノード内の最初のNodeを取得
-                            List<Float> colList = new ArrayList<>();//配列にするための仮list
 
                             while (nd1 != null){//objectの中身がnullになるまで処理
                                 if (nd1.getNodeName().equals("object")){//Nodeがlayerの中のdataの場合
@@ -95,6 +96,13 @@ public class TMXLoader {//map情報の読み込み
                                     String objYs = el.getAttribute("y");
                                     String objWidths = el.getAttribute("width");
                                     String objHeights = el.getAttribute("height");
+
+                                    float objX = Float.parseFloat(objXs);
+                                    float objY = Float.parseFloat(objYs);
+                                    float objWidth = Float.parseFloat(objWidths);
+                                    float objHeight = Float.parseFloat(objHeights);
+
+                                    colList.add(new Collision(objX, objY, objWidth, objHeight, mapTileWidth * tileWidth, mapTileHeight * tileHeight));
                                 }
                                 nd1 = nd1.getNextSibling();//次のnodeを読み込む
                             }
@@ -106,7 +114,7 @@ public class TMXLoader {//map情報の読み込み
                 PImgList.add(new PImage(bfi));
             }
             imgs = PImgList.toArray(new PImage[0]);//PImageのlistを配列に変換
-            MapTemplate.maps.put(mapName, new MapTemplate(mapName, mapTileWidth, mapTileHeight, tileWidth, tileHeight, mapList, imgs, plet));//map情報を保存
+            MapTemplate.maps.put(mapName, new MapTemplate(mapName, mapTileWidth, mapTileHeight, tileWidth, tileHeight, mapList, colList, imgs, plet));//map情報を保存
         }catch (Exception e){
             e.printStackTrace();
         }
