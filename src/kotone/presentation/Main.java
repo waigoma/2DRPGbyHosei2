@@ -12,7 +12,7 @@ import processing.event.KeyEvent;
 
         boolean tap_a = false;   //真偽変数（初期化するためにfalseにする)
         boolean tap_e = false;
-        boolean p_hit = false;
+        public static boolean p_hit = false;
         public static boolean m_hit = false;
         boolean battle = false;
 

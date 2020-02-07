@@ -5,6 +5,8 @@ import processing.core.PImage;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
+import static kotone.presentation.Main.m_hp;
+
 public class Presentation {
 
     PImage haikei;
@@ -60,13 +62,18 @@ public class Presentation {
         }
 
         //透明度を変化させる場合
-            if (!fadeMode) {
-                fadeOut();
-            }
+        if (!fadeMode) {
+            fadeOut();
+        }
+
+        if ((Main.p_hit) && (Main.keika > 1600) && (Main.keika < 1900)) {//もしm_hitがtrueなら（一回実行するため）
+            pApplet.tint(255, 80, 31);
+        } else {
+            pApplet.noTint();//色を消す
+
+        }
 
     }
-
-
 
     public void monsterMove(){//普通のモンスターのスピード
         pointY += speedY;
@@ -77,6 +84,16 @@ public class Presentation {
 
         if(pointY > 310){
             speedY = -1;
+        }
+
+        if(Main.m_hp < 10){
+            if(pointY < 290){
+                speedY = 0.5f;
+            }
+
+            if(pointY > 310){
+                speedY = -0.5f;
+            }
         }
     }
 
