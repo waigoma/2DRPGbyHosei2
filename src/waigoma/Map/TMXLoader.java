@@ -34,7 +34,7 @@ public class TMXLoader {//map情報の読み込み
             }
         }
     }
-    public void loadTmx(String filePath, String mapName, PApplet plet){//TMXファイルを解析
+    private void loadTmx(String filePath, String mapName, PApplet plet){//TMXファイルを解析
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();// 1. DocumentBuilderFactoryのインスタンスを取得する
         try {
             DocumentBuilder builder = factory.newDocumentBuilder();// 2. DocumentBuilderのインスタンスを取得する

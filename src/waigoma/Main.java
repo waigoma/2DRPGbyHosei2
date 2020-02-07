@@ -3,7 +3,6 @@ package waigoma;
 import processing.core.PApplet;
 import processing.core.PFont;
 import waigoma.Map.LocalMap.LocalMap;
-import waigoma.Map.MapTemplate;
 import waigoma.Map.TMXLoader;
 import waigoma.Title.Title;
 
