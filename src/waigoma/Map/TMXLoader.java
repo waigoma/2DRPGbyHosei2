@@ -1,5 +1,6 @@
 package waigoma.Map;
 
+import nagai.Collision;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -15,24 +16,30 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TMXLoader {//map情報の読み込み
-    private List<Integer[]> mapList = new ArrayList<>();//1つのマップのlayer情報をすべて保存
-    private List<BufferedImage> listBufImg = new ArrayList<>();//解析したBufferedImageを加える
-    private List<PImage> PImgList = new ArrayList<>();//BufferedImageをPImgListに変換
-    private PImage[] imgs;//PImageの配列
+//    private List<Integer[]> mapList = new ArrayList<>();//1つのマップのlayer情報をすべて保存
+//    private List<BufferedImage> listBufImg = new ArrayList<>();//解析したBufferedImageを加える
+//    private List<PImage> PImgList = new ArrayList<>();//BufferedImageをPImgListに変換
+//    private List<Collision> colList = new ArrayList<>();
+//    private PImage[] imgs;//PImageの配列
     public TSXLoader tsx;
 
-    public TMXLoader(PApplet plet){//TMX(マップデータ)ファイルを取得
+    public TMXLoader(PApplet papplet){//TMX(マップデータ)ファイルを取得
         File dir = new File("src/waigoma/data/tmx");//マップデータのある場所
         File[] list = dir.listFiles();//Fileの配列にマップデータがある分ロード
         if (list != null){//ファイルが存在するかどうか確認、あれば↓
             for (File file : list){//マップデータを1つずつ読み込む
                 String path = file.getPath();//ファイルのPathを取得
                 String name = file.getName();//ファイルの名前を取得
-                loadTmx(path, name, plet);
+                loadTmx(path, name, papplet);
             }
         }
     }
-    public void loadTmx(String filePath, String mapName, PApplet plet){//TMXファイルを解析
+    private void loadTmx(String filePath, String mapName, PApplet plet){//TMXファイルを解析
+        List<Integer[]> mapList = new ArrayList<>();//1つのマップのlayer情報をすべて保存
+        List<BufferedImage> listBufImg = new ArrayList<>();//解析したBufferedImageを加える
+        List<PImage> PImgList = new ArrayList<>();//BufferedImageをPImgListに変換
+        List<Collision> colList = new ArrayList<>();
+        PImage[] imgs;//PImageの配列
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();// 1. DocumentBuilderFactoryのインスタンスを取得する
         try {
             DocumentBuilder builder = factory.newDocumentBuilder();// 2. DocumentBuilderのインスタンスを取得する
@@ -84,6 +91,27 @@ public class TMXLoader {//map情報の読み込み
                                 nd = nd.getNextSibling();//次のnodeを読み込む
                             }
                             break;
+                        case "objectgroup":
+                            Node nd1 = name.getFirstChild();//layerノード内の最初のNodeを取得
+
+                            while (nd1 != null){//objectの中身がnullになるまで処理
+                                if (nd1.getNodeName().equals("object")){//Nodeがlayerの中のdataの場合
+                                    Element el = (Element)nd1;
+                                    String objXs = el.getAttribute("x");
+                                    String objYs = el.getAttribute("y");
+                                    String objWidths = el.getAttribute("width");
+                                    String objHeights = el.getAttribute("height");
+
+                                    float objX = Float.parseFloat(objXs);
+                                    float objY = Float.parseFloat(objYs);
+                                    float objWidth = Float.parseFloat(objWidths);
+                                    float objHeight = Float.parseFloat(objHeights);
+
+                                    colList.add(new Collision(objX, objY, objWidth, objHeight, mapTileWidth * tileWidth, mapTileHeight * tileHeight));
+                                }
+                                nd1 = nd1.getNextSibling();//次のnodeを読み込む
+                            }
+                            break;
                     }
                 }
             }
@@ -91,7 +119,7 @@ public class TMXLoader {//map情報の読み込み
                 PImgList.add(new PImage(bfi));
             }
             imgs = PImgList.toArray(new PImage[0]);//PImageのlistを配列に変換
-            MapTemplate.maps.put(mapName, new MapTemplate(mapName, mapTileWidth, mapTileHeight, tileWidth, tileHeight, mapList, imgs, plet));//map情報を保存
+            MapTemplate.maps.put(mapName, new MapTemplate(mapName, mapTileWidth, mapTileHeight, tileWidth, tileHeight, mapList, colList, imgs, plet));//map情報を保存
         }catch (Exception e){
             e.printStackTrace();
         }
