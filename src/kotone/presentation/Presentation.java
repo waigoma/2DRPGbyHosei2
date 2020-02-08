@@ -65,14 +65,6 @@ public class Presentation {
         if (!fadeMode) {
             fadeOut();
         }
-
-        if ((Main.p_hit) && (Main.keika > 1600) && (Main.keika < 1900)) {//もしm_hitがtrueなら（一回実行するため）
-            pApplet.tint(255, 80, 31);
-        } else {
-            pApplet.noTint();//色を消す
-
-        }
-
     }
 
     public void monsterMove(){//普通のモンスターのスピード

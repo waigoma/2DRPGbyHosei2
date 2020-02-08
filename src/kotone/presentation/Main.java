@@ -92,6 +92,7 @@ import processing.event.KeyEvent;
 
             if ((1000 * 12 < keika) && (keika < 1000 * 20) && (m_hp != 0))    //１２～２０秒で敵体力が０じゃないとき                                                                    //ここから新しく
                 text(m_name + "の攻撃", 550, 480);
+
             if ((1000 * 15 < keika) && (keika < 1000 * 20) && (m_hp != 0)) {
                 text("プレイヤーに１０ダメージ", 550, 510);
                 if (p_hit) {    //もしp_hitがtrueなら
