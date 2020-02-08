@@ -35,12 +35,12 @@ public class Main extends PApplet {
 
     @Override
     public void keyPressed(){//キー入力受付
-        if (state == 1) localMap.keyPressed();
+        if (state == StateType.LOCAL_STATE || state == StateType.WORLD_STATE) localMap.keyPressed();
     }
 
     @Override
     public void keyReleased(){//キー解放受付
-        if (state == 1) localMap.keyReleased();
+        if (state == StateType.LOCAL_STATE || state == StateType.WORLD_STATE) localMap.keyReleased();
     }
 
     @Override
