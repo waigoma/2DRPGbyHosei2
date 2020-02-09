@@ -1,18 +1,21 @@
 package waigoma;
 
+import nagai.Collision;
 import processing.core.PApplet;
 
 public class Test {//四角い箱を真ん中に召喚→w,a,s,d,up,left,down,rightで自由自在に動かす
     PApplet plet;
 
-    boolean right, left, up, down = false;
+    public boolean right, left, up, down = false;
     float x, y;
-    double speed = 3.0;//箱の動く速度
+    public double speed = 3.0;//箱の動く速度
 
     public Test(PApplet papplet){//processingをmainから受け継ぎ
         this.plet = papplet;
         x = plet.width/2f;//画面の左右真ん中座標
         y = plet.height/2f;//画面の上下真ん中座標
+        Collision.PlayerWidth = 30;
+        Collision.PlayerHeight = 30;
     }
 
     //キー入力解放受付されたらここが呼ばれる
@@ -33,25 +36,26 @@ public class Test {//四角い箱を真ん中に召喚→w,a,s,d,up,left,down,ri
 
 
     public void display(){//描写する指示
-        plet.background(128);
         plet.fill(0);
         plet.noStroke();
+//        Collision.Playerx = x;
+//        Collision.Playery = y;
 
         //各入力それぞれの処理
         if (right){
-            x += speed;
+            Collision.Playerx += speed;
         }
         if (left){
-            x -= speed;
+            Collision.Playerx -= speed;
         }
         if (up){
-            y -= speed;
+            Collision.Playery -= speed;
         }
         if (down){
-            y += speed;
+            Collision.Playery += speed;
         }
 
-        plet.rect(x, y, 30, 30);//四角の場所と大きさ指定
+        plet.rect(Collision.Playerx, Collision.Playery, 30, 30);//四角の場所と大きさ指定
     }
 
 }

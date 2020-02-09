@@ -8,7 +8,7 @@ public class Title {//最初に表示されるタイトル画面
     int titleScene = 0;//タイトル画面のシーン番号
 
     float fadeAlpha = 255f;//フェードアウト用
-    float fadeSpeed = 1.75f;//フェードアウト速度
+    final float fadeSpeed = 1.75f;//フェードアウト速度
     PFont font;
 
     PApplet plet;
@@ -17,7 +17,7 @@ public class Title {//最初に表示されるタイトル画面
     public Title(PApplet papplet){
     this.plet = papplet;
     titlemenu = new TitleMenu(papplet, titleScene);
-    font = plet.createFont("waigoma/data/PixelMplus12-Regular.ttf", 24);
+    font = plet.createFont("src/waigoma/data/PixelMplus12-Regular.ttf", 24);
 
     plet.textAlign(plet.CENTER, plet.CENTER);
     }

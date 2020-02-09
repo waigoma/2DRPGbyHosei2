@@ -11,7 +11,7 @@ public class Player {
     private int AGL;
     private int INT;
 
-    public void status(int lvl, int exp, int maxExp, int maxHP, int maxMP, int STR, int DEF, int AGL, int INT){
+    public Player(int lvl, int exp, int maxExp, int maxHP, int maxMP, int STR, int DEF, int AGL, int INT){
         this.lvl = lvl;
         this.exp = exp;
         this.maxExp = maxExp;

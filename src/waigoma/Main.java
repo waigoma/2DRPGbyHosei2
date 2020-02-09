@@ -2,13 +2,17 @@ package waigoma;
 
 import processing.core.PApplet;
 import processing.core.PFont;
+import waigoma.Map.LocalMap.LocalMap;
+import waigoma.Map.TMXLoader;
 import waigoma.Title.Title;
 
 public class Main extends PApplet {
     public static int state = 0;
 
+    TMXLoader tmx;
     Title title;
     Test test;
+    LocalMap localMap;
 
     @Override
     public void settings(){
@@ -17,9 +21,12 @@ public class Main extends PApplet {
 
     @Override
     public void setup(){
+        tmx = new TMXLoader(this);//loadMaps
         title = new Title(this);//state:0
-        test = new Test(this);//state:1
+        test = new Test(this);
+        localMap = new LocalMap(this);//state:1
 
+        surface.setResizable(true);
         noStroke();
 
         PFont font = createFont("MS Gothic", 50);
@@ -28,12 +35,12 @@ public class Main extends PApplet {
 
     @Override
     public void keyPressed(){//キー入力受付
-        if (state == 1) test.keyPressed();
+        if (state == StateType.LOCAL_STATE || state == StateType.WORLD_STATE) localMap.keyPressed();
     }
 
     @Override
     public void keyReleased(){//キー解放受付
-        if (state == 1) test.keyReleased();
+        if (state == StateType.LOCAL_STATE || state == StateType.WORLD_STATE) localMap.keyReleased();
     }
 
     @Override
@@ -43,7 +50,9 @@ public class Main extends PApplet {
                 title.run();
                 break;
             case StateType.LOCAL_STATE:
-                test.display();
+                localMap.display();
+                break;
+            case StateType.WORLD_STATE:
                 break;
         }
     }
