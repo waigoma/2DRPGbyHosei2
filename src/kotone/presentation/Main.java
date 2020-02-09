@@ -8,7 +8,7 @@ import processing.event.KeyEvent;
     public class Main extends PApplet {
         String p_name;    //文字列変数(プレイヤー名)                                                                   （クラス内で変数は定義）
         String m_name;    //モンスター名
-        int p_hp;    //数値変数(プレイヤー体力)
+        public static int p_hp;    //数値変数(プレイヤー体力)
         public static int m_hp;    //モンスター体力
 
         boolean tap_a = false;   //真偽変数（初期化するためにfalseにする)
@@ -37,9 +37,9 @@ import processing.event.KeyEvent;
             textFont(font);
 
             p_name = "プレイヤー名";
-            p_hp = 100;    //体力
+            p_hp = 100; //プレイヤーの最大体力
             m_name = "モンスター名";
-            m_hp = 20;
+            m_hp = 20; //モンスターの最大体力
 
             noStroke();
 

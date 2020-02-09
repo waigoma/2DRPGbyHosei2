@@ -6,17 +6,22 @@ import processing.core.PImage;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import static kotone.presentation.Main.m_hp;
+import static kotone.presentation.Main.p_hp;
 
 public class Presentation {
 
     PImage haikei;
     PImage monster;
     PImage efect;
+    PImage lifegauge;
     float pointX;
     float pointY;
     float speedY;
+    float nowP_hp;
+    float nowM_hp;
+    int p_lifegaugeWidth;
+    int m_lifegaugeWidth;
     PApplet pApplet;
-    Main combat;//Mainクラスのオブジェクトを作る
     float alpha = 255f;       //透明度
     boolean cngAlpha;    //変化開始FLG
     public static boolean fadeMode;    //フェードイン・アウト切り替えFLG
@@ -39,6 +44,12 @@ public class Presentation {
         pointY = 300;
         speedY = 1;
 
+        nowP_hp = p_hp; //現在の残りHP
+        nowM_hp = Main.m_hp; //現在の残りHP
+        lifegauge = pApplet.loadImage("CC:\\Users\\tkoto\\Downloads\\nc81777.jpgr");
+        lifegauge.resize(280,10);
+        p_lifegaugeWidth = 280;
+
         efect = pApplet.loadImage("C:\\Users\\tkoto\\Downloads\\kaenbeameffect\\火炎ビームエフェクトアニメ\\m\\kaenbeam.png");
 
     }
@@ -51,7 +62,11 @@ public class Presentation {
         pApplet.tint(255f, alpha);//画像を透明度指定付きで表示
         pApplet.image(monster, pointX, pointY);//モンスターの位置
 
+        pApplet.image(lifegauge,50,50);
+        pApplet.image(lifegauge,1230,50);
+
         monsterMove();
+        lifeGauge();
 
         //敵が攻撃を受けたときに赤い色を付ける
         if ((Main.m_hit) && (Main.keika > 100) && (Main.keika < 400)) {//もしm_hitがtrueなら（一回実行するため）
@@ -93,16 +108,22 @@ public class Presentation {
 
 
 //フェードアウト処理関数
-       public void fadeOut () {
-            //徐々に薄くする
-            alpha = alpha - 10f;
+    public void fadeOut () {
+        //徐々に薄くする
+        alpha = alpha - 10f;
 
-            //透明になったら変化終了
-            if (alpha < 0f) {
-                alpha = 0f;
-                cngAlpha = false;
-            }
+        //透明になったら変化終了
+        if (alpha < 0f) {
+            alpha = 0f;
+            cngAlpha = false;
         }
+    }
+
+    public void lifeGauge(){
+        nowP_hp = nowP_hp/p_hp * p_lifegaugeWidth; //プレイヤーHP の比率計算
+        nowM_hp = nowM_hp/m_hp * m_lifegaugeWidth; //モンスターHP の比率計算
+    }
+
 
 
 
