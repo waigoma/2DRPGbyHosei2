@@ -15,7 +15,7 @@ import processing.event.KeyEvent;
         int p_attack = 10;    //プレイヤー攻撃力　　　　　　　　　　　　　　(メインで宣言)
         int m_hp;    //モンスター体力
         int m_attack;    //モンスター攻撃力
-        int total_exp = 90;    //合計の経験値　　　　　　　　　　　　　　　（メインで宣言）
+        int total_exp = 90;    //合計の経験値　　　　　　　　　　　　　　　（メインで宣言a）
         int m_exp;    //モンスターによる経験値
         int Lv = 2;    //プレイヤーのレベル（ここは初期化じゃない）     (メインで宣言)
         int keika = 0;    //経過時間の初期化
