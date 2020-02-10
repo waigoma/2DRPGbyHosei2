@@ -14,9 +14,9 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 
 public class Bgm {
     public static void main(String[] args) throws Exception {
-    Clip clip = createClip(new File("src/nagai/data/bgm/cat20.wav"));
+    Clip clip = createClip(new File("src/nagai/data/bgm/neorock33.wav"));
     clip.start();
-    Thread.sleep(3000);
+    Thread.sleep(1000*120);
     clip.close();
 
 //ここで再生メソッドの呼び出し
