@@ -52,10 +52,15 @@ public class TMXLoader {//map情報の読み込み
             String sTilewidth = element.getAttribute("tilewidth");//mapタイル横幅
             String sTileheight = element.getAttribute("tileheight");//mapタイル縦幅
 
-            int mapTileWidth = Integer.parseInt(sWidth);//cast to int
-            int mapTileHeight = Integer.parseInt(sHeight);//cast to int
-            int tileWidth = Integer.parseInt(sTilewidth);//cast to int
-            int tileHeight = Integer.parseInt(sTileheight);//cast to int
+            int mapTileWidth = 0;
+            int mapTileHeight = 0;
+            int tileWidth = 0;
+            int tileHeight = 0;
+            //cast to int
+            if (!(sWidth.isEmpty())) mapTileWidth = Integer.parseInt(sWidth);
+            if (!(sHeight.isEmpty())) mapTileHeight = Integer.parseInt(sHeight);
+            if (!(sTilewidth.isEmpty())) tileWidth = Integer.parseInt(sTilewidth);
+            if (!(sTileheight.isEmpty())) tileHeight = Integer.parseInt(sTileheight);
 
             for (int i = 0; i < nodeList.getLength(); i++) {
                 Node node = nodeList.item(i);//子要素i番目取得
@@ -102,10 +107,15 @@ public class TMXLoader {//map情報の読み込み
                                     String objWidths = el.getAttribute("width");
                                     String objHeights = el.getAttribute("height");
 
-                                    float objX = Float.parseFloat(objXs);
-                                    float objY = Float.parseFloat(objYs);
-                                    float objWidth = Float.parseFloat(objWidths);
-                                    float objHeight = Float.parseFloat(objHeights);
+                                    float objX = 0;
+                                    float objY = 0;
+                                    float objWidth = 0;
+                                    float objHeight = 0;
+
+                                    if (!(objXs.isEmpty())) objX = Float.parseFloat(objXs);
+                                    if (!(objYs.isEmpty())) objY = Float.parseFloat(objYs);
+                                    if (!(objWidths.isEmpty())) objWidth = Float.parseFloat(objWidths);
+                                    if (!(objHeights.isEmpty())) objHeight = Float.parseFloat(objHeights);
 
                                     colList.add(new Collision(objX, objY, objWidth, objHeight, mapTileWidth * tileWidth, mapTileHeight * tileHeight));
                                 }
