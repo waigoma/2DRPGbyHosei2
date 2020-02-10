@@ -10,14 +10,14 @@ import processing.event.KeyEvent;
         String item;
         String magic;
 
-        int p_hp = 25;    //数値変数(プレイヤー体力)            (メインで宣言)
-        int p_hp_max = 100;
-        int p_attack = 110;    //プレイヤー攻撃力　　　　　　　　　　　　　　(メインで宣言)
+        int p_hp = 100;    //数値変数(プレイヤー体力)            (メインで宣言)
+        int p_hp_max = 100;                                   //(メインで宣言)
+        int p_attack = 10;    //プレイヤー攻撃力　　　　　　　　　　　　　　(メインで宣言)
         int m_hp;    //モンスター体力
         int m_attack;    //モンスター攻撃力
         int total_exp = 90;    //合計の経験値　　　　　　　　　　　　　　　（メインで宣言）
         int m_exp;    //モンスターによる経験値
-        int Lv = 1;    //プレイヤーのレベル（ここは初期化じゃない）     (メインで宣言)
+        int Lv = 2;    //プレイヤーのレベル（ここは初期化じゃない）     (メインで宣言)
         int keika = 0;    //経過時間の初期化
         int press_time = 0;    //ボタン押下時間
         int m_money;    //
@@ -25,12 +25,12 @@ import processing.event.KeyEvent;
         int fire_damage = 10;                                  //(メインで宣言)
         int lightning_damage = 20;                            //(メインで宣言)
         int mp = 100;                                       //(メインで宣言)
-        int y_count = 1;
-        int bom_count =0;
+        int y_count = 1;                                   //(メインで宣言）
+        int bom_count =0;                                 //メインで宣言)
         int p_random;
         int m_random;
         int e_random;
-        int Lvup_p_attack;
+        int Lvup_p_attack;                                //(メインで宣言)
 
 
         boolean tap_a = false;    //真偽変数（初期化するためにfalseにする)
