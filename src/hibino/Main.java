@@ -1,5 +1,7 @@
 package hibino;
 
+import kotone.presentation.Presentation;
+import kotone.presentation.damage.Damage;
 import processing.core.PApplet;
 import processing.core.PFont;
 import processing.event.KeyEvent;
@@ -10,57 +12,60 @@ import processing.event.KeyEvent;
         String item;
         String magic;
 
-        int p_hp = 100;    //数値変数(プレイヤー体力)            (メインで宣言)
-        int p_hp_max = 100;                                   //(メインで宣言)
-        int p_attack = 10;    //プレイヤー攻撃力　　　　　　　　　　　　　　(メインで宣言)
-        int m_hp;    //モンスター体力
-        int m_attack;    //モンスター攻撃力
-        int total_exp = 90;    //合計の経験値　　　　　　　　　　　　　　　（メインで宣言a）
-        int m_exp;    //モンスターによる経験値
-        int Lv = 2;    //プレイヤーのレベル（ここは初期化じゃない）     (メインで宣言)
-        int keika = 0;    //経過時間の初期化
-        int press_time = 0;    //ボタン押下時間
-        int m_money;    //
-        int total_money = 0;                                    //(メインで宣言)
-        int fire_damage = 10;                                  //(メインで宣言)
-        int lightning_damage = 20;                            //(メインで宣言)
-        int mp = 100;                                       //(メインで宣言)
-        int y_count = 1;                                   //(メインで宣言）
-        int bom_count =0;                                 //メインで宣言)
-        int p_random;
-        int m_random;
-        int e_random;
-        int Lvup_p_attack;                                //(メインで宣言)
+        public static int p_hp = 100;    //数値変数(プレイヤー体力)            (メインで宣言)
+        public static int p_hp_max = 100;                                   //(メインで宣言)
+        public static int p_attack = 10;    //プレイヤー攻撃力　　　　　　　　　　　　　　(メインで宣言)
+        public static int m_hp;    //モンスター体力
+        public static int m_attack;    //モンスター攻撃力
+        public static int total_exp = 90;    //合計の経験値　　　　　　　　　　　　　　　（メインで宣言a）
+        public static int m_exp;    //モンスターによる経験値
+        public static int Lv = 2;    //プレイヤーのレベル（ここは初期化じゃない）     (メインで宣言)
+        public static int keika = 0;    //経過時間の初期化
+        public static int press_time = 0;    //ボタン押下時間
+        public static int m_money;    //
+        public static int total_money = 0;                                    //(メインで宣言)
+        public static int fire_damage = 10;                                  //(メインで宣言)
+        public static int lightning_damage = 20;                            //(メインで宣言)
+        public static int mp = 100;                                       //(メインで宣言)
+        public static int y_count = 1;                                   //(メインで宣言）
+        public static int bom_count =0;                                 //メインで宣言)
+        public static int p_random;
+        public static int m_random;
+        public static int e_random;
+        public static int Lvup_p_attack;                                //(メインで宣言)
 
 
-        boolean tap_a = false;    //真偽変数（初期化するためにfalseにする)
-        boolean tap_b = false;
-        boolean tap_e = false;
-        boolean tap_f = false;
-        boolean tap_l = false;
-        boolean tap_m = false;
-        boolean tap_i = false;
-        boolean tap_y = false;
-        boolean p_hit = false;
-        boolean m_hit = false;
-        boolean battle = false;
-        boolean total_exp_flg = false;
-        boolean level_flg = false;
-        boolean mp_no = false;
-        boolean item_no = false;
-        boolean escape_random = false;
+        public static boolean tap_a = false;    //真偽変数（初期化するためにfalseにする)
+        public static boolean tap_b = false;
+        public static boolean tap_e = false;
+        public static boolean tap_f = false;
+        public static boolean tap_l = false;
+        public static boolean tap_m = false;
+        public static boolean tap_i = false;
+        public static boolean tap_y = false;
+        public static boolean p_hit = false;
+        public static boolean m_hit = false;
+        public static boolean battle = false;
+        public static boolean total_exp_flg = false;
+        public static boolean level_flg = false;
+        public static boolean mp_no = false;
+        public static boolean item_no = false;
+        public static boolean escape_random = false;
         //----------------------------------------------グラフィック、音響読み込み
-        boolean start_event = false;
-        boolean p_attack_event = false;
-        boolean m_damage_event = false;
-        boolean m_attack_event = false;
-        boolean p_damage_event = false;
-        boolean finish_event = false;
-        boolean Lvup_event = false;
-        boolean escape_event = false;
-        boolean item_event = false;
-        boolean magic_event = false;
+        public static boolean start_event = false;
+        public static boolean p_attack_event = false;
+        public static boolean m_damage_event = false;
+        public static boolean m_attack_event = false;
+        public static boolean p_damage_event = false;
+        public static boolean finish_event = false;
+        public static boolean Lvup_event = false;
+        public static boolean escape_event = false;
+        public static boolean item_event = false;
+        public static boolean magic_event = false;
         //-----------------------------------------------------
+
+        Presentation presentation;
+//        Damage damage;
 
 
 
@@ -92,12 +97,19 @@ import processing.event.KeyEvent;
             //--------------------------------------------------------------
             noStroke();
 
+            presentation = new Presentation(this);
+            presentation.setup();
+
+//            damage = new Damage(this);
+//            damage.setup();
+
         }
 
     @Override
     public void draw() {
+            presentation.draw();
             start_event = true;    //バトルイベント（グラフィック、音響、関連付け）
-        background(0, 255, 0);    //背景色（赤、緑、青）(0:黒、255:白)
+//        background(0, 255, 0);    //背景色（赤、緑、青）(0:黒、255:白)
 
         if(p_hp >= 20)
             stroke(0);    //枠線の色
