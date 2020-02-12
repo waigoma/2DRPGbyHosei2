@@ -159,7 +159,7 @@ public class Main extends PApplet {
 
         keika = millis() - press_time;    //押されてからの経過時間
 
-        text(m_name + "が現れた", 440, 530);    //ここからメインの流れ
+        text(m_name + "が現れた", 440, 530);                                              //ここからメインの流れ
 
         //----------------------------------------------------------------------アイテム足りないとき
         if((item_no) && (keika < 1000*3)) {
@@ -194,7 +194,7 @@ public class Main extends PApplet {
                    // if(!item_event){
                         item_event = true;
 //------------------------                        myimage.draw();
-
+//------------------------                        mysound.draw();
                         //myplayer.draw();
                    // }
 
@@ -207,6 +207,7 @@ public class Main extends PApplet {
 
                             m_damage_event = true;
 //------------------------                            myimage.draw();
+//------------------------                        mysound.draw();
 
                             if (m_hit) {    //もしm_hitがtrueなら（一回実行するため）
                                 m_hp = m_hp - 20;
@@ -217,8 +218,10 @@ public class Main extends PApplet {
                             break;
                         case "薬草":
                             text("プレイヤーはHPを50回復した", 440, 590);
+
                            heal_event = true;
 //------------------------                             myimage.draw();
+//------------------------                        mysound.draw();
 
                             if (m_hit) {
                                 p_hp = p_hp + 50;
@@ -238,17 +241,19 @@ public class Main extends PApplet {
             if ((tap_f || tap_l) && (!mp_no)) {
                 if (keika < 1000 * 10)//１０秒以内の時
                     text(p_name + "は" + magic + "を唱えた", 440, 560);    //実行する
-                magic_event = true;
 
+                magic_event = true;
 //------------------------                myimage.draw();
+//------------------------                        mysound.draw();
 
                 if ((1000 * 5 < keika) && (keika < 1000 * 10)) {    //５～１０秒の時
                     switch (magic) {    //m_nameが～の時
                         case "ファイヤー":    //モンスターAの時
                             text("敵に" + fire_damage + "ダメージ", 440, 590);
-                            m_damage_event = true;
 
+                            m_damage_event = true;
 //------------------------                            myimage.draw();
+//------------------------                        mysound.draw();
 
                             if (m_hit) {    //もしm_hitがtrueなら（一回実行するため）
                                 m_hp = m_hp - fire_damage;    //体力ー１０
@@ -259,9 +264,10 @@ public class Main extends PApplet {
                             break;
                         case "ライトニング":    //モンスターAの時
                             text("敵に" + lightning_damage + "ダメージ", 440, 590);
-                            m_damage_event = true;
 
+                            m_damage_event = true;
 //------------------------                            myimage.draw();
+//------------------------                        mysound.draw();
 
                             if (m_hit) {    //もしm_hitがtrueなら（一回実行するため）
                                 m_hp = m_hp - lightning_damage;    //体力ー１０
@@ -277,23 +283,26 @@ public class Main extends PApplet {
             if (tap_a) {
                 if (keika < 1000 * 10)//１０秒以内の時
                     text(p_name + "の攻撃", 440, 560);    //実行する
-                p_attack_event = true;
 
+                p_attack_event = true;
 //------------------------                myimage.draw();
+//------------------------                        mysound.draw();
 
                 if ((1000 * 5 < keika) && (keika < 1000 * 10)) {    //５～１０秒の時
                     if (p_random < 3) {
                         text("会心の一撃！敵に" + p_attack * 2 + "ダメージ", 440, 590);
-                        m_damage_event = true;
 
+                        m_damage_event = true;
 //------------------------                        myimage.draw();
+//------------------------                        mysound.draw();
 
                     }
                     if (p_random >= 3) {
                         text("敵に" + p_attack + "ダメージ", 440, 590);
-                        m_damage_event = true;
 
+                        m_damage_event = true;
 //------------------------                        myimage.draw();
+//------------------------                        mysound.draw();
 
                     }
                     if (m_hit) {    //もしm_hitがtrueなら（一回実行するため）
@@ -309,23 +318,26 @@ public class Main extends PApplet {
             }
             if ((1000 * 12 < keika) && (keika < 1000 * 20) && (m_hp != 0))    //１２～２０秒で敵体力が０じゃないとき                                                                    //ここから新しく
                 text(m_name + "の攻撃", 440, 560);
-                m_attack_event = true;
 
+                m_attack_event = true;
 //------------------------            myimage.draw();
+//------------------------                        mysound.draw();
 
             if ((1000 * 15 < keika) && (keika < 1000 * 20) && (m_hp != 0)) {
                 if (m_random < 3) {
                     text("痛恨の一撃！プレイヤーに" + m_attack * 2 + "ダメージ", 440, 590);
-                    p_damage_event = true;
 
+                    p_damage_event = true;
 //------------------------                    myimage.draw();
+//------------------------                        mysound.draw();
 
                 }
                 if (m_random >= 3) {
                     text("プレイヤーに" + m_attack + "ダメージ", 440, 590);
-                    p_damage_event = true;
 
+                    p_damage_event = true;
 //------------------------                    myimage.draw();
+//------------------------                        mysound.draw();
 
                 }
                 if (p_hit) {
@@ -335,16 +347,17 @@ public class Main extends PApplet {
                     p_hp = p_hp - m_attack;    //体力－１０
                     if(p_hp < 0)
                         p_hp = 0;
-//------------------------                    p_hit = false;    //終了
+                    p_hit = false;    //終了
                 }
             }
 
 
             if ((p_hp <= 0) && (keika < 1000 * 21)) {
                 text(p_name + "は倒れた", 440, 620);
-                finish_event = true;
 
+                finish_event = true;
 //------------------------                myimage.draw();
+//------------------------                        mysound.draw();
 
                 if (1000 * 20 < keika) {
 
@@ -354,9 +367,10 @@ public class Main extends PApplet {
             }
 
             if ((m_hp <= 0) && (keika > 1000*7) && (keika <1000*11)) {    //もしm_hpが０ならば
-                finish_event = true;
 
+                finish_event = true;
 //------------------------                myimage.draw();
+//------------------------                        mysound.draw();
 
                 text("敵を倒した", 440, 620);    //実行する
                 text("exp：" + m_exp,440,650);    //入手経験値
@@ -410,13 +424,14 @@ public class Main extends PApplet {
                 //----------------------------------------------------------------------------
                 if(level_flg && (keika >1000*5)) {
                     text(p_name + "はレベルが" + Lv + "になった", 440, 710);
-                    Lvup_event = true;
 
+                    Lvup_event = true;
 //------------------------                    myimage.draw();
+//------------------------                        mysound.draw();
+
                 }
 
                 if (keika > 1000 * 10) {   //経過が１０秒以上なら
-
 
                     p_attack = Lvup_p_attack;
                     waigoma.Main.state = 2;
@@ -435,37 +450,41 @@ public class Main extends PApplet {
         }                                                                                               //一連終了
 
         if (tap_e) {     //もしtap_eがtrueなら
-            if((e_random < 8) && (keika < 1000*20)){
+            if((e_random < 3) && (keika < 1000*20)){
                 if(keika < 1000*5) {
                     text("逃げ出せなかった", 440, 560);
-                    escape_event = true;
 
+                    escape_event = true;
 //------------------------                    myimage.draw();
+//------------------------                        mysound.draw();
 
                 }
                 if ((1000 * 5 < keika) && (keika < 1000 * 15))    //１２～２０秒で敵体力が０じゃないとき                                                                    //ここから新しく
                     text(m_name + "の攻撃", 440, 560);
-                m_attack_event = true;
 
+                    m_attack_event = true;
 //------------------------                myimage.draw();
+//------------------------                        mysound.draw();
 
                 if ((1000 * 10 < keika) && (keika < 1000 * 15)) {
-                    if (e_random < 3) {
+                    if (m_random < 3) {
                         text("痛恨の一撃！プレイヤーに" + m_attack * 2 + "ダメージ", 440, 590);
-                        p_damage_event = true;
 
+                        p_damage_event = true;
 //------------------------                        myimage.draw();
+//------------------------                        mysound.draw();
 
                     }
-                    if (e_random >= 3) {
+                    if (m_random >= 3) {
                         text("プレイヤーに" + m_attack + "ダメージ", 440, 590);
-                        p_damage_event = true;
 
+                        p_damage_event = true;
 //------------------------                        myimage.draw();
+//------------------------                        mysound.draw();
 
                     }
                     if (p_hit) {    //もしp_hitがtrueなら（一回実行）
-                        if (e_random < 3) {
+                        if (m_random < 3) {
                             p_hp = p_hp - m_attack;
                         }
                         p_hp = p_hp - m_attack;    //体力－１０
@@ -477,9 +496,10 @@ public class Main extends PApplet {
 
                 if ((p_hp <= 0) && (keika < 1000 * 16)) {
                     text(p_name + "は倒れた", 440, 620);
-                    finish_event = true;
 
+                    finish_event = true;
 //------------------------                myimage.draw();
+//------------------------                        mysound.draw();
 
                     if (keika > 1000*15) {
 
@@ -493,17 +513,17 @@ public class Main extends PApplet {
                     battle = false;
                 }
             }
-            if(e_random >= 8) {
+            if(e_random >= 3) {
                 text(p_name + "は逃げ出した", 440, 560);    //実行する
-                escape_event = true;
 
+                escape_event = true;
 //------------------------                myimage.draw();
+//------------------------                        mysound.draw();
 
 
 
                 if(keika > 1000*4) {    //経過が２秒以上なら
-                    //finish_event = true;
-//------------------------myimage.draw();
+
                     waigoma.Main.state = 2;
                     exit();    //処理終了
                 }
@@ -556,8 +576,8 @@ public class Main extends PApplet {
                 m_hit = true;
                 battle = true;    //バトル中
                 total_exp_flg = true;
-                p_random = (int) random(10);
-                m_random = (int) random(10);
+                p_random = (int) random(1,10);
+                m_random = (int) random(1,10);
                 press_time = millis();    //押された時間の取得
 
                 p_attack_event = false;
@@ -577,7 +597,8 @@ public class Main extends PApplet {
                 battle = true;    //バトル中
                 p_hit = true;
                 escape_random = true;
-                e_random = (int) random(10);
+                e_random = (int) random(1,10);
+                m_random = (int) random(1,10);
                 press_time = millis();    //押された時間の取得
 
                 p_attack_event = false;
@@ -601,6 +622,7 @@ public class Main extends PApplet {
                 p_hit = true;
                 m_hit = true;
                 total_exp_flg = true;
+                m_random = (int) random(1,10);
                 press_time = millis();    //押された時間の取得
                 y_count = y_count - 1;
                 if(y_count < 0){
@@ -625,6 +647,7 @@ public class Main extends PApplet {
                 p_hit = true;
                 m_hit = true;
                 total_exp_flg = true;
+                m_random = (int) random(1,10);
                 press_time = millis();
                 bom_count = bom_count - 1;
                 if(bom_count < 0){
@@ -658,6 +681,7 @@ public class Main extends PApplet {
                 p_hit = true;
                 m_hit = true;
                 total_exp_flg = true;
+                m_random = (int) random(1,10);
                 press_time = millis();
                 mp = mp - 10;
                 if(mp < 0){
@@ -682,6 +706,7 @@ public class Main extends PApplet {
                 p_hit = true;
                 m_hit = true;
                 total_exp_flg = true;
+                m_random = (int) random(1,10);
                 press_time = millis();
                 mp = mp - 20;
                 if(mp < 0){
