@@ -35,6 +35,7 @@ public class TMXLoader {//map情報の読み込み
         }
     }
     private void loadTmx(String filePath, String mapName, PApplet plet){//TMXファイルを解析
+        //きちんと毎回初期化しよう(教訓)
         List<Integer[]> mapList = new ArrayList<>();//1つのマップのlayer情報をすべて保存
         List<BufferedImage> listBufImg = new ArrayList<>();//解析したBufferedImageを加える
         List<PImage> PImgList = new ArrayList<>();//BufferedImageをPImgListに変換
