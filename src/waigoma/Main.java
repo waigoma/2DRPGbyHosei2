@@ -4,6 +4,7 @@ import processing.core.PApplet;
 import processing.core.PFont;
 import waigoma.Map.LocalMap.LocalMap;
 import waigoma.Map.TMXLoader;
+import waigoma.Map.WorldMap.WorldMap;
 import waigoma.Title.Title;
 
 public class Main extends PApplet {
@@ -13,6 +14,7 @@ public class Main extends PApplet {
     Title title;
     Test test;
     LocalMap localMap;
+    WorldMap worldMap;
 
     @Override
     public void settings(){
@@ -25,6 +27,7 @@ public class Main extends PApplet {
         title = new Title(this);//state:0
         test = new Test(this);
         localMap = new LocalMap(this);//state:1
+        worldMap = new WorldMap(this);//state:2
 
         surface.setResizable(true);
         noStroke();
@@ -35,12 +38,14 @@ public class Main extends PApplet {
 
     @Override
     public void keyPressed(){//キー入力受付
-        if (state == StateType.LOCAL_STATE || state == StateType.WORLD_STATE) localMap.keyPressed();
+        if (state == StateType.LOCAL_STATE) localMap.keyPressed();
+        if (state == StateType.WORLD_STATE) worldMap.keyPressed();
     }
 
     @Override
     public void keyReleased(){//キー解放受付
-        if (state == StateType.LOCAL_STATE || state == StateType.WORLD_STATE) localMap.keyReleased();
+        if (state == StateType.LOCAL_STATE) localMap.keyReleased();
+        if (state == StateType.WORLD_STATE) worldMap.keyReleased();
     }
 
     @Override
@@ -53,6 +58,7 @@ public class Main extends PApplet {
                 localMap.display();
                 break;
             case StateType.WORLD_STATE:
+                worldMap.display();
                 break;
         }
     }
