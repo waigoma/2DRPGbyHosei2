@@ -1,25 +1,33 @@
 package hibino;
 
 import kotone.presentation.Presentation;
-import kotone.presentation.damage.Damage;
 import processing.core.PApplet;
 import processing.core.PFont;
-import processing.event.KeyEvent;
+import processing.data.Table;
+import waigoma.Title.Title;
 
-    public class Main extends PApplet {
-        String p_name = "プレイヤー名";    //文字列変数(プレイヤー名)                                     （クラス内で変数は定義）
-        String m_name = "モンスターB";//モンスター名
-        String item;
-        String magic;
+
+public class Main extends PApplet {
+    hibino.Player myplayer;    //まさき          //読み込む文言
+    kotone.presentation.Presentation myimage;
+    takano.Main mysound;
+
+        public static String p_name = "プレイヤー名";    //文字列変数(プレイヤー名)                                     （クラス内で変数は定義）
+        public static String m_name = "モンスターB";//モンスター名
+        public static String item;
+        public static String magic;
+
+   // Table number;    //各設定数値の読み込み
+
 
         public static int p_hp = 100;    //数値変数(プレイヤー体力)            (メインで宣言)
         public static int p_hp_max = 100;                                   //(メインで宣言)
         public static int p_attack = 10;    //プレイヤー攻撃力　　　　　　　　　　　　　　(メインで宣言)
         public static int m_hp;    //モンスター体力
         public static int m_attack;    //モンスター攻撃力
-        public static int total_exp = 90;    //合計の経験値　　　　　　　　　　　　　　　（メインで宣言a）
+        public static int total_exp = 90;    //合計の経験値　　　　　　　　　　　　　　　（メインで宣言）
         public static int m_exp;    //モンスターによる経験値
-        public static int Lv = 2;    //プレイヤーのレベル（ここは初期化じゃない）     (メインで宣言)
+        public static int Lv = 1;    //プレイヤーのレベル（ここは初期化じゃない）     (メインで宣言)
         public static int keika = 0;    //経過時間の初期化
         public static int press_time = 0;    //ボタン押下時間
         public static int m_money;    //
@@ -28,13 +36,14 @@ import processing.event.KeyEvent;
         public static int lightning_damage = 20;                            //(メインで宣言)
         public static int mp = 100;                                       //(メインで宣言)
         public static int y_count = 1;                                   //(メインで宣言）
-        public static int bom_count =0;                                 //メインで宣言)
+        public static int bom_count =1;                                 //メインで宣言)
         public static int p_random;
         public static int m_random;
         public static int e_random;
         public static int Lvup_p_attack;                                //(メインで宣言)
 
-
+        public static boolean call_flg = false;
+        public static boolean combat = false;
         public static boolean tap_a = false;    //真偽変数（初期化するためにfalseにする)
         public static boolean tap_b = false;
         public static boolean tap_e = false;
@@ -60,12 +69,10 @@ import processing.event.KeyEvent;
         public static boolean finish_event = false;
         public static boolean Lvup_event = false;
         public static boolean escape_event = false;
-        public static boolean item_event = false;
+        public static boolean item_event = false;         //
         public static boolean magic_event = false;
+        public static boolean heal_event = false;
         //-----------------------------------------------------
-
-        Presentation presentation;
-//        Damage damage;
 
 
 
@@ -76,6 +83,16 @@ import processing.event.KeyEvent;
 
         @Override
         public void setup(){
+
+
+            myplayer = new Player(this);
+            myimage = new Presentation(this);
+            mysound = new takano.Main( /*this*/ );
+
+           /* String csvDataLine[] =loadStrings("processing.csv");
+            String [] csvDataColumu = split(csvDataLine[1],',');
+           // p_hp = (int) csvDataColumu[1];*/
+
             PFont font;    //日本語対応（以下３行）
             font=createFont("MS 明朝",30);
             textFont(font);
@@ -97,19 +114,17 @@ import processing.event.KeyEvent;
             //--------------------------------------------------------------
             noStroke();
 
-            presentation = new Presentation(this);
-            presentation.setup();
-
-//            damage = new Damage(this);
-//            damage.setup();
-
         }
 
     @Override
     public void draw() {
-            presentation.draw();
-            start_event = true;    //バトルイベント（グラフィック、音響、関連付け）
-//        background(0, 255, 0);    //背景色（赤、緑、青）(0:黒、255:白)
+        start_event = true;
+//------------------------        myimage.draw();
+//------------------------        mysound.draw();
+
+        //myplayer.draw();                //まさき
+
+        background(0, 255, 0);    //背景色（赤、緑、青）(0:黒、255:白)
 
         if(p_hp >= 20)
             stroke(0);    //枠線の色
@@ -175,13 +190,25 @@ import processing.event.KeyEvent;
             if (tap_b || tap_y) {
                 if (keika < 1000 * 10) {//１０秒以内の時
                     text(p_name + "は" + item + "を使った", 440, 560);    //実行する
-                    item_event = true;
+
+                    if((!item_event) && (call_flg)) {
+                        item_event = true;
+                        call_flg = false;
+//------------------------                        myimage.draw();
+
+                        myplayer.draw();
+                    }
+
                 }
                 if ((1000 * 5 < keika) && (keika < 1000 * 10)) {    //５～１０秒の時
                     switch (item) {    //m_nameが～の時
                         case "爆弾":    //モンスターAの時
                             text("敵に20ダメージ", 440, 590);
+
+
                             m_damage_event = true;
+//------------------------                            myimage.draw();
+
                             if (m_hit) {    //もしm_hitがtrueなら（一回実行するため）
                                 m_hp = m_hp - 20;
                                 if(m_hp < 0)
@@ -191,7 +218,10 @@ import processing.event.KeyEvent;
                             break;
                         case "薬草":
                             text("プレイヤーはHPを50回復した", 440, 590);
-                            item_event = true;
+//------------------------                            heal_event = true;
+
+                            myimage.draw();
+
                             if (m_hit) {
                                 p_hp = p_hp + 50;
                                 if (p_hp > p_hp_max)
@@ -211,11 +241,17 @@ import processing.event.KeyEvent;
                 if (keika < 1000 * 10)//１０秒以内の時
                     text(p_name + "は" + magic + "を唱えた", 440, 560);    //実行する
                 magic_event = true;
+
+//------------------------                myimage.draw();
+
                 if ((1000 * 5 < keika) && (keika < 1000 * 10)) {    //５～１０秒の時
                     switch (magic) {    //m_nameが～の時
                         case "ファイヤー":    //モンスターAの時
                             text("敵に" + fire_damage + "ダメージ", 440, 590);
                             m_damage_event = true;
+
+//------------------------                            myimage.draw();
+
                             if (m_hit) {    //もしm_hitがtrueなら（一回実行するため）
                                 m_hp = m_hp - fire_damage;    //体力ー１０
                                 if(m_hp < 0)
@@ -226,6 +262,9 @@ import processing.event.KeyEvent;
                         case "ライトニング":    //モンスターAの時
                             text("敵に" + lightning_damage + "ダメージ", 440, 590);
                             m_damage_event = true;
+
+//------------------------                            myimage.draw();
+
                             if (m_hit) {    //もしm_hitがtrueなら（一回実行するため）
                                 m_hp = m_hp - lightning_damage;    //体力ー１０
                                 if(m_hp < 0)
@@ -241,14 +280,23 @@ import processing.event.KeyEvent;
                 if (keika < 1000 * 10)//１０秒以内の時
                     text(p_name + "の攻撃", 440, 560);    //実行する
                 p_attack_event = true;
+
+//------------------------                myimage.draw();
+
                 if ((1000 * 5 < keika) && (keika < 1000 * 10)) {    //５～１０秒の時
                     if (p_random < 3) {
                         text("会心の一撃！敵に" + p_attack * 2 + "ダメージ", 440, 590);
                         m_damage_event = true;
+
+//------------------------                        myimage.draw();
+
                     }
                     if (p_random >= 3) {
                         text("敵に" + p_attack + "ダメージ", 440, 590);
                         m_damage_event = true;
+
+//------------------------                        myimage.draw();
+
                     }
                     if (m_hit) {    //もしm_hitがtrueなら（一回実行するため）
                         if (p_random < 3) {
@@ -263,15 +311,24 @@ import processing.event.KeyEvent;
             }
             if ((1000 * 12 < keika) && (keika < 1000 * 20) && (m_hp != 0))    //１２～２０秒で敵体力が０じゃないとき                                                                    //ここから新しく
                 text(m_name + "の攻撃", 440, 560);
-            m_attack_event = true;
+                m_attack_event = true;
+
+//------------------------            myimage.draw();
+
             if ((1000 * 15 < keika) && (keika < 1000 * 20) && (m_hp != 0)) {
                 if (m_random < 3) {
                     text("痛恨の一撃！プレイヤーに" + m_attack * 2 + "ダメージ", 440, 590);
                     p_damage_event = true;
+
+//------------------------                    myimage.draw();
+
                 }
                 if (m_random >= 3) {
                     text("プレイヤーに" + m_attack + "ダメージ", 440, 590);
                     p_damage_event = true;
+
+//------------------------                    myimage.draw();
+
                 }
                 if (p_hit) {
                     if (m_random < 3) {
@@ -280,20 +337,29 @@ import processing.event.KeyEvent;
                     p_hp = p_hp - m_attack;    //体力－１０
                     if(p_hp < 0)
                         p_hp = 0;
-                    p_hit = false;    //終了
+//------------------------                    p_hit = false;    //終了
                 }
             }
 
 
             if ((p_hp <= 0) && (keika < 1000 * 21)) {
                 text(p_name + "は倒れた", 440, 620);
+                finish_event = true;
+
+//------------------------                myimage.draw();
+
                 if (1000 * 20 < keika) {
-                    finish_event = true;
+
+                    waigoma.Main.state = 2;
                     exit();
                 }
             }
 
             if ((m_hp <= 0) && (keika > 1000*7) && (keika <1000*11)) {    //もしm_hpが０ならば
+                finish_event = true;
+
+//------------------------                myimage.draw();
+
                 text("敵を倒した", 440, 620);    //実行する
                 text("exp：" + m_exp,440,650);    //入手経験値
                 text(m_money + "ゴールドを手に入れた",440,680);
@@ -344,12 +410,18 @@ import processing.event.KeyEvent;
                     level_flg = true;
                 }
                 //----------------------------------------------------------------------------
-                if(level_flg && (keika >1000*5))
+                if(level_flg && (keika >1000*5)) {
                     text(p_name + "はレベルが" + Lv + "になった", 440, 710);
                     Lvup_event = true;
+
+//------------------------                    myimage.draw();
+                }
+
                 if (keika > 1000 * 10) {   //経過が１０秒以上なら
-                    finish_event = true;
+
+
                     p_attack = Lvup_p_attack;
+                    waigoma.Main.state = 2;
                     exit();    //処理終了
                 }
             }
@@ -369,18 +441,30 @@ import processing.event.KeyEvent;
                 if(keika < 1000*5) {
                     text("逃げ出せなかった", 440, 560);
                     escape_event = true;
+
+//------------------------                    myimage.draw();
+
                 }
                 if ((1000 * 5 < keika) && (keika < 1000 * 15))    //１２～２０秒で敵体力が０じゃないとき                                                                    //ここから新しく
                     text(m_name + "の攻撃", 440, 560);
                 m_attack_event = true;
+
+//------------------------                myimage.draw();
+
                 if ((1000 * 10 < keika) && (keika < 1000 * 15)) {
                     if (e_random < 3) {
                         text("痛恨の一撃！プレイヤーに" + m_attack * 2 + "ダメージ", 440, 590);
                         p_damage_event = true;
+
+//------------------------                        myimage.draw();
+
                     }
                     if (e_random >= 3) {
                         text("プレイヤーに" + m_attack + "ダメージ", 440, 590);
                         p_damage_event = true;
+
+//------------------------                        myimage.draw();
+
                     }
                     if (p_hit) {    //もしp_hitがtrueなら（一回実行）
                         if (e_random < 3) {
@@ -404,8 +488,14 @@ import processing.event.KeyEvent;
             if(e_random >= 8) {
                 text(p_name + "は逃げ出した", 440, 560);    //実行する
                 escape_event = true;
+
+//------------------------                myimage.draw();
+
+
+
                 if(keika > 1000*4) {    //経過が２秒以上なら
                     finish_event = true;
+//------------------------myimage.draw();
                     exit();    //処理終了
                 }
             }
@@ -499,6 +589,9 @@ import processing.event.KeyEvent;
                     item_no = true;
                     bom_count = bom_count + 1;
                 }
+
+                item_event = false;
+                call_flg = true;
             }
 
             if(key == BACKSPACE){
