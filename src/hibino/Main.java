@@ -61,17 +61,17 @@ public class Main extends PApplet {
         public static boolean item_no = false;
         public static boolean escape_random = false;
         //----------------------------------------------グラフィック、音響読み込み
-        public static boolean start_event = false;
-        public static boolean p_attack_event = false;
-        public static boolean m_damage_event = false;
-        public static boolean m_attack_event = false;
-        public static boolean p_damage_event = false;
-        public static boolean finish_event = false;
-        public static boolean Lvup_event = false;
-        public static boolean escape_event = false;
-        public static boolean item_event = false;         //
-        public static boolean magic_event = false;
-        public static boolean heal_event = false;
+        public static boolean start_event = false;    //バトルが始まったときに行う処理（BGMを流し続けるなど）
+        public static boolean p_attack_event = false;    //プレイヤーが攻撃したとき
+        public static boolean m_damage_event = false;    //通常のダメージのとき、会心のとき、爆弾のとき、ファイヤーのとき、ライトニングのとき、
+        public static boolean m_attack_event = false;    //敵が攻撃したとき
+        public static boolean p_damage_event = false;    //通常のダメージのとき、痛恨のとき
+        public static boolean finish_event = false;    //プレイヤーが死んだとき、敵を倒したとき
+        public static boolean Lvup_event = false;    //レべルアップしたとき
+        public static boolean escape_event = false;    //逃げたとき、逃げれなかったとき
+        public static boolean item_event = false;    //アイテムを使ったとき-----------(これいらないかも)
+        public static boolean magic_event = false;    //魔法を使ったとき-----------(これいらないかも)
+        public static boolean heal_event = false;    //回復したとき
         //-----------------------------------------------------
 
 
@@ -191,13 +191,12 @@ public class Main extends PApplet {
                 if (keika < 1000 * 10) {//１０秒以内の時
                     text(p_name + "は" + item + "を使った", 440, 560);    //実行する
 
-                    if((!item_event) && (call_flg)) {
+                   // if(!item_event){
                         item_event = true;
-                        call_flg = false;
 //------------------------                        myimage.draw();
 
-                        myplayer.draw();
-                    }
+                        //myplayer.draw();
+                   // }
 
                 }
                 if ((1000 * 5 < keika) && (keika < 1000 * 10)) {    //５～１０秒の時
@@ -218,9 +217,8 @@ public class Main extends PApplet {
                             break;
                         case "薬草":
                             text("プレイヤーはHPを50回復した", 440, 590);
-//------------------------                            heal_event = true;
-
-                            myimage.draw();
+                           heal_event = true;
+//------------------------                             myimage.draw();
 
                             if (m_hit) {
                                 p_hp = p_hp + 50;
@@ -476,9 +474,19 @@ public class Main extends PApplet {
                         p_hit = false;    //終了
                     }
                 }
-                if((keika > 1000*15) && (p_hp <= 0))
-                    exit();
 
+                if ((p_hp <= 0) && (keika < 1000 * 16)) {
+                    text(p_name + "は倒れた", 440, 620);
+                    finish_event = true;
+
+//------------------------                myimage.draw();
+
+                    if (keika > 1000*15) {
+
+                        waigoma.Main.state = 2;
+                        exit();
+                    }
+                }
 
                 if(keika > 1000*15) {
                     tap_e = false;
@@ -494,8 +502,9 @@ public class Main extends PApplet {
 
 
                 if(keika > 1000*4) {    //経過が２秒以上なら
-                    finish_event = true;
+                    //finish_event = true;
 //------------------------myimage.draw();
+                    waigoma.Main.state = 2;
                     exit();    //処理終了
                 }
             }
@@ -550,6 +559,17 @@ public class Main extends PApplet {
                 p_random = (int) random(10);
                 m_random = (int) random(10);
                 press_time = millis();    //押された時間の取得
+
+                p_attack_event = false;
+                m_damage_event = false;
+                m_attack_event = false;
+                p_damage_event = false;
+                finish_event = false;
+                Lvup_event = false;
+                escape_event = false;
+                item_event = false;         //
+                magic_event = false;
+                heal_event = false;
             }
 
             if ((key == 'E' || key == 'e') && (!tap_i) && (!tap_m) && (!battle)) {     //もしEが押されバトルじゃないとき
@@ -559,6 +579,17 @@ public class Main extends PApplet {
                 escape_random = true;
                 e_random = (int) random(10);
                 press_time = millis();    //押された時間の取得
+
+                p_attack_event = false;
+                m_damage_event = false;
+                m_attack_event = false;
+                p_damage_event = false;
+                finish_event = false;
+                Lvup_event = false;
+                escape_event = false;
+                item_event = false;         //
+                magic_event = false;
+                heal_event = false;
             }
 
             if ((key == 'I' || key == 'i') && (!tap_m) && (!battle)) {
@@ -576,6 +607,17 @@ public class Main extends PApplet {
                     item_no = true;
                     y_count = y_count + 1;
                 }
+
+                p_attack_event = false;
+                m_damage_event = false;
+                m_attack_event = false;
+                p_damage_event = false;
+                finish_event = false;
+                Lvup_event = false;
+                escape_event = false;
+                item_event = false;         //
+                magic_event = false;
+                heal_event = false;
             }
             if ((key == 'B' || key == 'b') && (tap_i) && (!battle)) {
                 tap_b = true;
@@ -590,8 +632,16 @@ public class Main extends PApplet {
                     bom_count = bom_count + 1;
                 }
 
-                item_event = false;
-                call_flg = true;
+                p_attack_event = false;
+                m_damage_event = false;
+                m_attack_event = false;
+                p_damage_event = false;
+                finish_event = false;
+                Lvup_event = false;
+                escape_event = false;
+                item_event = false;         //
+                magic_event = false;
+                heal_event = false;
             }
 
             if(key == BACKSPACE){
@@ -614,6 +664,17 @@ public class Main extends PApplet {
                     mp_no = true;
                     mp = mp + 10;
                 }
+
+                p_attack_event = false;
+                m_damage_event = false;
+                m_attack_event = false;
+                p_damage_event = false;
+                finish_event = false;
+                Lvup_event = false;
+                escape_event = false;
+                item_event = false;         //
+                magic_event = false;
+                heal_event = false;
             }
             if ((key == 'L' || key == 'l') && (!battle) && (tap_m)) {
                 tap_l = true;
@@ -627,6 +688,17 @@ public class Main extends PApplet {
                     mp_no = true;
                     mp = mp + 20;
                 }
+
+                p_attack_event = false;
+                m_damage_event = false;
+                m_attack_event = false;
+                p_damage_event = false;
+                finish_event = false;
+                Lvup_event = false;
+                escape_event = false;
+                item_event = false;         //
+                magic_event = false;
+                heal_event = false;
             }
         }
 
