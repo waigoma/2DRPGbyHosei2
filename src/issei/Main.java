@@ -23,34 +23,22 @@ public class Main extends PApplet {
 
     @Override
     public void setup(){
-        mobu = loadImage("src/issei/data/img/character/mobu Dwalk.png");
+        mobu = loadImage("src/issei/data/img/character/mob_D_walk.png");
     }
 
     @Override
     public void keyPressed() {// コード化されているキーが押された
-        if (keyCode == RIGHT || key == 'd' || key == 'D'){
-//            mobu=loadImage("src/issei/data/img/character/mobu Dwalk.png");
-            right = true;
-        }
-        if (keyCode == LEFT || key == 'a' || key == 'A') {
-//            mobu=loadImage("src/issei/data/img/character/mobu Awalk.png");
-            left = true;
-        }
-        if (keyCode == UP || key == 'w' || key == 'W') {
-//            mobu=loadImage("src/issei/data/img/character/mobu Wwalk.png");
-            up = true;
-        }
-        if (keyCode == DOWN || key == 's' || key == 'S') {
-//            mobu=loadImage("src/issei/data/img/character/mobuSwalk.png");
-            down = true;
-        }
+        if (keyCode == RIGHT || key == 'd' || key == 'D') right = true;
+        if (keyCode == LEFT || key == 'a' || key == 'A') left = true;
+        if (keyCode == UP || key == 'w' || key == 'W') up = true;
+        if (keyCode == DOWN || key == 's' || key == 'S') down = true;
     }
     @Override
     public void keyReleased() {//キーが離されたら
-        if (keyCode == RIGHT || key == 'd' || key == 'D') {mobu=loadImage("src/issei/data/img/character/mobu Dstand.png");right = false;}
-        if (keyCode == LEFT || key == 'a' || key == 'A') {mobu=loadImage("src/issei/data/img/character/mobu Astand.png");left = false;}
-        if (keyCode == UP || key == 'w' || key == 'W') {mobu=loadImage("src/issei/data/img/character/mobu Wstand.png");up = false;}
-        if (keyCode == DOWN || key == 's' || key == 'S') {mobu=loadImage("src/issei/data/img/character/mobuSstand.png");down = false;}
+        if (keyCode == RIGHT || key == 'd' || key == 'D') {mobu=loadImage("src/issei/data/img/character/mob_D_stand.png");right = false;}
+        if (keyCode == LEFT || key == 'a' || key == 'A') {mobu=loadImage("src/issei/data/img/character/mob_A_stand.png");left = false;}
+        if (keyCode == UP || key == 'w' || key == 'W') {mobu=loadImage("src/issei/data/img/character/mob_W_stand.png");up = false;}
+        if (keyCode == DOWN || key == 's' || key == 'S') {mobu=loadImage("src/issei/data/img/character/mob_S_stand.png");down = false;}
     }
         @Override
     public void draw() {
@@ -77,32 +65,32 @@ public class Main extends PApplet {
 
     public void drawImg(){
         if (up) {
-            mobu = loadImage("src/issei/data/img/character/mobu Wwalk.png");
+            mobu = loadImage("src/issei/data/img/character/mob_W_walk.png");
             if (time > 30) {
-                mobu = loadImage("src/issei/data/img/character/mobu Wwalk2.png");
+                mobu = loadImage("src/issei/data/img/character/mob_W_walk2.png");
             }
         }
         if (left){
-            mobu = loadImage("src/issei/data/img/character/mobu Awalk.png");
+            mobu = loadImage("src/issei/data/img/character/mob_A_walk.png");
 
             if (time > 30) {
-                mobu = loadImage("src/issei/data/img/character/mobu Awalk2.png");
+                mobu = loadImage("src/issei/data/img/character/mob_A_walk2.png");
             }
 
         }
         if (down){
-            mobu = loadImage("src/issei/data/img/character/mobuSwalk.png");
+            mobu = loadImage("src/issei/data/img/character/mob_S_walk.png");
 
             if (time > 30) {
-                mobu = loadImage("src/issei/data/img/character/mobuSwalk2.png");
+                mobu = loadImage("src/issei/data/img/character/mob_S_walk2.png");
             }
 
         }
         if (right){
-            mobu = loadImage("src/issei/data/img/character/mobu Dwalk.png");
+            mobu = loadImage("src/issei/data/img/character/mob_D_walk.png");
 
             if (time > 30) {
-                mobu = loadImage("src/issei/data/img/character/mobuDwalk2.png");
+                mobu = loadImage("src/issei/data/img/character/mob_D_walk2.png");
             }
 
         }

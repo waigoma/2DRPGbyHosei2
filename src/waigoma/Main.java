@@ -12,7 +12,6 @@ public class Main extends PApplet {
 
     TMXLoader tmx;
     Title title;
-    Test test;
     LocalMap localMap;
     WorldMap worldMap;
 
@@ -25,7 +24,6 @@ public class Main extends PApplet {
     public void setup(){
         tmx = new TMXLoader(this);//loadMaps
         title = new Title(this);//state:0
-        test = new Test(this);
         localMap = new LocalMap(this);//state:1
         worldMap = new WorldMap(this);//state:2
 
