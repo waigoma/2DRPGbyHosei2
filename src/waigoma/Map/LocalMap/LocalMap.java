@@ -37,7 +37,7 @@ public class LocalMap {
             mapTmp = MapTemplate.maps.get("1village.tmx");
             int width = mapTmp.getMapTileWidth() * mapTmp.getTileWidth();
             int height = mapTmp.getMapTileHeight() * mapTmp.getTileHeight();
-            plet.getSurface().setSize(width-10,height-10);
+            plet.getSurface().setSize(width,height);
             count++;
         }
         mapTmp.display();

@@ -30,9 +30,9 @@ public class Collision {
     }
     public void ObjectCollision(){
         if((Playerx < (x + width)) && ((Playerx + PlayerWidth) > x) && (Playery < (y + height)) && ((Playery + PlayerHeight) > y)){
-            if(Playerx > x + (width/2) && Playery > (y + (height - 1)) || ((Playery + PlayerHeight) < y + 1)){
+            if(Playerx > x + width - 4){
                 Playerx = x + width;
-            }else if((Playerx + PlayerWidth) < x + (width/2) &&Playery > (y + (height - 1)) || ((Playery + PlayerHeight) < y - 1) ){
+            }else if((Playerx + PlayerWidth) < x + 4){
                 Playerx = x - PlayerWidth;
             }else if(Playery > y + (height/2)){
                 Playery = y + height;

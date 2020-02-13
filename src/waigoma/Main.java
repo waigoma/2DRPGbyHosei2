@@ -60,6 +60,8 @@ public class Main extends PApplet {
             case StateType.WORLD_STATE:
                 worldMap.display();
                 break;
+            case StateType.COMBAT_STATE:
+                break;
         }
     }
 

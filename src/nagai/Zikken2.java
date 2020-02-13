@@ -117,9 +117,9 @@ public class Zikken2 extends PApplet  {
     }
     void LifeCount() {
         if((x < 930) && ((x+50) > 900) && (y < 315) && ((y+30) > 300)){
-            if(x >= 915 && (y > 314) || ((y + 30) < 301)) {
+            if(x > 926 ) {
                 x = 930;
-            }else if((x+50) <= 915 &&  (y+30) < 301 || y >314){
+            }else if((x+50) < 904){
                 x = 850;
             }else if(y >= 307){
                 y = 315;
