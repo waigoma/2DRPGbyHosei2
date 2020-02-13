@@ -3,6 +3,7 @@ package kotone.presentation;
 import processing.core.PApplet;
 import processing.core.PImage;
 import hibino.Main;
+import gifAnimation.*;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -28,6 +29,7 @@ public class Presentation {
     public static boolean fadeMode;    //フェードイン・アウト切り替えFLG
 
     PApplet pApplet;
+    Gif cutanimation;
 
     public Presentation(PApplet pApplet) {
         this.pApplet = pApplet;
@@ -35,7 +37,7 @@ public class Presentation {
 
     public void setup(){
 
-        haikei = pApplet.loadImage("C:\\Users\\tkoto\\Downloads\\heigen3.gif");
+        haikei = pApplet.loadImage("src/kotone/deta/heigen3.jpg");
         pApplet.imageMode(pApplet.CENTER);
         haikei.resize(pApplet.width,pApplet.height);
 
@@ -46,7 +48,8 @@ public class Presentation {
         pointX = pApplet.width/2;
         pointY = 300;
         speedY = 1;
-
+//        cutanimation = new Gif(pApplet,"src/kotone/deta/._IMG_6508.GIF");
+//        cutanimation.play();
         efect = pApplet.loadImage("C:\\Users\\tkoto\\Downloads\\kaenbeameffect\\火炎ビームエフェクトアニメ\\m\\kaenbeam.png");
 
     }
@@ -54,11 +57,16 @@ public class Presentation {
 
     public void draw() {
 //        System.out.println("draw");
+        if (start_event){
+            pApplet.image(haikei, pApplet.width / 2, pApplet.height / 2);//背景の大きさ
+            pApplet.image(monster,pApplet.width/2,300);
+        }
 
-        pApplet.image(haikei, pApplet.width / 2, pApplet.height / 2);//背景の大きさ
 
         pApplet.tint(255f, alpha);//画像を透明度指定付きで表示
         pApplet.image(monster, pointX, pointY);//モンスターの位置
+
+       // pApplet.image(cutanimation,0,0);
 
 //        pApplet.image(lifegauge,50,50);
 //        pApplet.image(lifegauge,1230,50);
@@ -111,7 +119,7 @@ public class Presentation {
 
         pApplet.noStroke();
         if (hibino.Main.m_hit = true) {
-            m_drawWidth = (m_hp / m_hp_max) * m_rectWidth;
+            m_drawWidth = (m_hp / Main.m_hp_max) * m_rectWidth;
             hibino.Main.m_hit = false;
         }
             System.out.println("rect_m");
@@ -120,10 +128,10 @@ public class Presentation {
         pApplet.noFill();
         pApplet.rect(1000,100,m_rectWidth,50);
 
-        if(hibino.Main.p_attack_event){
-            pApplet
-        }
+//        if(hibino.Main.p_attack_event){
+//            pApplet
 
+*/
     }
 
     public void monsterMove(){//普通のモンスターのスピード
