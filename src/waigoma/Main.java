@@ -1,6 +1,5 @@
 package waigoma;
 
-import issei.PlayerMove;
 import processing.core.PApplet;
 import processing.core.PFont;
 import waigoma.Map.LocalMap.LocalMap;

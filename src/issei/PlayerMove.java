@@ -1,15 +1,16 @@
 package issei;
 
+import nagai.Collision;
 import processing.core.PApplet;
 import processing.core.PImage;
 
 public class PlayerMove {
-    PImage mobu;//キャラデータ
+    PImage mob;//キャラデータ
 
-    float x,y = 0;    //フロートで定義
+    //フロートで定義
     int speed = 3;    //speed初期値で３に定義
     int time = 0;
-    boolean right, left, up, down;
+    public boolean right, left, up, down;
 
     PApplet plet;
 
@@ -19,87 +20,88 @@ public class PlayerMove {
 
 
     public void setup(){
-        mobu = plet.loadImage("src/issei/data/img/character/mobu Dwalk.png");
+        mob = plet.loadImage("src/issei/data/img/character/mob_D_walk.png");
+        Collision.PlayerWidth = mob.width;
+        Collision.PlayerHeight = mob.height;
     }
 
     public void keyPressed() {// コード化されているキーが押された
-        if (plet.keyCode == plet.RIGHT || plet.key == 'd' || plet.key == 'D'){
-//            mobu=loadImage("src/issei/data/img/character/mobu Dwalk.png");
-            right = true;
+        if (plet.keyCode == plet.RIGHT || plet.key == 'd' || plet.key == 'D')right = true;
+        if (plet.keyCode == plet.LEFT || plet.key == 'a' || plet.key == 'A') left = true;
+        if (plet.keyCode == plet.UP || plet.key == 'w' || plet.key == 'W') up = true;
+        if (plet.keyCode == plet.DOWN || plet.key == 's' || plet.key == 'S') down = true;
+    }
+    public void keyReleased() {//キーが離されたら
+        if (plet.keyCode == plet.RIGHT || plet.key == 'd' || plet.key == 'D') {
+            mob=plet.loadImage("src/issei/data/img/character/mob_D_stand.png");
+            right = false;
         }
         if (plet.keyCode == plet.LEFT || plet.key == 'a' || plet.key == 'A') {
-//            mobu=loadImage("src/issei/data/img/character/mobu Awalk.png");
-            left = true;
+            mob=plet.loadImage("src/issei/data/img/character/mob_A_stand.png");
+            left = false;
         }
         if (plet.keyCode == plet.UP || plet.key == 'w' || plet.key == 'W') {
-//            mobu=loadImage("src/issei/data/img/character/mobu Wwalk.png");
-            up = true;
+            mob=plet.loadImage("src/issei/data/img/character/mob_W_stand.png");
+            up = false;
         }
         if (plet.keyCode == plet.DOWN || plet.key == 's' || plet.key == 'S') {
-//            mobu=loadImage("src/issei/data/img/character/mobuSwalk.png");
-            down = true;
+            mob=plet.loadImage("src/issei/data/img/character/mob_S_stand.png");
+            down = false;
         }
-    }
-
-    public void keyReleased() {//キーが離されたら
-        if (plet.keyCode == plet.RIGHT || plet.key == 'd' || plet.key == 'D') {mobu=plet.loadImage("src/issei/data/img/character/mobu Dstand.png");right = false;}
-        if (plet.keyCode == plet.LEFT || plet.key == 'a' || plet.key == 'A') {mobu=plet.loadImage("src/issei/data/img/character/mobu Astand.png");left = false;}
-        if (plet.keyCode == plet.UP || plet.key == 'w' || plet.key == 'W') {mobu=plet.loadImage("src/issei/data/img/character/mobu Wstand.png");up = false;}
-        if (plet.keyCode == plet.DOWN || plet.key == 's' || plet.key == 'S') {mobu=plet.loadImage("src/issei/data/img/character/mobuSstand.png");down = false;}
     }
 
     public void draw() {
         drawImg();
         if (right) {
             time++;
-            x += speed;
+            Collision.Playerx += speed;
         }
         if (left) {
             time++;
-            x -= speed;
+            Collision.Playerx -= speed;
         }
         if (up) {
             time++;
-            y -= speed;
+            Collision.Playery -= speed;
         }
         if (down) {
             time++;
-            y += speed;
+            Collision.Playery += speed;
         }
         if (time > 60) time = 0;
     }
 
     public void drawImg(){
         if (up) {
-            mobu = plet.loadImage("src/issei/data/img/character/mobu Wwalk.png");
+            mob = plet.loadImage("src/issei/data/img/character/mob_W_walk.png");
             if (time > 30) {
-                mobu = plet.loadImage("src/issei/data/img/character/mobu Wwalk2.png");
+                mob = plet.loadImage("src/issei/data/img/character/mob_W_walk2.png");
             }
         }
         if (left){
-            mobu = plet.loadImage("src/issei/data/img/character/mobu Awalk.png");
+            mob = plet.loadImage("src/issei/data/img/character/mob_A_walk.png");
 
             if (time > 30) {
-                mobu = plet.loadImage("src/issei/data/img/character/mobu Awalk2.png");
+                mob = plet.loadImage("src/issei/data/img/character/mob_A_walk2.png");
             }
 
         }
         if (down){
-            mobu = plet.loadImage("src/issei/data/img/character/mobuSwalk.png");
+            mob = plet.loadImage("src/issei/data/img/character/mob_S_walk.png");
 
             if (time > 30) {
-                mobu = plet.loadImage("src/issei/data/img/character/mobuSwalk2.png");
+                mob = plet.loadImage("src/issei/data/img/character/mob_S_walk2.png");
             }
 
         }
         if (right){
-            mobu = plet.loadImage("src/issei/data/img/character/mobu Dwalk.png");
+            mob = plet.loadImage("src/issei/data/img/character/mob_D_walk.png");
 
             if (time > 30) {
-                mobu = plet.loadImage("src/issei/data/img/character/mobuDwalk2.png");
+                mob = plet.loadImage("src/issei/data/img/character/mob_D_walk2.png");
             }
 
         }
-        plet.image(mobu, x, y);
+        plet.image(mob, Collision.Playerx, Collision.Playery);
     }
 }

@@ -5,8 +5,9 @@ public class Collision {
     int sizeWidth,sizeHeight;
     public static float Playerx,Playery;
     public static int PlayerWidth,PlayerHeight;
+    int count = 0;
 
-    public  Collision(float x,float y,float width,float height,int sizeWidth,int sizeHeight){
+    public Collision(float x,float y,float width,float height,int sizeWidth,int sizeHeight){
         this.x = x;
         this.y = y;
         this.width = width;
@@ -14,6 +15,15 @@ public class Collision {
         this.sizeWidth = sizeWidth;  //size(width,height)はわかり次第いれてください
         this.sizeHeight = sizeHeight;  //そのとき引数から消す  相談
     }
+
+    public void fixError(float fx, float fy){
+        if (count == 0) {
+            x = x - fx;
+            y = y - fy;
+            count++;
+        }
+    }
+
     public void Outside(){
         if(Playery>(sizeHeight-PlayerHeight)){     //PlayerHeightはPlayerの大きさがわかり次第いれてください「定数」
             Playery = sizeHeight-PlayerHeight;

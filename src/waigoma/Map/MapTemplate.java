@@ -3,6 +3,8 @@ package waigoma.Map;
 import nagai.Collision;
 import processing.core.PApplet;
 import processing.core.PImage;
+import waigoma.Main;
+import waigoma.StateType;
 
 import java.util.HashMap;
 import java.util.List;
@@ -57,6 +59,8 @@ public class MapTemplate {
     public void display(){//マップの一番手前に出てこないところの描写
         int count = 0;//layerカウント
         for (Collision col : getColList()){
+            if (Main.state == StateType.LOCAL_STATE) col.fixError(-6, -3);
+            if (Main.state == StateType.WORLD_STATE) col.fixError(4, 4);
             col.ObjectCollision();
             col.Outside();
         }
