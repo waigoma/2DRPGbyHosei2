@@ -119,6 +119,11 @@ public class Presentation {
         pApplet.stroke(0);
         pApplet.noFill();
         pApplet.rect(1000,100,m_rectWidth,50);
+
+        if(hibino.Main.p_attack_event){
+            pApplet
+        }
+
     }
 
     public void monsterMove(){//普通のモンスターのスピード
