@@ -4,6 +4,7 @@ import processing.core.PApplet;
 import processing.core.PFont;
 import processing.core.PImage;
 import waigoma.Main;
+import waigoma.StateType;
 
 public class TitleMenu {//タイトルメニュー画面
     Button button, button1, button2;
@@ -42,7 +43,7 @@ public class TitleMenu {//タイトルメニュー画面
         button.run();//Buttonクラス内のrun()呼び出し
         button1.run();
         button2.run();
-        if (button.isPush()) Main.state = 1;//描写内のボタン(?)が押されたらMainクラス内のsceneを1に変更
+        if (button.isPush()) Main.state = StateType.LOCAL_STATE;//描写内のボタン(?)が押されたらMainクラス内のstateを1に変更
         if (button1.isPush()) System.out.println("Option");
         if (button2.isPush()) {//exit押されたら終了
             plet.delay(100);//0.1秒の遅延(クリックバグ対策)
