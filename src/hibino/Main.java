@@ -10,7 +10,7 @@ import java.util.Map;
 
 
 public class Main extends PApplet {
-    hibino.Player myplayer;    //まさき          //読み込む文言　　９２へ
+    //読み込む文言　　９２へ
     kotone.presentation.Presentation myimage;
     takano.Main mysound;
     hibino.Load myload;
@@ -87,9 +87,9 @@ public class Main extends PApplet {
 
         @Override
         public void setup(){
+            random(1,6);
 
 
-            myplayer = new Player(this);
             myimage = new Presentation(this);
             mysound = new takano.Main( /*this*/ );
             myload = new Load(this);
