@@ -27,7 +27,7 @@ public class Takano1 {
         String effect3 ="src/takano/bgm/システムSE_選択音1.wav";
         String effect4 ="src/takano/bgm/serif3.wav";//表示
         String effect5 ="src/takano/bgm/kettei-01.wav";//タイトル選択
-        String effect6 ="src/takano/bgm/tousou-o1.wav";//逃げる1
+        String effect6 ="src/takano/bgm/tousou-o1.wav";//逃げる
 
         Clip clip = creatClip(new File(bgm6));
         clip.start();//読み込み
