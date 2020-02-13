@@ -14,8 +14,8 @@ public class Test {//四角い箱を真ん中に召喚→w,a,s,d,up,left,down,ri
         this.plet = papplet;
         x = plet.width/2f;//画面の左右真ん中座標
         y = plet.height/2f;//画面の上下真ん中座標
-        Collision.PlayerWidth = 35;
-        Collision.PlayerHeight = 35;
+        Collision.PlayerWidth = 30;
+        Collision.PlayerHeight = 30;
     }
 
     //キー入力解放受付されたらここが呼ばれる

@@ -118,7 +118,7 @@ public class TMXLoader {//map情報の読み込み
                                     if (!(objWidths.isEmpty())) objWidth = Float.parseFloat(objWidths);
                                     if (!(objHeights.isEmpty())) objHeight = Float.parseFloat(objHeights);
 
-                                    colList.add(new Collision(objX, objY, objWidth, objHeight, mapTileWidth * tileWidth, mapTileHeight * tileHeight));
+                                    colList.add(new Collision(objX - 8, objY - 8, objWidth, objHeight, mapTileWidth * tileWidth, mapTileHeight * tileHeight));
                                 }
                                 nd1 = nd1.getNextSibling();//次のnodeを読み込む
                             }
