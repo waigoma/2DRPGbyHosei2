@@ -6,11 +6,15 @@ import processing.core.PFont;
 import processing.data.Table;
 import waigoma.Title.Title;
 
+import java.util.Map;
+
 
 public class Main extends PApplet {
-    hibino.Player myplayer;    //まさき          //読み込む文言
+    hibino.Player myplayer;    //まさき          //読み込む文言　　９２へ
     kotone.presentation.Presentation myimage;
     takano.Main mysound;
+    hibino.Load myload;
+    hibino.Save mysave;
 
         public static String p_name = "プレイヤー名";    //文字列変数(プレイヤー名)                                     （クラス内で変数は定義）
         public static String m_name = "モンスターB";//モンスター名
@@ -20,23 +24,23 @@ public class Main extends PApplet {
    // Table number;    //各設定数値の読み込み
 
 
-        public static int p_hp = 100;    //数値変数(プレイヤー体力)            (メインで宣言)
-        public static int p_hp_max = 100;                                   //(メインで宣言)
-        public static int p_attack = 10;    //プレイヤー攻撃力　　　　　　　　　　　　　　(メインで宣言)
+        public static int p_hp ;    //数値変数(プレイヤー体力)            (メインで宣言)
+        public static int p_hp_max ;                                   //(メインで宣言)
+        public static int p_attack ;    //プレイヤー攻撃力　　　　　　　　　　　　　　(メインで宣言)
         public static int m_hp;    //モンスター体力
         public static int m_attack;    //モンスター攻撃力
-        public static int total_exp = 90;    //合計の経験値　　　　　　　　　　　　　　　（メインで宣言）
+        public static int total_exp ;    //合計の経験値　　　　　　　　　　　　　　　（メインで宣言）
         public static int m_exp;    //モンスターによる経験値
-        public static int Lv = 1;    //プレイヤーのレベル（ここは初期化じゃない）     (メインで宣言)
-        public static int keika = 0;    //経過時間の初期化
-        public static int press_time = 0;    //ボタン押下時間
+        public static int Lv ;    //プレイヤーのレベル（ここは初期化じゃない）     (メインで宣言)
+        public static int keika  ;    //経過時間の初期化
+        public static int press_time ;    //ボタン押下時間
         public static int m_money;    //
-        public static int total_money = 0;                                    //(メインで宣言)
-        public static int fire_damage = 10;                                  //(メインで宣言)
-        public static int lightning_damage = 20;                            //(メインで宣言)
-        public static int mp = 100;                                       //(メインで宣言)
-        public static int y_count = 1;                                   //(メインで宣言）
-        public static int bom_count =1;                                 //メインで宣言)
+        public static int total_money ;                                    //(メインで宣言)
+        public static int fire_damage ;                                  //(メインで宣言)
+        public static int lightning_damage ;                            //(メインで宣言)
+        public static int mp ;                                       //(メインで宣言)
+        public static int y_count ;                                   //(メインで宣言）
+        public static int bom_count ;                                 //メインで宣言)
         public static int p_random;
         public static int m_random;
         public static int e_random;
@@ -88,10 +92,10 @@ public class Main extends PApplet {
             myplayer = new Player(this);
             myimage = new Presentation(this);
             mysound = new takano.Main( /*this*/ );
+            myload = new Load(this);
+            mysave = new Save(this);
 
-           /* String csvDataLine[] =loadStrings("processing.csv");
-            String [] csvDataColumu = split(csvDataLine[1],',');
-           // p_hp = (int) csvDataColumu[1];*/
+
 
             PFont font;    //日本語対応（以下３行）
             font=createFont("MS 明朝",30);
@@ -113,12 +117,13 @@ public class Main extends PApplet {
             }
             //--------------------------------------------------------------
             noStroke();
-
+            myload.main();
         }
 
     @Override
     public void draw() {
         start_event = true;
+       // myload.main();
 //------------------------        myimage.draw();
 //------------------------        mysound.draw();
 
@@ -126,7 +131,7 @@ public class Main extends PApplet {
 
         background(0, 255, 0);    //背景色（赤、緑、青）(0:黒、255:白)
 
-        if(p_hp >= 20)
+        if( p_hp >= 20)
             stroke(0);    //枠線の色
         if(p_hp < 20)
             stroke(255,0,0);
@@ -361,6 +366,7 @@ public class Main extends PApplet {
 
                 if (1000 * 20 < keika) {
 
+                    mysave.main();
                     waigoma.Main.state = 2;
                     exit();
                 }
@@ -432,7 +438,7 @@ public class Main extends PApplet {
                 }
 
                 if (keika > 1000 * 10) {   //経過が１０秒以上なら
-
+                    mysave.main();
                     p_attack = Lvup_p_attack;
                     waigoma.Main.state = 2;
                     exit();    //処理終了
@@ -503,6 +509,7 @@ public class Main extends PApplet {
 
                     if (keika > 1000*15) {
 
+                        mysave.main();
                         waigoma.Main.state = 2;
                         exit();
                     }
@@ -524,6 +531,7 @@ public class Main extends PApplet {
 
                 if(keika > 1000*4) {    //経過が２秒以上なら
 
+                    mysave.main();
                     waigoma.Main.state = 2;
                     exit();    //処理終了
                 }
