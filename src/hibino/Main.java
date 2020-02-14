@@ -110,12 +110,14 @@ public class Main extends PApplet {      //extends PApplet消す    MainをComba
                     m_attack = 10;
                     m_hp = 10;
                     m_money =10;
+                    m_hp_max = 10;
                     break;
                 case "モンスターB":
                     m_exp = 20;
                     m_attack = 20;
                     m_hp = 20;
                     m_money = 20;
+                    m_hp_max = 20;
                     break;
             }
             //--------------------------------------------------------------

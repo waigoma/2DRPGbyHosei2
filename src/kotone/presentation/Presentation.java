@@ -25,7 +25,9 @@ public class Presentation {
     float p_rectWidth = 200;
     float m_rectWidth = 200;
     float alpha = 255f;       //透明度
+    float glay = 255f;        //グレーの濃淡
     boolean cngAlpha;    //変化開始FLG
+    boolean cngGlay;     //変化開始FLG
     public static boolean fadeMode;    //フェードイン・アウト切り替えFLG
 
     PApplet pApplet;
@@ -43,6 +45,7 @@ public class Presentation {
 
         monster = pApplet.loadImage("C:\\Users\\tkoto\\Downloads\\dorako.png");
         cngAlpha = false;//透明度の変化は「停止」にしておく
+        cngGlay = false;//透明度の変化は「停止」にしておく
         fadeMode = true; //最初から表示している状態で始めたいので現在の状態を「true」に仮設定する
         monster.resize(300,480);
         pointX = pApplet.width/2;
@@ -58,81 +61,103 @@ public class Presentation {
     public void draw() {
 //        System.out.println("draw");
         if (start_event){
+            pApplet.tint(glay);
             pApplet.image(haikei, pApplet.width / 2, pApplet.height / 2);//背景の大きさ
             pApplet.image(monster,pApplet.width/2,300);
+
+            pApplet.tint(255f, alpha);//画像を透明度指定付きで表示
+            pApplet.image(monster, pointX, pointY);//モンスターの位置
+
+            monsterMove();
+            lifeGauge();
         }
 
 
-        pApplet.tint(255f, alpha);//画像を透明度指定付きで表示
-        pApplet.image(monster, pointX, pointY);//モンスターの位置
 
-       // pApplet.image(cutanimation,0,0);
+        if((p_attack_event) && (p_random < 3)){
+            pApplet.text("会心の一撃",500,500);
+        }
 
-//        pApplet.image(lifegauge,50,50);
-//        pApplet.image(lifegauge,1230,50);
+        if((p_attack_event) && (tap_b)){
+            pApplet.text("爆弾",500,500);
+        }
 
-        monsterMove();
-        //lifeGauge();
+        if((p_attack_event) && (tap_f)){
+            pApplet.text("ファイヤー",500,500);
+        }
 
-        //敵が攻撃を受けたときに赤い色を付ける
-        if ((Main.m_hit) && (Main.keika > 100) && (Main.keika < 400)) {//もしm_hitがtrueなら（一回実行するため）
-            pApplet.tint(255, 80, 31);
+        if((p_attack_event) && (tap_l)){
+            pApplet.text("ライトニング",500,500);
+        }
+
+        if(m_damage_event){
+            pApplet.tint(255, 80, 30);
             pApplet.image(monster, pointX, pointY);
         } else {
             pApplet.noTint();//色を消す
         }
 
-        //透明度を変化させる場合
-        if (!fadeMode) {
-            fadeOut();
+        if(m_attack_event){
+            pApplet.text("敵の攻撃",500,500);
         }
 
-        if (p_hp < 25) {
-            System.out.println("1/4");
-            pApplet.fill(255,0,0);
-        } else if(p_hp < 50){
-            System.out.println("1/2");
-            pApplet.fill(255,200,0);
+        if((p_damage_event) && (m_random < 3)){
+            pApplet.text("痛恨の一撃",500,500);
+            pApplet.tint(255,80,30);
+        }
+
+        if((p_damage_event) && (m_random >= 3)) {  //ノーマルのダメージ
+            pApplet.text("敵の攻撃を受けた", 500, 500);
+            pApplet.tint(255,80,30);
+        }
+
+        if((finish_event) && (p_hp <= 0)){  //プレイヤーが死んだとき
+            //徐々に濃くする
+            glay = glay + 10f;
+
+            //真っ黒になったら変化終了
+            if(glay < 0f){
+                glay = 0f;
+                cngGlay = false;
+            }
+
+        if((finish_event) && (m_hp <= 0)){  //モンスターが死んだとき
+            //徐々に薄くする
+            alpha = alpha - 10f;
+
+            //透明になったら変化終了
+            if (alpha < 0f) {
+                alpha = 0f;
+                cngAlpha = false;
+            }
+        }
+
+        if(Lvup_event){
+            pApplet.text("レベルアップした",500,500);
+        }
+
+        if((escape_event) && (e_random < 3)){  //逃げ出せなかったとき
+            pApplet.text("にげだせなかった",500,500);
+        }
+
+        if((escape_event) && (e_random >= 3)){  //逃げ出せたとき
+            pApplet.text("逃げ出せた",500,500);
+        }
+
+
+
+//        //透明度を変化させる場合
+//        if (!fadeMode) {
+//            fadeOut();
+//        }
+
+            pApplet.tint(255, 80, 30);
+            pApplet.image(monster, pointX, pointY);
         } else {
-            System.out.println("p");
-            pApplet.fill(0,255,0);
+            pApplet.noTint();//色を消す
         }
 
-        pApplet.noStroke();
-        float p_drawWidth = (p_hp / p_hp_max)*p_rectWidth;
-        pApplet.rect(100,100,p_drawWidth,50);
-
-        pApplet.stroke(0);
-        pApplet.noFill();
-        pApplet.rect(100,100,p_rectWidth,50);
-
-        if (m_hp < 5) {
-            System.out.println("m1/4");
-            pApplet.fill(255,0,0);
-        } else if(m_hp < 10){
-            System.out.println("m1/2");
-            pApplet.fill(255,200,0);
-        } else {
-            System.out.println("m");
-            pApplet.fill(0,255,0);
-        }
-
-        pApplet.noStroke();
-        if (hibino.Main.m_hit = true) {
-            m_drawWidth = (m_hp / Main.m_hp_max) * m_rectWidth;
-            hibino.Main.m_hit = false;
-        }
-            System.out.println("rect_m");
-        pApplet.rect(1000,100,m_drawWidth,50);
-        pApplet.stroke(0);
-        pApplet.noFill();
-        pApplet.rect(1000,100,m_rectWidth,50);
-
-//        if(hibino.Main.p_attack_event){
-//            pApplet
-
-*/
-    }
+}
 
     public void monsterMove(){//普通のモンスターのスピード
         pointY += speedY;
@@ -156,20 +181,66 @@ public class Presentation {
         }
     }
 
+    public void lifeGauge(){
+        if (p_hp < 25) {
+            System.out.println("1/4");
+            pApplet.fill(255, 0, 0);
+        } else if (p_hp < 50) {
+            System.out.println("1/2");
+            pApplet.fill(255, 200, 0);
+        } else {
+            System.out.println("p");
+            pApplet.fill(0, 255, 0);
+        }
 
+        pApplet.noStroke();
+        float p_drawWidth = (p_hp / p_hp_max) * p_rectWidth;
+        pApplet.rect(100, 100, p_drawWidth, 50);
+
+        pApplet.stroke(0);
+        pApplet.noFill();
+        pApplet.rect(100, 100, p_rectWidth, 50);
+
+        if (m_hp < 5) {
+            System.out.println("m1/4");
+            pApplet.fill(255, 0, 0);
+        } else if (m_hp < 10) {
+            System.out.println("m1/2");
+            pApplet.fill(255, 200, 0);
+        } else {
+            System.out.println("m");
+            pApplet.fill(0, 255, 0);
+        }
+
+        pApplet.noStroke();
+        if (hibino.Main.m_hit = true) {
+            m_drawWidth = (m_hp / Main.m_hp_max) * m_rectWidth;
+            hibino.Main.m_hit = false;
+        }
+        System.out.println("rect_m");
+        pApplet.rect(1000, 100, m_drawWidth, 50);
+        pApplet.stroke(0);
+        pApplet.noFill();
+        pApplet.rect(1000, 100, m_rectWidth, 50);
+    }
+
+//    //透明度を変化させる場合
+//        if (!fadeMode) {
+//        fadeOut();
+//    }
 
 
 //フェードアウト処理関数
-    public void fadeOut () {
-        //徐々に薄くする
-        alpha = alpha - 10f;
-
-        //透明になったら変化終了
-        if (alpha < 0f) {
-            alpha = 0f;
-            cngAlpha = false;
-        }
-    }
+//    public void fadeOut () {
+//        //徐々に薄くする
+//        alpha = alpha - 10f;
+//
+//        //透明になったら変化終了
+//        if (alpha < 0f) {
+//            alpha = 0f;
+//            cngAlpha = false;
+//        }
+//    }
 //
 //    public void lifeGauge(){
 //        nowP_hp = nowP_hp/p_hp * p_lifegaugeWidth; //プレイヤーHP の比率計算
