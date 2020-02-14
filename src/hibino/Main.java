@@ -290,7 +290,7 @@ public class Main extends PApplet {      //extends PApplet消す    MainをComba
 
             }//-----------------------------------------------------------------------------------------
             if (tap_a) {
-                if (keika < 1000 * 10) {//１０秒以内の時
+                if (keika < 1000 * 10) {//１０秒以内の時a
                     text(p_name + "の攻撃", 440, 560);    //実行する
 
                     p_attack_event = true;
