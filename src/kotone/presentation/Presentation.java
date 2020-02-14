@@ -47,7 +47,7 @@ public class Presentation {
         cngAlpha = false;//透明度の変化は「停止」にしておく
         cngGlay = false;//透明度の変化は「停止」にしておく
         fadeMode = true; //最初から表示している状態で始めたいので現在の状態を「true」に仮設定する
-        monster.resize(300,480);
+//        monster.resize(300,480);
         pointX = pApplet.width/2;
         pointY = 300;
         speedY = 1;
@@ -63,7 +63,7 @@ public class Presentation {
         if (start_event){
             pApplet.tint(glay);
             pApplet.image(haikei, pApplet.width / 2, pApplet.height / 2);//背景の大きさ
-            pApplet.image(monster,pApplet.width/2,300);
+//            pApplet.image(monster,pApplet.width/2,300);
 
             pApplet.tint(255f, alpha);//画像を透明度指定付きで表示
             pApplet.image(monster, pointX, pointY);//モンスターの位置
@@ -83,22 +83,22 @@ public class Presentation {
         }
 
         if((p_attack_event) && (tap_f)){
-            pApplet.text("ファイヤー",500,500);
+            System.out.println("ファイヤー");
         }
 
         if((p_attack_event) && (tap_l)){
-            pApplet.text("ライトニング",500,500);
+            System.out.println("ライトニング");
         }
 
         if(m_damage_event){
             pApplet.tint(255, 80, 30);
             pApplet.image(monster, pointX, pointY);
-        } else {
-            pApplet.noTint();//色を消す
+            pApplet.delay(100);
+            pApplet.noTint();
         }
 
         if(m_attack_event){
-            pApplet.text("敵の攻撃",500,500);
+            System.out.println("敵の攻撃");
         }
 
         if((p_damage_event) && (m_random < 3)){
