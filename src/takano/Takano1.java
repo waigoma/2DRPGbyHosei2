@@ -1,5 +1,7 @@
 package takano;
 
+import hibino.Main;
+
 import javax.sound.sampled.AudioFormat;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
@@ -13,7 +15,7 @@ import java.net.MalformedURLException;
 
 public class Takano1{
 
-    public static void main(String[] arg) throws Exception {
+    public  void sound() {
         String bgm1 = "src/takano/bgm/キラーズ・シルエット.wav";//ボス戦BGM
         String bgm2 = "src/takano/bgm/彩づく草原.wav";//村BGM
         String bgm3 = "src/takano/bgm/森のいざない.wav";//ダンジョンBGM
@@ -30,12 +32,24 @@ public class Takano1{
         String effect7 ="src/takano/bgm/magic-electron2.wav";//雷攻撃
         String effect8 ="src/takano/bgm/magic-flame1.wav";//炎攻撃
 
-        Clip clip = creatClip(new File(effect8));
-        clip.start();//読み込み
-        clip.loop(Clip.LOOP_CONTINUOUSLY);//無限ループ
-        Thread.sleep(1000*10);//流れる時間
-        clip.close();//読み込み終わり
+       if(hibino.Main.p_attack_event) {
+           Clip clip = creatClip(new File(bgm1));
+           clip.start();//読み込み
+           clip.loop(Clip.LOOP_CONTINUOUSLY);//無限ループ
+           try {
+               Thread.sleep(1000 * 10);//流れる時間
+           }catch (InterruptedException e) {
+           e.printStackTrace();
+           }
+           clip.close();//読み込み終わり
+       }
+
+
+
+
     }
+
+
 
     public static Clip creatClip(File path) {           //バグが起きたときの対処
         try (AudioInputStream ais = AudioSystem.getAudioInputStream(path)){
@@ -59,5 +73,8 @@ public class Takano1{
             e.printStackTrace();
         }
         return null;
+    }
+
+    public void main() {
     }
 }
