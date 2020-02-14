@@ -32,19 +32,57 @@ public class Takano1{
         String effect7 ="src/takano/bgm/magic-electron2.wav";//雷攻撃
         String effect8 ="src/takano/bgm/magic-flame1.wav";//炎攻撃
 
-       if(hibino.Main.p_attack_event) {
+      /*if(hibino.Main.start_event) {
            Clip clip = creatClip(new File(bgm1));
            clip.start();//読み込み
            clip.loop(Clip.LOOP_CONTINUOUSLY);//無限ループ
            try {
-               Thread.sleep(1000 * 10);//流れる時間
+               Thread.sleep(1000 * 100);//流れる時間
            }catch (InterruptedException e) {
            e.printStackTrace();
            }
            clip.close();//読み込み終わり
-       }
+       }*/
+        if(hibino.Main.p_attack_event) {
+               Clip clip = creatClip(new File(effect1));
+               clip.start();//読み込み
+               try {
+                    Thread.sleep(1000 * 1);//流れる時間
+               } catch (InterruptedException e) {
+                   e.printStackTrace();
+               }
+               clip.close();//読み込み終わり
 
+        }
+        /*
+        if(magic_evemnt){
 
+        }
+        if((m_damage_event) && (tap_f){
+
+        }
+
+        if(hibino.Main.m_attack_event) {
+            Clip clip = creatClip(new File(effect1));
+            clip.start();//読み込み
+            try {
+                Thread.sleep(1000 * 1);//流れる時間
+            }catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            clip.close();//読み込み終わり
+        }
+        if(hibino.Main.escape_event) {
+            Clip clip = creatClip(new File(effect6));
+            clip.start();//読み込み
+            try {
+                Thread.sleep(1000 * 10);//流れる時間
+            }catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            clip.close();//読み込み終わり
+        }
+*/
 
 
     }
