@@ -129,7 +129,7 @@ public class Main extends PApplet {      //extends PApplet消す    MainをComba
         start_event = true;
        // myload.main();
 //------------------------        myimage.draw();
-        mysound.sound();
+//------------------------        mysound.main();
 
         //myplayer.draw();                //まさき
 
@@ -290,13 +290,12 @@ public class Main extends PApplet {      //extends PApplet消す    MainをComba
 
             }//-----------------------------------------------------------------------------------------
             if (tap_a) {
-                if (keika < 1000 * 10) {//１０秒以内の時
+                if (keika < 1000 * 10)//１０秒以内の時
                     text(p_name + "の攻撃", 440, 560);    //実行する
 
-                    p_attack_event = true;
+                p_attack_event = true;
 //------------------------                myimage.draw();
-                    mysound.sound();
-                }
+                       mysound.sound();
 
                 if ((1000 * 5 < keika) && (keika < 1000 * 10)) {    //５～１０秒の時
                     if (p_random < 3) {
