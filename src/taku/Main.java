@@ -3,6 +3,7 @@ package taku;
 import processing.core.PApplet;
 
 public class Main extends PApplet {
+    public static int random;
     @Override
     public void settings(){
 
@@ -10,6 +11,12 @@ public class Main extends PApplet {
 
     @Override
     public void setup(){
+        random = (int) random(1,6);
+        if(random < 3)
+            hibino.Main.m_name = "モンスターA";
+        if(random >=3)
+            hibino.Main.m_name = "モンスターB";
+        waigoma.Main.state = 3;
 
     }
 

@@ -13,7 +13,7 @@ public class Main extends PApplet {      //extends PApplet消す    MainをComba
     //PApplet pApplet;
     //public Combat(PApplet pApplet){this.pApplet = pApplet;}
 
-    hibino.Player myplayer;//読み込む文言　　９２へ
+    //hibino.Player myplayer;//読み込む文言　　９２へ
     kotone.presentation.Presentation myimage;
     takano.Takano1 mysound;
     hibino.Load myload;
@@ -92,7 +92,7 @@ public class Main extends PApplet {      //extends PApplet消す    MainをComba
         public void setup(){
             random(1,6);
 
-            myplayer = new Player(this);
+            //myplayer = new Player(this);
             myimage = new Presentation(this);
             mysound = new takano.Takano1( );
             myload = new Load(this);
@@ -131,7 +131,7 @@ public class Main extends PApplet {      //extends PApplet消す    MainをComba
 //------------------------        myimage.draw();
 //------------------------        mysound.main();
 
-        myplayer.draw();                //まさき
+        //myplayer.draw();                //まさき
 
         background(0, 255, 0);    //背景色（赤、緑、青）(0:黒、255:白)
 
