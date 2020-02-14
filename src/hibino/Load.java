@@ -29,7 +29,7 @@ public class Load  {
         Properties properties = new Properties();
 
         // プロパティファイルのパスを指定する
-        String strpass = "E:\\Git\\2DRPGbyHosei2\\src\\hibino\\java.properties";
+        String strpass = "src/hibino/java.properties";
 
         try {
 

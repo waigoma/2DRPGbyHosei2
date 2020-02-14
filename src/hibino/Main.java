@@ -8,11 +8,14 @@ import waigoma.Title.Title;
 
 import java.util.Map;
 
+public class Main extends PApplet {      //extends PApplet消す    MainをCombatに変える
 
-public class Main extends PApplet {
-    //読み込む文言　　９２へ
+    //PApplet pApplet;
+    //public Combat(PApplet pApplet){this.pApplet = pApplet;}
+
+    hibino.Player myplayer;//読み込む文言　　９２へ
     kotone.presentation.Presentation myimage;
-    takano.Main mysound;
+    takano.Takano1 mysound;
     hibino.Load myload;
     hibino.Save mysave;
 
@@ -89,9 +92,9 @@ public class Main extends PApplet {
         public void setup(){
             random(1,6);
 
-
+            myplayer = new Player(this);
             myimage = new Presentation(this);
-            mysound = new takano.Main( /*this*/ );
+            mysound = new takano.Takano1( );
             myload = new Load(this);
             mysave = new Save(this);
 
@@ -116,18 +119,19 @@ public class Main extends PApplet {
                     break;
             }
             //--------------------------------------------------------------
-            noStroke();
-            myload.main();
+            noStroke();    //pAppletを加える
+            //myload.main();
+            myimage.setup();
         }
 
-    @Override
+    @Override    //これを全部消す
     public void draw() {
         start_event = true;
        // myload.main();
 //------------------------        myimage.draw();
-//------------------------        mysound.draw();
+//------------------------        mysound.main();
 
-        //myplayer.draw();                //まさき
+        myplayer.draw();                //まさき
 
         background(0, 255, 0);    //背景色（赤、緑、青）(0:黒、255:白)
 
@@ -199,7 +203,7 @@ public class Main extends PApplet {
                    // if(!item_event){
                         item_event = true;
 //------------------------                        myimage.draw();
-//------------------------                        mysound.draw();
+//------------------------                        mysound.main();
                         //myplayer.draw();
                    // }
 
@@ -212,7 +216,7 @@ public class Main extends PApplet {
 
                             m_damage_event = true;
 //------------------------                            myimage.draw();
-//------------------------                        mysound.draw();
+//------------------------                        mysound.main();
 
                             if (m_hit) {    //もしm_hitがtrueなら（一回実行するため）
                                 m_hp = m_hp - 20;
@@ -226,7 +230,7 @@ public class Main extends PApplet {
 
                            heal_event = true;
 //------------------------                             myimage.draw();
-//------------------------                        mysound.draw();
+//------------------------                        mysound.main();
 
                             if (m_hit) {
                                 p_hp = p_hp + 50;
@@ -249,7 +253,7 @@ public class Main extends PApplet {
 
                 magic_event = true;
 //------------------------                myimage.draw();
-//------------------------                        mysound.draw();
+//------------------------                        mysound.main();
 
                 if ((1000 * 5 < keika) && (keika < 1000 * 10)) {    //５～１０秒の時
                     switch (magic) {    //m_nameが～の時
@@ -258,7 +262,7 @@ public class Main extends PApplet {
 
                             m_damage_event = true;
 //------------------------                            myimage.draw();
-//------------------------                        mysound.draw();
+//------------------------                        mysound.main();
 
                             if (m_hit) {    //もしm_hitがtrueなら（一回実行するため）
                                 m_hp = m_hp - fire_damage;    //体力ー１０
@@ -272,7 +276,7 @@ public class Main extends PApplet {
 
                             m_damage_event = true;
 //------------------------                            myimage.draw();
-//------------------------                        mysound.draw();
+//------------------------                        mysound.main();
 
                             if (m_hit) {    //もしm_hitがtrueなら（一回実行するため）
                                 m_hp = m_hp - lightning_damage;    //体力ー１０
@@ -291,7 +295,7 @@ public class Main extends PApplet {
 
                 p_attack_event = true;
 //------------------------                myimage.draw();
-//------------------------                        mysound.draw();
+//------------------------                        mysound.main();
 
                 if ((1000 * 5 < keika) && (keika < 1000 * 10)) {    //５～１０秒の時
                     if (p_random < 3) {
@@ -299,7 +303,7 @@ public class Main extends PApplet {
 
                         m_damage_event = true;
 //------------------------                        myimage.draw();
-//------------------------                        mysound.draw();
+//------------------------                        mysound.main();
 
                     }
                     if (p_random >= 3) {
@@ -307,7 +311,7 @@ public class Main extends PApplet {
 
                         m_damage_event = true;
 //------------------------                        myimage.draw();
-//------------------------                        mysound.draw();
+//------------------------                        mysound.main();
 
                     }
                     if (m_hit) {    //もしm_hitがtrueなら（一回実行するため）
@@ -326,7 +330,7 @@ public class Main extends PApplet {
 
                 m_attack_event = true;
 //------------------------            myimage.draw();
-//------------------------                        mysound.draw();
+//------------------------                        mysound.main();
 
             if ((1000 * 15 < keika) && (keika < 1000 * 20) && (m_hp != 0)) {
                 if (m_random < 3) {
@@ -334,7 +338,7 @@ public class Main extends PApplet {
 
                     p_damage_event = true;
 //------------------------                    myimage.draw();
-//------------------------                        mysound.draw();
+//------------------------                        mysound.main();
 
                 }
                 if (m_random >= 3) {
@@ -342,7 +346,7 @@ public class Main extends PApplet {
 
                     p_damage_event = true;
 //------------------------                    myimage.draw();
-//------------------------                        mysound.draw();
+//------------------------                        mysound.main();
 
                 }
                 if (p_hit) {
@@ -362,7 +366,7 @@ public class Main extends PApplet {
 
                 finish_event = true;
 //------------------------                myimage.draw();
-//------------------------                        mysound.draw();
+//------------------------                        mysound.main();
 
                 if (1000 * 20 < keika) {
 
@@ -376,7 +380,7 @@ public class Main extends PApplet {
 
                 finish_event = true;
 //------------------------                myimage.draw();
-//------------------------                        mysound.draw();
+//------------------------                        mysound.main();
 
                 text("敵を倒した", 440, 620);    //実行する
                 text("exp：" + m_exp,440,650);    //入手経験値
@@ -433,7 +437,7 @@ public class Main extends PApplet {
 
                     Lvup_event = true;
 //------------------------                    myimage.draw();
-//------------------------                        mysound.draw();
+//------------------------                        mysound.main();
 
                 }
 
@@ -462,7 +466,7 @@ public class Main extends PApplet {
 
                     escape_event = true;
 //------------------------                    myimage.draw();
-//------------------------                        mysound.draw();
+//------------------------                        mysound.main();
 
                 }
                 if ((1000 * 5 < keika) && (keika < 1000 * 15))    //１２～２０秒で敵体力が０じゃないとき                                                                    //ここから新しく
@@ -470,7 +474,7 @@ public class Main extends PApplet {
 
                     m_attack_event = true;
 //------------------------                myimage.draw();
-//------------------------                        mysound.draw();
+//------------------------                        mysound.main();
 
                 if ((1000 * 10 < keika) && (keika < 1000 * 15)) {
                     if (m_random < 3) {
@@ -478,7 +482,7 @@ public class Main extends PApplet {
 
                         p_damage_event = true;
 //------------------------                        myimage.draw();
-//------------------------                        mysound.draw();
+//------------------------                        mysound.main();
 
                     }
                     if (m_random >= 3) {
@@ -486,7 +490,7 @@ public class Main extends PApplet {
 
                         p_damage_event = true;
 //------------------------                        myimage.draw();
-//------------------------                        mysound.draw();
+//------------------------                        mysound.main();
 
                     }
                     if (p_hit) {    //もしp_hitがtrueなら（一回実行）
@@ -505,7 +509,7 @@ public class Main extends PApplet {
 
                     finish_event = true;
 //------------------------                myimage.draw();
-//------------------------                        mysound.draw();
+//------------------------                        mysound.main();
 
                     if (keika > 1000*15) {
 
@@ -525,7 +529,7 @@ public class Main extends PApplet {
 
                 escape_event = true;
 //------------------------                myimage.draw();
-//------------------------                        mysound.draw();
+//------------------------                        mysound.main();
 
 
 
@@ -735,7 +739,7 @@ public class Main extends PApplet {
             }
         }
 
-        public static void main (String[]args){
+        public static void main (String[]args){    //ここを消す
             PApplet.main("hibino.Main");
         }
     }
