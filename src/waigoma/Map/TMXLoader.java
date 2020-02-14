@@ -98,29 +98,31 @@ public class TMXLoader {//map情報の読み込み
                             }
                             break;
                         case "objectgroup":
-                            Node nd1 = name.getFirstChild();//layerノード内の最初のNodeを取得
+                            String str = name.getAttribute("name");
+                            if (str.contains("Collision")) {
+                                Node nd1 = name.getFirstChild();//layerノード内の最初のNodeを取得
+                                while (nd1 != null) {//objectの中身がnullになるまで処理
+                                    if (nd1.getNodeName().equals("object")) {//Nodeがlayerの中のdataの場合
+                                        Element el = (Element) nd1;
+                                        String objXs = el.getAttribute("x");
+                                        String objYs = el.getAttribute("y");
+                                        String objWidths = el.getAttribute("width");
+                                        String objHeights = el.getAttribute("height");
 
-                            while (nd1 != null){//objectの中身がnullになるまで処理
-                                if (nd1.getNodeName().equals("object")){//Nodeがlayerの中のdataの場合
-                                    Element el = (Element)nd1;
-                                    String objXs = el.getAttribute("x");
-                                    String objYs = el.getAttribute("y");
-                                    String objWidths = el.getAttribute("width");
-                                    String objHeights = el.getAttribute("height");
+                                        float objX = 0;
+                                        float objY = 0;
+                                        float objWidth = 0;
+                                        float objHeight = 0;
 
-                                    float objX = 0;
-                                    float objY = 0;
-                                    float objWidth = 0;
-                                    float objHeight = 0;
+                                        if (!(objXs.isEmpty())) objX = Float.parseFloat(objXs);
+                                        if (!(objYs.isEmpty())) objY = Float.parseFloat(objYs);
+                                        if (!(objWidths.isEmpty())) objWidth = Float.parseFloat(objWidths);
+                                        if (!(objHeights.isEmpty())) objHeight = Float.parseFloat(objHeights);
 
-                                    if (!(objXs.isEmpty())) objX = Float.parseFloat(objXs);
-                                    if (!(objYs.isEmpty())) objY = Float.parseFloat(objYs);
-                                    if (!(objWidths.isEmpty())) objWidth = Float.parseFloat(objWidths);
-                                    if (!(objHeights.isEmpty())) objHeight = Float.parseFloat(objHeights);
-
-                                    colList.add(new Collision(objX, objY, objWidth, objHeight, mapTileWidth * tileWidth, mapTileHeight * tileHeight));
+                                        colList.add(new Collision(objX, objY, objWidth, objHeight, (mapTileWidth * tileWidth) - 10, (mapTileHeight * tileHeight) - 10));
+                                    }
+                                    nd1 = nd1.getNextSibling();//次のnodeを読み込む
                                 }
-                                nd1 = nd1.getNextSibling();//次のnodeを読み込む
                             }
                             break;
                     }

@@ -1,34 +1,30 @@
 package waigoma.Map.LocalMap;
 
+import issei.PlayerMove;
+import nagai.Collision;
 import processing.core.PApplet;
+import waigoma.Main;
 import waigoma.Map.MapTemplate;
+import waigoma.StateType;
 import waigoma.Test;
 
 public class LocalMap {
     PApplet plet;
-    Test test;
+    PlayerMove pmove;
     MapTemplate mapTmp;
 
     int count = 0;
 
     public LocalMap(PApplet papplet){
         this.plet = papplet;
-        test = new Test(papplet);
+        pmove = new PlayerMove(papplet);
     }
 
     public void keyPressed(){
-        if (plet.keyCode == plet.RIGHT || plet.key == 'd' || plet.key == 'D') test.right = true;
-        if (plet.keyCode == plet.LEFT || plet.key == 'a' || plet.key == 'A') test.left = true;
-        if (plet.keyCode == plet.UP || plet.key == 'w' || plet.key == 'W') test.up = true;
-        if (plet.keyCode == plet.DOWN || plet.key == 's' || plet.key == 'S') test.down = true;
-        if (plet.keyCode == plet.SHIFT) test.speed = 10.0;
+        pmove.keyPressed();
     }
     public void keyReleased(){
-        if (plet.keyCode == plet.RIGHT || plet.key == 'd' || plet.key == 'D') test.right = false;
-        if (plet.keyCode == plet.LEFT || plet.key == 'a' || plet.key == 'A') test.left = false;
-        if (plet.keyCode == plet.UP || plet.key == 'w' || plet.key == 'W') test.up = false;
-        if (plet.keyCode == plet.DOWN || plet.key == 's' || plet.key == 'S') test.down = false;
-        if (plet.keyCode == plet.SHIFT) test.speed = 3.0;
+        pmove.keyReleased();
     }
 
     public void display(){
@@ -37,11 +33,16 @@ public class LocalMap {
             mapTmp = MapTemplate.maps.get("1village.tmx");
             int width = mapTmp.getMapTileWidth() * mapTmp.getTileWidth();
             int height = mapTmp.getMapTileHeight() * mapTmp.getTileHeight();
-            plet.getSurface().setSize(width,height);
+            plet.getSurface().setSize(width - 10,height - 10);
+            Collision.Playerx = 162;
+            Collision.Playery = 142;
+            plet.background(0);
+            pmove.setup();
             count++;
         }
         mapTmp.display();
-        test.display();
+        pmove.draw();
         mapTmp.topDisplay();
+//        Main.state = StateType.WORLD_STATE;
     }
 }

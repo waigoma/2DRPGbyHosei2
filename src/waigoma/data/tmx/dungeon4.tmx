@@ -50,17 +50,6 @@
 17,18,17,18,23,24,17,18,23,24,17,18,17,18,17,18,23,24,17,18
 </data>
  </layer>
- <objectgroup id="4" name="collision">
-  <object id="1" x="414.016" y="0" width="225.167" height="61.7393"/>
-  <object id="2" x="608.313" y="65.371" width="30.8696" height="573.812"/>
-  <object id="3" x="1.81586" y="606.497" width="605.589" height="30.8696"/>
-  <object id="4" x="0" y="1.81586" width="29.0538" height="600.142"/>
-  <object id="5" x="3.63172" y="0" width="221.535" height="63.5551"/>
- </objectgroup>
- <objectgroup id="5" name="collision2">
-  <object id="6" x="256.944" y="386.778" width="157.072" height="126.202"/>
-  <object id="7" x="414.016" y="512.073" height="0.90793"/>
- </objectgroup>
  <layer id="3" name="top" width="20" height="20">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -85,4 +74,21 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
+ <objectgroup id="4" name="Collision">
+  <object id="12" x="2.12854" y="1.06427" width="252.232" height="64.9206"/>
+  <object id="13" x="0" y="60.6635" width="63.8563" height="575.771"/>
+  <object id="14" x="62.7921" y="573.643" width="576.835" height="67.0491"/>
+  <object id="15" x="574.707" y="-1.06427" width="64.9206" height="575.771"/>
+  <object id="16" x="381.009" y="-3.19282" width="193.698" height="65.9849"/>
+  <object id="22" x="130.905" y="123.456" width="59.5992" height="36.1852"/>
+  <object id="23" x="386.331" y="147.934" width="58.535" height="44.6994"/>
+  <object id="24" x="450.187" y="239.461" width="58.535" height="46.828"/>
+  <object id="25" x="483.18" y="467.215" width="56.4064" height="42.5709"/>
+  <object id="26" x="166.026" y="341.631" width="54.2779" height="40.4423"/>
+  <object id="27" x="101.106" y="500.208" width="57.4707" height="41.5066"/>
+ </objectgroup>
+ <objectgroup id="5" name="Boss">
+  <object id="6" x="256.944" y="386.778" width="157.072" height="126.202"/>
+  <object id="7" x="414.016" y="512.073" height="0.90793"/>
+ </objectgroup>
 </map>
