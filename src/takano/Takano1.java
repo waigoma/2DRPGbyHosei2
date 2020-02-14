@@ -11,9 +11,8 @@ import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 
+public class Takano1{
 
-
-public class Takano1 {
     public static void main(String[] arg) throws Exception {
         String bgm1 = "src/takano/bgm/キラーズ・シルエット.wav";//ボス戦BGM
         String bgm2 = "src/takano/bgm/彩づく草原.wav";//村BGM
@@ -27,9 +26,11 @@ public class Takano1 {
         String effect3 ="src/takano/bgm/システムSE_選択音1.wav";
         String effect4 ="src/takano/bgm/serif3.wav";//表示
         String effect5 ="src/takano/bgm/kettei-01.wav";//タイトル選択
-        String effect6 ="src/takano/bgm/tousou-o1.wav";//逃げる
+        String effect6 ="src/takano/bgm/tousou-01.wav";//逃げる
+        String effect7 ="src/takano/bgm/magic-electron2.wav";//雷攻撃
+        String effect8 ="src/takano/bgm/magic-flame1.wav";//炎攻撃
 
-        Clip clip = creatClip(new File(bgm6));
+        Clip clip = creatClip(new File(effect8));
         clip.start();//読み込み
         clip.loop(Clip.LOOP_CONTINUOUSLY);//無限ループ
         Thread.sleep(1000*10);//流れる時間
