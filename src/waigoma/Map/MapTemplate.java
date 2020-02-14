@@ -6,11 +6,11 @@ import processing.core.PImage;
 import waigoma.Main;
 import waigoma.StateType;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 public class MapTemplate {
-    public static HashMap<String, MapTemplate> maps = new HashMap<>();//マップデータをHashMapで保存
+    public static LinkedHashMap<String, MapTemplate> maps = new LinkedHashMap<>();//マップデータをHashMapで保存
     public boolean next, back = false;
 
     private PImage[] imgs;//mapChipが入った配列

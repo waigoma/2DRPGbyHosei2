@@ -6,7 +6,6 @@ import processing.core.PApplet;
 import waigoma.Main;
 import waigoma.Map.MapTemplate;
 import waigoma.StateType;
-import waigoma.Test;
 
 public class LocalMap {
     PApplet plet;
@@ -48,7 +47,7 @@ public class LocalMap {
             Collision.Playerx = 149;
             Collision.Playery = 550;
             count = 0;
-            plet.delay(10);
+            plet.delay(100);
         }
         if (mapTmp.back){
             Main.state = StateType.LOCAL_STATE;

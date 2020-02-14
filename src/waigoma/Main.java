@@ -1,6 +1,5 @@
 package waigoma;
 
-import nagai.Collision;
 import processing.core.PApplet;
 import processing.core.PFont;
 import waigoma.Map.LocalMap.LocalMap;
