@@ -11,16 +11,18 @@ import java.util.List;
 
 public class MapTemplate {
     public static HashMap<String, MapTemplate> maps = new HashMap<>();//マップデータをHashMapで保存
+    public boolean next, back = false;
 
     private PImage[] imgs;//mapChipが入った配列
     private List<Integer[]> list;//mapのlayerが入った配列
     private String mapName;//mapの名前
     private int mapTileWidth, mapTileHeight, tileWidth, tileHeight;//map作るのに必要な基本情報
     private List<Collision> colList;
+    private List<MapTrigger> nextList, backList;
     private PApplet plet;
     private PImage img;
 
-    public MapTemplate(String name, int mapTileWidth, int mapTileHeight, int tileWidth, int tileHeight, List<Integer[]> list, List<Collision> colList, PImage[] imgs, PApplet plet) {//マップデータ保存
+    public MapTemplate(String name, int mapTileWidth, int mapTileHeight, int tileWidth, int tileHeight, List<Integer[]> list, List<Collision> colList, List<MapTrigger> nextList, List<MapTrigger> backList, PImage[] imgs, PApplet plet) {//マップデータ保存
         this.mapName = name;
         this.mapTileWidth = mapTileWidth;
         this.mapTileHeight = mapTileHeight;
@@ -28,6 +30,8 @@ public class MapTemplate {
         this.tileHeight = tileHeight;
         this.list = list;
         this.colList = colList;
+        this.nextList = nextList;
+        this.backList = backList;
         this.imgs = imgs;
         this.plet = plet;
     }
@@ -52,6 +56,12 @@ public class MapTemplate {
     public List<Collision> getColList() {
         return colList;
     }
+    public List<MapTrigger> getNextList(){
+        return nextList;
+    }
+    public List<MapTrigger> getBackList() {
+        return backList;
+    }
     public PImage[] getPImg() {
         return imgs;
     }
@@ -63,6 +73,16 @@ public class MapTemplate {
             if (Main.state == StateType.WORLD_STATE) col.fixError(4, 4);
             col.ObjectCollision();
             col.Outside();
+        }
+        for (MapTrigger nmt : getNextList()){
+            if (Main.state == StateType.LOCAL_STATE) nmt.fixError(-6, -3);
+            if (Main.state == StateType.WORLD_STATE) nmt.fixError(4, 4);
+            next = nmt.mapTrigger();
+        }
+        for (MapTrigger bmt : getBackList()){
+            if (Main.state == StateType.LOCAL_STATE) bmt.fixError(-6, -3);
+            if (Main.state == StateType.WORLD_STATE) bmt.fixError(4, 4);
+            back = bmt.mapTrigger();
         }
         for (Integer[] mapNums : getList()) {//Listからlayerの情報を引き出す(下のlayerから順に)
             int x = 0;//x座標(何個目か)

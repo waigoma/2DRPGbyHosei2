@@ -20,7 +20,7 @@ public class PlayerMove {
 
 
     public void setup(){
-        mob = plet.loadImage("src/issei/data/img/character/mob_D_walk.png");
+        mob = plet.loadImage("src/issei/data/img/character/mob_S_stand.png");
         Collision.PlayerWidth = mob.width;
         Collision.PlayerHeight = mob.height;
     }

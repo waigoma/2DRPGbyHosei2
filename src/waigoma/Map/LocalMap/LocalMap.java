@@ -13,7 +13,7 @@ public class LocalMap {
     PlayerMove pmove;
     MapTemplate mapTmp;
 
-    int count = 0;
+    public static int count = 0;
 
     public LocalMap(PApplet papplet){
         this.plet = papplet;
@@ -43,6 +43,16 @@ public class LocalMap {
         mapTmp.display();
         pmove.draw();
         mapTmp.topDisplay();
-//        Main.state = StateType.WORLD_STATE;
+        if (mapTmp.next){
+            Main.state = StateType.WORLD_STATE;
+            Collision.Playerx = 149;
+            Collision.Playery = 550;
+            count = 0;
+            plet.delay(10);
+        }
+        if (mapTmp.back){
+            Main.state = StateType.LOCAL_STATE;
+            count = 0;
+        }
     }
 }

@@ -87,6 +87,9 @@
   <object id="26" x="166.026" y="341.631" width="54.2779" height="40.4423"/>
   <object id="27" x="101.106" y="500.208" width="57.4707" height="41.5066"/>
  </objectgroup>
+ <objectgroup id="6" name="Back">
+   <object id="28" x="255.275" y="0.755251" width="125.372" height="34.7416"/>
+  </objectgroup>
  <objectgroup id="5" name="Boss">
   <object id="6" x="256.944" y="386.778" width="157.072" height="126.202"/>
   <object id="7" x="414.016" y="512.073" height="0.90793"/>
