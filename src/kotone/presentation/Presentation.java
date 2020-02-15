@@ -53,8 +53,8 @@ public class Presentation extends PApplet {
         pointX = pApplet.width/2;
         pointY = 300;
         speedY = 1;
-//        cutanimation = new Gif(pApplet,"src/kotone/deta/._IMG_6508.GIF");
-//        cutanimation.play();
+        cutanimation = new Gif(pApplet,"src/kotone/deta/nc167581.gif");
+        cutanimation.play();
         efect = pApplet.loadImage("C:\\Users\\tkoto\\Downloads\\kaenbeameffect\\火炎ビームエフェクトアニメ\\m\\kaenbeam.png");
 
     }
@@ -77,6 +77,7 @@ public class Presentation extends PApplet {
 
 
         if((p_attack_event) && (p_random < 3)){
+            
             pApplet.text("会心の一撃",500,500);
         }
 
