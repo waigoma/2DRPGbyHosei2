@@ -32,7 +32,11 @@ public class Presentation extends PApplet {
     public static boolean fadeMode;    //フェードイン・アウト切り替えFLG
 
     PApplet pApplet;
-    Gif cutanimation;
+    Gif cutAnimation;
+    Gif bakuhatsuAnimation;
+    Gif fireAnimation;
+    Gif lightningAnimation;
+    Gif monsterAnimation;
 
     public Presentation(PApplet pApplet) {
         this.pApplet = pApplet;
@@ -53,11 +57,26 @@ public class Presentation extends PApplet {
         pointX = pApplet.width/2;
         pointY = 300;
         speedY = 1;
-        cutanimation = new Gif(pApplet,"src/kotone/deta/630d2222a66113ba8b3033cc8794bff1.gif");
-        cutanimation.play();
-        cutanimation.resize(400,400);
-        efect = pApplet.loadImage("C:\\Users\\tkoto\\Downloads\\kaenbeameffect\\火炎ビームエフェクトアニメ\\m\\kaenbeam.png");
 
+        cutAnimation = new Gif(pApplet,"src/kotone/deta/cut.gif");
+        cutAnimation.play();
+        cutAnimation.resize(400,400);
+
+        bakuhatsuAnimation = new Gif(pApplet,"src/kotone/deta/bakuhatu.gif");
+        bakuhatsuAnimation.play();
+        bakuhatsuAnimation.resize(400,400);
+
+        fireAnimation = new Gif(pApplet,"src/kotone/deta/fire.gif");
+        fireAnimation.play();
+        fireAnimation.resize(400,400);
+
+        lightningAnimation = new Gif(pApplet,"src/kotone/deta/lightning.gif");
+        lightningAnimation.play();
+        lightningAnimation.resize(400,400);
+
+        monsterAnimation = new Gif(pApplet,"src/kotone/deta/monster.gif");
+        monsterAnimation.play();
+        monsterAnimation.resize(700,700);
     }
 
 
@@ -77,25 +96,27 @@ public class Presentation extends PApplet {
 
         if(p_attack_event){
             System.out.println("俺のターン！");
-            pApplet.image(cutanimation,pApplet.width/2, 300);
-            pApplet.blendMode(ADD);
+            pApplet.image(cutAnimation,pApplet.width/2, 300);
         }
 
         if((p_attack_event) && (p_random < 3)){
             System.out.println("会心の一撃！");
-            cutanimation.play();
+            pApplet.image(cutAnimation,pApplet.width/2, 300);
         }
 
         if((p_attack_event) && (tap_b)){
             pApplet.text("爆弾",500,500);
+            pApplet.image(bakuhatsuAnimation,pApplet.width/2,300);
         }
 
         if((p_attack_event) && (tap_f)){
             System.out.println("ファイヤー");
+            pApplet.image(fireAnimation,width/2,300);
         }
 
         if((p_attack_event) && (tap_l)){
             System.out.println("ライトニング");
+            pApplet.image(lightningAnimation,width/2,300);
         }
 
         if(m_damage_event){
@@ -108,11 +129,13 @@ public class Presentation extends PApplet {
 
         if(m_attack_event){
             System.out.println("敵の攻撃");
+            pApplet.image(monsterAnimation,width/2,height/2);
         }
 
         if((p_damage_event) && (m_random < 3)){
             pApplet.text("痛恨の一撃",500,500);
             pApplet.tint(255,80,30);
+
         }
 
         if((p_damage_event) && (m_random >= 3)) {  //ノーマルのダメージ
