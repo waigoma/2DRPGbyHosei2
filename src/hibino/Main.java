@@ -13,7 +13,7 @@ public class Main extends PApplet {      //extends PApplet消す    MainをComba
     //PApplet pApplet;
     //public Combat(PApplet pApplet){this.pApplet = pApplet;}
 
-    //hibino.Player myplayer;//読み込む文言　　９２へ
+    //hibino.Sample mysample;//読み込む文言　　９２へ
     kotone.presentation.Presentation myimage;
     takano.Takano1 mysound;
     hibino.Load myload;
@@ -31,6 +31,7 @@ public class Main extends PApplet {      //extends PApplet消す    MainをComba
         public static int p_hp_max ;                                   //(メインで宣言)
         public static int p_attack ;    //プレイヤー攻撃力　　　　　　　　　　　　　　(メインで宣言)
         public static int m_hp;    //モンスター体力
+        public static int m_hp_max;
         public static int m_attack;    //モンスター攻撃力
         public static int total_exp ;    //合計の経験値　　　　　　　　　　　　　　　（メインで宣言）
         public static int m_exp;    //モンスターによる経験値
@@ -92,7 +93,7 @@ public class Main extends PApplet {      //extends PApplet消す    MainをComba
         public void setup(){
             random(1,6);
 
-            //myplayer = new Player(this);
+            //mysample = new Sample(this);
             myimage = new Presentation(this);
             mysound = new takano.Takano1( );
             myload = new Load(this);
@@ -123,17 +124,17 @@ public class Main extends PApplet {      //extends PApplet消す    MainをComba
             //--------------------------------------------------------------
             noStroke();    //pAppletを加える
             myload.main();
-            //myimage.setup();
+            myimage.setup();
         }
 
     @Override    //これを全部消す
     public void draw() {
         start_event = true;
-       // myload.main();
-//------------------------        myimage.draw();
-        mysound.sound();
 
-        //myplayer.draw();                //まさき
+//--------------------------        myimage.draw();
+//--------------------------mysound.sound();
+
+        //mysample.draw();                //まさき
 
         background(0, 255, 0);    //背景色（赤、緑、青）(0:黒、255:白)
 
@@ -297,7 +298,7 @@ public class Main extends PApplet {      //extends PApplet消す    MainをComba
 
                     p_attack_event = true;
 //------------------------                myimage.draw();
-                    mysound.sound();
+//---------------------                    mysound.sound();
                 }
 
 
