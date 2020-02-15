@@ -8,11 +8,12 @@ import gifAnimation.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import static hibino.Main.*;
+import static processing.core.PApplet.main;
 
 //import static kotone.presentation.Main.m_hp;
 //import static kotone.presentation.Main.p_hp;
 
-public class Presentation {
+public class Presentation extends PApplet {
 
     PImage haikei;
     PImage monster;
@@ -43,7 +44,8 @@ public class Presentation {
         pApplet.imageMode(pApplet.CENTER);
         haikei.resize(pApplet.width,pApplet.height);
 
-        monster = pApplet.loadImage("C:\\Users\\tkoto\\Downloads\\dorako.png");
+       // monster = pApplet.loadImage("C:\\Users\\tkoto\\Downloads\\dorako.png");　　　　
+        monster = pApplet.loadImage("src/kotone/deta/dorako.png");    //filenameの書き方が違った（４７）
         cngAlpha = false;//透明度の変化は「停止」にしておく
         cngGlay = false;//透明度の変化は「停止」にしておく
         fadeMode = true; //最初から表示している状態で始めたいので現在の状態を「true」に仮設定する
@@ -157,7 +159,7 @@ public class Presentation {
             pApplet.noTint();//色を消す
         }
 
-}
+    }
 
     public void monsterMove(){//普通のモンスターのスピード
         pointY += speedY;
@@ -251,10 +253,10 @@ public class Presentation {
 
 
 
+
     public static void main(String[] args){
         PApplet.main("kotone.presentation.Presentation");
     }
-
 
 }
 

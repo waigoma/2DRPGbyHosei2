@@ -130,13 +130,10 @@ public class Main extends PApplet {      //extends PApplet消す    MainをComba
     @Override    //これを全部消す
     public void draw() {
         start_event = true;
-
-//--------------------------        myimage.draw();
+        myimage.draw();
 //--------------------------mysound.sound();
 
         //mysample.draw();                //まさき
-
-        background(0, 255, 0);    //背景色（赤、緑、青）(0:黒、255:白)
 
         if( p_hp >= 20)
             stroke(0);    //枠線の色
