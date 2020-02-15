@@ -10,6 +10,9 @@ import waigoma.StateType;
 import waigoma.Map.LocalMap.LocalMap;
 
 public class WorldMap {
+    String next;
+    String previous;
+
     PApplet plet;
     MapTemplate mapTmp;
     PlayerMove pmove;
@@ -32,6 +35,8 @@ public class WorldMap {
             plet.rectMode(plet.CORNER);
             int width = mapTmp.getMapTileWidth() * mapTmp.getTileWidth();
             int height = mapTmp.getMapTileHeight() * mapTmp.getTileHeight();
+            next = mapTmp.getNextMap();
+            previous = mapTmp.getPreviousMap();
             plet.getSurface().setSize(width - 10,height - 10);
             plet.background(0);
             pmove.setup();
@@ -42,64 +47,11 @@ public class WorldMap {
         mapTmp.topDisplay();
 //        System.out.println(mapTmp.getMapName());
         if (mapTmp.next){
-            switch (mapTmp.getMapName()){
-                case "dungeon1.tmx":
-                    System.out.println("next");
-                    mapTmp.next = false;
-                    mapTmp.back = false;
-                    mapTmp = MapTemplate.maps.get("dungeon2.tmx");
-                    Collision.Playerx = 51;
-                    Collision.Playery = 557;
-                    break;
-                case "dungeon2.tmx":
-                    mapTmp.next = false;
-                    mapTmp.back = false;
-                    mapTmp = MapTemplate.maps.get("dungeon3.tmx");
-                    Collision.Playerx = 99;
-                    Collision.Playery = 33;
-                    break;
-                case "dungeon3.tmx":
-                    mapTmp.next = false;
-                    mapTmp.back = false;
-                    mapTmp = MapTemplate.maps.get("dungeon4.tmx");
-                    Collision.Playerx = 312;
-                    Collision.Playery = 56;
-                    break;
-            }
+            mapTmp = MapTemplate.maps.get(next);
             LocalMap.count = 0;
         }
         if (mapTmp.back){
-            switch (mapTmp.getMapName()){
-                case "dungeon1.tmx":
-                    mapTmp.next = false;
-                    mapTmp.back = false;
-                    Collision.Playerx = 606;
-                    Collision.Playery = 703;
-                    Main.state = StateType.LOCAL_STATE;
-                    break;
-                case "dungeon2.tmx":
-                    mapTmp.next = false;
-                    mapTmp.back = false;
-                    mapTmp = MapTemplate.maps.get("dungeon1.tmx");
-                    System.out.println("back");
-                    Collision.Playerx = 543;
-                    Collision.Playery = 219;
-                    break;
-                case "dungeon3.tmx":
-                    mapTmp.next = false;
-                    mapTmp.back = false;
-                    mapTmp = MapTemplate.maps.get("dungeon2.tmx");
-                    Collision.Playerx = 786;
-                    Collision.Playery = 556;
-                    break;
-                case "dungeon4.tmx":
-                    mapTmp.next = false;
-                    mapTmp.back = false;
-                    mapTmp = MapTemplate.maps.get("dungeon3.tmx");
-                    Collision.Playerx = 69;
-                    Collision.Playery = 880;
-                    break;
-            }
+            mapTmp = MapTemplate.maps.get(previous);
             LocalMap.count = 0;
         }
     }

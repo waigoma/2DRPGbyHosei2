@@ -54,6 +54,8 @@ public class TMXLoader {//map情報の読み込み
             String sHeight = element.getAttribute("height");//map縦幅
             String sTilewidth = element.getAttribute("tilewidth");//mapタイル横幅
             String sTileheight = element.getAttribute("tileheight");//mapタイル縦幅
+            String next = element.getAttribute("nextMap");
+            String previous = element.getAttribute("previousMap");
 
             int mapTileWidth = 0;
             int mapTileHeight = 0;
@@ -184,7 +186,7 @@ public class TMXLoader {//map情報の読み込み
                 PImgList.add(new PImage(bfi));
             }
             imgs = PImgList.toArray(new PImage[0]);//PImageのlistを配列に変換
-            MapTemplate.maps.put(mapName, new MapTemplate(mapName, mapTileWidth, mapTileHeight, tileWidth, tileHeight, mapList, colList, nextList, backList, imgs, plet));//map情報を保存
+            MapTemplate.maps.put(mapName, new MapTemplate(mapName, next, previous, mapTileWidth, mapTileHeight, tileWidth, tileHeight, mapList, colList, nextList, backList, imgs, plet));//map情報を保存
         }catch (Exception e){
             e.printStackTrace();
         }

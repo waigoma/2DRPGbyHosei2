@@ -15,15 +15,17 @@ public class MapTemplate {
 
     private PImage[] imgs;//mapChipが入った配列
     private List<Integer[]> list;//mapのlayerが入った配列
-    private String mapName;//mapの名前
+    private String mapName, nextMap, previousMap;//mapの名前
     private int mapTileWidth, mapTileHeight, tileWidth, tileHeight;//map作るのに必要な基本情報
     private List<Collision> colList;
     private List<MapTrigger> nextList, backList;
     private PApplet plet;
     private PImage img;
 
-    public MapTemplate(String name, int mapTileWidth, int mapTileHeight, int tileWidth, int tileHeight, List<Integer[]> list, List<Collision> colList, List<MapTrigger> nextList, List<MapTrigger> backList, PImage[] imgs, PApplet plet) {//マップデータ保存
+    public MapTemplate(String name, String nextMap, String previousMap, int mapTileWidth, int mapTileHeight, int tileWidth, int tileHeight, List<Integer[]> list, List<Collision> colList, List<MapTrigger> nextList, List<MapTrigger> backList, PImage[] imgs, PApplet plet) {//マップデータ保存
         this.mapName = name;
+        this.nextMap = nextMap;
+        this.previousMap = previousMap;
         this.mapTileWidth = mapTileWidth;
         this.mapTileHeight = mapTileHeight;
         this.tileWidth = tileWidth;
@@ -37,6 +39,12 @@ public class MapTemplate {
     }
     public String getMapName(){
         return mapName;
+    }
+    public String getNextMap() {
+        return nextMap;
+    }
+    public String getPreviousMap() {
+        return previousMap;
     }
     public int getMapTileWidth() {
         return mapTileWidth;
