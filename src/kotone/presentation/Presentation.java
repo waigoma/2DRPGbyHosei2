@@ -49,12 +49,13 @@ public class Presentation extends PApplet {
         cngAlpha = false;//透明度の変化は「停止」にしておく
         cngGlay = false;//透明度の変化は「停止」にしておく
         fadeMode = true; //最初から表示している状態で始めたいので現在の状態を「true」に仮設定する
-//        monster.resize(300,480);
+        monster.resize(300,480);
         pointX = pApplet.width/2;
         pointY = 300;
         speedY = 1;
-        cutanimation = new Gif(pApplet,"src/kotone/deta/nc167581.gif");
+        cutanimation = new Gif(pApplet,"src/kotone/deta/630d2222a66113ba8b3033cc8794bff1.gif");
         cutanimation.play();
+        cutanimation.resize(400,400);
         efect = pApplet.loadImage("C:\\Users\\tkoto\\Downloads\\kaenbeameffect\\火炎ビームエフェクトアニメ\\m\\kaenbeam.png");
 
     }
@@ -74,11 +75,15 @@ public class Presentation extends PApplet {
             lifeGauge();
         }
 
-
+        if(p_attack_event){
+            System.out.println("俺のターン！");
+            pApplet.image(cutanimation,pApplet.width/2, 300);
+            pApplet.blendMode(ADD);
+        }
 
         if((p_attack_event) && (p_random < 3)){
-            
-            pApplet.text("会心の一撃",500,500);
+            System.out.println("会心の一撃！");
+            cutanimation.play();
         }
 
         if((p_attack_event) && (tap_b)){
@@ -96,7 +101,7 @@ public class Presentation extends PApplet {
         if(m_damage_event){
             pApplet.tint(255, 80, 30);
             pApplet.image(monster, pointX, pointY);
-            //pApplet.delay(100);
+            pApplet.delay(500);
             pApplet.noTint();
             m_damage_event = false;
         }
