@@ -6,11 +6,11 @@ import processing.core.PApplet;
 //import static hibino.Main.item_event;
 import static hibino.Main.start_event;
 
-public class Player extends PApplet {
+public class Sample extends PApplet {
 
 
     PApplet pApplet;//--------------------------------読み込む文言
-    public Player(PApplet pApplet) {
+    public Sample(PApplet pApplet) {
         this.pApplet = pApplet;
     }
 
@@ -28,22 +28,22 @@ public class Player extends PApplet {
     public  void draw(){
        // background(0, 255, 0);
 
-        if(start_event) {
+        //if(start_event) {
 
             //pApplet.fill(200);
-            pApplet.rect(500,500,500,500);
+            rect(500,500,500,500);
 
            // start_event = false;
            // a_event = false;
          //   fill(255, 255, 255, 100);    //～の色（４つ目は透明度）    　　　　　　　　　ここはプレイヤーの四角
          //   text("a",500,500);
 
-        }
+       // }
 
 
     }
 
     public static void main(String[] args){
-        PApplet.main("hibino.Player");
+        PApplet.main("hibino.Sample");
     }
 }
