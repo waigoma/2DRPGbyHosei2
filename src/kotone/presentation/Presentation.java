@@ -96,8 +96,9 @@ public class Presentation extends PApplet {
         if(m_damage_event){
             pApplet.tint(255, 80, 30);
             pApplet.image(monster, pointX, pointY);
-            pApplet.delay(100);
+            //pApplet.delay(100);
             pApplet.noTint();
+            m_damage_event = false;
         }
 
         if(m_attack_event){

@@ -312,10 +312,11 @@ public class Main extends PApplet {      //extends PApplet消す    MainをComba
                     }
                     if (p_random >= 3) {
                         text("敵に" + p_attack + "ダメージ", 440, 590);
-
                         m_damage_event = true;
 //------------------------                        myimage.draw();
 //------------------------                        mysound.main();
+                    if (keika > 1000*5.15)
+                        m_damage_event = false;
 
                     }
                     if (m_hit) {    //もしm_hitがtrueなら（一回実行するため）
