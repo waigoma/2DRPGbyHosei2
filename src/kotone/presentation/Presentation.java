@@ -62,7 +62,7 @@ public class Presentation extends PApplet {
 
     public void draw() {
 //        System.out.println("draw");
-        if (start_event){
+        if (Main.start_event){
             pApplet.tint(glay);
             pApplet.image(haikei, pApplet.width / 2, pApplet.height / 2);//背景の大きさ
 //            pApplet.image(monster,pApplet.width/2,300);
