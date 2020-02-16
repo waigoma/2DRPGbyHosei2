@@ -19,12 +19,14 @@ public class Presentation extends PApplet {
     PImage monster;
     PImage efect;
     PImage lifegauge;
+
     float pointX;
     float pointY;
     float speedY;
-    float m_drawWidth;
-    float p_rectWidth = 200;
-    float m_rectWidth = 200;
+    public static float p_drawWidth;
+    public static float m_drawWidth;
+    public static float p_rectWidth = 220;
+    public static float m_rectWidth = 200;
     float alpha = 255f;       //透明度
     float glay = 255f;        //グレーの濃淡
     boolean cngAlpha;    //変化開始FLG
@@ -77,6 +79,9 @@ public class Presentation extends PApplet {
         monsterAnimation = new Gif(pApplet,"src/kotone/deta/monster.gif");
         monsterAnimation.play();
         monsterAnimation.resize(700,700);
+
+        p_drawWidth = ((float) p_hp / p_hp_max) * p_rectWidth;
+        m_drawWidth = ((float) m_hp / Main.m_hp_max) * m_rectWidth;
     }
 
 
@@ -97,6 +102,9 @@ public class Presentation extends PApplet {
         if(p_attack_event){
             System.out.println("俺のターン！");
             pApplet.image(cutAnimation,pApplet.width/2, 300);
+
+
+            
         }
 
         if((p_attack_event) && (p_random < 3)){
@@ -122,9 +130,9 @@ public class Presentation extends PApplet {
         if(m_damage_event){
             pApplet.tint(255, 80, 30);
             pApplet.image(monster, pointX, pointY);
-            pApplet.delay(500);
+            //pApplet.delay(500);
             pApplet.noTint();
-            m_damage_event = false;
+           // m_damage_event = false;
         }
 
         if(m_attack_event){
@@ -226,7 +234,7 @@ public class Presentation extends PApplet {
         }
 
         pApplet.noStroke();
-        float p_drawWidth = (p_hp / p_hp_max) * p_rectWidth;
+        //float p_drawWidth = (p_hp / p_hp_max) * p_rectWidth;
         pApplet.rect(100, 100, p_drawWidth, 50);
 
         pApplet.stroke(0);
@@ -245,9 +253,9 @@ public class Presentation extends PApplet {
         }
 
         pApplet.noStroke();
-        if (hibino.Main.m_hit = true) {
-            m_drawWidth = (m_hp / Main.m_hp_max) * m_rectWidth;
-            hibino.Main.m_hit = false;
+        if (hibino.Main.m_hit/* = true*/) {
+            //m_drawWidth = (m_hp / Main.m_hp_max) * m_rectWidth;
+            //hibino.Main.m_hit = false;
         }
         System.out.println("rect_m");
         pApplet.rect(1000, 100, m_drawWidth, 50);
