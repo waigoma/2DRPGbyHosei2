@@ -16,7 +16,9 @@ import static processing.core.PApplet.main;
 public class Presentation extends PApplet {
 
     PImage haikei;
-    PImage monster;
+    PImage dorako;
+    PImage batta;
+    PImage kettosi;
     PImage efect;
     PImage lifegauge;
 
@@ -50,11 +52,13 @@ public class Presentation extends PApplet {
         pApplet.imageMode(pApplet.CENTER);
         haikei.resize(pApplet.width,pApplet.height);
 
-       // monster = pApplet.loadImage("C:\\Users\\tkoto\\Downloads\\dorako.png");　　　　
-        monster = pApplet.loadImage("src/kotone/deta/dorako.png");    //filenameの書き方が違った（４７）
+        dorako = pApplet.loadImage("src/kotone/deta/dorako.png");    //filenameの書き方が違った（４７）
+        batta = pApplet.loadImage("src/kotone/deta/batta.png");
+        kettosi = pApplet.loadImage("src/kotone/deta/kettosi-.png");
+
         cngAlpha = false;//透明度の変化は「停止」にしておく
         cngGlay = false;//透明度の変化は「停止」にしておく
-        monster.resize(300,480);
+        //img.resize(300,480);
         pointX = pApplet.width/2;
         pointY = 300;
         speedY = 1;
@@ -62,7 +66,6 @@ public class Presentation extends PApplet {
         fadeOut();
 
         cutAnimation = new Gif(pApplet,"src/kotone/deta/cut2.gif");
-        cutAnimation.play();
 
         bakuhatsuAnimation = new Gif(pApplet,"src/kotone/deta/bakuhatsu.gif");
         bakuhatsuAnimation.play();
@@ -86,7 +89,7 @@ public class Presentation extends PApplet {
             pApplet.image(haikei, pApplet.width / 2, pApplet.height / 2);//背景の大きさ
 
             pApplet.tint(255f, alpha);//画像を透明度指定付きで表示
-            pApplet.image(monster, pointX, pointY);//モンスターの位置
+            pApplet.image(img[int(random(0,3))], pointX, pointY);//モンスターの位置
 
             monsterMove();
             lifeGauge();
@@ -94,6 +97,9 @@ public class Presentation extends PApplet {
 
         if(p_attack_event){
             pApplet.image(cutAnimation,pApplet.width/2, 300);
+            cutAnimation.play();
+        } else {
+
         }
 
         if((p_attack_event) && (p_random < 3)){
@@ -114,7 +120,7 @@ public class Presentation extends PApplet {
 
         if(m_damage_event){
             pApplet.tint(255, 80, 30);
-            pApplet.image(monster, pointX, pointY);
+            pApplet.image(img, pointX, pointY);
             pApplet.noTint();
         }
 
@@ -175,7 +181,7 @@ public class Presentation extends PApplet {
 //        }
 
             pApplet.tint(255, 80, 30);
-            pApplet.image(monster, pointX, pointY);
+            pApplet.image(dorako, pointX, pointY);
         } else {
             pApplet.noTint();//色を消す
         }

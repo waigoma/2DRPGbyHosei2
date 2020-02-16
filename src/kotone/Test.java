@@ -1,11 +1,10 @@
 package kotone;
 
-import gifAnimation.Gif;
 import processing.core.PApplet;
 
 public class Test extends PApplet{
 
-    Gif gif;
+
 
     @Override
     public void settings(){size(1280,720);}
@@ -14,7 +13,7 @@ public class Test extends PApplet{
     public void setup(){
 
         gif = new Gif(this,"src/kotone/deta/bakuhatsu2.gif");
-        gif.loop();
+        gif.play();
     }
 
     @Override
