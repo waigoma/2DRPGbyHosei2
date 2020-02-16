@@ -10,7 +10,7 @@ public class PlayerMove {
     //フロートで定義
     int speed = 3;    //speed初期値で３に定義
     int time = 0;
-    public boolean right, left, up, down;
+    public static boolean right, left, up, down;
 
     PApplet plet;
 
@@ -26,7 +26,7 @@ public class PlayerMove {
     }
 
     public void keyPressed() {// コード化されているキーが押された
-        if (plet.keyCode == plet.RIGHT || plet.key == 'd' || plet.key == 'D')right = true;
+        if (plet.keyCode == plet.RIGHT || plet.key == 'd' || plet.key == 'D') right = true;
         if (plet.keyCode == plet.LEFT || plet.key == 'a' || plet.key == 'A') left = true;
         if (plet.keyCode == plet.UP || plet.key == 'w' || plet.key == 'W') up = true;
         if (plet.keyCode == plet.DOWN || plet.key == 's' || plet.key == 'S') down = true;

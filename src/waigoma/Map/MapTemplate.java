@@ -18,10 +18,11 @@ public class MapTemplate {
     private int mapTileWidth, mapTileHeight, tileWidth, tileHeight, nextX, nextY, previousX, previousY;//map作るのに必要な基本情報
     private List<Collision> colList;
     private List<MapTrigger> nextList, backList;
+    private List<Interact> interactList;
     private PApplet plet;
     private PImage img;
 
-    public MapTemplate(String name, String nextMap, String previousMap, int nextX, int nextY, int previousX, int previousY, int mapTileWidth, int mapTileHeight, int tileWidth, int tileHeight, List<Integer[]> list, List<Collision> colList, List<MapTrigger> nextList, List<MapTrigger> backList, PImage[] imgs, PApplet plet) {//マップデータ保存
+    public MapTemplate(String name, String nextMap, String previousMap, int nextX, int nextY, int previousX, int previousY, int mapTileWidth, int mapTileHeight, int tileWidth, int tileHeight, List<Integer[]> list, List<Collision> colList, List<MapTrigger> nextList, List<MapTrigger> backList, List<Interact> interactList, PImage[] imgs, PApplet plet) {//マップデータ保存
         this.mapName = name;
         this.nextMap = nextMap;
         this.previousMap = previousMap;
@@ -37,6 +38,7 @@ public class MapTemplate {
         this.colList = colList;
         this.nextList = nextList;
         this.backList = backList;
+        this.interactList = interactList;
         this.imgs = imgs;
         this.plet = plet;
     }
@@ -84,6 +86,9 @@ public class MapTemplate {
     }
     public List<MapTrigger> getBackList() {
         return backList;
+    }
+    public List<Interact> getInteractList() {
+        return interactList;
     }
     public PImage[] getPImg() {
         return imgs;
@@ -147,6 +152,16 @@ public class MapTemplate {
             img = PImgs[index - 1];//配列は0からスタートでlayer情報は1からスタートなので-1
         }
         plet.image(img, imgX, imgY);//実際に画像を描写
+    }
+
+    public void event(){
+        for (Interact interact : getInteractList()){
+            if (Main.state == StateType.LOCAL_STATE) interact.fixError(-6, -3);
+            if (Main.state == StateType.WORLD_STATE) interact.fixError(4, 4);
+            if (interact.trigger()){
+                interact.event();
+            }
+        }
     }
 
     public boolean isNext(){

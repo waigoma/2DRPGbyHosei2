@@ -49,6 +49,7 @@ public class WorldMap {
         mapTmp.display();
         pmove.draw();
         mapTmp.topDisplay();
+        mapTmp.event();
 //        System.out.println(mapTmp.getMapName());
         if (mapTmp.isNext()){
             mapTmp = MapTemplate.maps.get(next + ".tmx");

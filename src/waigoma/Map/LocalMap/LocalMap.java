@@ -42,6 +42,7 @@ public class LocalMap {
         mapTmp.display();
         pmove.draw();
         mapTmp.topDisplay();
+        mapTmp.event();
         if (mapTmp.isNext()){
             Main.state = StateType.WORLD_STATE;
             Collision.Playerx = 149;
