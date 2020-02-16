@@ -3,13 +3,12 @@ package waigoma.Map;
 import issei.PlayerMove;
 import nagai.Collision;
 import processing.core.PApplet;
-import processing.core.PImage;
 
 public class Interact {
     /*
     eventId
-    1 = chat
-    2 = interact event
+    1 = display
+    2 = chat
     3 = once event
     4 = move map
      */
@@ -19,7 +18,7 @@ public class Interact {
     int count, chatCount = 0;
     int time = 0;
     float px, py;
-    boolean runChat, runEvent, right, left;
+    boolean runDisplayEvent, runChatEvent, runOnceEvent, runMoveEvent;
 
     PApplet plet;
 
@@ -64,29 +63,34 @@ public class Interact {
         switch (eventId){
             case 1://chat表示
 //                System.out.println("event:1");
-                if (isDirectionClick()) runChat = true;
-                runChat();
+                if (isDirectionClick()) runDisplayEvent = true;
+                runDisplayEvent();
                 break;
-            case 2://イベント内容(ものを拾うとか)
-                System.out.println("event:2");
-                if (isDirectionClick()) runEvent = true;
-                runEvent();
+            case 2://人との会話
+//                System.out.println("event:2");
+                if (isDirectionClick()) runChatEvent = true;
+                runChatEvent();
                 break;
             case 3://一回きりのイベント
+//                System.out.println("event:3");
+                if (isDirectionClick()) runOnceEvent = true;
+                runOnceEvent();
                 break;
             case 4://移動イベント
-                System.out.println("event:3");
+//                System.out.println("event:4");
+                if (isDirectionClick()) runMoveEvent = true;
+                runMoveEvent();
                 break;
         }
     }
 
-    public void runChat(){
-        if (chatCount == 0 && runChat){
+    public void runDisplayEvent(){
+        if (chatCount == 0 && runChatEvent){
             px = Collision.Playerx;
             py = Collision.Playery;
             chatCount++;
         }
-        if (runChat){
+        if (runChatEvent){
             plet.rectMode(plet.CENTER);
             plet.stroke(0);
             plet.strokeWeight(8);
@@ -110,7 +114,7 @@ public class Interact {
             Collision.Playerx = px;
             Collision.Playery = py;
 
-            if (plet.keyCode == plet.ENTER) runChat = false;
+            if (plet.keyCode == plet.ENTER) runChatEvent = false;
 
             time++;
         }else {
@@ -118,8 +122,22 @@ public class Interact {
         }
     }
 
-    public void runEvent(){
+    public void runChatEvent(){//会話を表示できるようにする、選択肢を用意する
+        if (runChatEvent){
 
+        }
+    }
+
+    public void runOnceEvent(){//やったかどうかをチェックして実行、やったかどうかは保存できるようにする
+        if (runOnceEvent){
+
+        }
+    }
+
+    public void runMoveEvent(){//mapTmpの値を変化させる、座標とかも合わせて取得できるようにする
+        if (runMoveEvent){
+
+        }
     }
 
     public boolean isDirectionClick(){
