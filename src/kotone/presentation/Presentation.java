@@ -54,43 +54,36 @@ public class Presentation extends PApplet {
         monster = pApplet.loadImage("src/kotone/deta/dorako.png");    //filenameの書き方が違った（４７）
         cngAlpha = false;//透明度の変化は「停止」にしておく
         cngGlay = false;//透明度の変化は「停止」にしておく
-        fadeMode = true; //最初から表示している状態で始めたいので現在の状態を「true」に仮設定する
         monster.resize(300,480);
         pointX = pApplet.width/2;
         pointY = 300;
         speedY = 1;
 
-        cutAnimation = new Gif(pApplet,"src/kotone/deta/cut.gif");
-        cutAnimation.play();
-        cutAnimation.resize(400,400);
+        fadeOut();
 
-        bakuhatsuAnimation = new Gif(pApplet,"src/kotone/deta/bakuhatu.gif");
+        cutAnimation = new Gif(pApplet,"src/kotone/deta/cut2.gif");
+        cutAnimation.play();
+
+        bakuhatsuAnimation = new Gif(pApplet,"src/kotone/deta/bakuhatsu.gif");
         bakuhatsuAnimation.play();
-        bakuhatsuAnimation.resize(400,400);
 
         fireAnimation = new Gif(pApplet,"src/kotone/deta/fire.gif");
         fireAnimation.play();
-        fireAnimation.resize(400,400);
 
         lightningAnimation = new Gif(pApplet,"src/kotone/deta/lightning.gif");
         lightningAnimation.play();
-        lightningAnimation.resize(400,400);
 
         monsterAnimation = new Gif(pApplet,"src/kotone/deta/monster.gif");
         monsterAnimation.play();
-        monsterAnimation.resize(700,700);
 
-        p_drawWidth = ((float) p_hp / p_hp_max) * p_rectWidth;
+        p_drawWidth = ((float) p_hp / Main.p_hp_max) * p_rectWidth;
         m_drawWidth = ((float) m_hp / Main.m_hp_max) * m_rectWidth;
     }
 
 
     public void draw() {
-//        System.out.println("draw");
         if (Main.start_event){
-            pApplet.tint(glay);
             pApplet.image(haikei, pApplet.width / 2, pApplet.height / 2);//背景の大きさ
-//            pApplet.image(monster,pApplet.width/2,300);
 
             pApplet.tint(255f, alpha);//画像を透明度指定付きで表示
             pApplet.image(monster, pointX, pointY);//モンスターの位置
@@ -100,39 +93,29 @@ public class Presentation extends PApplet {
         }
 
         if(p_attack_event){
-            System.out.println("俺のターン！");
             pApplet.image(cutAnimation,pApplet.width/2, 300);
-
-
-            
         }
 
         if((p_attack_event) && (p_random < 3)){
-            System.out.println("会心の一撃！");
             pApplet.image(cutAnimation,pApplet.width/2, 300);
         }
 
         if((p_attack_event) && (tap_b)){
-            pApplet.text("爆弾",500,500);
             pApplet.image(bakuhatsuAnimation,pApplet.width/2,300);
         }
 
         if((p_attack_event) && (tap_f)){
-            System.out.println("ファイヤー");
             pApplet.image(fireAnimation,width/2,300);
         }
 
         if((p_attack_event) && (tap_l)){
-            System.out.println("ライトニング");
             pApplet.image(lightningAnimation,width/2,300);
         }
 
         if(m_damage_event){
             pApplet.tint(255, 80, 30);
             pApplet.image(monster, pointX, pointY);
-            //pApplet.delay(500);
             pApplet.noTint();
-           // m_damage_event = false;
         }
 
         if(m_attack_event){
@@ -195,6 +178,10 @@ public class Presentation extends PApplet {
             pApplet.image(monster, pointX, pointY);
         } else {
             pApplet.noTint();//色を消す
+        }
+
+        if(Main.fadeMode){
+            fadeOut();
         }
 
     }
@@ -264,23 +251,20 @@ public class Presentation extends PApplet {
         pApplet.rect(1000, 100, m_rectWidth, 50);
     }
 
-//    //透明度を変化させる場合
-//        if (!fadeMode) {
-//        fadeOut();
-//    }
 
 
-//フェードアウト処理関数
-//    public void fadeOut () {
-//        //徐々に薄くする
-//        alpha = alpha - 10f;
-//
-//        //透明になったら変化終了
-//        if (alpha < 0f) {
-//            alpha = 0f;
-//            cngAlpha = false;
-//        }
-//    }
+
+
+    public void fadeOut () {
+        //徐々に薄くする
+        alpha = alpha - 10f;
+
+        //透明になったら変化終了
+        if (alpha < 0f) {
+            alpha = 0f;
+            cngAlpha = false;
+        }
+    }
 //
 //    public void lifeGauge(){
 //        nowP_hp = nowP_hp/p_hp * p_lifegaugeWidth; //プレイヤーHP の比率計算

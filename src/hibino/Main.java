@@ -68,6 +68,7 @@ public class Main extends PApplet {      //extends PApplet消す    MainをComba
         public static boolean mp_no = false;
         public static boolean item_no = false;
         public static boolean escape_random = false;
+        public static boolean fadeMode = false;
         //----------------------------------------------グラフィック、音響読み込み
         public static boolean start_event = false;    //バトルが始まったときに行う処理（BGMを流し続けるなど）
         public static boolean p_attack_event = false;    //プレイヤーが攻撃したとき
@@ -384,6 +385,7 @@ public class Main extends PApplet {      //extends PApplet消す    MainをComba
             if ((m_hp <= 0) && (keika > 1000*7) && (keika <1000*11)) {    //もしm_hpが０ならば
 
                 finish_event = true;
+                fadeMode = true;
 //------------------------                myimage.draw();
 //------------------------                        mysound.main();
 
