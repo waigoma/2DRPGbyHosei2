@@ -54,16 +54,34 @@ public class TMXLoader {//map情報の読み込み
             String sHeight = element.getAttribute("height");//map縦幅
             String sTilewidth = element.getAttribute("tilewidth");//mapタイル横幅
             String sTileheight = element.getAttribute("tileheight");//mapタイル縦幅
+            String next = element.getAttribute("nextMap");
+            String previous = element.getAttribute("previousMap");
+            //
+            String nextXs = element.getAttribute("nextX");
+            String nextYs = element.getAttribute("nextY");
+            String previousXs = element.getAttribute("previousX");
+            String previousYs = element.getAttribute("previousY");
 
             int mapTileWidth = 0;
             int mapTileHeight = 0;
             int tileWidth = 0;
             int tileHeight = 0;
+            //
+            int nextX = 0;
+            int nextY = 0;
+            int previousX = 0;
+            int previousY = 0;
+
             //cast to int
             if (!(sWidth.isEmpty())) mapTileWidth = Integer.parseInt(sWidth);
             if (!(sHeight.isEmpty())) mapTileHeight = Integer.parseInt(sHeight);
             if (!(sTilewidth.isEmpty())) tileWidth = Integer.parseInt(sTilewidth);
             if (!(sTileheight.isEmpty())) tileHeight = Integer.parseInt(sTileheight);
+            //
+            if (!(nextXs.isEmpty())) nextX = Integer.parseInt(nextXs);
+            if (!(nextYs.isEmpty())) nextY = Integer.parseInt(nextYs);
+            if (!(previousXs.isEmpty())) previousX = Integer.parseInt(previousXs);
+            if (!(previousYs.isEmpty())) previousY = Integer.parseInt(previousYs);
 
             for (int i = 0; i < nodeList.getLength(); i++) {
                 Node node = nodeList.item(i);//子要素i番目取得
@@ -184,7 +202,7 @@ public class TMXLoader {//map情報の読み込み
                 PImgList.add(new PImage(bfi));
             }
             imgs = PImgList.toArray(new PImage[0]);//PImageのlistを配列に変換
-            MapTemplate.maps.put(mapName, new MapTemplate(mapName, mapTileWidth, mapTileHeight, tileWidth, tileHeight, mapList, colList, nextList, backList, imgs, plet));//map情報を保存
+            MapTemplate.maps.put(mapName, new MapTemplate(mapName, next, previous, nextX, nextY, previousX, previousY, mapTileWidth, mapTileHeight, tileWidth, tileHeight, mapList, colList, nextList, backList, imgs, plet));//map情報を保存
         }catch (Exception e){
             e.printStackTrace();
         }

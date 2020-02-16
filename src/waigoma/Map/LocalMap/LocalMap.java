@@ -17,6 +17,8 @@ public class LocalMap {
     public LocalMap(PApplet papplet){
         this.plet = papplet;
         pmove = new PlayerMove(papplet);
+        Collision.Playerx = 162;
+        Collision.Playery = 142;
     }
 
     public void keyPressed(){
@@ -33,8 +35,6 @@ public class LocalMap {
             int width = mapTmp.getMapTileWidth() * mapTmp.getTileWidth();
             int height = mapTmp.getMapTileHeight() * mapTmp.getTileHeight();
             plet.getSurface().setSize(width - 10,height - 10);
-            Collision.Playerx = 162;
-            Collision.Playery = 142;
             plet.background(0);
             pmove.setup();
             count++;
@@ -42,15 +42,15 @@ public class LocalMap {
         mapTmp.display();
         pmove.draw();
         mapTmp.topDisplay();
-        if (mapTmp.next){
+        if (mapTmp.isNext()){
             Main.state = StateType.WORLD_STATE;
             Collision.Playerx = 149;
             Collision.Playery = 550;
             count = 0;
             plet.delay(100);
         }
-        if (mapTmp.back){
-            Main.state = StateType.LOCAL_STATE;
+        if (mapTmp.isBack()){
+//            Main.state = StateType.LOCAL_STATE;
             count = 0;
         }
     }

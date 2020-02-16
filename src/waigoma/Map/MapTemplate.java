@@ -11,19 +11,24 @@ import java.util.List;
 
 public class MapTemplate {
     public static LinkedHashMap<String, MapTemplate> maps = new LinkedHashMap<>();//マップデータをHashMapで保存
-    public boolean next, back = false;
 
     private PImage[] imgs;//mapChipが入った配列
     private List<Integer[]> list;//mapのlayerが入った配列
-    private String mapName;//mapの名前
-    private int mapTileWidth, mapTileHeight, tileWidth, tileHeight;//map作るのに必要な基本情報
+    private String mapName, nextMap, previousMap;//mapの名前
+    private int mapTileWidth, mapTileHeight, tileWidth, tileHeight, nextX, nextY, previousX, previousY;//map作るのに必要な基本情報
     private List<Collision> colList;
     private List<MapTrigger> nextList, backList;
     private PApplet plet;
     private PImage img;
 
-    public MapTemplate(String name, int mapTileWidth, int mapTileHeight, int tileWidth, int tileHeight, List<Integer[]> list, List<Collision> colList, List<MapTrigger> nextList, List<MapTrigger> backList, PImage[] imgs, PApplet plet) {//マップデータ保存
+    public MapTemplate(String name, String nextMap, String previousMap, int nextX, int nextY, int previousX, int previousY, int mapTileWidth, int mapTileHeight, int tileWidth, int tileHeight, List<Integer[]> list, List<Collision> colList, List<MapTrigger> nextList, List<MapTrigger> backList, PImage[] imgs, PApplet plet) {//マップデータ保存
         this.mapName = name;
+        this.nextMap = nextMap;
+        this.previousMap = previousMap;
+        this.nextX = nextX;
+        this.nextY = nextY;
+        this.previousX = previousX;
+        this.previousY = previousY;
         this.mapTileWidth = mapTileWidth;
         this.mapTileHeight = mapTileHeight;
         this.tileWidth = tileWidth;
@@ -37,6 +42,24 @@ public class MapTemplate {
     }
     public String getMapName(){
         return mapName;
+    }
+    public String getNextMap() {
+        return nextMap;
+    }
+    public String getPreviousMap() {
+        return previousMap;
+    }
+    public int getNextX() {
+        return nextX;
+    }
+    public int getNextY() {
+        return nextY;
+    }
+    public int getPreviousX() {
+        return previousX;
+    }
+    public int getPreviousY() {
+        return previousY;
     }
     public int getMapTileWidth() {
         return mapTileWidth;
@@ -73,16 +96,6 @@ public class MapTemplate {
             if (Main.state == StateType.WORLD_STATE) col.fixError(4, 4);
             col.ObjectCollision();
             col.Outside();
-        }
-        for (MapTrigger nmt : getNextList()){
-            if (Main.state == StateType.LOCAL_STATE) nmt.fixError(-6, -3);
-            if (Main.state == StateType.WORLD_STATE) nmt.fixError(4, 4);
-            next = nmt.mapTrigger();
-        }
-        for (MapTrigger bmt : getBackList()){
-            if (Main.state == StateType.LOCAL_STATE) bmt.fixError(-6, -3);
-            if (Main.state == StateType.WORLD_STATE) bmt.fixError(4, 4);
-            back = bmt.mapTrigger();
         }
         for (Integer[] mapNums : getList()) {//Listからlayerの情報を引き出す(下のlayerから順に)
             int x = 0;//x座標(何個目か)
@@ -134,5 +147,23 @@ public class MapTemplate {
             img = PImgs[index - 1];//配列は0からスタートでlayer情報は1からスタートなので-1
         }
         plet.image(img, imgX, imgY);//実際に画像を描写
+    }
+
+    public boolean isNext(){
+        for (MapTrigger nmt : getNextList()){
+            if (Main.state == StateType.LOCAL_STATE) nmt.fixError(-6, -3);
+            if (Main.state == StateType.WORLD_STATE) nmt.fixError(4, 4);
+            if(nmt.mapTrigger()) return true;
+        }
+        return false;
+    }
+
+    public boolean isBack(){
+        for (MapTrigger bmt : getBackList()){
+            if (Main.state == StateType.LOCAL_STATE) bmt.fixError(-6, -3);
+            if (Main.state == StateType.WORLD_STATE) bmt.fixError(4, 4);
+            if (bmt.mapTrigger()) return true;
+        }
+        return false;
     }
 }
