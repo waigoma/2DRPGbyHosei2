@@ -85,12 +85,12 @@ public class Interact {
     }
 
     public void runDisplayEvent(){
-        if (chatCount == 0 && runChatEvent){
+        if (chatCount == 0 && runDisplayEvent){
             px = Collision.Playerx;
             py = Collision.Playery;
             chatCount++;
         }
-        if (runChatEvent){
+        if (runDisplayEvent){
             plet.rectMode(plet.CENTER);
             plet.stroke(0);
             plet.strokeWeight(8);
@@ -114,7 +114,7 @@ public class Interact {
             Collision.Playerx = px;
             Collision.Playery = py;
 
-            if (plet.keyCode == plet.ENTER) runChatEvent = false;
+            if (plet.keyCode == plet.ENTER) runDisplayEvent = false;
 
             time++;
         }else {
