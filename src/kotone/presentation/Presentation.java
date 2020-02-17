@@ -113,29 +113,21 @@ public class Presentation extends PApplet {
         }
 
         if(p_attack_event){
-            cutAnimation.play();
+            if((p_attack_event) && (p_random < 3)){
+                cutAnimation.play();
+                pApplet.image(cutAnimation,pApplet.width/2, 300);
+
+            } else  if((p_attack_event) && (tap_b)){
+                bakuhatsuAnimation.play();
+                pApplet.image(bakuhatsuAnimation,pApplet.width/2,300);
+            } else if((p_attack_event) && (tap_f)){
+                fireAnimation.play();
+                pApplet.image(fireAnimation,pApplet.width/2,300);
+            } else if((p_attack_event) && (tap_l)){
+                lightningAnimation.play();
+                pApplet.image(lightningAnimation,pApplet.width/2,300);
+            } else  cutAnimation.play();
             pApplet.image(cutAnimation,pApplet.width/2, 300);
-        }
-
-        if((p_attack_event) && (p_random < 3)){
-            cutAnimation.play();
-            pApplet.image(cutAnimation,pApplet.width/2, 300);
-
-        }
-
-        if((p_attack_event) && (tap_b)){
-            bakuhatsuAnimation.play();
-            pApplet.image(bakuhatsuAnimation,pApplet.width/2,300);
-        }
-
-        if((p_attack_event) && (tap_f)){
-            fireAnimation.play();
-            pApplet.image(fireAnimation,pApplet.width/2,300);
-        }
-
-        if((p_attack_event) && (tap_l)){
-            lightningAnimation.play();
-            pApplet.image(lightningAnimation,pApplet.width/2,300);
         }
 
         if(m_damage_event){
