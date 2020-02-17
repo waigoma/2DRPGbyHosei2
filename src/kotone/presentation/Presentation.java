@@ -112,22 +112,26 @@ public class Presentation extends PApplet {
             lifeGauge();
         }
 
-        if(p_attack_event){
-            if(p_random < 3){
-                cutAnimation.play();
-                pApplet.image(cutAnimation,pApplet.width/2, 300);
-            } else  if(tap_b){
-                bakuhatsuAnimation.play();
-                pApplet.image(bakuhatsuAnimation,pApplet.width/2,300);
-            } else if(tap_f){
-                fireAnimation.play();
-                pApplet.image(fireAnimation,pApplet.width/2,300);
-            } else if(tap_l){
-                lightningAnimation.play();
-                pApplet.image(lightningAnimation,pApplet.width/2,300);
-            } else  cutAnimation.play();
-            pApplet.image(cutAnimation,pApplet.width/2, 300);
+        if(p_attack_event) {
+            cutAnimation.play();
+            pApplet.image(cutAnimation, pApplet.width / 2, 300);
         }
+
+        if ((item_event) && (tap_b)) {
+            bakuhatsuAnimation.play();
+            pApplet.image(bakuhatsuAnimation, pApplet.width / 2, 300);
+        }
+
+        if ((magic_event) && (tap_f)){
+            fireAnimation.play();
+            pApplet.image(fireAnimation,pApplet.width/2,300);
+        }
+
+        if ((magic_event) && (tap_l)) {
+            lightningAnimation.play();
+            pApplet.image(lightningAnimation, pApplet.width / 2, 300);
+        }
+
 
         if(m_damage_event){
             if (m_name.equals("モンスターA")){
