@@ -6,6 +6,7 @@ import kotone.presentation.Presentation;
 import processing.core.PApplet;
 import processing.core.PFont;
 import processing.core.PImage;
+import takano.Takano1;
 import waigoma.Map.LocalMap.LocalMap;
 import waigoma.StateType;
 
@@ -33,6 +34,7 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
     // Table number;    //各設定数値の読み込み
     float a;
     public static int counts = 0;
+    public static int p_attack_count = 0;
 
     public static int p_hp ;    //数値変数(プレイヤー体力)            (メインで宣言)
     public static int p_hp_max ;                                   //(メインで宣言)
@@ -181,6 +183,11 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
         }
         start_event = true;
         myimage.draw();
+        if (p_attack_count == 0) {
+            Takano1 sample1 = new Takano1("src/takano/bgm/キラーズ・シルエット.wav", 1000, true); // [3]
+            sample1.start(); // [4]
+            p_attack_count++;
+        }
 //-----------        mysound.sound();
         //mysample.init();
 
@@ -255,6 +262,11 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
 
                     // if(!item_event){
                     item_event = true;
+                    if (p_attack_count == 0) {
+                        Takano1 sample2 = new Takano1("src/takano/bgm/item-01.wav", 2, false); // [3]
+                        sample2.start(); // [4]
+                        p_attack_count++;
+                    }
 //------------------------                        myimage.draw();
 //------------------------                        mysound.main();
                     //myplayer.draw();
@@ -268,6 +280,11 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
 
 
                             m_damage_event = true;
+                            if (p_attack_count == 0) {
+                                Takano1 sample3 = new Takano1("src/takano/bgm/game_explosion3_1.wav", 2, false); // [3]
+                                sample3.start(); // [4]
+                                p_attack_count++;
+                            }
 //------------------------                            myimage.draw();
 //------------------------                        mysound.main();
                             if(keika > 1000*5.2)
@@ -287,6 +304,11 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
                             pApplet.text("プレイヤーはHPを200回復した", 440, 590);
 
                             heal_event = true;
+                            if (p_attack_count == 0) {
+                                Takano1 sample4 = new Takano1("src/takano/bgm/kaifuku.wav", 2, false); // [3]
+                                sample4.start(); // [4]
+                                p_attack_count++;
+                            }
 //------------------------                             myimage.draw();
 //------------------------                        mysound.main();
 
@@ -313,6 +335,11 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
                     pApplet.text(p_name + "は" + magic + "を唱えた", 440, 560);    //実行する
 
                 magic_event = true;
+                if (p_attack_count == 0) {
+                    Takano1 sample5 = new Takano1("src/takano/bgm/skill.wav", 2, false); // [3]
+                    sample5.start(); // [4]
+                    p_attack_count++;
+                }
 //------------------------                myimage.draw();
 //------------------------                        mysound.main();
 
@@ -322,6 +349,11 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
                             pApplet.text("敵に" + fire_damage + "ダメージ", 440, 590);
 
                             m_damage_event = true;
+                            if (p_attack_count == 0) {
+                                Takano1 sample6 = new Takano1("src/takano/bgm/magic-flame1.wav", 2, false); // [3]
+                                sample6.start(); // [4]
+                                p_attack_count++;
+                            }
 //------------------------                            myimage.draw();
 //------------------------                        mysound.main();
                             if(keika > 1000*5.2)
@@ -341,6 +373,11 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
                             pApplet.text("敵に" + lightning_damage + "ダメージ", 440, 590);
 
                             m_damage_event = true;
+                            if (p_attack_count == 0) {
+                                Takano1 sample7 = new Takano1("src/takano/bgm/magic-electron2.wav", 2, false); // [3]
+                                sample7.start(); // [4]
+                                p_attack_count++;
+                            }
 //------------------------                            myimage.draw();
 //------------------------                        mysound.main();
                             if(keika > 1000*5.2)
@@ -381,6 +418,11 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
                         pApplet.text("会心の一撃！敵に" + p_attack * 2 + "ダメージ", 440, 590);
 
                         m_damage_event = true;
+                        if (p_attack_count == 0) {
+                            Takano1 sample9 = new Takano1("src/takano/bgm/斬撃音_1.wav", 2, false); // [3]
+                            sample9.start(); // [4]
+                            p_attack_count++;
+                        }
 //------------------------                        myimage.draw();
 //------------------------                        mysound.main();
                         if(keika > 1000*5.2)
@@ -412,6 +454,11 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
             if ((1000 * 12 < keika) && (keika < 1000 * 20) && (m_hp != 0)) {    //１２～２０秒で敵体力が０じゃないとき                                                                    //ここから新しく
                 pApplet.text(m_name + "の攻撃", 440, 560);
                 m_attack_event = true;
+                if (p_attack_count == 0) {
+                    Takano1 sample10 = new Takano1("src/takano/bgm/斬撃音_1.wav", 2, false); // [3]
+                    sample10.start(); // [4]
+                    p_attack_count++;
+                }
             }
             if(keika > 1000*12.2)
                 m_attack_event = false;
@@ -423,6 +470,11 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
                     pApplet.text("痛恨の一撃！プレイヤーに" + m_attack * 2 + "ダメージ", 440, 590);
 
                     p_damage_event = true;
+                    if (p_attack_count == 0) {
+                        Takano1 sample11 = new Takano1("src/takano/bgm/シャキーンという斬撃音", 2, false); // [3]
+                        sample11.start(); // [4]
+                        p_attack_count++;
+                    }
 //------------------------                    myimage.draw();
 //------------------------                        mysound.main();
 
@@ -431,6 +483,11 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
                     pApplet.text("プレイヤーに" + m_attack + "ダメージ", 440, 590);
 
                     p_damage_event = true;
+                    if (p_attack_count == 0) {
+                        Takano1 sample12 = new Takano1("src/takano/bgm/斬撃音_1.wav", 2, false); // [3]
+                        sample12.start(); // [4]
+                        p_attack_count++;
+                    }
 //------------------------                    myimage.draw();
 //------------------------                        mysound.main();
 
@@ -454,6 +511,11 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
                 pApplet.text(p_name + "は倒れた", 440, 620);
 
                 finish_event = true;
+                if (p_attack_count == 0) {
+                    Takano1 sample13 = new Takano1("src/takano/bgm/sentouhunou.wav", 2, false); // [3]
+                    sample13.start(); // [4]
+                    p_attack_count++;
+                }
 //------------------------                myimage.draw();
 //------------------------                        mysound.main();
 
@@ -488,6 +550,11 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
             if ((m_hp <= 0) && (keika > 1000*7) && (keika <1000*11)) {    //もしm_hpが０ならば
 
                 finish_event = true;
+                if (p_attack_count == 0) {
+                    Takano1 sample15 = new Takano1("src/takano/bgm/始まりを告げる喇叭.wav", 2, false); // [3]
+                    sample15.start(); // [4]
+                    p_attack_count++;
+                }
 //------------------------                myimage.draw();
 //------------------------                        mysound.main();
 
@@ -569,6 +636,11 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
                     pApplet.text(p_name + "はレベルが" + Lv + "になった", 440, 710);
 
                     Lvup_event = true;
+                    if (p_attack_count == 0) {
+                        Takano1 sample16 = new Takano1("src/takano/bgm/キラキラした音.wa", 2, false); // [3]
+                        sample16.start(); // [4]
+                        p_attack_count++;
+                    }
 //------------------------                    myimage.draw();
 //------------------------                        mysound.main();
 
@@ -603,6 +675,11 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
                     pApplet.text("逃げ出せなかった", 440, 560);
 
                     escape_event = true;
+                    if (p_attack_count == 0) {
+                        Takano1 sample17 = new Takano1("src/takano/bgm/miss.wav", 2, false); // [3]
+                        sample17.start(); // [4]
+                        p_attack_count++;
+                    }
 //------------------------                    myimage.draw();
 //------------------------                        mysound.main();
 
@@ -611,6 +688,11 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
                     pApplet.text(m_name + "の攻撃", 440, 560);
 
                 m_attack_event = true;
+                if (p_attack_count == 0) {
+                    Takano1 sample22 = new Takano1("src/takano/bgm/斬撃音_1.wav", 2, false); // [3]
+                    sample22.start(); // [4]
+                    p_attack_count++;
+                }
 //------------------------                myimage.draw();
 //------------------------                        mysound.main();
 
@@ -619,6 +701,11 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
                         pApplet.text("痛恨の一撃！プレイヤーに" + m_attack * 2 + "ダメージ", 440, 590);
 
                         p_damage_event = true;
+                        if (p_attack_count == 0) {
+                            Takano1 sample19 = new Takano1("src/takano/bgm/シャキーンという斬撃音", 2, false); // [3]
+                            sample19.start(); // [4]
+                            p_attack_count++;
+                        }
 //------------------------                        myimage.draw();
 //------------------------                        mysound.main();
 
@@ -649,6 +736,11 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
                     pApplet.text(p_name + "は倒れた", 440, 620);
 
                     finish_event = true;
+                    if (p_attack_count == 0) {
+                        Takano1 sample20 = new Takano1("src/takano/bgm/sentouhunou.wav", 2, false); // [3]
+                        sample20.start(); // [4]
+                        p_attack_count++;
+                    }
 //------------------------                myimage.draw();
 //------------------------                        mysound.main();
 
@@ -672,6 +764,11 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
                 pApplet.text(p_name + "は逃げ出した", 440, 560);    //実行する
 
                 escape_event = true;
+                if (p_attack_count == 0) {
+                    Takano1 sample21 = new Takano1("src/takano/bgm/tousou-01.wav", 2, false); // [3]
+                    sample21.start(); // [4]
+                    p_attack_count++;
+                }
 //------------------------                myimage.draw();
 //------------------------                        mysound.main();
 
