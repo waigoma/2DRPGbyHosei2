@@ -21,7 +21,7 @@ import java.util.Properties;
 
 public class Save {
 
-    PApplet pApplet;//--------------------------------読み込む文言
+    PApplet pApplet;//--------------------------------読み込む文言a
     public Save(PApplet pApplet) {
         this.pApplet = pApplet;
     }

@@ -38,7 +38,7 @@ public class Load {
         switch(hibino.Main.m_name) {
             case "モンスターA":
                 //Main.m_name = properties.getProperty("m_name");    //文字列
-                (hibino.Main.m_hp) = Integer.parseInt(properties.getProperty("a_m_hp"));   //数値
+                (hibino.Main.m_hp) = Integer.parseInt(properties.getProperty("a_m_hp"));   //数値a
                 (Main.m_hp_max) = Integer.parseInt(properties.getProperty("a_m_hp_max"));
                 (Main.m_attack) = Integer.parseInt(properties.getProperty("a_m_attack"));
                 (Main.m_exp) = Integer.parseInt(properties.getProperty("a_m_exp"));

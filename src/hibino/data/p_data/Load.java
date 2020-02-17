@@ -27,7 +27,7 @@ public class Load {
         try {
 
 
-            // 読み込み
+            // 読み込みa
             InputStream istream = new FileInputStream(strpass);
             InputStreamReader isr = new InputStreamReader(istream, "UTF-8");
             properties.load(isr);

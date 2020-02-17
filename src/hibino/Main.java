@@ -6,7 +6,7 @@ import kotone.presentation.Presentation;
 import processing.core.PApplet;
 import processing.core.PFont;
 
-public class Main extends PApplet {      //extends PApplet消す    MainをCombatに変える
+public class Main extends PApplet {      //extends PApplet消す    MainをCombatに変えるa
 
     //PApplet pApplet;
     //public Combat(PApplet pApplet){this.pApplet = pApplet;}
