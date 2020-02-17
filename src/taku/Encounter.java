@@ -33,7 +33,12 @@ public class Encounter {
         }else{
             Combat.m_name = "モンスターB";
         }
-        Main.state = StateType.COMBAT_STATE;
         i = 0;
+        PlayerMove.up = false;
+        PlayerMove.right = false;
+        PlayerMove.down = false;
+        PlayerMove.left = false;
+
+        Main.state = StateType.COMBAT_STATE;
     }
 }

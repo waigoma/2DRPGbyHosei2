@@ -95,6 +95,7 @@ public class MapTemplate {
     }
 
     public void display(){//マップの一番手前に出てこないところの描写
+//        System.out.println("display");
         int count = 0;//layerカウント
         for (Collision col : getColList()){
             if (Main.state == StateType.LOCAL_STATE) col.fixError(-6, -3);

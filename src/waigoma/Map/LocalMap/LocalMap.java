@@ -45,6 +45,7 @@ public class LocalMap {
             plet.getSurface().setSize(width - 10,height - 10);
             plet.background(0);
             pmove.setup();
+//            System.out.println("local");
             count++;
         }
 

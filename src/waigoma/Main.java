@@ -64,13 +64,16 @@ public class Main extends PApplet {
                 title.run();
                 break;
             case StateType.LOCAL_STATE:
+//                System.out.println("1");
                 localMap.display();
                 break;
             case StateType.WORLD_STATE:
+//                System.out.println("2");
                 worldMap.display();
-                encounter.randomEncounter();
+//                encounter.randomEncounter();
                 break;
             case StateType.COMBAT_STATE:
+//                System.out.println("3");
                 combat.draw();
                 break;
         }

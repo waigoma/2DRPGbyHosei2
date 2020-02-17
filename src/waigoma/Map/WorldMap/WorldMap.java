@@ -9,6 +9,8 @@ import waigoma.StateType;
 
 import waigoma.Map.LocalMap.LocalMap;
 
+import java.util.Arrays;
+
 public class WorldMap {
     String next, previous;
     int nextX, nextY, previousX, previousY;
@@ -45,6 +47,7 @@ public class WorldMap {
             plet.background(0);
             pmove.setup();
             LocalMap.count++;
+//            System.out.println(Arrays.toString(mapTmp.getPImg()));
         }
 
         mapTmp.display();
@@ -54,23 +57,23 @@ public class WorldMap {
 
 //        System.out.println(mapTmp.getMapName());
         if (mapTmp.isNext()){
-//            waigoma.Main.state = StateType.COMBAT_STATE;
-            mapTmp = MapTemplate.maps.get(next + ".tmx");
+            Main.state = StateType.COMBAT_STATE;
+//            mapTmp = MapTemplate.maps.get(next + ".tmx");
             Collision.Playerx = nextX;
             Collision.Playery = nextY;
-            LocalMap.count = 0;
+//            LocalMap.count = 0;
         }
-        if (mapTmp.isBack()){
-            mapTmp = MapTemplate.maps.get(previous + ".tmx");
-            if (mapTmp.getMapName().contains("1village")){
-                Main.state = StateType.LOCAL_STATE;
-                next = mapTmp.getNextMap();
-                LocalMap.mapTmp = mapTmp;
-                mapTmp = MapTemplate.maps.get(next + ".tmx");
-            }
-            Collision.Playerx = previousX;
-            Collision.Playery = previousY;
-            LocalMap.count = 0;
-        }
+//        if (mapTmp.isBack()){
+//            mapTmp = MapTemplate.maps.get(previous + ".tmx");
+//            if (mapTmp.getMapName().contains("1village")){
+//                Main.state = StateType.LOCAL_STATE;
+//                next = mapTmp.getNextMap();
+//                LocalMap.mapTmp = mapTmp;
+//                mapTmp = MapTemplate.maps.get(next + ".tmx");
+//            }
+//            Collision.Playerx = previousX;
+//            Collision.Playery = previousY;
+//            LocalMap.count = 0;
+//        }
     }
 }

@@ -25,7 +25,7 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
     ///hibino.Sample mysample;
 
     public static String p_name = "プレイヤー名";    //文字列変数(プレイヤー名)                                     （クラス内で変数は定義）
-    public static String m_name = "モンスターC";//モンスター名
+    public static String m_name = "モンスターA";//モンスター名
     public static String item;
     public static String magic;
 
@@ -98,6 +98,36 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
 
     
     public void setup(){
+        combat = true;
+        tap_a = false;    //真偽変数（初期化するためにfalseにする)
+        tap_b = false;
+        tap_e = false;
+        tap_f = false;
+        tap_l = false;
+        tap_m = false;
+        tap_i = false;
+        tap_y = false;
+        p_hit = false;
+        m_hit = false;
+        battle = false;
+        total_exp_flg = false;
+        level_flg = false;
+        mp_no = false;
+        item_no = false;
+        escape_random = false;
+
+        //----------------------------------------------グラフィック、音響読み込み
+        start_event = false;    //バトルが始まったときに行う処理（BGMを流し続けるなど）
+        p_attack_event = false;    //プレイヤーが攻撃したとき
+        m_damage_event = false;    //通常のダメージのとき、会心のとき、爆弾のとき、ファイヤーのとき、ライトニングのとき、
+        m_attack_event = false;    //敵が攻撃したとき
+        p_damage_event = false;    //通常のダメージのとき、痛恨のとき
+        finish_event = false;    //プレイヤーが死んだとき、敵を倒したとき
+        Lvup_event = false;    //レべルアップしたとき
+        escape_event = false;    //逃げたとき、逃げれなかったとき
+        item_event = false;    //アイテムを使ったとき-----------(これいらないかも)
+        magic_event = false;    //魔法を使ったとき-----------(これいらないかも)
+        heal_event = false;
         pApplet.rectMode(pApplet.CORNER);
         pApplet.textAlign(pApplet.LEFT,pApplet.UP);
         pApplet.random(1,6);
@@ -143,6 +173,7 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
 
         //これを全部消す
     public void draw() {
+        System.out.println(3);
         if (counts == 0){
             setup();
             counts++;
@@ -446,6 +477,7 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
                     LocalMap.count = 0;
                     escape_event = false;
                     finish_event = false;
+                    counts = 0;
                     waigoma.Main.state = StateType.WORLD_STATE;
                 }
             }
@@ -545,7 +577,8 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
                     LocalMap.count = 0;
                     finish_event = false;
                     escape_event = false;
-                    Lvup_event = false;//処理終了
+
+                    counts = 0;
                     waigoma.Main.state = StateType.WORLD_STATE;
                 }
             }
@@ -621,8 +654,7 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
                         LocalMap.count = 0;
                         finish_event = false;
                         escape_event = false;
-                        tap_e = false;
-                        System.out.println("escape");
+                        counts = 0;
                         waigoma.Main.state = StateType.WORLD_STATE;
                     }
                 }
@@ -647,6 +679,9 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
                     LocalMap.count = 0;    //処理終了
                     finish_event = false;
                     escape_event = false;
+                    tap_e = false;
+//                    System.out.println("escape");
+                    counts = 0;
                     waigoma.Main.state = StateType.WORLD_STATE;
                 }
             }
