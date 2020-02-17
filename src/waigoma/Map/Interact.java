@@ -3,6 +3,7 @@ package waigoma.Map;
 import issei.PlayerMove;
 import nagai.Collision;
 import processing.core.PApplet;
+import waigoma.Map.LocalMap.LocalMap;
 
 public class Interact {
     /*
@@ -17,12 +18,12 @@ public class Interact {
     String message, direction, name;
     int count, chatCount = 0;
     int time = 0;
-    float px, py;
+    float px, py, px1, py1;
     boolean runDisplayEvent, runChatEvent, runOnceEvent, runMoveEvent;
 
     PApplet plet;
 
-    public Interact(float x, float y, float width, float height, int sizeWidth, int sizeHeight, int eventId, String name, String direction, String message, PApplet papplet){
+    public Interact(float x, float y, float width, float height, int sizeWidth, int sizeHeight, int eventId, String name, String direction, String message, float px1, float py1, PApplet papplet){
         this.x = x;
         this.y = y;
         this.width = width;
@@ -33,6 +34,8 @@ public class Interact {
         this.name = name;
         this.message = message;
         this.direction = direction;
+        this.px1 = px1;
+        this.py1 = py1;
         this.plet = papplet;
     }
 
@@ -136,7 +139,10 @@ public class Interact {
 
     public void runMoveEvent(){//mapTmpの値を変化させる、座標とかも合わせて取得できるようにする
         if (runMoveEvent){
-
+            LocalMap.mapTmp = MapTemplate.maps.get(name+".tmx");
+            Collision.Playerx = px1;
+            Collision.Playery = py1;
+            runMoveEvent = false;
         }
     }
 

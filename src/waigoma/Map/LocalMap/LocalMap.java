@@ -10,13 +10,16 @@ import waigoma.StateType;
 public class LocalMap {
     PApplet plet;
     PlayerMove pmove;
-    MapTemplate mapTmp;
+    public static MapTemplate mapTmp;
+    String next, previous;
+    int nextX, nextY, previousX, previousY;
 
     public static int count = 0;
 
     public LocalMap(PApplet papplet){
         this.plet = papplet;
         pmove = new PlayerMove(papplet);
+        mapTmp = MapTemplate.maps.get("1village.tmx");
         Collision.Playerx = 162;
         Collision.Playery = 142;
     }
@@ -31,9 +34,14 @@ public class LocalMap {
     public void display(){
         if (count == 0){
             plet.rectMode(plet.CORNER);
-            mapTmp = MapTemplate.maps.get("1village.tmx");
             int width = mapTmp.getMapTileWidth() * mapTmp.getTileWidth();
             int height = mapTmp.getMapTileHeight() * mapTmp.getTileHeight();
+            next = mapTmp.getNextMap();
+            previous = mapTmp.getPreviousMap();
+            nextX = mapTmp.getNextX();
+            nextY = mapTmp.getNextY();
+            previousX = mapTmp.getPreviousX();
+            previousY = mapTmp.getPreviousY();
             plet.getSurface().setSize(width - 10,height - 10);
             plet.background(0);
             pmove.setup();
@@ -42,13 +50,15 @@ public class LocalMap {
 
         mapTmp.display();
         pmove.draw();
-        mapTmp.topDisplay();
         mapTmp.event();
+        mapTmp.topDisplay();
 
         if (mapTmp.isNext()){
-            Main.state = StateType.WORLD_STATE;
-            Collision.Playerx = 149;
-            Collision.Playery = 550;
+            mapTmp = MapTemplate.maps.get(next + ".tmx");
+            Collision.Playerx = nextX;
+            Collision.Playery = nextY;
+            LocalMap.count = 0;
+            if (mapTmp.getMapName().contains("dungeon1")) Main.state = StateType.WORLD_STATE;
             count = 0;
             plet.delay(100);
         }

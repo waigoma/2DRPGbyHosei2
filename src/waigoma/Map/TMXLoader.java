@@ -209,20 +209,26 @@ public class TMXLoader {//map情報の読み込み
                                         String eventIds = el.getAttribute("eventId");
                                         String direction = el.getAttribute("direction");
                                         String interactName = el.getAttribute("name");
+                                        String pxs = el.getAttribute("px");
+                                        String pys = el.getAttribute("py");
 
                                         float objX = 0;
                                         float objY = 0;
                                         float objWidth = 0;
                                         float objHeight = 0;
+                                        float px = 0;
+                                        float py = 0;
                                         int eventId = 0;
 
                                         if (!(objXs.isEmpty())) objX = Float.parseFloat(objXs);
                                         if (!(objYs.isEmpty())) objY = Float.parseFloat(objYs);
                                         if (!(objWidths.isEmpty())) objWidth = Float.parseFloat(objWidths);
                                         if (!(objHeights.isEmpty())) objHeight = Float.parseFloat(objHeights);
+                                        if (!(pxs.isEmpty())) px = Float.parseFloat(pxs);
+                                        if (!(pys.isEmpty())) py = Float.parseFloat(pys);
                                         if (!(eventIds.isEmpty())) eventId = Integer.parseInt(eventIds);
 
-                                        interactList.add(new Interact(objX, objY, objWidth, objHeight, (mapTileWidth * tileWidth) - 10, (mapTileHeight * tileHeight) - 10, eventId, interactName, direction, message, plet));
+                                        interactList.add(new Interact(objX, objY, objWidth, objHeight, (mapTileWidth * tileWidth) - 10, (mapTileHeight * tileHeight) - 10, eventId, interactName, direction, message, px, py, plet));
                                     }
                                     nd1 = nd1.getNextSibling();//次のnodeを読み込む
                                 }

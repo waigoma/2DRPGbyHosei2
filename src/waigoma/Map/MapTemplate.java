@@ -165,19 +165,23 @@ public class MapTemplate {
     }
 
     public boolean isNext(){
-        for (MapTrigger nmt : getNextList()){
-            if (Main.state == StateType.LOCAL_STATE) nmt.fixError(-6, -3);
-            if (Main.state == StateType.WORLD_STATE) nmt.fixError(4, 4);
-            if(nmt.mapTrigger()) return true;
+        if (getNextList() != null) {
+            for (MapTrigger nmt : getNextList()) {
+                if (Main.state == StateType.LOCAL_STATE) nmt.fixError(-6, -3);
+                if (Main.state == StateType.WORLD_STATE) nmt.fixError(4, 4);
+                if (nmt.mapTrigger()) return true;
+            }
         }
         return false;
     }
 
     public boolean isBack(){
-        for (MapTrigger bmt : getBackList()){
-            if (Main.state == StateType.LOCAL_STATE) bmt.fixError(-6, -3);
-            if (Main.state == StateType.WORLD_STATE) bmt.fixError(4, 4);
-            if (bmt.mapTrigger()) return true;
+        if (getBackList() != null) {
+            for (MapTrigger bmt : getBackList()) {
+                if (Main.state == StateType.LOCAL_STATE) bmt.fixError(-6, -3);
+                if (Main.state == StateType.WORLD_STATE) bmt.fixError(4, 4);
+                if (bmt.mapTrigger()) return true;
+            }
         }
         return false;
     }

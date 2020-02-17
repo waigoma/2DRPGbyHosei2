@@ -64,6 +64,7 @@ public class WorldMap {
             if (mapTmp.getMapName().contains("1village")){
                 Main.state = StateType.LOCAL_STATE;
                 next = mapTmp.getNextMap();
+                LocalMap.mapTmp = mapTmp;
                 mapTmp = MapTemplate.maps.get(next + ".tmx");
             }
             Collision.Playerx = previousX;

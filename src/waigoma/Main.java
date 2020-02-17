@@ -1,5 +1,6 @@
 package waigoma;
 
+import nagai.Collision;
 import processing.core.PApplet;
 import processing.core.PFont;
 import waigoma.Map.LocalMap.LocalMap;
@@ -48,7 +49,7 @@ public class Main extends PApplet {
 
     @Override
     public void draw(){//ステートマシン
-//        System.out.println("x: "+ Collision.Playerx+" "+"y: "+Collision.Playery);
+        System.out.println("x: "+ Collision.Playerx+" "+"y: "+ Collision.Playery);
         switch (state){
             case StateType.TITLE_STATE://タイトル画面
                 title.run();
