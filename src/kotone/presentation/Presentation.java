@@ -227,11 +227,11 @@ public class Presentation extends PApplet {
 
         pApplet.noStroke();
         //float p_drawWidth = (p_hp / p_hp_max) * p_rectWidth;
-        pApplet.rect(100, 100, p_drawWidth, 50);
+        pApplet.rect(100, 100, p_drawWidth, 40);
 
         pApplet.stroke(0);
         pApplet.noFill();
-        pApplet.rect(100, 100, p_rectWidth, 50);
+        pApplet.rect(100, 100, p_rectWidth, 40);
 
         if (m_hp < 5) {
             System.out.println("m1/4");
