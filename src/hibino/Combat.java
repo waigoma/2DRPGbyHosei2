@@ -6,10 +6,13 @@ import kotone.presentation.Presentation;
 import processing.core.PApplet;
 import processing.core.PFont;
 
-public class Main {      //extends PApplet消す    MainをCombatに変えるa
+public class Combat {      //extends PApplet消す    MainをCombatに変えるa
 
     PApplet pApplet;
-    public Main(PApplet pApplet){this.pApplet = pApplet;}
+
+    public Combat(PApplet pApplet){
+        this.pApplet = pApplet;
+    }
 
     //hibino.Sample mysample;//読み込む文言　　９２へ
     kotone.presentation.Presentation myimage;
@@ -26,6 +29,7 @@ public class Main {      //extends PApplet消す    MainをCombatに変えるa
 
     // Table number;    //各設定数値の読み込み
     float a;
+    int counts = 0;
 
     public static int p_hp ;    //数値変数(プレイヤー体力)            (メインで宣言)
     public static int p_hp_max ;                                   //(メインで宣言)
@@ -92,11 +96,14 @@ public class Main {      //extends PApplet消す    MainをCombatに変えるa
 
     
     public void setup(){
+        pApplet.rectMode(pApplet.CORNER);
+        pApplet.textAlign(pApplet.LEFT,pApplet.UP);
         pApplet.random(1,6);
+        pApplet.getSurface().setSize(1280,750);
 
         //mysample = new Sample(this);
         myimage = new Presentation(pApplet);
-        mysound = new takano.Takano1( );
+//        mysound = new takano.Takano1();
         p_load = new hibino.data.p_data.Load(pApplet);
         p_save = new Save(pApplet);
         m_load = new hibino.data.m_data.Load(pApplet);
@@ -316,14 +323,17 @@ public class Main {      //extends PApplet消す    MainをCombatに変えるa
 
             }//-----------------------------------------------------------------------------------------
             if (tap_a) {
+
                 if (keika < 1000 * 10) {//１０秒以内の時
                     pApplet.text(p_name + "の攻撃", 440, 560);    //実行する
 
-                    p_attack_event = true;
+                    p_attack_event = keika < 1000;
 //------------------------                myimage.draw();
 //---------------------                    mysound.sound();
 
                 }
+                if(keika < 1000*0.2)
+                    p_attack_event = false;
 
 
 

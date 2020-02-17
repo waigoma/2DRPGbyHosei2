@@ -1,6 +1,6 @@
 package hibino.data.m_data;
 
-import hibino.Main;
+import hibino.Combat;
 import processing.core.PApplet;
 
 import java.io.FileInputStream;
@@ -35,30 +35,30 @@ public class Load {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        switch(hibino.Main.m_name) {
+        switch(hibino.Combat.m_name) {
             case "モンスターA":
-                //Main.m_name = properties.getProperty("m_name");    //文字列
-                (hibino.Main.m_hp) = Integer.parseInt(properties.getProperty("a_m_hp"));   //数値a
-                (Main.m_hp_max) = Integer.parseInt(properties.getProperty("a_m_hp_max"));
-                (Main.m_attack) = Integer.parseInt(properties.getProperty("a_m_attack"));
-                (Main.m_exp) = Integer.parseInt(properties.getProperty("a_m_exp"));
-                (Main.m_money) = Integer.parseInt(properties.getProperty("a_m_money"));
+                //Combat.m_name = properties.getProperty("m_name");    //文字列
+                (hibino.Combat.m_hp) = Integer.parseInt(properties.getProperty("a_m_hp"));   //数値a
+                (Combat.m_hp_max) = Integer.parseInt(properties.getProperty("a_m_hp_max"));
+                (Combat.m_attack) = Integer.parseInt(properties.getProperty("a_m_attack"));
+                (Combat.m_exp) = Integer.parseInt(properties.getProperty("a_m_exp"));
+                (Combat.m_money) = Integer.parseInt(properties.getProperty("a_m_money"));
                 break;
             case "モンスターB":
-                //Main.m_name = properties.getProperty("b_m_name");    //文字列
-                (Main.m_hp) = Integer.parseInt(properties.getProperty("b_m_hp"));   //数値
-                (Main.m_hp_max) = Integer.parseInt(properties.getProperty("b_m_hp_max"));
-                (Main.m_attack) = Integer.parseInt(properties.getProperty("b_m_attack"));
-                (Main.m_exp) = Integer.parseInt(properties.getProperty("b_m_exp"));
-                (Main.m_money) = Integer.parseInt(properties.getProperty("b_m_money"));
+                //Combat.m_name = properties.getProperty("b_m_name");    //文字列
+                (Combat.m_hp) = Integer.parseInt(properties.getProperty("b_m_hp"));   //数値
+                (Combat.m_hp_max) = Integer.parseInt(properties.getProperty("b_m_hp_max"));
+                (Combat.m_attack) = Integer.parseInt(properties.getProperty("b_m_attack"));
+                (Combat.m_exp) = Integer.parseInt(properties.getProperty("b_m_exp"));
+                (Combat.m_money) = Integer.parseInt(properties.getProperty("b_m_money"));
                 break;
             case "モンスターC":
-                //Main.m_name = properties.getProperty("c_m_name");    //文字列
-                (Main.m_hp) = Integer.parseInt(properties.getProperty("c_m_hp"));   //数値
-                (Main.m_hp_max) = Integer.parseInt(properties.getProperty("c_m_hp_max"));
-                (Main.m_attack) = Integer.parseInt(properties.getProperty("c_m_attack"));
-                (Main.m_exp) = Integer.parseInt(properties.getProperty("c_m_exp"));
-                (Main.m_money) = Integer.parseInt(properties.getProperty("c_m_money"));
+                //Combat.m_name = properties.getProperty("c_m_name");    //文字列
+                (Combat.m_hp) = Integer.parseInt(properties.getProperty("c_m_hp"));   //数値
+                (Combat.m_hp_max) = Integer.parseInt(properties.getProperty("c_m_hp_max"));
+                (Combat.m_attack) = Integer.parseInt(properties.getProperty("c_m_attack"));
+                (Combat.m_exp) = Integer.parseInt(properties.getProperty("c_m_exp"));
+                (Combat.m_money) = Integer.parseInt(properties.getProperty("c_m_money"));
                 break;
         }
 

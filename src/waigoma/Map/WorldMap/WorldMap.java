@@ -54,10 +54,7 @@ public class WorldMap {
 
 //        System.out.println(mapTmp.getMapName());
         if (mapTmp.isNext()){
-            plet.rectMode(plet.CORNER);
-            plet.textAlign(plet.LEFT,plet.UP);
-            waigoma.Main.state = StateType.COMBAT_STATE;
-            plet.getSurface().setSize(1280,750);
+//            waigoma.Main.state = StateType.COMBAT_STATE;
             mapTmp = MapTemplate.maps.get(next + ".tmx");
             Collision.Playerx = nextX;
             Collision.Playery = nextY;

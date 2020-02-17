@@ -13,9 +13,9 @@ public class Main extends PApplet {
     public void setup(){
         random = (int) random(1,6);
         if(random < 3)
-            hibino.Main.m_name = "モンスターA";
+            hibino.Combat.m_name = "モンスターA";
         if(random >=3)
-            hibino.Main.m_name = "モンスターB";
+            hibino.Combat.m_name = "モンスターB";
         waigoma.Main.state = 3;
 
     }

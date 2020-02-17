@@ -1,5 +1,5 @@
 package hibino.data.p_data;
-import hibino.Main;
+import hibino.Combat;
 import processing.core.PApplet;
 
 import java.io.File;
@@ -37,18 +37,18 @@ public class Save {
 //            properties.setProperty("id", "日比野");
 //            properties.setProperty("pass", "エンジニア");
             properties.setProperty("p_name", "プレイヤー名");
-            properties.setProperty("p_hp", java.lang.String.valueOf(Main.p_hp));
-            properties.setProperty("p_hp_max", String.valueOf(Main.p_hp_max));
-            properties.setProperty("p_attack", String.valueOf(Main.p_attack));
-            properties.setProperty("total_exp", String.valueOf(Main.total_exp));
-            properties.setProperty("Lv", String.valueOf(Main.Lv));
-            properties.setProperty("total_money", String.valueOf(Main.total_money));
-            properties.setProperty("fire_damage", String.valueOf(Main.fire_damage));
-            properties.setProperty("lightning_damage", String.valueOf(Main.lightning_damage));
-            properties.setProperty("mp", String.valueOf(Main.mp));
-            properties.setProperty("y_count", String.valueOf(Main.y_count));
-            properties.setProperty("bom_count", String.valueOf(Main.bom_count));
-            properties.setProperty("Lvup_p_attack", String.valueOf(Main.Lvup_p_attack));
+            properties.setProperty("p_hp", java.lang.String.valueOf(Combat.p_hp));
+            properties.setProperty("p_hp_max", String.valueOf(Combat.p_hp_max));
+            properties.setProperty("p_attack", String.valueOf(Combat.p_attack));
+            properties.setProperty("total_exp", String.valueOf(Combat.total_exp));
+            properties.setProperty("Lv", String.valueOf(Combat.Lv));
+            properties.setProperty("total_money", String.valueOf(Combat.total_money));
+            properties.setProperty("fire_damage", String.valueOf(Combat.fire_damage));
+            properties.setProperty("lightning_damage", String.valueOf(Combat.lightning_damage));
+            properties.setProperty("mp", String.valueOf(Combat.mp));
+            properties.setProperty("y_count", String.valueOf(Combat.y_count));
+            properties.setProperty("bom_count", String.valueOf(Combat.bom_count));
+            properties.setProperty("Lvup_p_attack", String.valueOf(Combat.Lvup_p_attack));
 
 
             OutputStream ostream = new FileOutputStream(strpass);

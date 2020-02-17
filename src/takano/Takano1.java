@@ -1,6 +1,6 @@
 package takano;
 
-import hibino.Main;
+import hibino.Combat;
 
 import javax.sound.sampled.AudioFormat;
 import javax.sound.sampled.AudioInputStream;

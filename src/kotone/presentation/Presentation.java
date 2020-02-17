@@ -2,16 +2,16 @@ package kotone.presentation;
 
 import processing.core.PApplet;
 import processing.core.PImage;
-import hibino.Main;
+import hibino.Combat;
 import gifAnimation.*;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
-import static hibino.Main.*;
+import static hibino.Combat.*;
 import static processing.core.PApplet.main;
 
-//import static kotone.presentation.Main.m_hp;
-//import static kotone.presentation.Main.p_hp;
+//import static kotone.presentation.Combat.m_hp;
+//import static kotone.presentation.Combat.p_hp;
 
 public class Presentation extends PApplet {
 
@@ -79,13 +79,13 @@ public class Presentation extends PApplet {
         monsterAnimation = new Gif(pApplet,"src/kotone/deta/monster.gif");
         monsterAnimation.play();
 
-        p_drawWidth = ((float) p_hp / Main.p_hp_max) * p_rectWidth;
-        m_drawWidth = ((float) m_hp / Main.m_hp_max) * m_rectWidth;
+        p_drawWidth = ((float) p_hp / Combat.p_hp_max) * p_rectWidth;
+        m_drawWidth = ((float) m_hp / Combat.m_hp_max) * m_rectWidth;
     }
 
 
     public void draw() {
-        if (Main.start_event){
+        if (Combat.start_event){
             pApplet.image(haikei, pApplet.width / 2, pApplet.height / 2);//背景の大きさ
 
             pApplet.tint(255f, alpha);//画像を透明度指定付きで表示
@@ -245,9 +245,9 @@ public class Presentation extends PApplet {
         }
 
         pApplet.noStroke();
-        if (hibino.Main.m_hit/* = true*/) {
-            //m_drawWidth = (m_hp / Main.m_hp_max) * m_rectWidth;
-            //hibino.Main.m_hit = false;
+        if (hibino.Combat.m_hit/* = true*/) {
+            //m_drawWidth = (m_hp / Combat.m_hp_max) * m_rectWidth;
+            //hibino.Combat.m_hit = false;
         }
         System.out.println("rect_m");
         pApplet.rect(1000, 100, m_drawWidth, 50);
