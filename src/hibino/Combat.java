@@ -177,11 +177,12 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
         //これを全部消す
     public void draw() {
 //        System.out.println(3);
-        if (counts == 0){
+        if (counts == 0) {
             setup();
             counts++;
         }
         start_event = true;
+
         myimage.draw();
         if (p_attack_count == 0) {
             Takano1 sample1 = new Takano1("src/takano/bgm/キラーズ・シルエット.wav", 1000, true); // [3]
@@ -193,14 +194,13 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
 
         //mysample.draw();                //まさき
 
-        if( p_hp >= 20)
+        if (p_hp >= 20)
             pApplet.stroke(0);    //枠線の色
-        if(p_hp < 20)
-            pApplet.stroke(255,0,0);
+        if (p_hp < 20)
+            pApplet.stroke(255, 0, 0);
         pApplet.fill(255, 255, 255, 100);    //～の色（４つ目は透明度）    　　　　　　　　　ここはプレイヤーの四角
         pApplet.rect(100, 100, 220, 300);    //四角形（x座標、y座標、横の長さ、縦の長さ）
         pApplet.strokeWeight(2);    //枠線の太さ
-
 
 
         pApplet.line(100, 170, 320, 170);    //直線（左２つの座標と右２つの座標を結んだ線）
@@ -213,28 +213,30 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
         pApplet.fill(0);    //～の色
         pApplet.textSize(20);    //文字の大きさ
         pApplet.text(p_name, 110, 130);     //文字、x座標、y座標　　　                      ここはプレイヤーの四角内
-        pApplet.text("/ Lv:" + Lv,260,130);
+        pApplet.text("/ Lv:" + Lv, 260, 130);
         pApplet.text("HP : " + p_hp, 110, 160);
         pApplet.text("/ MP : " + mp, 210, 160);
         pApplet.text("＜ 攻撃 (A) ＞", 120, 200);
         pApplet.text("＜ 逃げる (E) ＞", 120, 250);
-        pApplet.text("＜ アイテム (I) ＞",120,300);
-        pApplet.text("＜ 魔法 (M) ＞",120,350);
+        pApplet.text("＜ アイテム (I) ＞", 120, 300);
+        pApplet.text("＜ 魔法 (M) ＞", 120, 350);
 
         pApplet.text(m_name, 1010, 130);                                                   //ここは敵の四角内
         pApplet.text("HP : " + m_hp, 1010, 170);
 
         keika = pApplet.millis() - press_time;    //押されてからの経過時間
 
-        if(combat)
+        if (combat)
             pApplet.text(m_name + "が現れた", 440, 530);                                            //ここからメインの流れ
 
         //----------------------------------------------------------------------アイテム足りないとき
-        if((item_no) && (keika < 1000*3)) {
+//        if((item_no) && (keika < 1000*3)) {
+        if ((item_no) && (keika < 1000 * 2)) {
             pApplet.text("アイテムが足りません", 440, 560);
             tap_b = false;
             tap_y = false;
-            if (keika > 1000 * 2) {
+//            if (keika > 1000 * 2) {
+            if (keika > 1000 * 1.5) {
                 battle = false;
                 tap_i = false;
                 item_no = false;
@@ -242,11 +244,13 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
         }//-------------------------------------------------------------------------
 
         //----------------------------------------------------------------------mp足りないとき
-        if((mp_no) && (keika < 1000*3)) {
+//        if((mp_no) && (keika < 1000*3)) {
+        if ((mp_no) && (keika < 1000 * 2)) {
             pApplet.text("MPが足りません", 440, 560);
             tap_l = false;
             tap_f = false;
-            if (keika > 1000 * 2) {
+//            if (keika > 1000 * 2) {
+            if (keika > 1000 * 1.5) {
                 battle = false;
                 tap_m = false;
                 mp_no = false;
@@ -257,7 +261,8 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
             combat = false;
             //-----------------------------------------------------------------------------------アイテム使用時
             if (tap_b || tap_y) {
-                if (keika < 1000 * 10) {//１０秒以内の時
+//                if (keika < 1000 * 10) {//１０秒以内の時
+                if (keika < 1000 * 6) {
                     pApplet.text(p_name + "は" + item + "を使った", 440, 560);    //実行する
 
                     // if(!item_event){
@@ -267,13 +272,16 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
                         sample2.start(); // [4]
                         p_attack_count++;
                     }
+                    if(keika > 1000*0.15)
+                        item_event = false;
 //------------------------                        myimage.draw();
 //------------------------                        mysound.main();
                     //myplayer.draw();
                     // }
 
                 }
-                if ((1000 * 5 < keika) && (keika < 1000 * 10)) {    //５～１０秒の時
+//                if ((1000 * 5 < keika) && (keika < 1000 * 10)) {    //５～１０秒の時
+                if ((1000 * 3 < keika) && (keika < 1000 * 6)) {
                     switch (item) {    //m_nameが～の時
                         case "爆弾":    //モンスターAの時
                             pApplet.text("敵に20ダメージ", 440, 590);
@@ -287,15 +295,16 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
                             }
 //------------------------                            myimage.draw();
 //------------------------                        mysound.main();
-                            if(keika > 1000*5.2)
+//                            if(keika > 1000*5.2)
+                            if (keika > 1000 * 3.15)
                                 m_damage_event = false;
 
                             if (m_hit) {    //もしm_hitがtrueなら（一回実行するため）
                                 m_hp = m_hp - 20;
-                                if(m_hp < 0)
+                                if (m_hp < 0)
                                     m_hp = 0;
 
-                                kotone.presentation.Presentation.m_drawWidth = ((float) m_hp / m_hp_max) *kotone.presentation.Presentation.m_rectWidth;    //体力ゲージ計算
+                                kotone.presentation.Presentation.m_drawWidth = ((float) m_hp / m_hp_max) * kotone.presentation.Presentation.m_rectWidth;    //体力ゲージ計算
 
                                 m_hit = false;    //終了
                             }
@@ -309,6 +318,8 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
                                 sample4.start(); // [4]
                                 p_attack_count++;
                             }
+                            if(keika >3.15)
+                            heal_event = false;
 //------------------------                             myimage.draw();
 //------------------------                        mysound.main();
 
@@ -317,7 +328,7 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
                                 if (p_hp > p_hp_max)
                                     p_hp = p_hp_max;
 
-                                kotone.presentation.Presentation.p_drawWidth = ((float)p_hp / p_hp_max) * kotone.presentation.Presentation.p_rectWidth;
+                                kotone.presentation.Presentation.p_drawWidth = ((float) p_hp / p_hp_max) * kotone.presentation.Presentation.p_rectWidth;
 
                                 m_hit = false;
                             }
@@ -331,7 +342,8 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
 
 
             if ((tap_f || tap_l) && (!mp_no)) {
-                if (keika < 1000 * 10)//１０秒以内の時
+//                if (keika < 1000 * 10)//１０秒以内の時
+                if (keika < 1000 * 6)
                     pApplet.text(p_name + "は" + magic + "を唱えた", 440, 560);    //実行する
 
                 magic_event = true;
@@ -340,10 +352,13 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
                     sample5.start(); // [4]
                     p_attack_count++;
                 }
+                if(keika>1000*0.15)
+                    magic_event = false;
 //------------------------                myimage.draw();
 //------------------------                        mysound.main();
 
-                if ((1000 * 5 < keika) && (keika < 1000 * 10)) {    //５～１０秒の時
+//                if ((1000 * 5 < keika) && (keika < 1000 * 10)) {    //５～１０秒の時
+                if ((1000 * 3 < keika) && (keika < 1000 * 6)) {
                     switch (magic) {    //m_nameが～の時
                         case "ファイヤー":    //モンスターAの時
                             pApplet.text("敵に" + fire_damage + "ダメージ", 440, 590);
@@ -356,15 +371,16 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
                             }
 //------------------------                            myimage.draw();
 //------------------------                        mysound.main();
-                            if(keika > 1000*5.2)
+//                            if(keika > 1000*5.2)
+                            if (keika > 1000 * 3.15)
                                 m_damage_event = false;
 
                             if (m_hit) {    //もしm_hitがtrueなら（一回実行するため）
                                 m_hp = m_hp - fire_damage;    //体力ー１０
-                                if(m_hp < 0)
+                                if (m_hp < 0)
                                     m_hp = 0;
 
-                                kotone.presentation.Presentation.m_drawWidth = ((float) m_hp / m_hp_max) *kotone.presentation.Presentation.m_rectWidth;    //体力ゲージ計算
+                                kotone.presentation.Presentation.m_drawWidth = ((float) m_hp / m_hp_max) * kotone.presentation.Presentation.m_rectWidth;    //体力ゲージ計算
 
                                 m_hit = false;    //終了
                             }
@@ -380,15 +396,16 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
                             }
 //------------------------                            myimage.draw();
 //------------------------                        mysound.main();
-                            if(keika > 1000*5.2)
+//                            if(keika > 1000*5.2)
+                            if (keika > 1000 * 3.15)
                                 m_damage_event = false;
 
                             if (m_hit) {    //もしm_hitがtrueなら（一回実行するため）
                                 m_hp = m_hp - lightning_damage;    //体力ー１０
-                                if(m_hp < 0)
+                                if (m_hp < 0)
                                     m_hp = 0;
 
-                                kotone.presentation.Presentation.m_drawWidth = ((float) m_hp / m_hp_max) *kotone.presentation.Presentation.m_rectWidth;    //体力ゲージ計算
+                                kotone.presentation.Presentation.m_drawWidth = ((float) m_hp / m_hp_max) * kotone.presentation.Presentation.m_rectWidth;    //体力ゲージ計算
 
                                 m_hit = false;    //終了
                             }
@@ -399,21 +416,22 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
             }//-----------------------------------------------------------------------------------------
             if (tap_a) {
 
-                if (keika < 1000 * 10) {//１０秒以内の時
+//                if (keika < 1000 * 10) {//１０秒以内の時
+                if (keika < 1000 * 6)
                     pApplet.text(p_name + "の攻撃", 440, 560);    //実行する
 
-                    p_attack_event = keika < 1000;
+                p_attack_event = true;
+
 //------------------------                myimage.draw();
 //---------------------                    mysound.sound();
 
-                }
-                if(keika < 1000*0.2)
+
+                if (keika > 1000 * 0.15)
                     p_attack_event = false;
 
 
-
-
-                if ((1000 * 5 < keika) && (keika < 1000 * 10)) {    //５～１０秒の時
+//                if ((1000 * 5 < keika) && (keika < 1000 * 10)) {    //５～１０秒の時
+                if ((1000 * 3 < keika) && (keika < 1000 * 6)) {
                     if (p_random < 3) {
                         pApplet.text("会心の一撃！敵に" + p_attack * 2 + "ダメージ", 440, 590);
 
@@ -425,7 +443,8 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
                         }
 //------------------------                        myimage.draw();
 //------------------------                        mysound.main();
-                        if(keika > 1000*5.2)
+//                        if(keika > 1000*5.2)
+                        if (keika > 1000 * 3.15)
                             m_damage_event = false;
                     }
                     if (p_random >= 3) {
@@ -433,7 +452,8 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
                         m_damage_event = true;
 //------------------------                        myimage.draw();
 //------------------------                        mysound.main();
-                        if (keika > 1000*5.2)
+//                        if (keika > 1000*5.2)
+                        if (keika > 1000 * 3.15)
                             m_damage_event = false;
                     }
                     if (m_hit) {    //もしm_hitがtrueなら（一回実行するため）
@@ -441,237 +461,253 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
                             m_hp = m_hp - p_attack;
                         }
                         m_hp = m_hp - p_attack;    //体力ー１０
-                        if(m_hp < 0)
+                        if (m_hp < 0)
                             m_hp = 0;
 
-                        kotone.presentation.Presentation.m_drawWidth = ((float) m_hp / m_hp_max) *kotone.presentation.Presentation.m_rectWidth;    //体力ゲージ計算
+                        kotone.presentation.Presentation.m_drawWidth = ((float) m_hp / m_hp_max) * kotone.presentation.Presentation.m_rectWidth;    //体力ゲージ計算
 
                         m_hit = false;    //終了
 
                     }
                 }
             }
-            if ((1000 * 12 < keika) && (keika < 1000 * 20) && (m_hp != 0)) {    //１２～２０秒で敵体力が０じゃないとき                                                                    //ここから新しく
-                pApplet.text(m_name + "の攻撃", 440, 560);
-                m_attack_event = true;
-                if (p_attack_count == 0) {
-                    Takano1 sample10 = new Takano1("src/takano/bgm/斬撃音_1.wav", 2, false); // [3]
-                    sample10.start(); // [4]
-                    p_attack_count++;
-                }
+
+//            if ((1000 * 11 < keika) && (keika < 1000 * 20) && (m_hp != 0)) {    //１２～２０秒で敵体力が０じゃないとき
+        if ((1000 * 7 < keika) && (keika < 1000 * 12) && (m_hp != 0)) {
+            pApplet.text(m_name + "の攻撃", 440, 560);
+            m_attack_event = true;
+            if (p_attack_count == 0) {
+                Takano1 sample10 = new Takano1("src/takano/bgm/斬撃音_1.wav", 2, false); // [3]
+                sample10.start(); // [4]
+                p_attack_count++;
             }
-            if(keika > 1000*12.2)
-                m_attack_event = false;
+        }
+//            if(keika > 1000*11.2)
+        if (keika > 1000 * 7.15)
+            m_attack_event = false;
 //------------------------            myimage.draw();
 //------------------------                        mysound.main();
 
-            if ((1000 * 15 < keika) && (keika < 1000 * 20) && (m_hp != 0)) {
+//            if ((1000 * 15 < keika) && (keika < 1000 * 20) && (m_hp != 0)) {
+        if ((1000 * 9 < keika) && (keika < 1000 * 12) && (m_hp != 0)) {
+            if (m_random < 3) {
+                pApplet.text("痛恨の一撃！プレイヤーに" + m_attack * 2 + "ダメージ", 440, 590);
+
+                p_damage_event = true;
+                if (p_attack_count == 0) {
+                    Takano1 sample11 = new Takano1("src/takano/bgm/シャキーンという斬撃音", 2, false); // [3]
+                    sample11.start(); // [4]
+                    p_attack_count++;
+                }
+                if(keika >1000*9.15)
+                    p_damage_event = false;
+//------------------------                    myimage.draw();
+//------------------------                        mysound.main();
+
+            }
+            if (m_random >= 3) {
+                pApplet.text("プレイヤーに" + m_attack + "ダメージ", 440, 590);
+
+                p_damage_event = true;
+                if (p_attack_count == 0) {
+                    Takano1 sample12 = new Takano1("src/takano/bgm/斬撃音_1.wav", 2, false); // [3]
+                    sample12.start(); // [4]
+                    p_attack_count++;
+                }
+                if(keika >1000*9.15)
+                    p_damage_event = false;
+//------------------------                    myimage.draw();
+//------------------------                        mysound.main();
+
+            }
+            if (p_hit) {
                 if (m_random < 3) {
-                    pApplet.text("痛恨の一撃！プレイヤーに" + m_attack * 2 + "ダメージ", 440, 590);
-
-                    p_damage_event = true;
-                    if (p_attack_count == 0) {
-                        Takano1 sample11 = new Takano1("src/takano/bgm/シャキーンという斬撃音", 2, false); // [3]
-                        sample11.start(); // [4]
-                        p_attack_count++;
-                    }
-//------------------------                    myimage.draw();
-//------------------------                        mysound.main();
-
-                }
-                if (m_random >= 3) {
-                    pApplet.text("プレイヤーに" + m_attack + "ダメージ", 440, 590);
-
-                    p_damage_event = true;
-                    if (p_attack_count == 0) {
-                        Takano1 sample12 = new Takano1("src/takano/bgm/斬撃音_1.wav", 2, false); // [3]
-                        sample12.start(); // [4]
-                        p_attack_count++;
-                    }
-//------------------------                    myimage.draw();
-//------------------------                        mysound.main();
-
-                }
-                if (p_hit) {
-                    if (m_random < 3) {
-                        p_hp = p_hp - m_attack;    //体力－１０
-                    }
                     p_hp = p_hp - m_attack;    //体力－１０
-                    if(p_hp < 0)
-                        p_hp = 0;
-
-                    kotone.presentation.Presentation.p_drawWidth = ((float)p_hp / p_hp_max) * kotone.presentation.Presentation.p_rectWidth;
-
-                    p_hit = false;    //終了
                 }
+                p_hp = p_hp - m_attack;    //体力－１０
+                if (p_hp < 0)
+                    p_hp = 0;
+
+                kotone.presentation.Presentation.p_drawWidth = ((float) p_hp / p_hp_max) * kotone.presentation.Presentation.p_rectWidth;
+
+                p_hit = false;    //終了
             }
+        }
 
 
-            if ((p_hp <= 0) && (keika < 1000 * 21)) {
-                pApplet.text(p_name + "は倒れた", 440, 620);
+//            if ((p_hp <= 0) && (keika < 1000 * 10)) {
+        if ((p_hp <= 0) && (keika < 1000 * 7)) {
+            pApplet.text(p_name + "は倒れた", 440, 620);
 
-                finish_event = true;
-                if (p_attack_count == 0) {
-                    Takano1 sample13 = new Takano1("src/takano/bgm/sentouhunou.wav", 2, false); // [3]
-                    sample13.start(); // [4]
-                    p_attack_count++;
-                }
+            finish_event = true;
+            if (p_attack_count == 0) {
+                Takano1 sample13 = new Takano1("src/takano/bgm/sentouhunou.wav", 2, false); // [3]
+                sample13.start(); // [4]
+                p_attack_count++;
+            }
 //------------------------                myimage.draw();
 //------------------------                        mysound.main();
 
-                if (1000 * 20 < keika) {
-                    switch(Lv){
-                        case 1:
-                            p_hp = 100;
-                            break;
-                        case 2:
-                            p_hp = 200;
-                            break;
-                        case 3:
-                            p_hp = 300;
-                            break;
-                        case 4:
-                            p_hp = 400;
-                            break;
-                        case 5:
-                            p_hp = 500;
-                            break;
-                    }
-
-                    p_save.main();
-                    LocalMap.count = 0;
-                    escape_event = false;
-                    finish_event = false;
-                    counts = 0;
-                    waigoma.Main.state = StateType.WORLD_STATE;
+//                if (1000 * 20 < keika) {
+            if (1000 * 6 < keika) {
+                switch (Lv) {
+                    case 1:
+                        p_hp = 100;
+                        break;
+                    case 2:
+                        p_hp = 200;
+                        break;
+                    case 3:
+                        p_hp = 300;
+                        break;
+                    case 4:
+                        p_hp = 400;
+                        break;
+                    case 5:
+                        p_hp = 500;
+                        break;
                 }
+
+                p_save.main();
+                LocalMap.count = 0;
+                escape_event = false;
+                finish_event = false;
+                counts = 0;
+                waigoma.Main.state = StateType.WORLD_STATE;
             }
+        }
 
-            if ((m_hp <= 0) && (keika > 1000*7) && (keika <1000*11)) {    //もしm_hpが０ならば
+//            if ((m_hp <= 0) && (keika > 1000*5) && (keika <1000*20)) {    //もしm_hpが０ならば
+        if ((m_hp <= 0) && (keika > 1000 * 3) && (keika < 1000 * 12)) {
 
-                finish_event = true;
-                if (p_attack_count == 0) {
-                    Takano1 sample15 = new Takano1("src/takano/bgm/始まりを告げる喇叭.wav", 2, false); // [3]
-                    sample15.start(); // [4]
-                    p_attack_count++;
-                }
+            finish_event = true;
+            if (p_attack_count == 0) {
+                Takano1 sample15 = new Takano1("src/takano/bgm/始まりを告げる喇叭.wav", 2, false); // [3]
+                sample15.start(); // [4]
+                p_attack_count++;
+            }
 //------------------------                myimage.draw();
 //------------------------                        mysound.main();
 
-                pApplet.text("敵を倒した", 440, 620);    //実行する
-                pApplet.text("exp：" + m_exp,440,650);    //入手経験値
+            pApplet.text("敵を倒した", 440, 620);    //実行する
+            pApplet.text("exp：" + m_exp, 440, 650);    //入手経験値
 
-                if(total_exp_flg) {     //total_expがtrueの時（一回実行）
-                    m_random = (int) pApplet.random(1,10);
-                    switch(m_random) {
-                        case 1:
-                            y_count = y_count + 1;
-                            item = "薬草";
-                            break;
-                        case 2:
-                            y_count = y_count + 1;
-                            item = "薬草";
-                            break;
-                        case 3:
-                            bom_count = bom_count + 1;
-                            item = "爆弾";
-                            break;
-                        case 4:
-                            bom_count = bom_count + 1;
-                            item = "爆弾";
-                            break;
-                    }
-                    total_exp = total_exp + m_exp;    //合計経験値
-                    total_money = total_money + m_money;    //合計金額
-                    total_exp_flg = false;    //終了
+            if (total_exp_flg) {     //total_expがtrueの時（一回実行）
+                m_random = (int) pApplet.random(1, 10);
+                switch (m_random) {
+                    case 1:
+                        y_count = y_count + 1;
+                        item = "薬草";
+                        break;
+                    case 2:
+                        y_count = y_count + 1;
+                        item = "薬草";
+                        break;
+                    case 3:
+                        bom_count = bom_count + 1;
+                        item = "爆弾";
+                        break;
+                    case 4:
+                        bom_count = bom_count + 1;
+                        item = "爆弾";
+                        break;
                 }
-                if((m_random >= 1) && (m_random <=4))
-                    pApplet.text(m_money + "ゴールドと" + item + "を手に入れた", 440, 680);
-                else
-                    pApplet.text(m_money + "ゴールドを手に入れた",440,680);
+                total_exp = total_exp + m_exp;    //合計経験値
+                total_money = total_money + m_money;    //合計金額
+                total_exp_flg = false;    //終了
+            }
+            if ((m_random >= 1) && (m_random <= 4))
+                pApplet.text(m_money + "ゴールドと" + item + "を手に入れた", 440, 680);
+            else
+                pApplet.text(m_money + "ゴールドを手に入れた", 440, 680);
 
-                //-------------------------------------------------------- //レベルupの処理
-                if((100<total_exp) && (total_exp<200) && (Lv == 1)) {
-                    Lv = Lv + 1;
-                    p_hp = 200;
-                    p_hp_max = 200;
-                    mp = 200;
-                    Lvup_p_attack = 20;
-                    fire_damage = 20;
-                    lightning_damage = 30;
-                    level_flg = true;
-                }
-                if((200<total_exp) && (total_exp<300) && (Lv == 2)) {
-                    Lv = Lv + 1;
-                    p_hp = 300;
-                    p_hp_max = 300;
-                    mp = 300;
-                    Lvup_p_attack = 30;
-                    fire_damage = 30;
-                    lightning_damage = 40;
-                    level_flg = true;
-                }
-                if((300<total_exp) && (total_exp<400) && (Lv == 3)) {
-                    Lv = Lv + 1;
-                    p_hp = 400;
-                    p_hp_max = 400;
-                    mp = 400;
-                    Lvup_p_attack = 40;
-                    fire_damage = 40;
-                    lightning_damage = 50;
-                    level_flg = true;
-                }
-                if((400<total_exp) && (total_exp<500) && (Lv == 4)) {
-                    Lv = Lv + 1;
-                    p_hp = 500;
-                    p_hp_max = 500;
-                    mp = 500;
-                    Lvup_p_attack = 50;
-                    fire_damage = 50;
-                    lightning_damage = 60;
-                    level_flg = true;
-                }
-                //----------------------------------------------------------------------------
-                if(level_flg && (keika >1000*5)) {
-                    pApplet.text(p_name + "はレベルが" + Lv + "になった", 440, 710);
+            //-------------------------------------------------------- //レベルupの処理
+            if ((100 < total_exp) && (total_exp < 200) && (Lv == 1)) {
+                Lv = Lv + 1;
+                p_hp = 200;
+                p_hp_max = 200;
+                mp = 200;
+                Lvup_p_attack = 20;
+                fire_damage = 20;
+                lightning_damage = 30;
+                level_flg = true;
+            }
+            if ((200 < total_exp) && (total_exp < 300) && (Lv == 2)) {
+                Lv = Lv + 1;
+                p_hp = 300;
+                p_hp_max = 300;
+                mp = 300;
+                Lvup_p_attack = 30;
+                fire_damage = 30;
+                lightning_damage = 40;
+                level_flg = true;
+            }
+            if ((300 < total_exp) && (total_exp < 400) && (Lv == 3)) {
+                Lv = Lv + 1;
+                p_hp = 400;
+                p_hp_max = 400;
+                mp = 400;
+                Lvup_p_attack = 40;
+                fire_damage = 40;
+                lightning_damage = 50;
+                level_flg = true;
+            }
+            if ((400 < total_exp) && (total_exp < 500) && (Lv == 4)) {
+                Lv = Lv + 1;
+                p_hp = 500;
+                p_hp_max = 500;
+                mp = 500;
+                Lvup_p_attack = 50;
+                fire_damage = 50;
+                lightning_damage = 60;
+                level_flg = true;
+            }
+            //----------------------------------------------------------------------------
+//                if(level_flg && (keika >1000*5)) {
+            if (level_flg && (keika > 1000 * 3)) {
+                pApplet.text(p_name + "はレベルが" + Lv + "になった", 440, 710);
 
-                    Lvup_event = true;
-                    if (p_attack_count == 0) {
-                        Takano1 sample16 = new Takano1("src/takano/bgm/キラキラした音.wa", 2, false); // [3]
-                        sample16.start(); // [4]
-                        p_attack_count++;
-                    }
+                Lvup_event = true;
+                if (p_attack_count == 0) {
+                    Takano1 sample16 = new Takano1("src/takano/bgm/キラキラした音.wa", 2, false); // [3]
+                    sample16.start(); // [4]
+                    p_attack_count++;
+                }
 //------------------------                    myimage.draw();
 //------------------------                        mysound.main();
 
-                }
+            }
 
-                if (keika > 1000 * 10) {   //経過が１０秒以上なら
-                    p_attack = Lvup_p_attack;
-                    p_save.main();
-                    LocalMap.count = 0;    //処理終了
-                    finish_event = false;
-                    escape_event = false;
-                    tap_e = false;
+//                if (keika > 1000 * 10) {   //経過が１０秒以上なら
+            if (keika > 1000 * 6) {
+                p_attack = Lvup_p_attack;
+                p_save.main();
+                LocalMap.count = 0;    //処理終了
+                finish_event = false;
+                escape_event = false;
+                tap_e = false;
 //                    System.out.println("escape");
-                    counts = 0;
-                    waigoma.Main.state = StateType.WORLD_STATE;
-                }
+                counts = 0;
+                waigoma.Main.state = StateType.WORLD_STATE;
             }
-            if(keika > 1000*20) {
-                battle = false;    //バトル終了
-                tap_a = false;    //tap_a終了
-                tap_b = false;
-                tap_i = false;
-                tap_y = false;
-                tap_f = false;
-                tap_l = false;
-            }
-        }                                                                                               //一連終了
+        }
+//            if(keika > 1000*20) {
+        if (keika > 1000 * 12) {
+            battle = false;    //バトル終了
+            tap_a = false;    //tap_a終了
+            tap_b = false;
+            tap_i = false;
+            tap_y = false;
+            tap_f = false;
+            tap_l = false;
+        }    //一連終了
+    }
 
         if (tap_e) {     //もしtap_eがtrueなら
-            if((e_random < 3) && (keika < 1000*20)){
-                if(keika < 1000*5) {
+//            if((e_random < 3) && (keika < 1000*20)){
+            if((e_random < 3) && (keika < 1000*12)){
+//                if(keika < 1000*5) {
+                if(keika < 1000*3) {
                     pApplet.text("逃げ出せなかった", 440, 560);
 
                     escape_event = true;
@@ -684,7 +720,8 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
 //------------------------                        mysound.main();
 
                 }
-                if ((1000 * 5 < keika) && (keika < 1000 * 15))    //１２～２０秒で敵体力が０じゃないとき                                                                    //ここから新しく
+//                if ((1000 * 5 < keika) && (keika < 1000 * 15))    //１２～２０秒で敵体力が０じゃないとき
+                 if ((1000 * 3 < keika) && (keika < 1000 * 9))
                     pApplet.text(m_name + "の攻撃", 440, 560);
 
                 m_attack_event = true;
@@ -693,10 +730,13 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
                     sample22.start(); // [4]
                     p_attack_count++;
                 }
+                if(keika >1000*3.15)
+                    m_attack_event = false;
 //------------------------                myimage.draw();
 //------------------------                        mysound.main();
 
-                if ((1000 * 10 < keika) && (keika < 1000 * 15)) {
+//                if ((1000 * 10 < keika) && (keika < 1000 * 15)) {
+                if ((1000 * 6 < keika) && (keika < 1000 * 9)) {
                     if (m_random < 3) {
                         pApplet.text("痛恨の一撃！プレイヤーに" + m_attack * 2 + "ダメージ", 440, 590);
 
@@ -706,6 +746,8 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
                             sample19.start(); // [4]
                             p_attack_count++;
                         }
+                        if(keika > 1000*6.15)
+                            p_damage_event = false;
 //------------------------                        myimage.draw();
 //------------------------                        mysound.main();
 
@@ -714,6 +756,8 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
                         pApplet.text("プレイヤーに" + m_attack + "ダメージ", 440, 590);
 
                         p_damage_event = true;
+                        if(keika > 1000*6.15)
+                            p_damage_event = false;
 //------------------------                        myimage.draw();
 //------------------------                        mysound.main();
 
@@ -732,7 +776,8 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
                     }
                 }
 
-                if ((p_hp <= 0) && (keika < 1000 * 16)) {
+//                if ((p_hp <= 0) && (keika < 1000 * 16)) {
+                if ((p_hp <= 0) && (keika < 1000 * 10)) {
                     pApplet.text(p_name + "は倒れた", 440, 620);
 
                     finish_event = true;
@@ -744,8 +789,8 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
 //------------------------                myimage.draw();
 //------------------------                        mysound.main();
 
-                    if (keika > 1000*15) {
-
+//                    if (keika > 1000*15) {
+                    if (keika > 1000*9) {
                         p_save.main();
                         LocalMap.count = 0;
                         finish_event = false;
@@ -755,7 +800,8 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
                     }
                 }
 
-                if(keika > 1000*15) {
+//                if(keika > 1000*15) {
+                if(keika > 1000*9) {
                     tap_e = false;
                     battle = false;
                 }
@@ -774,7 +820,8 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
 
 
 
-                if(keika > 1000*4) {    //経過が２秒以上なら
+//                if(keika > 1000*4) {    //経過が２秒以上なら
+                if(keika > 1000*3) {
 
                     p_save.main();
                     LocalMap.count = 0;    //処理終了
@@ -985,163 +1032,6 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
         }
     }
 
-    public void keyReleased() {//キーが離されたら
-        if ((pApplet.key == 'A' || pApplet.key == 'a') && (!tap_i) && (!tap_m) && (!battle)) {   //もしAが押されバトルじゃないとき
-            tap_a = true;    //tap_aはtrue
-            p_hit = true;
-            m_hit = true;
-            battle = true;    //バトル中
-            total_exp_flg = true;
-            p_random = (int) pApplet.random(1,10);
-            m_random = (int) pApplet.random(1,10);
-            press_time = pApplet.millis();    //押された時間の取得
-
-            p_attack_event = false;
-            m_damage_event = false;
-            m_attack_event = false;
-            p_damage_event = false;
-            finish_event = false;
-            Lvup_event = false;
-            escape_event = false;
-            item_event = false;         //
-            magic_event = false;
-            heal_event = false;
-        }
-
-        if ((pApplet.key == 'E' || pApplet.key == 'e') && (!tap_i) && (!tap_m) && (!battle)) {     //もしEが押されバトルじゃないとき
-            tap_e = true;    //tap_eはtrue　　
-            battle = true;    //バトル中
-            p_hit = true;
-            escape_random = true;
-            e_random = (int) pApplet.random(1,10);
-            m_random = (int) pApplet.random(1,10);
-            press_time = pApplet.millis();    //押された時間の取得
-
-            p_attack_event = false;
-            m_damage_event = false;
-            m_attack_event = false;
-            p_damage_event = false;
-            finish_event = false;
-            Lvup_event = false;
-            escape_event = false;
-            item_event = false;         //
-            magic_event = false;
-            heal_event = false;
-        }
-
-        if ((pApplet.key == 'I' || pApplet.key == 'i') && (!tap_m) && (!battle)) {
-            tap_i = true;
-        }
-        if ((pApplet.key == 'Y' || pApplet.key == 'y') && (!battle) && (tap_i)) {
-            tap_y = true;
-            battle = true;//バトル中
-            p_hit = true;
-            m_hit = true;
-            total_exp_flg = true;
-            m_random = (int) pApplet.random(1,10);
-            press_time = pApplet.millis();    //押された時間の取得
-            y_count = y_count - 1;
-            if(y_count < 0){
-                item_no = true;
-                y_count = y_count + 1;
-            }
-
-            p_attack_event = false;
-            m_damage_event = false;
-            m_attack_event = false;
-            p_damage_event = false;
-            finish_event = false;
-            Lvup_event = false;
-            escape_event = false;
-            item_event = false;         //
-            magic_event = false;
-            heal_event = false;
-        }
-        if ((pApplet.key == 'B' || pApplet.key == 'b') && (tap_i) && (!battle)) {
-            tap_b = true;
-            battle = true;//バトル中
-            p_hit = true;
-            m_hit = true;
-            total_exp_flg = true;
-            m_random = (int) pApplet.random(1,10);
-            press_time = pApplet.millis();
-            bom_count = bom_count - 1;
-            if(bom_count < 0){
-                item_no = true;
-                bom_count = bom_count + 1;
-            }
-
-            p_attack_event = false;
-            m_damage_event = false;
-            m_attack_event = false;
-            p_damage_event = false;
-            finish_event = false;
-            Lvup_event = false;
-            escape_event = false;
-            item_event = false;         //
-            magic_event = false;
-            heal_event = false;
-        }
-
-        if(pApplet.key == pApplet.BACKSPACE){
-            tap_i = false;
-            tap_m = false;
-        }
-
-        if ((pApplet.key =='M' || pApplet.key == 'm') && (!battle) && (!tap_i)){
-            tap_m = true;
-        }
-        if ((pApplet.key == 'F' || pApplet.key == 'f') && (!battle) && (tap_m)) {
-            tap_f = true;
-            battle = true;//バトル中
-            p_hit = true;
-            m_hit = true;
-            total_exp_flg = true;
-            m_random = (int) pApplet.random(1,10);
-            press_time = pApplet.millis();
-            mp = mp - 10;
-            if(mp < 0){
-                mp_no = true;
-                mp = mp + 10;
-            }
-
-            p_attack_event = false;
-            m_damage_event = false;
-            m_attack_event = false;
-            p_damage_event = false;
-            finish_event = false;
-            Lvup_event = false;
-            escape_event = false;
-            item_event = false;         //
-            magic_event = false;
-            heal_event = false;
-        }
-        if ((pApplet.key == 'L' || pApplet.key == 'l') && (!battle) && (tap_m)) {
-            tap_l = true;
-            battle = true;//バトル中
-            p_hit = true;
-            m_hit = true;
-            total_exp_flg = true;
-            m_random = (int) pApplet.random(1,10);
-            press_time = pApplet.millis();
-            mp = mp - 20;
-            if(mp < 0){
-                mp_no = true;
-                mp = mp + 20;
-            }
-
-            p_attack_event = false;
-            m_damage_event = false;
-            m_attack_event = false;
-            p_damage_event = false;
-            finish_event = false;
-            Lvup_event = false;
-            escape_event = false;
-            item_event = false;         //
-            magic_event = false;
-            heal_event = false;
-        }
-    }
 
 //    public static void main (String[]args){    //ここを消す
 //        PApplet.main("hibino.Main");
