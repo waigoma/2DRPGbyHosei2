@@ -409,10 +409,12 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
                     }
                 }
             }
-            if ((1000 * 12 < keika) && (keika < 1000 * 20) && (m_hp != 0))    //１２～２０秒で敵体力が０じゃないとき                                                                    //ここから新しく
+            if ((1000 * 12 < keika) && (keika < 1000 * 20) && (m_hp != 0)) {    //１２～２０秒で敵体力が０じゃないとき                                                                    //ここから新しく
                 pApplet.text(m_name + "の攻撃", 440, 560);
-
-            m_attack_event = true;
+                m_attack_event = true;
+            }
+            if(keika > 1000*12.2)
+                m_attack_event = false;
 //------------------------            myimage.draw();
 //------------------------                        mysound.main();
 
