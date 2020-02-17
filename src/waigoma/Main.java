@@ -15,6 +15,9 @@ public class Main extends PApplet {
     Title title;
     LocalMap localMap;
     WorldMap worldMap;
+    hibino.Main main;
+
+    int count = 0;
 
     @Override
     public void settings(){
@@ -27,6 +30,7 @@ public class Main extends PApplet {
         title = new Title(this);//state:0
         localMap = new LocalMap(this);//state:1
         worldMap = new WorldMap(this);//state:2
+        main = new hibino.Main(this);
 
         surface.setResizable(true);
         noStroke();
@@ -39,12 +43,14 @@ public class Main extends PApplet {
     public void keyPressed(){//キー入力受付
         if (state == StateType.LOCAL_STATE) localMap.keyPressed();
         if (state == StateType.WORLD_STATE) worldMap.keyPressed();
+        if (state == StateType.COMBAT_STATE) main.keyPressed();
     }
 
     @Override
     public void keyReleased(){//キー解放受付
         if (state == StateType.LOCAL_STATE) localMap.keyReleased();
         if (state == StateType.WORLD_STATE) worldMap.keyReleased();
+//        if (state == StateType.COMBAT_STATE) main.keyReleased();
     }
 
     @Override
@@ -61,6 +67,11 @@ public class Main extends PApplet {
                 worldMap.display();
                 break;
             case StateType.COMBAT_STATE:
+                if (count == 0){
+                    main.setup();
+                    count++;
+                }
+                main.draw();
                 break;
         }
     }

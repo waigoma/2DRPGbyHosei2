@@ -89,7 +89,7 @@ public class Presentation extends PApplet {
             pApplet.image(haikei, pApplet.width / 2, pApplet.height / 2);//背景の大きさ
 
             pApplet.tint(255f, alpha);//画像を透明度指定付きで表示
-            pApplet.image(img[int(random(0,3))], pointX, pointY);//モンスターの位置
+//            pApplet.image(img[int(random(0,3))], pointX, pointY);//モンスターの位置
 
             monsterMove();
             lifeGauge();
@@ -120,7 +120,7 @@ public class Presentation extends PApplet {
 
         if(m_damage_event){
             pApplet.tint(255, 80, 30);
-            pApplet.image(img, pointX, pointY);
+//            pApplet.image(img, pointX, pointY);
             pApplet.noTint();
         }
 

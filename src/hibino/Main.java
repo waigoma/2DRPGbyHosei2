@@ -6,10 +6,10 @@ import kotone.presentation.Presentation;
 import processing.core.PApplet;
 import processing.core.PFont;
 
-public class Main extends PApplet {      //extends PApplet消す    MainをCombatに変えるa
+public class Main {      //extends PApplet消す    MainをCombatに変えるa
 
-    //PApplet pApplet;
-    //public Combat(PApplet pApplet){this.pApplet = pApplet;}
+    PApplet pApplet;
+    public Main(PApplet pApplet){this.pApplet = pApplet;}
 
     //hibino.Sample mysample;//読み込む文言　　９２へ
     kotone.presentation.Presentation myimage;
@@ -85,28 +85,28 @@ public class Main extends PApplet {      //extends PApplet消す    MainをComba
 
 
 
-    @Override
-    public void settings(){
-        size(1280,750);
-    }
+    
+//    public void settings(){
+//        pApplet.size(1280,750);
+//    }
 
-    @Override
+    
     public void setup(){
-        random(1,6);
+        pApplet.random(1,6);
 
         //mysample = new Sample(this);
-        myimage = new Presentation(this);
+        myimage = new Presentation(pApplet);
         mysound = new takano.Takano1( );
-        p_load = new hibino.data.p_data.Load(this);
-        p_save = new Save(this);
-        m_load = new hibino.data.m_data.Load(this);
+        p_load = new hibino.data.p_data.Load(pApplet);
+        p_save = new Save(pApplet);
+        m_load = new hibino.data.m_data.Load(pApplet);
        //: mysample = new Sample();
 
 
 
         PFont font;    //日本語対応（以下３行）
-        font=createFont("MS 明朝",30);
-        textFont(font);
+        font=pApplet.createFont("MS 明朝",30);
+        pApplet.textFont(font);
         //--------------------------------------------------------モンスター定義
             /*switch (m_name) {    //m_nameが～の時
                 case "モンスターA":    //モンスターAの時
@@ -125,14 +125,14 @@ public class Main extends PApplet {      //extends PApplet消す    MainをComba
                     break;
             }*/
         //--------------------------------------------------------------
-        noStroke();    //pAppletを加える
+        pApplet.noStroke();    //pAppletを加える
 
         p_load.main();
         m_load.main();
         myimage.setup();
     }
 
-    @Override    //これを全部消す
+        //これを全部消す
     public void draw() {
         start_event = true;
         myimage.draw();
@@ -142,44 +142,44 @@ public class Main extends PApplet {      //extends PApplet消す    MainをComba
         //mysample.draw();                //まさき
 
         if( p_hp >= 20)
-            stroke(0);    //枠線の色
+            pApplet.stroke(0);    //枠線の色
         if(p_hp < 20)
-            stroke(255,0,0);
-        fill(255, 255, 255, 100);    //～の色（４つ目は透明度）    　　　　　　　　　ここはプレイヤーの四角
-        rect(100, 100, 220, 300);    //四角形（x座標、y座標、横の長さ、縦の長さ）
-        strokeWeight(2);    //枠線の太さ
+            pApplet.stroke(255,0,0);
+        pApplet.fill(255, 255, 255, 100);    //～の色（４つ目は透明度）    　　　　　　　　　ここはプレイヤーの四角
+        pApplet.rect(100, 100, 220, 300);    //四角形（x座標、y座標、横の長さ、縦の長さ）
+        pApplet.strokeWeight(2);    //枠線の太さ
 
 
 
-        line(100, 170, 320, 170);    //直線（左２つの座標と右２つの座標を結んだ線）
+        pApplet.line(100, 170, 320, 170);    //直線（左２つの座標と右２つの座標を結んだ線）
 
-        rect(390, 480, 500, 250);                                             //ここはナレーションの四角
+        pApplet.rect(390, 480, 500, 250);                                             //ここはナレーションの四角
 
-        rect(1000, 100, 200, 100);                                                //ここは敵の四角
+        pApplet.rect(1000, 100, 200, 100);                                                //ここは敵の四角
 
 
-        fill(0);    //～の色
-        textSize(20);    //文字の大きさ
-        text(p_name, 110, 130);     //文字、x座標、y座標　　　                      ここはプレイヤーの四角内
-        text("/ Lv:" + Lv,260,130);
-        text("HP : " + p_hp, 110, 160);
-        text("/ MP : " + mp, 210, 160);
-        text("＜ 攻撃 (A) ＞", 120, 200);
-        text("＜ 逃げる (E) ＞", 120, 250);
-        text("＜ アイテム (I) ＞",120,300);
-        text("＜ 魔法 (M) ＞",120,350);
+        pApplet.fill(0);    //～の色
+        pApplet.textSize(20);    //文字の大きさ
+        pApplet.text(p_name, 110, 130);     //文字、x座標、y座標　　　                      ここはプレイヤーの四角内
+        pApplet.text("/ Lv:" + Lv,260,130);
+        pApplet.text("HP : " + p_hp, 110, 160);
+        pApplet.text("/ MP : " + mp, 210, 160);
+        pApplet.text("＜ 攻撃 (A) ＞", 120, 200);
+        pApplet.text("＜ 逃げる (E) ＞", 120, 250);
+        pApplet.text("＜ アイテム (I) ＞",120,300);
+        pApplet.text("＜ 魔法 (M) ＞",120,350);
 
-        text(m_name, 1010, 130);                                                   //ここは敵の四角内
-        text("HP : " + m_hp, 1010, 170);
+        pApplet.text(m_name, 1010, 130);                                                   //ここは敵の四角内
+        pApplet.text("HP : " + m_hp, 1010, 170);
 
-        keika = millis() - press_time;    //押されてからの経過時間
+        keika = pApplet.millis() - press_time;    //押されてからの経過時間
 
         if(combat)
-            text(m_name + "が現れた", 440, 530);                                            //ここからメインの流れ
+            pApplet.text(m_name + "が現れた", 440, 530);                                            //ここからメインの流れ
 
         //----------------------------------------------------------------------アイテム足りないとき
         if((item_no) && (keika < 1000*3)) {
-            text("アイテムが足りません", 440, 560);
+            pApplet.text("アイテムが足りません", 440, 560);
             tap_b = false;
             tap_y = false;
             if (keika > 1000 * 2) {
@@ -191,7 +191,7 @@ public class Main extends PApplet {      //extends PApplet消す    MainをComba
 
         //----------------------------------------------------------------------mp足りないとき
         if((mp_no) && (keika < 1000*3)) {
-            text("MPが足りません", 440, 560);
+            pApplet.text("MPが足りません", 440, 560);
             tap_l = false;
             tap_f = false;
             if (keika > 1000 * 2) {
@@ -206,7 +206,7 @@ public class Main extends PApplet {      //extends PApplet消す    MainをComba
             //-----------------------------------------------------------------------------------アイテム使用時
             if (tap_b || tap_y) {
                 if (keika < 1000 * 10) {//１０秒以内の時
-                    text(p_name + "は" + item + "を使った", 440, 560);    //実行する
+                    pApplet.text(p_name + "は" + item + "を使った", 440, 560);    //実行する
 
                     // if(!item_event){
                     item_event = true;
@@ -219,7 +219,7 @@ public class Main extends PApplet {      //extends PApplet消す    MainをComba
                 if ((1000 * 5 < keika) && (keika < 1000 * 10)) {    //５～１０秒の時
                     switch (item) {    //m_nameが～の時
                         case "爆弾":    //モンスターAの時
-                            text("敵に20ダメージ", 440, 590);
+                            pApplet.text("敵に20ダメージ", 440, 590);
 
 
                             m_damage_event = true;
@@ -239,7 +239,7 @@ public class Main extends PApplet {      //extends PApplet消す    MainをComba
                             }
                             break;
                         case "薬草":
-                            text("プレイヤーはHPを200回復した", 440, 590);
+                            pApplet.text("プレイヤーはHPを200回復した", 440, 590);
 
                             heal_event = true;
 //------------------------                             myimage.draw();
@@ -265,7 +265,7 @@ public class Main extends PApplet {      //extends PApplet消す    MainをComba
 
             if ((tap_f || tap_l) && (!mp_no)) {
                 if (keika < 1000 * 10)//１０秒以内の時
-                    text(p_name + "は" + magic + "を唱えた", 440, 560);    //実行する
+                    pApplet.text(p_name + "は" + magic + "を唱えた", 440, 560);    //実行する
 
                 magic_event = true;
 //------------------------                myimage.draw();
@@ -274,7 +274,7 @@ public class Main extends PApplet {      //extends PApplet消す    MainをComba
                 if ((1000 * 5 < keika) && (keika < 1000 * 10)) {    //５～１０秒の時
                     switch (magic) {    //m_nameが～の時
                         case "ファイヤー":    //モンスターAの時
-                            text("敵に" + fire_damage + "ダメージ", 440, 590);
+                            pApplet.text("敵に" + fire_damage + "ダメージ", 440, 590);
 
                             m_damage_event = true;
 //------------------------                            myimage.draw();
@@ -293,7 +293,7 @@ public class Main extends PApplet {      //extends PApplet消す    MainをComba
                             }
                             break;
                         case "ライトニング":    //モンスターAの時
-                            text("敵に" + lightning_damage + "ダメージ", 440, 590);
+                            pApplet.text("敵に" + lightning_damage + "ダメージ", 440, 590);
 
                             m_damage_event = true;
 //------------------------                            myimage.draw();
@@ -317,7 +317,7 @@ public class Main extends PApplet {      //extends PApplet消す    MainをComba
             }//-----------------------------------------------------------------------------------------
             if (tap_a) {
                 if (keika < 1000 * 10) {//１０秒以内の時
-                    text(p_name + "の攻撃", 440, 560);    //実行する
+                    pApplet.text(p_name + "の攻撃", 440, 560);    //実行する
 
                     p_attack_event = true;
 //------------------------                myimage.draw();
@@ -330,7 +330,7 @@ public class Main extends PApplet {      //extends PApplet消す    MainをComba
 
                 if ((1000 * 5 < keika) && (keika < 1000 * 10)) {    //５～１０秒の時
                     if (p_random < 3) {
-                        text("会心の一撃！敵に" + p_attack * 2 + "ダメージ", 440, 590);
+                        pApplet.text("会心の一撃！敵に" + p_attack * 2 + "ダメージ", 440, 590);
 
                         m_damage_event = true;
 //------------------------                        myimage.draw();
@@ -339,7 +339,7 @@ public class Main extends PApplet {      //extends PApplet消す    MainをComba
                             m_damage_event = false;
                     }
                     if (p_random >= 3) {
-                        text("敵に" + p_attack + "ダメージ", 440, 590);
+                        pApplet.text("敵に" + p_attack + "ダメージ", 440, 590);
                         m_damage_event = true;
 //------------------------                        myimage.draw();
 //------------------------                        mysound.main();
@@ -362,7 +362,7 @@ public class Main extends PApplet {      //extends PApplet消す    MainをComba
                 }
             }
             if ((1000 * 12 < keika) && (keika < 1000 * 20) && (m_hp != 0))    //１２～２０秒で敵体力が０じゃないとき                                                                    //ここから新しく
-                text(m_name + "の攻撃", 440, 560);
+                pApplet.text(m_name + "の攻撃", 440, 560);
 
             m_attack_event = true;
 //------------------------            myimage.draw();
@@ -370,7 +370,7 @@ public class Main extends PApplet {      //extends PApplet消す    MainをComba
 
             if ((1000 * 15 < keika) && (keika < 1000 * 20) && (m_hp != 0)) {
                 if (m_random < 3) {
-                    text("痛恨の一撃！プレイヤーに" + m_attack * 2 + "ダメージ", 440, 590);
+                    pApplet.text("痛恨の一撃！プレイヤーに" + m_attack * 2 + "ダメージ", 440, 590);
 
                     p_damage_event = true;
 //------------------------                    myimage.draw();
@@ -378,7 +378,7 @@ public class Main extends PApplet {      //extends PApplet消す    MainをComba
 
                 }
                 if (m_random >= 3) {
-                    text("プレイヤーに" + m_attack + "ダメージ", 440, 590);
+                    pApplet.text("プレイヤーに" + m_attack + "ダメージ", 440, 590);
 
                     p_damage_event = true;
 //------------------------                    myimage.draw();
@@ -401,7 +401,7 @@ public class Main extends PApplet {      //extends PApplet消す    MainをComba
 
 
             if ((p_hp <= 0) && (keika < 1000 * 21)) {
-                text(p_name + "は倒れた", 440, 620);
+                pApplet.text(p_name + "は倒れた", 440, 620);
 
                 finish_event = true;
 //------------------------                myimage.draw();
@@ -428,7 +428,7 @@ public class Main extends PApplet {      //extends PApplet消す    MainをComba
 
                     p_save.main();
                     waigoma.Main.state = 2;
-                    exit();
+                    pApplet.exit();
                 }
             }
 
@@ -438,11 +438,11 @@ public class Main extends PApplet {      //extends PApplet消す    MainをComba
 //------------------------                myimage.draw();
 //------------------------                        mysound.main();
 
-                text("敵を倒した", 440, 620);    //実行する
-                text("exp：" + m_exp,440,650);    //入手経験値
+                pApplet.text("敵を倒した", 440, 620);    //実行する
+                pApplet.text("exp：" + m_exp,440,650);    //入手経験値
 
                 if(total_exp_flg) {     //total_expがtrueの時（一回実行）
-                    m_random = (int) random(1,10);
+                    m_random = (int) pApplet.random(1,10);
                     switch(m_random) {
                         case 1:
                             y_count = y_count + 1;
@@ -466,9 +466,9 @@ public class Main extends PApplet {      //extends PApplet消す    MainをComba
                     total_exp_flg = false;    //終了
                 }
                 if((m_random >= 1) && (m_random <=4))
-                    text(m_money + "ゴールドと" + item + "を手に入れた", 440, 680);
+                    pApplet.text(m_money + "ゴールドと" + item + "を手に入れた", 440, 680);
                 else
-                    text(m_money + "ゴールドを手に入れた",440,680);
+                    pApplet.text(m_money + "ゴールドを手に入れた",440,680);
 
                 //-------------------------------------------------------- //レベルupの処理
                 if((100<total_exp) && (total_exp<200) && (Lv == 1)) {
@@ -513,7 +513,7 @@ public class Main extends PApplet {      //extends PApplet消す    MainをComba
                 }
                 //----------------------------------------------------------------------------
                 if(level_flg && (keika >1000*5)) {
-                    text(p_name + "はレベルが" + Lv + "になった", 440, 710);
+                    pApplet.text(p_name + "はレベルが" + Lv + "になった", 440, 710);
 
                     Lvup_event = true;
 //------------------------                    myimage.draw();
@@ -525,7 +525,7 @@ public class Main extends PApplet {      //extends PApplet消す    MainをComba
                     p_attack = Lvup_p_attack;
                     p_save.main();
                     waigoma.Main.state = 2;
-                    exit();    //処理終了
+                    pApplet.exit();    //処理終了
                 }
             }
             if(keika > 1000*20) {
@@ -542,7 +542,7 @@ public class Main extends PApplet {      //extends PApplet消す    MainをComba
         if (tap_e) {     //もしtap_eがtrueなら
             if((e_random < 3) && (keika < 1000*20)){
                 if(keika < 1000*5) {
-                    text("逃げ出せなかった", 440, 560);
+                    pApplet.text("逃げ出せなかった", 440, 560);
 
                     escape_event = true;
 //------------------------                    myimage.draw();
@@ -550,7 +550,7 @@ public class Main extends PApplet {      //extends PApplet消す    MainをComba
 
                 }
                 if ((1000 * 5 < keika) && (keika < 1000 * 15))    //１２～２０秒で敵体力が０じゃないとき                                                                    //ここから新しく
-                    text(m_name + "の攻撃", 440, 560);
+                    pApplet.text(m_name + "の攻撃", 440, 560);
 
                 m_attack_event = true;
 //------------------------                myimage.draw();
@@ -558,7 +558,7 @@ public class Main extends PApplet {      //extends PApplet消す    MainをComba
 
                 if ((1000 * 10 < keika) && (keika < 1000 * 15)) {
                     if (m_random < 3) {
-                        text("痛恨の一撃！プレイヤーに" + m_attack * 2 + "ダメージ", 440, 590);
+                        pApplet.text("痛恨の一撃！プレイヤーに" + m_attack * 2 + "ダメージ", 440, 590);
 
                         p_damage_event = true;
 //------------------------                        myimage.draw();
@@ -566,7 +566,7 @@ public class Main extends PApplet {      //extends PApplet消す    MainをComba
 
                     }
                     if (m_random >= 3) {
-                        text("プレイヤーに" + m_attack + "ダメージ", 440, 590);
+                        pApplet.text("プレイヤーに" + m_attack + "ダメージ", 440, 590);
 
                         p_damage_event = true;
 //------------------------                        myimage.draw();
@@ -588,7 +588,7 @@ public class Main extends PApplet {      //extends PApplet消す    MainをComba
                 }
 
                 if ((p_hp <= 0) && (keika < 1000 * 16)) {
-                    text(p_name + "は倒れた", 440, 620);
+                    pApplet.text(p_name + "は倒れた", 440, 620);
 
                     finish_event = true;
 //------------------------                myimage.draw();
@@ -598,7 +598,7 @@ public class Main extends PApplet {      //extends PApplet消す    MainをComba
 
                         p_save.main();
                         waigoma.Main.state = 2;
-                        exit();
+                        pApplet.exit();
                     }
                 }
 
@@ -608,7 +608,7 @@ public class Main extends PApplet {      //extends PApplet消す    MainをComba
                 }
             }
             if(e_random >= 3) {
-                text(p_name + "は逃げ出した", 440, 560);    //実行する
+                pApplet.text(p_name + "は逃げ出した", 440, 560);    //実行する
 
                 escape_event = true;
 //------------------------                myimage.draw();
@@ -620,18 +620,18 @@ public class Main extends PApplet {      //extends PApplet消す    MainをComba
 
                     p_save.main();
                     waigoma.Main.state = 2;
-                    exit();    //処理終了
+                    pApplet.exit();    //処理終了
                 }
             }
         }
 
         if(tap_i) {
-            fill(255, 255, 255, 100);    //～の色（４つ目は透明度）    　　　　　　　　　ここはプレイヤーの四角
-            rect(320, 250, 200, 150);    //四角形（x座標、y座標、横の長さ、縦の長さ）
-            stroke(0);    //枠線、（）内は色
-            fill(0);
-            text("＜ 爆弾 " + bom_count + "個 (B) ＞",320,300);
-            text("＜ 薬草 " + y_count +  "個 (Y) ＞",320,350);
+            pApplet.fill(255, 255, 255, 100);    //～の色（４つ目は透明度）    　　　　　　　　　ここはプレイヤーの四角
+            pApplet.rect(320, 250, 200, 150);    //四角形（x座標、y座標、横の長さ、縦の長さ）
+            pApplet.stroke(0);    //枠線、（）内は色
+            pApplet.fill(0);
+            pApplet.text("＜ 爆弾 " + bom_count + "個 (B) ＞",320,300);
+            pApplet.text("＜ 薬草 " + y_count +  "個 (Y) ＞",320,350);
 
             if(tap_b) {
                 item = "爆弾";
@@ -644,12 +644,12 @@ public class Main extends PApplet {      //extends PApplet消す    MainをComba
             }
         }
         if(tap_m) {
-            fill(255, 255, 255, 100);    //～の色（４つ目は透明度）    　　　　　　　　　ここはプレイヤーの四角
-            rect(320, 300, 250, 150);    //四角形（x座標、y座標、横の長さ、縦の長さ）
-            stroke(0);    //枠線、（）内は色
-            fill(0);
-            text("＜ ファイヤー (F) ＞",320,350);
-            text("＜ ライトニング (L) ＞",320,400);
+            pApplet.fill(255, 255, 255, 100);    //～の色（４つ目は透明度）    　　　　　　　　　ここはプレイヤーの四角
+            pApplet.rect(320, 300, 250, 150);    //四角形（x座標、y座標、横の長さ、縦の長さ）
+            pApplet.stroke(0);    //枠線、（）内は色
+            pApplet.fill(0);
+            pApplet.text("＜ ファイヤー (F) ＞",320,350);
+            pApplet.text("＜ ライトニング (L) ＞",320,400);
 
             if(tap_f) {
                 magic = "ファイヤー";
@@ -663,17 +663,17 @@ public class Main extends PApplet {      //extends PApplet消す    MainをComba
         }
     }
 
-    @Override
+    
     public void keyPressed(){    //キーボード対応
-        if ((key == 'A' || key == 'a') && (!tap_i) && (!tap_m) && (!battle)) {   //もしAが押されバトルじゃないとき
+        if ((pApplet.key == 'A' || pApplet.key == 'a') && (!tap_i) && (!tap_m) && (!battle)) {   //もしAが押されバトルじゃないとき
             tap_a = true;    //tap_aはtrue
             p_hit = true;
             m_hit = true;
             battle = true;    //バトル中
             total_exp_flg = true;
-            p_random = (int) random(1,10);
-            m_random = (int) random(1,10);
-            press_time = millis();    //押された時間の取得
+            p_random = (int) pApplet.random(1,10);
+            m_random = (int) pApplet.random(1,10);
+            press_time = pApplet.millis();    //押された時間の取得
 
             p_attack_event = false;
             m_damage_event = false;
@@ -687,14 +687,14 @@ public class Main extends PApplet {      //extends PApplet消す    MainをComba
             heal_event = false;
         }
 
-        if ((key == 'E' || key == 'e') && (!tap_i) && (!tap_m) && (!battle)) {     //もしEが押されバトルじゃないとき
+        if ((pApplet.key == 'E' || pApplet.key == 'e') && (!tap_i) && (!tap_m) && (!battle)) {     //もしEが押されバトルじゃないとき
             tap_e = true;    //tap_eはtrue　　
             battle = true;    //バトル中
             p_hit = true;
             escape_random = true;
-            e_random = (int) random(1,10);
-            m_random = (int) random(1,10);
-            press_time = millis();    //押された時間の取得
+            e_random = (int) pApplet.random(1,10);
+            m_random = (int) pApplet.random(1,10);
+            press_time = pApplet.millis();    //押された時間の取得
 
             p_attack_event = false;
             m_damage_event = false;
@@ -708,17 +708,17 @@ public class Main extends PApplet {      //extends PApplet消す    MainをComba
             heal_event = false;
         }
 
-        if ((key == 'I' || key == 'i') && (!tap_m) && (!battle)) {
+        if ((pApplet.key == 'I' || pApplet.key == 'i') && (!tap_m) && (!battle)) {
             tap_i = true;
         }
-        if ((key == 'Y' || key == 'y') && (!battle) && (tap_i)) {
+        if ((pApplet.key == 'Y' || pApplet.key == 'y') && (!battle) && (tap_i)) {
             tap_y = true;
             battle = true;//バトル中
             p_hit = true;
             m_hit = true;
             total_exp_flg = true;
-            m_random = (int) random(1,10);
-            press_time = millis();    //押された時間の取得
+            m_random = (int) pApplet.random(1,10);
+            press_time = pApplet.millis();    //押された時間の取得
             y_count = y_count - 1;
             if(y_count < 0){
                 item_no = true;
@@ -736,14 +736,14 @@ public class Main extends PApplet {      //extends PApplet消す    MainをComba
             magic_event = false;
             heal_event = false;
         }
-        if ((key == 'B' || key == 'b') && (tap_i) && (!battle)) {
+        if ((pApplet.key == 'B' || pApplet.key == 'b') && (tap_i) && (!battle)) {
             tap_b = true;
             battle = true;//バトル中
             p_hit = true;
             m_hit = true;
             total_exp_flg = true;
-            m_random = (int) random(1,10);
-            press_time = millis();
+            m_random = (int) pApplet.random(1,10);
+            press_time = pApplet.millis();
             bom_count = bom_count - 1;
             if(bom_count < 0){
                 item_no = true;
@@ -762,22 +762,22 @@ public class Main extends PApplet {      //extends PApplet消す    MainをComba
             heal_event = false;
         }
 
-        if(key == BACKSPACE){
+        if(pApplet.key == pApplet.BACKSPACE){
             tap_i = false;
             tap_m = false;
         }
 
-        if ((key =='M' || key == 'm') && (!battle) && (!tap_i)){
+        if ((pApplet.key =='M' || pApplet.key == 'm') && (!battle) && (!tap_i)){
             tap_m = true;
         }
-        if ((key == 'F' || key == 'f') && (!battle) && (tap_m)) {
+        if ((pApplet.key == 'F' || pApplet.key == 'f') && (!battle) && (tap_m)) {
             tap_f = true;
             battle = true;//バトル中
             p_hit = true;
             m_hit = true;
             total_exp_flg = true;
-            m_random = (int) random(1,10);
-            press_time = millis();
+            m_random = (int) pApplet.random(1,10);
+            press_time = pApplet.millis();
             mp = mp - 10;
             if(mp < 0){
                 mp_no = true;
@@ -795,14 +795,14 @@ public class Main extends PApplet {      //extends PApplet消す    MainをComba
             magic_event = false;
             heal_event = false;
         }
-        if ((key == 'L' || key == 'l') && (!battle) && (tap_m)) {
+        if ((pApplet.key == 'L' || pApplet.key == 'l') && (!battle) && (tap_m)) {
             tap_l = true;
             battle = true;//バトル中
             p_hit = true;
             m_hit = true;
             total_exp_flg = true;
-            m_random = (int) random(1,10);
-            press_time = millis();
+            m_random = (int) pApplet.random(1,10);
+            press_time = pApplet.millis();
             mp = mp - 20;
             if(mp < 0){
                 mp_no = true;
@@ -822,7 +822,7 @@ public class Main extends PApplet {      //extends PApplet消す    MainをComba
         }
     }
 
-    public static void main (String[]args){    //ここを消す
-        PApplet.main("hibino.Main");
-    }
+//    public static void main (String[]args){    //ここを消す
+//        PApplet.main("hibino.Main");
+//    }
 }
