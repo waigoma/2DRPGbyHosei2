@@ -16,7 +16,7 @@ import static processing.core.PApplet.main;
 public class Presentation extends PApplet {
 
     PImage haikei;
-    PImage dorako;
+    PImage ari;
     PImage batta;
     PImage kettosi;
     PImage efect;
@@ -30,7 +30,7 @@ public class Presentation extends PApplet {
     public static float p_rectWidth = 220;
     public static float m_rectWidth = 200;
     float alpha = 255f;       //透明度
-    float glay = 255f;        //グレーの濃淡
+    float gray = 255f;        //グレーの濃淡
     boolean cngAlpha;    //変化開始FLG
     boolean cngGlay;     //変化開始FLG
 
@@ -52,9 +52,21 @@ public class Presentation extends PApplet {
         pApplet.imageMode(pApplet.CENTER);
         haikei.resize(pApplet.width,pApplet.height);
 
-        dorako = pApplet.loadImage("src/kotone/deta/dorako.png");    //filenameの書き方が違った（４７）
+        ari = pApplet.loadImage("src/kotone/deta/ari.png");    //filenameの書き方が違った（４７）
         batta = pApplet.loadImage("src/kotone/deta/batta.png");
         kettosi = pApplet.loadImage("src/kotone/deta/kettosi-.png");
+
+        if (m_name == "モンスターA"){
+            pApplet.image(ari,pointX,pointY);
+        }
+
+        if (m_name == "モンスターB"){
+            pApplet.image(batta,pointX,pointY);
+        }
+
+        if (m_name == "モンスターC"){
+            pApplet.image(kettosi,pointX,pointY);
+        }
 
         cngAlpha = false;//透明度の変化は「停止」にしておく
         cngGlay = false;//透明度の変化は「停止」にしておく
@@ -62,8 +74,6 @@ public class Presentation extends PApplet {
         pointX = pApplet.width/2;
         pointY = 300;
         speedY = 1;
-
-        fadeOut();
 
         cutAnimation = new Gif(pApplet,"src/kotone/deta/cut2.gif");
 
@@ -86,6 +96,7 @@ public class Presentation extends PApplet {
 
     public void draw() {
         if (Combat.start_event){
+            pApplet.tint(gray,0,255);
             pApplet.image(haikei, pApplet.width / 2, pApplet.height / 2);//背景の大きさ
 
             pApplet.tint(255f, alpha);//画像を透明度指定付きで表示
@@ -98,8 +109,6 @@ public class Presentation extends PApplet {
         if(p_attack_event){
             pApplet.image(cutAnimation,pApplet.width/2, 300);
             cutAnimation.play();
-        } else {
-
         }
 
         if((p_attack_event) && (p_random < 3)){
@@ -119,9 +128,19 @@ public class Presentation extends PApplet {
         }
 
         if(m_damage_event){
-            pApplet.tint(255, 80, 30);
-//            pApplet.image(img, pointX, pointY);
-            pApplet.noTint();
+            if (m_name == "モンスターA"){
+                pApplet.tint(255, 80, 30);
+                pApplet.image(ari, pointX, pointY);
+                pApplet.noTint();
+            } else if (m_name == "モンスターB"){
+                pApplet.tint(255, 80, 30);
+                pApplet.image(batta, pointX, pointY);
+                pApplet.noTint();
+            } else if (m_name == "モンスターC"){
+                pApplet.tint(255, 80, 30);
+                pApplet.image(kettosi, pointX, pointY);
+                pApplet.noTint();
+            }
         }
 
         if(m_attack_event){
@@ -132,7 +151,6 @@ public class Presentation extends PApplet {
         if((p_damage_event) && (m_random < 3)){
             pApplet.text("痛恨の一撃",500,500);
             pApplet.tint(255,80,30);
-
         }
 
         if((p_damage_event) && (m_random >= 3)) {  //ノーマルのダメージ
@@ -140,15 +158,16 @@ public class Presentation extends PApplet {
             pApplet.tint(255,80,30);
         }
 
-        if((finish_event) && (p_hp <= 0)){  //プレイヤーが死んだとき
+        if((finish_event) && (p_hp <= 0)) {  //プレイヤーが死んだとき
             //徐々に濃くする
-            glay = glay + 10f;
+            gray = gray + 10f;
 
             //真っ黒になったら変化終了
-            if(glay < 0f){
-                glay = 0f;
+            if (gray < 0f) {
+                gray = 0f;
                 cngGlay = false;
             }
+        }
 
         if((finish_event) && (m_hp <= 0)){  //モンスターが死んだとき
             //徐々に薄くする
@@ -161,34 +180,17 @@ public class Presentation extends PApplet {
             }
         }
 
-        if(Lvup_event){
-            pApplet.text("レベルアップした",500,500);
-        }
-
-        if((escape_event) && (e_random < 3)){  //逃げ出せなかったとき
-            pApplet.text("にげだせなかった",500,500);
-        }
 
         if((escape_event) && (e_random >= 3)){  //逃げ出せたとき
-            pApplet.text("逃げ出せた",500,500);
+            //徐々に濃くする
+            gray = gray + 10f;
+
+            //真っ黒になったら変化終了
+            if(gray < 0f){
+                gray = 0f;
+                cngGlay = false;
+            }
         }
-
-
-
-//        //透明度を変化させる場合
-//        if (!fadeMode) {
-//            fadeOut();
-//        }
-
-            pApplet.tint(255, 80, 30);
-            pApplet.image(dorako, pointX, pointY);
-        } else {
-            pApplet.noTint();//色を消す
-        }
-
-
-
-
     }
 
     public void monsterMove(){//普通のモンスターのスピード
@@ -255,30 +257,6 @@ public class Presentation extends PApplet {
         pApplet.noFill();
         pApplet.rect(1000, 100, m_rectWidth, 50);
     }
-
-
-
-
-
-    public void fadeOut () {
-        //徐々に薄くする
-        alpha = alpha - 10f;
-
-        //透明になったら変化終了
-        if (alpha < 0f) {
-            alpha = 0f;
-            cngAlpha = false;
-        }
-    }
-//
-//    public void lifeGauge(){
-//        nowP_hp = nowP_hp/p_hp * p_lifegaugeWidth; //プレイヤーHP の比率計算
-//        nowM_hp = nowM_hp/m_hp * m_lifegaugeWidth; //モンスターHP の比率計算
-//    }
-
-
-
-
 
 
     public static void main(String[] args){
