@@ -20,8 +20,6 @@ public class Main extends PApplet {
     Combat combat;
     Encounter encounter;
 
-    int count = 0;
-
     @Override
     public void settings(){
         size(1280,720);
@@ -59,7 +57,7 @@ public class Main extends PApplet {
 
     @Override
     public void draw(){//ステートマシン
-        System.out.println("x: "+ Collision.Playerx+" "+"y: "+ Collision.Playery);
+//        System.out.println("x: "+ Collision.Playerx+" "+"y: "+ Collision.Playery);
 //        state = StateType.COMBAT_STATE;
         switch (state){
             case StateType.TITLE_STATE://タイトル画面
@@ -73,10 +71,6 @@ public class Main extends PApplet {
                 encounter.randomEncounter();
                 break;
             case StateType.COMBAT_STATE:
-                if (count == 0){
-                    combat.setup();
-                    count++;
-                }
                 combat.draw();
                 break;
         }

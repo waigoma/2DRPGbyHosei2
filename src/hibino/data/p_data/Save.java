@@ -69,7 +69,7 @@ public class Save {
             propMap.put(e.getKey().toString(), e.getValue().toString());
         }
 
-        System.out.println(propMap);
+//        System.out.println(propMap);
     }
 
 }

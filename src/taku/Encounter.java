@@ -34,5 +34,6 @@ public class Encounter {
             Combat.m_name = "モンスターB";
         }
         Main.state = StateType.COMBAT_STATE;
+        i = 0;
     }
 }

@@ -5,6 +5,8 @@ import hibino.data.p_data.Save;
 import kotone.presentation.Presentation;
 import processing.core.PApplet;
 import processing.core.PFont;
+import waigoma.Map.LocalMap.LocalMap;
+import waigoma.StateType;
 
 public class Combat {      //extends PApplet消す    MainをCombatに変えるa
 
@@ -29,7 +31,7 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
 
     // Table number;    //各設定数値の読み込み
     float a;
-    int counts = 0;
+    public static int counts = 0;
 
     public static int p_hp ;    //数値変数(プレイヤー体力)            (メインで宣言)
     public static int p_hp_max ;                                   //(メインで宣言)
@@ -141,6 +143,10 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
 
         //これを全部消す
     public void draw() {
+        if (counts == 0){
+            setup();
+            counts++;
+        }
         start_event = true;
         myimage.draw();
 //-----------        mysound.sound();
@@ -437,8 +443,10 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
                     }
 
                     p_save.main();
-                    waigoma.Main.state = 2;
-                    pApplet.exit();
+                    LocalMap.count = 0;
+                    escape_event = false;
+                    finish_event = false;
+                    waigoma.Main.state = StateType.WORLD_STATE;
                 }
             }
 
@@ -534,8 +542,11 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
                 if (keika > 1000 * 10) {   //経過が１０秒以上なら
                     p_attack = Lvup_p_attack;
                     p_save.main();
-                    waigoma.Main.state = 2;
-                    pApplet.exit();    //処理終了
+                    LocalMap.count = 0;
+                    finish_event = false;
+                    escape_event = false;
+                    Lvup_event = false;//処理終了
+                    waigoma.Main.state = StateType.WORLD_STATE;
                 }
             }
             if(keika > 1000*20) {
@@ -607,8 +618,12 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
                     if (keika > 1000*15) {
 
                         p_save.main();
-                        waigoma.Main.state = 2;
-                        pApplet.exit();
+                        LocalMap.count = 0;
+                        finish_event = false;
+                        escape_event = false;
+                        tap_e = false;
+                        System.out.println("escape");
+                        waigoma.Main.state = StateType.WORLD_STATE;
                     }
                 }
 
@@ -629,8 +644,10 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
                 if(keika > 1000*4) {    //経過が２秒以上なら
 
                     p_save.main();
-                    waigoma.Main.state = 2;
-                    pApplet.exit();    //処理終了
+                    LocalMap.count = 0;    //処理終了
+                    finish_event = false;
+                    escape_event = false;
+                    waigoma.Main.state = StateType.WORLD_STATE;
                 }
             }
         }
@@ -675,6 +692,164 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
 
     
     public void keyPressed(){    //キーボード対応
+        if ((pApplet.key == 'A' || pApplet.key == 'a') && (!tap_i) && (!tap_m) && (!battle)) {   //もしAが押されバトルじゃないとき
+            tap_a = true;    //tap_aはtrue
+            p_hit = true;
+            m_hit = true;
+            battle = true;    //バトル中
+            total_exp_flg = true;
+            p_random = (int) pApplet.random(1,10);
+            m_random = (int) pApplet.random(1,10);
+            press_time = pApplet.millis();    //押された時間の取得
+
+            p_attack_event = false;
+            m_damage_event = false;
+            m_attack_event = false;
+            p_damage_event = false;
+            finish_event = false;
+            Lvup_event = false;
+            escape_event = false;
+            item_event = false;         //
+            magic_event = false;
+            heal_event = false;
+        }
+
+        if ((pApplet.key == 'E' || pApplet.key == 'e') && (!tap_i) && (!tap_m) && (!battle)) {     //もしEが押されバトルじゃないとき
+            tap_e = true;    //tap_eはtrue　　
+            battle = true;    //バトル中
+            p_hit = true;
+            escape_random = true;
+            e_random = (int) pApplet.random(1,10);
+            m_random = (int) pApplet.random(1,10);
+            press_time = pApplet.millis();    //押された時間の取得
+
+            p_attack_event = false;
+            m_damage_event = false;
+            m_attack_event = false;
+            p_damage_event = false;
+            finish_event = false;
+            Lvup_event = false;
+            escape_event = false;
+            item_event = false;         //
+            magic_event = false;
+            heal_event = false;
+        }
+
+        if ((pApplet.key == 'I' || pApplet.key == 'i') && (!tap_m) && (!battle)) {
+            tap_i = true;
+        }
+        if ((pApplet.key == 'Y' || pApplet.key == 'y') && (!battle) && (tap_i)) {
+            tap_y = true;
+            battle = true;//バトル中
+            p_hit = true;
+            m_hit = true;
+            total_exp_flg = true;
+            m_random = (int) pApplet.random(1,10);
+            press_time = pApplet.millis();    //押された時間の取得
+            y_count = y_count - 1;
+            if(y_count < 0){
+                item_no = true;
+                y_count = y_count + 1;
+            }
+
+            p_attack_event = false;
+            m_damage_event = false;
+            m_attack_event = false;
+            p_damage_event = false;
+            finish_event = false;
+            Lvup_event = false;
+            escape_event = false;
+            item_event = false;         //
+            magic_event = false;
+            heal_event = false;
+        }
+        if ((pApplet.key == 'B' || pApplet.key == 'b') && (tap_i) && (!battle)) {
+            tap_b = true;
+            battle = true;//バトル中
+            p_hit = true;
+            m_hit = true;
+            total_exp_flg = true;
+            m_random = (int) pApplet.random(1,10);
+            press_time = pApplet.millis();
+            bom_count = bom_count - 1;
+            if(bom_count < 0){
+                item_no = true;
+                bom_count = bom_count + 1;
+            }
+
+            p_attack_event = false;
+            m_damage_event = false;
+            m_attack_event = false;
+            p_damage_event = false;
+            finish_event = false;
+            Lvup_event = false;
+            escape_event = false;
+            item_event = false;         //
+            magic_event = false;
+            heal_event = false;
+        }
+
+        if(pApplet.key == pApplet.BACKSPACE){
+            tap_i = false;
+            tap_m = false;
+        }
+
+        if ((pApplet.key =='M' || pApplet.key == 'm') && (!battle) && (!tap_i)){
+            tap_m = true;
+        }
+        if ((pApplet.key == 'F' || pApplet.key == 'f') && (!battle) && (tap_m)) {
+            tap_f = true;
+            battle = true;//バトル中
+            p_hit = true;
+            m_hit = true;
+            total_exp_flg = true;
+            m_random = (int) pApplet.random(1,10);
+            press_time = pApplet.millis();
+            mp = mp - 10;
+            if(mp < 0){
+                mp_no = true;
+                mp = mp + 10;
+            }
+
+            p_attack_event = false;
+            m_damage_event = false;
+            m_attack_event = false;
+            p_damage_event = false;
+            finish_event = false;
+            Lvup_event = false;
+            escape_event = false;
+            item_event = false;         //
+            magic_event = false;
+            heal_event = false;
+        }
+        if ((pApplet.key == 'L' || pApplet.key == 'l') && (!battle) && (tap_m)) {
+            tap_l = true;
+            battle = true;//バトル中
+            p_hit = true;
+            m_hit = true;
+            total_exp_flg = true;
+            m_random = (int) pApplet.random(1,10);
+            press_time = pApplet.millis();
+            mp = mp - 20;
+            if(mp < 0){
+                mp_no = true;
+                mp = mp + 20;
+            }
+
+            p_attack_event = false;
+            m_damage_event = false;
+            m_attack_event = false;
+            p_damage_event = false;
+            finish_event = false;
+            Lvup_event = false;
+            escape_event = false;
+            item_event = false;         //
+            magic_event = false;
+            heal_event = false;
+        }
+    }
+
+    public void keyReleased() {//キーが離されたら
         if ((pApplet.key == 'A' || pApplet.key == 'a') && (!tap_i) && (!tap_m) && (!battle)) {   //もしAが押されバトルじゃないとき
             tap_a = true;    //tap_aはtrue
             p_hit = true;
