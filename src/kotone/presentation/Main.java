@@ -103,7 +103,7 @@ import processing.event.KeyEvent;
 
             if (m_hp == 0) {    //もしm_hpが０ならば
                 text("敵を倒した", 550, 540);    //実行する
-                Presentation.fadeMode = false;
+
                 if (keika > 1000 * 10)    //経過が１２秒以上なら
                     exit();    //処理終了
             }

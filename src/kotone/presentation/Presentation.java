@@ -31,7 +31,7 @@ public class Presentation extends PApplet {
     float glay = 255f;        //グレーの濃淡
     boolean cngAlpha;    //変化開始FLG
     boolean cngGlay;     //変化開始FLG
-    public static boolean fadeMode;    //フェードイン・アウト切り替えFLG
+
 
     PApplet pApplet;
     Gif cutAnimation;
@@ -180,9 +180,8 @@ public class Presentation extends PApplet {
             pApplet.noTint();//色を消す
         }
 
-        if(Main.fadeMode){
-            fadeOut();
-        }
+
+
 
     }
 

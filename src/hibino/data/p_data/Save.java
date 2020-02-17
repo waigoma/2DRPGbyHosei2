@@ -1,4 +1,5 @@
-package hibino;
+package hibino.data.p_data;
+import hibino.Main;
 import processing.core.PApplet;
 
 import java.io.File;
@@ -29,7 +30,7 @@ public class Save {
         Properties properties = new Properties();
 
         // プロパティファイルのパスを指定する
-        String strpass = "src/hibino/java.properties";
+        String strpass = "src/hibino/data/p_data/p_java.properties";
 
         try {
             // 書き込み
