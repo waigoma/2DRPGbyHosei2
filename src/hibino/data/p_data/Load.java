@@ -48,7 +48,7 @@ public class Load {
         (Combat.mp) = parseInt(properties.getProperty("mp"));
         (Combat.y_count) = parseInt(properties.getProperty("y_count"));
         (Combat.bom_count) = parseInt(properties.getProperty("bom_count"));
-     //   (Combat.Lvup_p_attack) = Integer.parseInt(properties.getProperty("Lvup_p_attack"));
+        (Combat.Lvup_p_attack) = Integer.parseInt(properties.getProperty("Lvup_p_attack"));
 
 
     }

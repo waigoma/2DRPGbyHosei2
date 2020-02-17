@@ -68,16 +68,16 @@ public class Presentation extends PApplet {
         cutAnimation = new Gif(pApplet,"src/kotone/deta/cut2.gif");
 
         bakuhatsuAnimation = new Gif(pApplet,"src/kotone/deta/bakuhatsu.gif");
-        bakuhatsuAnimation.play();
+//        bakuhatsuAnimation.play();
 
         fireAnimation = new Gif(pApplet,"src/kotone/deta/fire.gif");
-        fireAnimation.play();
+//        fireAnimation.play();
 
         lightningAnimation = new Gif(pApplet,"src/kotone/deta/lightning.gif");
-        lightningAnimation.play();
+//        lightningAnimation.play();
 
         monsterAnimation = new Gif(pApplet,"src/kotone/deta/monster.gif");
-        monsterAnimation.play();
+//        monsterAnimation.play();
 
         p_drawWidth = ((float) p_hp / Combat.p_hp_max) * p_rectWidth;
         m_drawWidth = ((float) m_hp / Combat.m_hp_max) * m_rectWidth;
@@ -86,7 +86,8 @@ public class Presentation extends PApplet {
 
     public void draw() {
         if (Combat.start_event){
-            pApplet.tint(gray,0,255);
+//            pApplet.tint(gray,0,255);
+            pApplet.tint(255,255);
             pApplet.image(haikei, pApplet.width / 2, pApplet.height / 2);//背景の大きさ
 
             if (m_name == "モンスターA"){
@@ -121,14 +122,17 @@ public class Presentation extends PApplet {
         }
 
         if((p_attack_event) && (tap_b)){
+            bakuhatsuAnimation.play();
             pApplet.image(bakuhatsuAnimation,pApplet.width/2,300);
         }
 
         if((p_attack_event) && (tap_f)){
+            fireAnimation.play();
             pApplet.image(fireAnimation,width/2,300);
         }
 
         if((p_attack_event) && (tap_l)){
+            lightningAnimation.play();
             pApplet.image(lightningAnimation,width/2,300);
         }
 
