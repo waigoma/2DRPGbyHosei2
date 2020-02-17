@@ -152,6 +152,7 @@ public class MapTemplate {
         }else {//画像あり
             img = PImgs[index - 1];//配列は0からスタートでlayer情報は1からスタートなので-1
         }
+        plet.tint(255,255);
         plet.image(img, imgX, imgY);//実際に画像を描写
     }
 

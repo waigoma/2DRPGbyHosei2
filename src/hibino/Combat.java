@@ -5,6 +5,7 @@ import hibino.data.p_data.Save;
 import kotone.presentation.Presentation;
 import processing.core.PApplet;
 import processing.core.PFont;
+import processing.core.PImage;
 import waigoma.Map.LocalMap.LocalMap;
 import waigoma.StateType;
 
@@ -173,7 +174,7 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
 
         //これを全部消す
     public void draw() {
-        System.out.println(3);
+//        System.out.println(3);
         if (counts == 0){
             setup();
             counts++;
@@ -574,10 +575,11 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
                 if (keika > 1000 * 10) {   //経過が１０秒以上なら
                     p_attack = Lvup_p_attack;
                     p_save.main();
-                    LocalMap.count = 0;
+                    LocalMap.count = 0;    //処理終了
                     finish_event = false;
                     escape_event = false;
-
+                    tap_e = false;
+//                    System.out.println("escape");
                     counts = 0;
                     waigoma.Main.state = StateType.WORLD_STATE;
                 }

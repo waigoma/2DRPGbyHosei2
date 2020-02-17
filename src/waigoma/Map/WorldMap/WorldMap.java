@@ -9,8 +9,6 @@ import waigoma.StateType;
 
 import waigoma.Map.LocalMap.LocalMap;
 
-import java.util.Arrays;
-
 public class WorldMap {
     String next, previous;
     int nextX, nextY, previousX, previousY;
@@ -34,6 +32,7 @@ public class WorldMap {
 
     public void display(){
         if (LocalMap.count == 0){
+            mapTmp = MapTemplate.maps.get("dungeon1.tmx");
             plet.rectMode(plet.CORNER);
             int width = mapTmp.getMapTileWidth() * mapTmp.getTileWidth();
             int height = mapTmp.getMapTileHeight() * mapTmp.getTileHeight();
@@ -47,7 +46,7 @@ public class WorldMap {
             plet.background(0);
             pmove.setup();
             LocalMap.count++;
-//            System.out.println(Arrays.toString(mapTmp.getPImg()));
+            System.out.println("world");
         }
 
         mapTmp.display();
@@ -57,11 +56,11 @@ public class WorldMap {
 
 //        System.out.println(mapTmp.getMapName());
         if (mapTmp.isNext()){
-            Main.state = StateType.COMBAT_STATE;
+          Main.state = StateType.COMBAT_STATE;
 //            mapTmp = MapTemplate.maps.get(next + ".tmx");
             Collision.Playerx = nextX;
             Collision.Playery = nextY;
-//            LocalMap.count = 0;
+            LocalMap.count = 0;
         }
 //        if (mapTmp.isBack()){
 //            mapTmp = MapTemplate.maps.get(previous + ".tmx");
