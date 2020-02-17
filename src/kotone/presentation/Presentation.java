@@ -90,17 +90,17 @@ public class Presentation extends PApplet {
             pApplet.tint(255,255);
             pApplet.image(haikei, pApplet.width / 2, pApplet.height / 2);//背景の大きさ
 
-            if (m_name == "モンスターA"){
+            if (m_name.equals("モンスターA")){
                 pApplet.tint(255,alpha);
                 pApplet.image(ari,pointX,pointY);
             }
 
-            if (m_name == "モンスターB"){
+            if (m_name.equals("モンスターB")){
                 pApplet.tint(255,alpha);
                 pApplet.image(batta,pointX,pointY);
             }
 
-            if (m_name == "モンスターC"){
+            if (m_name.equals("モンスターC")){
                 pApplet.tint(255,alpha);
                 pApplet.image(kettosi,pointX,pointY);
             }
@@ -113,11 +113,12 @@ public class Presentation extends PApplet {
         }
 
         if(p_attack_event){
-            pApplet.image(cutAnimation,pApplet.width/2, 300);
             cutAnimation.play();
+            pApplet.image(cutAnimation,pApplet.width/2, 300);
         }
 
         if((p_attack_event) && (p_random < 3)){
+            cutAnimation.play();
             pApplet.image(cutAnimation,pApplet.width/2, 300);
         }
 
@@ -128,24 +129,24 @@ public class Presentation extends PApplet {
 
         if((p_attack_event) && (tap_f)){
             fireAnimation.play();
-            pApplet.image(fireAnimation,width/2,300);
+            pApplet.image(fireAnimation,pApplet.width/2,300);
         }
 
         if((p_attack_event) && (tap_l)){
             lightningAnimation.play();
-            pApplet.image(lightningAnimation,width/2,300);
+            pApplet.image(lightningAnimation,pApplet.width/2,300);
         }
 
         if(m_damage_event){
-            if (m_name == "モンスターA"){
+            if (m_name.equals("モンスターA")){
                 pApplet.tint(255, 80, 30);
                 pApplet.image(ari, pointX, pointY);
                 pApplet.noTint();
-            } else if (m_name == "モンスターB"){
+            } else if (m_name.equals("モンスターB")){
                 pApplet.tint(255, 80, 30);
                 pApplet.image(batta, pointX, pointY);
                 pApplet.noTint();
-            } else if (m_name == "モンスターC"){
+            } else if (m_name.equals("モンスターC")){
                 pApplet.tint(255, 80, 30);
                 pApplet.image(kettosi, pointX, pointY);
                 pApplet.noTint();
@@ -153,7 +154,8 @@ public class Presentation extends PApplet {
         }
 
         if(m_attack_event){
-            pApplet.image(monsterAnimation,width/2,height/2);
+            monsterAnimation.play();
+            pApplet.image(monsterAnimation,pApplet.width/2,pApplet.height/2);
         }
 
         if((p_damage_event) && (m_random < 3)){
