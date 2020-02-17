@@ -125,8 +125,10 @@ public class Presentation extends PApplet {
             } else if(tap_l){
                 lightningAnimation.play();
                 pApplet.image(lightningAnimation,pApplet.width/2,300);
-            } else  cutAnimation.play();
-            pApplet.image(cutAnimation,pApplet.width/2, 300);
+            } else {
+                cutAnimation.play();
+                pApplet.image(cutAnimation,pApplet.width/2, 300);
+            }
         }
 
         if(m_damage_event){
