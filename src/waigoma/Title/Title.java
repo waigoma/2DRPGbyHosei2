@@ -2,6 +2,8 @@ package waigoma.Title;
 
 import processing.core.PApplet;
 import processing.core.PFont;
+import waigoma.FreeSpace.Testttt;
+import waigoma.Test;
 import waigoma.Title.TitleMenu.TitleMenu;
 
 public class Title {//最初に表示されるタイトル画面
@@ -11,18 +13,27 @@ public class Title {//最初に表示されるタイトル画面
     final float fadeSpeed = 1.75f;//フェードアウト速度
     PFont font;
 
+    int count = 0;
+
     PApplet plet;
     TitleMenu titlemenu;
+    Thread thread;
+    Testttt test;
 
     public Title(PApplet papplet){
     this.plet = papplet;
-    titlemenu = new TitleMenu(papplet, titleScene);
+    test = new Testttt("src/takano/bgm/キラーズ・シルエット.wav", true);
+    titlemenu = new TitleMenu(papplet, titleScene, test);
     font = plet.createFont("src/waigoma/data/PixelMplus12-Regular.ttf", 24);
 
     plet.textAlign(plet.CENTER, plet.CENTER);
     }
 
     public void run(){
+        if (count == 0){
+            test.clip.start();
+            count++;
+        }
         if (titleScene == 0){
             display();
             fadeDisplay();

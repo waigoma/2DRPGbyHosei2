@@ -3,6 +3,7 @@ package waigoma.Title.TitleMenu;
 import processing.core.PApplet;
 import processing.core.PFont;
 import processing.core.PImage;
+import waigoma.FreeSpace.Testttt;
 import waigoma.Main;
 import waigoma.StateType;
 import waigoma.Title.Option.Option;
@@ -13,13 +14,15 @@ public class TitleMenu {//タイトルメニュー画面
     PApplet plet;
     int titleScene;
     PFont font;
-    PImage titleFrame;
+
     Option option;
     OptionFile opFile;
+    Testttt thread;
 
-    public TitleMenu(PApplet papplet, int titleScene){//mainからprocessing引継ぎ
+    public TitleMenu(PApplet papplet, int titleScene, Testttt thread){//mainからprocessing引継ぎ
         this.plet = papplet;
         this.titleScene = titleScene;
+        this.thread = thread;
 //        this.titleFrame = plet.loadImage("src/waigoma/img/photo_frame1.png");
 
         opFile = new OptionFile();
@@ -56,7 +59,10 @@ public class TitleMenu {//タイトルメニュー画面
         button.run();//Buttonクラス内のrun()呼び出し
         button1.run();
         button2.run();
-        if (button.isPush()) Main.state = StateType.LOCAL_STATE;//描写内のボタン(?)が押されたらMainクラス内のstateを1に変更
+        if (button.isPush()) {
+            thread.clip.close();
+            Main.state = StateType.LOCAL_STATE;//描写内のボタン(?)が押されたらMainクラス内のstateを1に変更
+        }
         if (button1.isPush()){
             switch (opFile.getDifficulty()){
                 case "easy":
