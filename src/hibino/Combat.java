@@ -27,7 +27,7 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
     ///hibino.Sample mysample;
 
     public static String p_name = "プレイヤー名";    //文字列変数(プレイヤー名)                                     （クラス内で変数は定義）
-    public static String m_name = "モンスターA";//モンスター名
+    public static String m_name ;//モンスター名
     public static String item;
     public static String magic;
 
@@ -149,7 +149,7 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
         PFont font;    //日本語対応（以下３行）
         font=pApplet.createFont("MS 明朝",30);
         pApplet.textFont(font);
-        //--------------------------------------------------------モンスター定義
+        //--------------------------------------------------------モンスター定義 （Loadで実行）
             /*switch (m_name) {    //m_nameが～の時
                 case "モンスターA":    //モンスターAの時
                     m_exp = 30;    //経験値
@@ -172,6 +172,39 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
         p_load.main();
         m_load.main();
         myimage.setup();
+
+    //マップによって敵の強さを変更-------------------------------------------------------
+        /*switch( ) {
+            case :
+                m_hp = m_hp;
+                m_hp_max = m_hp_max * 1;
+                m_attack = m_attack * 1;
+                m_exp = m_exp * 1;
+                m_money = m_money * 1;
+                break;
+            case :
+                m_hp = (int) (m_hp * 1.2);
+                m_hp_max = (int) (m_hp_max * 1.2);
+                m_attack = (int) (m_attack * 1.2);
+                m_exp = (int) (m_exp * 1.2);
+                m_money = (int) (m_money * 1.2);
+                break;
+            case :
+                m_hp = (int) (m_hp * 1.4);
+                m_hp_max = (int) (m_hp_max * 1.4);
+                m_attack = (int) (m_attack * 1.4);
+                m_exp = (int) (m_exp * 1.4);
+                m_money = (int) (m_money * 1.4);
+                break;
+            case :
+                m_hp = (int) (m_hp * 1.6);
+                m_hp_max = (int) (m_hp_max * 1.6);
+                m_attack = (int) (m_attack * 1.6);
+                m_exp = (int) (m_exp * 1.6);
+                m_money = (int) (m_money * 1.6);
+                break;
+        }*/
+    //--------------------------------------------------------------------------------------
     }
 
         //これを全部消す
@@ -272,7 +305,7 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
                         sample2.start(); // [4]
                         p_attack_count++;
                     }
-                    if(keika > 1000*0.15)
+                    if(keika > 1000*1)
                         item_event = false;
 //------------------------                        myimage.draw();
 //------------------------                        mysound.main();
@@ -296,7 +329,7 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
 //------------------------                            myimage.draw();
 //------------------------                        mysound.main();
 //                            if(keika > 1000*5.2)
-                            if (keika > 1000 * 3.15)
+                            if (keika > 1000 * 4)
                                 m_damage_event = false;
 
                             if (m_hit) {    //もしm_hitがtrueなら（一回実行するため）
@@ -318,7 +351,7 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
                                 sample4.start(); // [4]
                                 p_attack_count++;
                             }
-                            if(keika >3.15)
+                            if(keika >1000*4)
                             heal_event = false;
 //------------------------                             myimage.draw();
 //------------------------                        mysound.main();
@@ -352,7 +385,7 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
                     sample5.start(); // [4]
                     p_attack_count++;
                 }
-                if(keika>1000*0.15)
+                if(keika>1000*1)
                     magic_event = false;
 //------------------------                myimage.draw();
 //------------------------                        mysound.main();
@@ -372,7 +405,7 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
 //------------------------                            myimage.draw();
 //------------------------                        mysound.main();
 //                            if(keika > 1000*5.2)
-                            if (keika > 1000 * 3.15)
+                            if (keika > 1000 * 4)
                                 m_damage_event = false;
 
                             if (m_hit) {    //もしm_hitがtrueなら（一回実行するため）
@@ -397,7 +430,7 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
 //------------------------                            myimage.draw();
 //------------------------                        mysound.main();
 //                            if(keika > 1000*5.2)
-                            if (keika > 1000 * 3.15)
+                            if (keika > 1000 * 4)
                                 m_damage_event = false;
 
                             if (m_hit) {    //もしm_hitがtrueなら（一回実行するため）
@@ -426,7 +459,7 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
 //---------------------                    mysound.sound();
 
 
-                if (keika > 1000 * 0.15)
+                if (keika > 1000 * 0.5)
                     p_attack_event = false;
 
 
@@ -444,7 +477,7 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
 //------------------------                        myimage.draw();
 //------------------------                        mysound.main();
 //                        if(keika > 1000*5.2)
-                        if (keika > 1000 * 3.15)
+                        if (keika > 1000 * 4)
                             m_damage_event = false;
                     }
                     if (p_random >= 3) {
@@ -453,7 +486,7 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
 //------------------------                        myimage.draw();
 //------------------------                        mysound.main();
 //                        if (keika > 1000*5.2)
-                        if (keika > 1000 * 3.15)
+                        if (keika > 1000 * 4)
                             m_damage_event = false;
                     }
                     if (m_hit) {    //もしm_hitがtrueなら（一回実行するため）
@@ -483,7 +516,7 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
             }
         }
 //            if(keika > 1000*11.2)
-        if (keika > 1000 * 7.15)
+        if (keika > 1000 * 8)
             m_attack_event = false;
 //------------------------            myimage.draw();
 //------------------------                        mysound.main();
@@ -499,7 +532,7 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
                     sample11.start(); // [4]
                     p_attack_count++;
                 }
-                if(keika >1000*9.15)
+                if(keika >1000*10)
                     p_damage_event = false;
 //------------------------                    myimage.draw();
 //------------------------                        mysound.main();
@@ -514,7 +547,7 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
                     sample12.start(); // [4]
                     p_attack_count++;
                 }
-                if(keika >1000*9.15)
+                if(keika >1000*10)
                     p_damage_event = false;
 //------------------------                    myimage.draw();
 //------------------------                        mysound.main();
@@ -730,7 +763,7 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
                     sample22.start(); // [4]
                     p_attack_count++;
                 }
-                if(keika >1000*3.15)
+                if(keika >1000*4)
                     m_attack_event = false;
 //------------------------                myimage.draw();
 //------------------------                        mysound.main();
@@ -746,7 +779,7 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
                             sample19.start(); // [4]
                             p_attack_count++;
                         }
-                        if(keika > 1000*6.15)
+                        if(keika > 1000*7)
                             p_damage_event = false;
 //------------------------                        myimage.draw();
 //------------------------                        mysound.main();
@@ -756,7 +789,7 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
                         pApplet.text("プレイヤーに" + m_attack + "ダメージ", 440, 590);
 
                         p_damage_event = true;
-                        if(keika > 1000*6.15)
+                        if(keika > 1000*7)
                             p_damage_event = false;
 //------------------------                        myimage.draw();
 //------------------------                        mysound.main();
