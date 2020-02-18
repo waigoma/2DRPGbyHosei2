@@ -58,7 +58,7 @@ public class Main extends PApplet {
     @Override
     public void draw(){//ステートマシン
 //        System.out.println("x: "+ Collision.Playerx+" "+"y: "+ Collision.Playery);
-        state = StateType.COMBAT_STATE;
+//        state = StateType.COMBAT_STATE;
         switch (state){
             case StateType.TITLE_STATE://タイトル画面
                 title.run();

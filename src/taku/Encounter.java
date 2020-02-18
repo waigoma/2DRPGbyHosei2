@@ -19,7 +19,7 @@ public class Encounter {
 
     public void randomEncounter(){
         if (PlayerMove.up || PlayerMove.right || PlayerMove.down || PlayerMove.left){
-            i += plet.random(0, 10);
+            i += plet.random(0, 5);
         }
         
         if (i > difficulty){
@@ -32,7 +32,7 @@ public class Encounter {
         if (w < 3){
             Combat.m_name = "モンスターA";
         }else{
-            Combat.m_name = "モンスターB";
+            Combat.m_name = "モンスターC";
         }
         i = 0;
         PlayerMove.up = false;

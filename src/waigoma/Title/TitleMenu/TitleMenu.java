@@ -21,8 +21,11 @@ public class TitleMenu {//タイトルメニュー画面
         this.plet = papplet;
         this.titleScene = titleScene;
 //        this.titleFrame = plet.loadImage("src/waigoma/img/photo_frame1.png");
+
         opFile = new OptionFile();
         opFile.loadOption();
+        option = new Option(opFile.getDifficulty());
+        option.properties();
 
         font = plet.createFont("src/waigoma/data/PixelMplus12-Regular.ttf", 24);
         plet.rectMode(plet.CENTER);
