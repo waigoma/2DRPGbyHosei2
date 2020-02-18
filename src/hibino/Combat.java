@@ -46,6 +46,7 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
     public static int total_exp ;    //合計の経験値　　　　　　　　　　　　　　　（メインで宣言）
     public static int m_exp;    //モンスターによる経験値
     public static int Lv ;    //プレイヤーのレベル（ここは初期化じゃない）     (メインで宣言)
+    public static int m_Lv ;
     public static int keika  ;    //経過時間の初期化
     public static int press_time ;    //ボタン押下時間
     public static int m_money;    //
@@ -176,28 +177,32 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
 
     //マップによって敵の強さを変更-------------------------------------------------------
         switch(mapName) {
-            case "dungeon1":
+            case "dungeon1.tmx":
+                m_Lv = 1;
                 m_hp = m_hp;
-                m_hp_max = m_hp_max * 1;
-                m_attack = m_attack * 1;
-                m_exp = m_exp * 1;
-                m_money = m_money * 1;
+                m_hp_max = m_hp_max;
+                m_attack = m_attack;
+                m_exp = m_exp;
+                m_money = m_money;
                 break;
-            case "dungeon2":
+            case "dungeon2.tmx":
+                m_Lv = 2;
                 m_hp = (int) (m_hp * 1.2);
                 m_hp_max = (int) (m_hp_max * 1.2);
                 m_attack = (int) (m_attack * 1.2);
                 m_exp = (int) (m_exp * 1.2);
                 m_money = (int) (m_money * 1.2);
                 break;
-            case "dungeon3":
+            case "dungeon3.tmx":
+                m_Lv = 3;
                 m_hp = (int) (m_hp * 1.4);
                 m_hp_max = (int) (m_hp_max * 1.4);
                 m_attack = (int) (m_attack * 1.4);
                 m_exp = (int) (m_exp * 1.4);
                 m_money = (int) (m_money * 1.4);
                 break;
-            case "dungeon4":
+            case "dungeon4.tmx":
+                m_Lv = 4;
                 m_hp = (int) (m_hp * 1.6);
                 m_hp_max = (int) (m_hp_max * 1.6);
                 m_attack = (int) (m_attack * 1.6);
@@ -257,6 +262,7 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
 
         pApplet.text(m_name, 1010, 130);                                                   //ここは敵の四角内
         pApplet.text("HP : " + m_hp, 1010, 170);
+        pApplet.text("/ Lv:" + m_Lv, 1140, 130);
 
         keika = pApplet.millis() - press_time;    //押されてからの経過時間
 
@@ -533,7 +539,7 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
                     sample11.start(); // [4]
                     p_attack_count++;
                 }
-                if(keika >1000*10)
+                if(keika >1000*9.5)
                     p_damage_event = false;
 //------------------------                    myimage.draw();
 //------------------------                        mysound.main();
@@ -548,7 +554,7 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
                     sample12.start(); // [4]
                     p_attack_count++;
                 }
-                if(keika >1000*10)
+                if(keika >1000*9.5)
                     p_damage_event = false;
 //------------------------                    myimage.draw();
 //------------------------                        mysound.main();
@@ -739,9 +745,9 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
 
         if (tap_e) {     //もしtap_eがtrueなら
 //            if((e_random < 3) && (keika < 1000*20)){
-            if((e_random < 3) && (keika < 1000*12)){
+            if((e_random < 3) && (keika < 1000*12)) {
 //                if(keika < 1000*5) {
-                if(keika < 1000*3) {
+                if (keika < 1000 * 3) {
                     pApplet.text("逃げ出せなかった", 440, 560);
 
                     escape_event = true;
@@ -755,10 +761,10 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
 
                 }
 //                if ((1000 * 5 < keika) && (keika < 1000 * 15))    //１２～２０秒で敵体力が０じゃないとき
-                 if ((1000 * 3 < keika) && (keika < 1000 * 9))
+                if ((1000 * 3 < keika) && (keika < 1000 * 9)){
                     pApplet.text(m_name + "の攻撃", 440, 560);
-
-                m_attack_event = true;
+                    m_attack_event = true;
+                }
                 if (p_attack_count == 0) {
                     Takano1 sample22 = new Takano1("src/takano/bgm/斬撃音_1.wav", 2, false); // [3]
                     sample22.start(); // [4]
@@ -780,7 +786,7 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
                             sample19.start(); // [4]
                             p_attack_count++;
                         }
-                        if(keika > 1000*7)
+                        if(keika > 1000*6.5)
                             p_damage_event = false;
 //------------------------                        myimage.draw();
 //------------------------                        mysound.main();
@@ -790,7 +796,7 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
                         pApplet.text("プレイヤーに" + m_attack + "ダメージ", 440, 590);
 
                         p_damage_event = true;
-                        if(keika > 1000*7)
+                        if(keika > 1000*6.5)
                             p_damage_event = false;
 //------------------------                        myimage.draw();
 //------------------------                        mysound.main();
@@ -855,7 +861,7 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
 
 
 //                if(keika > 1000*4) {    //経過が２秒以上なら
-                if(keika > 1000*3) {
+                if(keika > 1000*2) {
 
                     p_save.main();
                     LocalMap.count = 0;    //処理終了
