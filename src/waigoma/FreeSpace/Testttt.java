@@ -16,7 +16,7 @@ public class Testttt{
         clip = creatClip(new File(soundName));
     }
 
-    public static Clip creatClip(File path) {
+    public Clip creatClip(File path) {
         try (AudioInputStream ais = AudioSystem.getAudioInputStream(path)){
 
             AudioFormat af = ais.getFormat();
@@ -32,5 +32,9 @@ public class Testttt{
             e.printStackTrace();
         }
         return null;
+    }
+
+    public void close(){
+        clip.close();
     }
 }

@@ -60,7 +60,7 @@ public class TitleMenu {//タイトルメニュー画面
         button1.run();
         button2.run();
         if (button.isPush()) {
-            thread.clip.close();
+            thread.close();
             Main.state = StateType.LOCAL_STATE;//描写内のボタン(?)が押されたらMainクラス内のstateを1に変更
         }
         if (button1.isPush()){
