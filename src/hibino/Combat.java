@@ -30,6 +30,7 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
     public static String m_name ;//モンスター名
     public static String item;
     public static String magic;
+    public  static String mapName;
 
     // Table number;    //各設定数値の読み込み
     float a;
@@ -174,36 +175,36 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
         myimage.setup();
 
     //マップによって敵の強さを変更-------------------------------------------------------
-        /*switch( ) {
-            case :
+        switch(mapName) {
+            case "dungeon1":
                 m_hp = m_hp;
                 m_hp_max = m_hp_max * 1;
                 m_attack = m_attack * 1;
                 m_exp = m_exp * 1;
                 m_money = m_money * 1;
                 break;
-            case :
+            case "dungeon2":
                 m_hp = (int) (m_hp * 1.2);
                 m_hp_max = (int) (m_hp_max * 1.2);
                 m_attack = (int) (m_attack * 1.2);
                 m_exp = (int) (m_exp * 1.2);
                 m_money = (int) (m_money * 1.2);
                 break;
-            case :
+            case "dungeon3":
                 m_hp = (int) (m_hp * 1.4);
                 m_hp_max = (int) (m_hp_max * 1.4);
                 m_attack = (int) (m_attack * 1.4);
                 m_exp = (int) (m_exp * 1.4);
                 m_money = (int) (m_money * 1.4);
                 break;
-            case :
+            case "dungeon4":
                 m_hp = (int) (m_hp * 1.6);
                 m_hp_max = (int) (m_hp_max * 1.6);
                 m_attack = (int) (m_attack * 1.6);
                 m_exp = (int) (m_exp * 1.6);
                 m_money = (int) (m_money * 1.6);
                 break;
-        }*/
+        }
     //--------------------------------------------------------------------------------------
     }
 

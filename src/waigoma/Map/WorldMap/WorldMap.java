@@ -55,7 +55,6 @@ public class WorldMap {
 
 //        System.out.println(mapTmp.getMapName());
         if (mapTmp.isNext()){
-            System.out.println(next);
 //          Main.state = StateType.COMBAT_STATE;
             mapTmp = MapTemplate.maps.get(next + ".tmx");
             Collision.Playerx = nextX;
