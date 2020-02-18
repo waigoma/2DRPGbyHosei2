@@ -1,5 +1,6 @@
 package waigoma.Map.WorldMap;
 
+import hibino.Combat;
 import issei.PlayerMove;
 import nagai.Collision;
 import processing.core.PApplet;
@@ -44,6 +45,7 @@ public class WorldMap {
             plet.getSurface().setSize(width - 10,height - 10);
             plet.background(0);
             pmove.setup();
+            Combat.mapName = mapTmp.getMapName();
             LocalMap.count++;
 //            System.out.println("world");
         }
