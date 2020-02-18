@@ -17,7 +17,7 @@ public class TSXLoader {
     public static List<BufferedImage> listImg = new ArrayList<>();//splitした画像を一時的に保存しておく場所
 
     public static void main(String[] args){
-        imageSplit("src/issei/data/img/character/mobu1.png", 32, 32);
+        imageSplit("E:\\waichi\\Pictures\\2drpg\\pipo-charachip001.png", 16, 16);
     }
 
 //    public static void TsxLoader(String source) {//mapで用いる画像読み込み
@@ -82,7 +82,7 @@ public class TSXLoader {
             }
             System.out.println("Splitting done");
             for (int i = 0; i < listImg.size(); i++) {
-                ImageIO.write(listImg.get(i), "png", new File("C:\\Users\\waiwa\\Desktop\\test\\" + i + ".png"));
+                ImageIO.write(listImg.get(i), "png", new File("E:\\waichi\\Desktop\\test\\" + i + ".png"));
             }
 
         }catch (Exception e){
