@@ -46,7 +46,7 @@ public class WorldMap {
             plet.background(0);
             pmove.setup();
             LocalMap.count++;
-            System.out.println("world");
+//            System.out.println("world");
         }
 
         mapTmp.display();
