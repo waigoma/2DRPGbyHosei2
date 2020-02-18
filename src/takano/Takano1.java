@@ -2,13 +2,7 @@ package takano;
 
 import hibino.Combat;
 
-import javax.sound.sampled.AudioFormat;
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.DataLine;
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
-import javax.sound.sampled.Clip;
+import javax.sound.sampled.*;
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -16,9 +10,13 @@ import java.net.MalformedURLException;
 public class Takano1 extends Thread{
 
     String soundName;
+    int time;
+    boolean loop;
 
-    public Takano1(String soundName){
+    public Takano1(String soundName, int time, boolean loop){
         this.soundName = soundName;
+        this.time = time;
+        this.loop = loop;
     }
 
     @Override
@@ -49,18 +47,21 @@ public class Takano1 extends Thread{
         String effect13 ="src/takano/bgm/skill.wav";//魔法唱える
         String effect14 ="src/takano/bgm/sentouhunou.wav";//戦闘不能
         String effect15 ="src/takano/bgm/game_explosion3_1.wav";//爆弾
+        String effect16 ="src/takano/bgm/キラキラした音.wav";//レベルアップ
+        String effect17 ="src/takano/bgm/シャキーンという斬撃音";//会心の一撃
 
 //        if(hibino.Main.start_event) {
            Clip clip = creatClip(new File(soundName));
            clip.start();//読み込み
-           clip.loop(Clip.LOOP_CONTINUOUSLY);//無限ループ
+        if (loop) clip.loop(Clip.LOOP_CONTINUOUSLY);//無限ループ
            try {
-               Thread.sleep(1000 * 1000);//流れる時間
+               Thread.sleep(time * 1000);//流れる時間
            }catch (InterruptedException e) {
            e.printStackTrace();
 //           }
            clip.close();//読み込み終わり
        }
+
 //        if(hibino.Main.p_attack_event) {
 //               Clip clip = creatClip(new File(effect1));
 //               clip.start();//読み込み

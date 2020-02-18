@@ -11,6 +11,7 @@ public class Encounter {
     float w;
 
     PApplet plet;
+    public static int difficulty;
 
     public Encounter(PApplet papplet){
         this.plet = papplet;
@@ -18,10 +19,10 @@ public class Encounter {
 
     public void randomEncounter(){
         if (PlayerMove.up || PlayerMove.right || PlayerMove.down || PlayerMove.left){
-            i += plet.random(0, 2);
+            i += plet.random(0, 10);
         }
         
-        if (i > 60){
+        if (i > difficulty){
             randomMonster();
         }
     }

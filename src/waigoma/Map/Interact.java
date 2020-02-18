@@ -94,29 +94,7 @@ public class Interact {
             chatCount++;
         }
         if (runDisplayEvent){
-            plet.rectMode(plet.CENTER);
-            plet.stroke(0);
-            plet.strokeWeight(8);
-            plet.fill(0,0);
-            plet.rect(plet.width/2f, plet.height/1.12f, 400, 150);
-            plet.fill(0,230);
-            plet.stroke(255);
-            plet.strokeWeight(4);
-            plet.rect(plet.width/2f, plet.height/1.12f, 400, 150);
-            plet.fill(255);
-            plet.textAlign(plet.LEFT, plet.TOP);
-            plet.textSize(24);
-            plet.text("『"+name+"』", plet.width/2f, plet.height/1.115f, 400, 150);
-            plet.textSize(18);
-            plet.text(message, plet.width/2f, plet.height/1.07f, 400, 150);
-
-            plet.textAlign(plet.RIGHT, plet.BOTTOM);
-            if (time < 30) plet.text("▶", plet.width/2f, plet.height/1.12f, 375, 125);
-            if (time > 60) time = 0;
-
-            Collision.Playerx = px;
-            Collision.Playery = py;
-
+            chatDisplay();
             if (plet.keyCode == plet.ENTER) runDisplayEvent = false;
 
             time++;
@@ -140,10 +118,36 @@ public class Interact {
     public void runMoveEvent(){//mapTmpの値を変化させる、座標とかも合わせて取得できるようにする
         if (runMoveEvent){
             LocalMap.mapTmp = MapTemplate.maps.get(name+".tmx");
+            LocalMap.count = 0;
             Collision.Playerx = px1;
             Collision.Playery = py1;
             runMoveEvent = false;
         }
+    }
+
+    public void chatDisplay(){
+        plet.rectMode(plet.CENTER);
+        plet.stroke(0);
+        plet.strokeWeight(8);
+        plet.fill(0,0);
+        plet.rect(plet.width/2f, plet.height/1.12f, 400, 150);
+        plet.fill(0,230);
+        plet.stroke(255);
+        plet.strokeWeight(4);
+        plet.rect(plet.width/2f, plet.height/1.12f, 400, 150);
+        plet.fill(255);
+        plet.textAlign(plet.LEFT, plet.TOP);
+        plet.textSize(24);
+        plet.text("『"+name+"』", plet.width/2f, plet.height/1.115f, 400, 150);
+        plet.textSize(18);
+        plet.text(message, plet.width/2f, plet.height/1.07f, 400, 150);
+
+        plet.textAlign(plet.RIGHT, plet.BOTTOM);
+        if (time < 30) plet.text("▶", plet.width/2f, plet.height/1.12f, 375, 125);
+        if (time > 60) time = 0;
+
+        Collision.Playerx = px;
+        Collision.Playery = py;
     }
 
     public boolean isDirectionClick(){
