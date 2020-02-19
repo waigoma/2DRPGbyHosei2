@@ -356,7 +356,7 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
                 }
 //                if ((1000 * 5 < keika) && (keika < 1000 * 10)) {    //５～１０秒の時
                 if ((1000 * 3 < keika) && (keika < 1000 * 6)) {
-                    switch (item) {    //m_nameが～の時
+                    switch (item) {    //m_nameが～の時a
                         case "爆弾":    //モンスターAの時
                             pApplet.text("敵に20ダメージ", 440, 590);
 
