@@ -82,6 +82,7 @@ public class Main extends PApplet {
                 String wMap = scan.next();
                 state = sType;
                 worldMap.setMapTmp(wMap);
+                LocalMap.count = 0;
                 count++;
             }
         }
