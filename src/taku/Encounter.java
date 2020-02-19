@@ -28,10 +28,12 @@ public class Encounter {
     }
 
     public void randomMonster(){
-        w = plet.random(6);
-        if (w < 3){
+        w = plet.random(0,100);
+        if (w < 49){
             Combat.m_name = "モンスターA";
-        }else{
+        }else if (w < 99){
+            Combat.m_name = "モンスターB";
+        }else {
             Combat.m_name = "モンスターC";
         }
         i = 0;

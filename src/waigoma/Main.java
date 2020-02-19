@@ -75,9 +75,9 @@ public class Main extends PApplet {
             delay(250);
         }
         if (opMode){
-                System.out.println("飛びたいstate");
+                System.out.println("飛びたいstate\nLocal:1\nWorld:2");
                 String sTypes = scan.next();
-                System.out.println("飛びたいマップ");
+                System.out.println("飛びたいマップ\n1village\ndungeon1\ndungeon2\ndungeon3\ndungeon4");
                 int sType = Integer.parseInt(sTypes);
                 String wMap = scan.next();
                 state = sType;
