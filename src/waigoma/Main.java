@@ -54,6 +54,7 @@ public class Main extends PApplet {
         if (state == StateType.COMBAT_STATE) combat.keyPressed();
         if (keyCode == CONTROL) control = true;
         if (keyCode == ENTER) enter = true;
+        if (keyCode == DELETE) count = 0;
     }
 
     @Override
@@ -74,7 +75,6 @@ public class Main extends PApplet {
             delay(250);
         }
         if (opMode){
-            if (count == 0) {
                 System.out.println("飛びたいstate");
                 String sTypes = scan.next();
                 System.out.println("飛びたいマップ");
@@ -83,8 +83,7 @@ public class Main extends PApplet {
                 state = sType;
                 worldMap.setMapTmp(wMap);
                 LocalMap.count = 0;
-                count++;
-            }
+               opMode = false;
         }
         switch (state){
             case StateType.TITLE_STATE://タイトル画面
