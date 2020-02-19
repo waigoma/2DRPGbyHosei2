@@ -44,7 +44,7 @@ public class TitleMenu {//タイトルメニュー画面
         plet.background(30);
         plet.fill(230);
         plet.textFont(font,48);
-        plet.text("2DRPG by Hosei2", plet.width/4f, plet.height/8f);
+        plet.text("2DRPG by Shirouto", plet.width/4f, plet.height/8f);
         plet.text("MENU", plet.width/3.8f, plet.height/4f);
 
         plet.textSize(24);
