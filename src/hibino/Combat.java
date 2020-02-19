@@ -9,6 +9,7 @@ import processing.core.PImage;
 import takano.Takano1;
 import waigoma.Map.LocalMap.LocalMap;
 import waigoma.StateType;
+import waigoma.Title.Option.OptionFile;
 
 public class Combat {      //extends PApplet消す    MainをCombatに変えるa
 
@@ -24,6 +25,11 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
     hibino.data.p_data.Load p_load;
     hibino.data.p_data.Save p_save;
     hibino.data.m_data.Load m_load;
+
+    //--------------waigoma---------
+    //difficultyで敵を強くする
+    OptionFile opFile;
+    //------------------------------
     ///hibino.Sample mysample;
 
     public static String p_name = "プレイヤー名";    //文字列変数(プレイヤー名)                                     （クラス内で変数は定義）
@@ -146,7 +152,8 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
         m_load = new hibino.data.m_data.Load(pApplet);
        //: mysample = new Sample();
 
-
+        //-------------------------難易度読み込み
+        opFile = new OptionFile();
 
         PFont font;    //日本語対応（以下３行）
         font=pApplet.createFont("MS 明朝",30);
@@ -208,6 +215,30 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
                 m_attack = (int) (m_attack * 1.6);
                 m_exp = (int) (m_exp * 1.6);
                 m_money = (int) (m_money * 1.6);
+                break;
+        }
+    //-----------------------difficultyによってさらに強化---------------
+        switch (opFile.getDifficulty()){
+            case "easy":
+                m_hp = (int) (m_hp * 0.9);
+                m_hp_max = (int) (m_hp_max * 0.9);
+                m_attack = (int) (m_attack * 0.9);
+                m_exp = (int) (m_exp * 0.9);
+                m_money = (int) (m_money * 0.9);
+                break;
+            case "normal":
+                m_hp = (int) (m_hp * 1.2);
+                m_hp_max = (int) (m_hp_max * 1.2);
+                m_attack = (int) (m_attack * 1.2);
+                m_exp = (int) (m_exp * 1.2);
+                m_money = (int) (m_money * 1.2);
+                break;
+            case "hard":
+                m_hp = (int) (m_hp * 1.4);
+                m_hp_max = (int) (m_hp_max * 1.4);
+                m_attack = (int) (m_attack * 1.4);
+                m_exp = (int) (m_exp * 1.4);
+                m_money = (int) (m_money * 1.4);
                 break;
         }
     //--------------------------------------------------------------------------------------
