@@ -111,6 +111,7 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
 
     
     public void setup(){
+        m_name = "モンスターC";
         combat = true;
         tap_a = false;    //真偽変数（初期化するためにfalseにする)
         tap_b = false;
@@ -162,20 +163,14 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
         pApplet.textFont(font);
         //--------------------------------------------------------モンスター定義 （Loadで実行）
             /*switch (m_name) {    //m_nameが～の時
-                case "モンスターA":    //モンスターAの時
-                    m_exp = 30;    //経験値
-                    m_attack = 10;
-                    m_hp = 30;
-                    m_money =10;
-                    m_hp_max = 30;
+                case "モンスターC":    //モンスターAの時
+                    m_exp = 1000000;    //経験値
+                    m_attack = 100;
+                    m_hp = 500;
+                    m_money =1000000;
+                    m_hp_max = 500;
                     break;
-                case "モンスターB":
-                    m_exp = 60;
-                    m_attack = 20;
-                    m_hp = 60;
-                    m_money = 20;
-                    m_hp_max = 60;
-                    break;
+
             }*/
         //--------------------------------------------------------------
         pApplet.noStroke();    //pAppletを加える
@@ -244,6 +239,13 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
                 break;
         }
     //--------------------------------------------------------------------------------------
+        if(m_name == "モンスターC") {
+            m_exp = 1000000;    //経験値
+            m_attack = 100;
+            m_hp = 500;
+            m_money = 1000000;
+            m_hp_max = 500;
+        }
     }
 
         //これを全部消す
@@ -299,7 +301,7 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
 
         keika = pApplet.millis() - press_time;    //押されてからの経過時間
 
-        if (combat)
+        if (!battle)
             pApplet.text(m_name + "が現れた", 440, 530);                                            //ここからメインの流れ
 
         //----------------------------------------------------------------------アイテム足りないとき
@@ -609,7 +611,7 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
 
 
 //            if ((p_hp <= 0) && (keika < 1000 * 10)) {
-        if ((p_hp <= 0) && (keika < 1000 * 7)) {
+        if ((p_hp <= 0) && (keika < 1000 * 12)) {
             pApplet.text(p_name + "は倒れた", 440, 620);
 
             finish_event = true;
@@ -622,7 +624,7 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
 //------------------------                        mysound.main();
 
 //                if (1000 * 20 < keika) {
-            if (1000 * 6 < keika) {
+            if (1000 * 11 < keika) {
                 switch (Lv) {
                     case 1:
                         p_hp = 100;
@@ -850,7 +852,7 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
                 }
 
 //                if ((p_hp <= 0) && (keika < 1000 * 16)) {
-                if ((p_hp <= 0) && (keika < 1000 * 10)) {
+                if ((p_hp <= 0) && (keika < 1000 * 9)) {
                     pApplet.text(p_name + "は倒れた", 440, 620);
 
                     finish_event = true;
@@ -863,7 +865,24 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
 //------------------------                        mysound.main();
 
 //                    if (keika > 1000*15) {
-                    if (keika > 1000*9) {
+                    if (keika > 1000*8) {
+                        switch (Lv) {
+                            case 1:
+                                p_hp = 100;
+                                break;
+                            case 2:
+                                p_hp = 200;
+                                break;
+                            case 3:
+                                p_hp = 300;
+                                break;
+                            case 4:
+                                p_hp = 400;
+                                break;
+                            case 5:
+                                p_hp = 500;
+                                break;
+                        }
                         p_save.main();
                         LocalMap.count = 0;
                         finish_event = false;
