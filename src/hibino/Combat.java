@@ -111,7 +111,6 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
 
     
     public void setup(){
-        m_name = "モンスターC";
         combat = true;
         tap_a = false;    //真偽変数（初期化するためにfalseにする)
         tap_b = false;
@@ -239,7 +238,7 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
                 break;
         }
     //--------------------------------------------------------------------------------------
-        if(m_name == "モンスターC") {
+        if(m_name == "ボス") {
             m_exp = 1000000;    //経験値
             m_attack = 100;
             m_hp = 500;
@@ -385,7 +384,7 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
                             }
                             break;
                         case "薬草":
-                            pApplet.text("プレイヤーはHPを200回復した", 440, 590);
+                            pApplet.text("プレイヤーはHPを300回復した", 440, 590);
 
                             heal_event = true;
                             if (p_attack_count == 0) {
@@ -399,7 +398,7 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
 //------------------------                        mysound.main();
 
                             if (m_hit) {
-                                p_hp = p_hp + 200;
+                                p_hp = p_hp + 300;
                                 if (p_hp > p_hp_max)
                                     p_hp = p_hp_max;
 
