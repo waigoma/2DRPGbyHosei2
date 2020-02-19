@@ -10,6 +10,8 @@ import waigoma.StateType;
 
 import waigoma.Map.LocalMap.LocalMap;
 
+import java.util.Scanner;
+
 public class WorldMap {
     String next, previous;
     int nextX, nextY, previousX, previousY;
@@ -47,7 +49,6 @@ public class WorldMap {
             pmove.setup();
             Combat.mapName = mapTmp.getMapName();
             LocalMap.count++;
-//            System.out.println("world");
         }
 
         mapTmp.display();
@@ -63,6 +64,13 @@ public class WorldMap {
             Collision.Playery = nextY;
             LocalMap.count = 0;
         }
+        if (mapTmp.isBoss()){
+            Collision.Playerx = 312;
+            Collision.Playery = 56;
+            LocalMap.count = 0;
+            Combat.m_name = "モンスターC";
+            Main.state = StateType.COMBAT_STATE;
+        }
         if (mapTmp.isBack()){
             mapTmp = MapTemplate.maps.get(previous + ".tmx");
             if (mapTmp.getMapName().contains("1village")){
@@ -75,5 +83,9 @@ public class WorldMap {
             Collision.Playery = previousY;
             LocalMap.count = 0;
         }
+    }
+
+    public void setMapTmp(String mapName) {
+        mapTmp = MapTemplate.maps.get(mapName+".tmx");
     }
 }

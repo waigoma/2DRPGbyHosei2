@@ -17,7 +17,6 @@ public class Title {//最初に表示されるタイトル画面
 
     PApplet plet;
     TitleMenu titlemenu;
-    Thread thread;
     Testttt test;
 
     public Title(PApplet papplet){

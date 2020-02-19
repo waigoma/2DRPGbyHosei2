@@ -7,8 +7,10 @@ import processing.core.PApplet;
 import processing.core.PFont;
 import processing.core.PImage;
 import takano.Takano1;
+import taku.Encounter;
 import waigoma.Map.LocalMap.LocalMap;
 import waigoma.StateType;
+import waigoma.Title.Option.Option;
 import waigoma.Title.Option.OptionFile;
 
 public class Combat {      //extends PApplet消す    MainをCombatに変えるa
@@ -218,22 +220,22 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
                 break;
         }
     //-----------------------difficultyによってさらに強化---------------
-        switch (opFile.getDifficulty()){
-            case "easy":
+        switch (Encounter.difficulty){
+            case Option.EASY:
                 m_hp = (int) (m_hp * 0.9);
                 m_hp_max = (int) (m_hp_max * 0.9);
                 m_attack = (int) (m_attack * 0.9);
                 m_exp = (int) (m_exp * 0.9);
                 m_money = (int) (m_money * 0.9);
                 break;
-            case "normal":
+            case Option.NORMAL:
                 m_hp = (int) (m_hp * 1.2);
                 m_hp_max = (int) (m_hp_max * 1.2);
                 m_attack = (int) (m_attack * 1.2);
                 m_exp = (int) (m_exp * 1.2);
                 m_money = (int) (m_money * 1.2);
                 break;
-            case "hard":
+            case Option.HARD:
                 m_hp = (int) (m_hp * 1.4);
                 m_hp_max = (int) (m_hp_max * 1.4);
                 m_attack = (int) (m_attack * 1.4);

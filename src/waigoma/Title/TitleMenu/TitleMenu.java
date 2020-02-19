@@ -17,12 +17,12 @@ public class TitleMenu {//タイトルメニュー画面
 
     Option option;
     OptionFile opFile;
-    Testttt thread;
+    Testttt test;
 
     public TitleMenu(PApplet papplet, int titleScene, Testttt thread){//mainからprocessing引継ぎ
         this.plet = papplet;
         this.titleScene = titleScene;
-        this.thread = thread;
+        this.test = thread;
 //        this.titleFrame = plet.loadImage("src/waigoma/img/photo_frame1.png");
 
         opFile = new OptionFile();
@@ -60,7 +60,7 @@ public class TitleMenu {//タイトルメニュー画面
         button1.run();
         button2.run();
         if (button.isPush()) {
-            thread.close();
+            test.close();
             Main.state = StateType.LOCAL_STATE;//描写内のボタン(?)が押されたらMainクラス内のstateを1に変更
         }
         if (button1.isPush()){

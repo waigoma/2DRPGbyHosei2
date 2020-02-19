@@ -42,6 +42,7 @@ public class TMXLoader {//map情報の読み込み
         List<Collision> colList = new ArrayList<>();
         List<MapTrigger> nextList = new ArrayList<>();
         List<MapTrigger> backList = new ArrayList<>();
+        List<MapTrigger> bossList = new ArrayList<>();
         List<Interact> interactList = new ArrayList<>();
         PImage[] imgs;//PImageの配列
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();// 1. DocumentBuilderFactoryのインスタンスを取得する
@@ -195,6 +196,31 @@ public class TMXLoader {//map情報の読み込み
                                     nd1 = nd1.getNextSibling();//次のnodeを読み込む
                                 }
                             }
+                            if (str.contains("Boss")) {
+                                Node nd1 = name.getFirstChild();//layerノード内の最初のNodeを取得
+                                while (nd1 != null) {//objectの中身がnullになるまで処理
+                                    if (nd1.getNodeName().equals("object")) {//Nodeがlayerの中のdataの場合
+                                        Element el = (Element) nd1;
+                                        String objXs = el.getAttribute("x");
+                                        String objYs = el.getAttribute("y");
+                                        String objWidths = el.getAttribute("width");
+                                        String objHeights = el.getAttribute("height");
+
+                                        float objX = 0;
+                                        float objY = 0;
+                                        float objWidth = 0;
+                                        float objHeight = 0;
+
+                                        if (!(objXs.isEmpty())) objX = Float.parseFloat(objXs);
+                                        if (!(objYs.isEmpty())) objY = Float.parseFloat(objYs);
+                                        if (!(objWidths.isEmpty())) objWidth = Float.parseFloat(objWidths);
+                                        if (!(objHeights.isEmpty())) objHeight = Float.parseFloat(objHeights);
+
+                                        bossList.add(new MapTrigger(objX, objY, objWidth, objHeight, (mapTileWidth * tileWidth) - 10, (mapTileHeight * tileHeight) - 10));
+                                    }
+                                    nd1 = nd1.getNextSibling();//次のnodeを読み込む
+                                }
+                            }
                             if (str.contains("Interact")) {
                                 Node nd1 = name.getFirstChild();//layerノード内の最初のNodeを取得
                                 while (nd1 != null) {//objectの中身がnullになるまで処理
@@ -241,7 +267,7 @@ public class TMXLoader {//map情報の読み込み
                 PImgList.add(new PImage(bfi));
             }
             imgs = PImgList.toArray(new PImage[0]);//PImageのlistを配列に変換
-            MapTemplate.maps.put(mapName, new MapTemplate(mapName, next, previous, nextX, nextY, previousX, previousY, mapTileWidth, mapTileHeight, tileWidth, tileHeight, mapList, colList, nextList, backList, interactList, imgs, plet));//map情報を保存
+            MapTemplate.maps.put(mapName, new MapTemplate(mapName, next, previous, nextX, nextY, previousX, previousY, mapTileWidth, mapTileHeight, tileWidth, tileHeight, mapList, colList, nextList, backList, bossList, interactList, imgs, plet));//map情報を保存
         }catch (Exception e){
             e.printStackTrace();
         }

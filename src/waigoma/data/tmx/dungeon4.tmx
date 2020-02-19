@@ -92,6 +92,5 @@
   </objectgroup>
  <objectgroup id="5" name="Boss">
   <object id="6" x="256.944" y="386.778" width="157.072" height="126.202"/>
-  <object id="7" x="414.016" y="512.073" height="0.90793"/>
  </objectgroup>
 </map>

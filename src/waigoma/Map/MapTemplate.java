@@ -17,12 +17,12 @@ public class MapTemplate {
     private String mapName, nextMap, previousMap;//mapの名前
     private int mapTileWidth, mapTileHeight, tileWidth, tileHeight, nextX, nextY, previousX, previousY;//map作るのに必要な基本情報
     private List<Collision> colList;
-    private List<MapTrigger> nextList, backList;
+    private List<MapTrigger> nextList, backList, bossList;
     private List<Interact> interactList;
     private PApplet plet;
     private PImage img;
 
-    public MapTemplate(String name, String nextMap, String previousMap, int nextX, int nextY, int previousX, int previousY, int mapTileWidth, int mapTileHeight, int tileWidth, int tileHeight, List<Integer[]> list, List<Collision> colList, List<MapTrigger> nextList, List<MapTrigger> backList, List<Interact> interactList, PImage[] imgs, PApplet plet) {//マップデータ保存
+    public MapTemplate(String name, String nextMap, String previousMap, int nextX, int nextY, int previousX, int previousY, int mapTileWidth, int mapTileHeight, int tileWidth, int tileHeight, List<Integer[]> list, List<Collision> colList, List<MapTrigger> nextList, List<MapTrigger> backList, List<MapTrigger> bossList, List<Interact> interactList, PImage[] imgs, PApplet plet) {//マップデータ保存
         this.mapName = name;
         this.nextMap = nextMap;
         this.previousMap = previousMap;
@@ -38,6 +38,7 @@ public class MapTemplate {
         this.colList = colList;
         this.nextList = nextList;
         this.backList = backList;
+        this.bossList = bossList;
         this.interactList = interactList;
         this.imgs = imgs;
         this.plet = plet;
@@ -86,6 +87,9 @@ public class MapTemplate {
     }
     public List<MapTrigger> getBackList() {
         return backList;
+    }
+    public List<MapTrigger> getBossList() {
+        return bossList;
     }
     public List<Interact> getInteractList() {
         return interactList;
@@ -183,6 +187,17 @@ public class MapTemplate {
                 if (Main.state == StateType.LOCAL_STATE) bmt.fixError(-6, -3);
                 if (Main.state == StateType.WORLD_STATE) bmt.fixError(4, 4);
                 if (bmt.mapTrigger()) return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean isBoss(){
+        if (getBackList() != null) {
+            for (MapTrigger boss : getBossList()) {
+                if (Main.state == StateType.LOCAL_STATE) boss.fixError(-6, -3);
+                if (Main.state == StateType.WORLD_STATE) boss.fixError(4, 4);
+                if (boss.mapTrigger()) return true;
             }
         }
         return false;

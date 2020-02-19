@@ -10,8 +10,12 @@ import waigoma.Map.TMXLoader;
 import waigoma.Map.WorldMap.WorldMap;
 import waigoma.Title.Title;
 
+import java.util.Scanner;
+
 public class Main extends PApplet {
     public static int state = 0;
+    boolean opMode, control, enter = false;
+    int count = 0;
 
     TMXLoader tmx;
     Title title;
@@ -19,6 +23,7 @@ public class Main extends PApplet {
     WorldMap worldMap;
     Combat combat;
     Encounter encounter;
+    Scanner scan;
 
     @Override
     public void settings(){
@@ -33,6 +38,7 @@ public class Main extends PApplet {
         worldMap = new WorldMap(this);//state:2
         combat = new Combat(this);
         encounter = new Encounter(this);
+        scan = new Scanner(System.in);
 
         surface.setResizable(true);
         noStroke();
@@ -46,12 +52,16 @@ public class Main extends PApplet {
         if (state == StateType.LOCAL_STATE) localMap.keyPressed();
         if (state == StateType.WORLD_STATE) worldMap.keyPressed();
         if (state == StateType.COMBAT_STATE) combat.keyPressed();
+        if (keyCode == CONTROL) control = true;
+        if (keyCode == ENTER) enter = true;
     }
 
     @Override
     public void keyReleased(){//キー解放受付
         if (state == StateType.LOCAL_STATE) localMap.keyReleased();
         if (state == StateType.WORLD_STATE) worldMap.keyReleased();
+        if (keyCode == CONTROL) control = false;
+        if (keyCode == ENTER) enter = false;
 //        if (state == StateType.COMBAT_STATE) main.keyReleased();
     }
 
@@ -59,6 +69,22 @@ public class Main extends PApplet {
     public void draw(){//ステートマシン
 //        System.out.println("x: "+ Collision.Playerx+" "+"y: "+ Collision.Playery);
 //        state = StateType.COMBAT_STATE;
+        if (control && enter){
+            opMode = !opMode;
+            delay(250);
+        }
+        if (opMode){
+            if (count == 0) {
+                System.out.println("飛びたいstate");
+                String sTypes = scan.next();
+                System.out.println("飛びたいマップ");
+                int sType = Integer.parseInt(sTypes);
+                String wMap = scan.next();
+                state = sType;
+                worldMap.setMapTmp(wMap);
+                count++;
+            }
+        }
         switch (state){
             case StateType.TITLE_STATE://タイトル画面
                 title.run();

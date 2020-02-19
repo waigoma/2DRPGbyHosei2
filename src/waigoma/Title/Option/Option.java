@@ -4,6 +4,10 @@ import processing.core.PApplet;
 import taku.Encounter;
 
 public class Option {
+    public static final int EASY = 1200;
+    public static final int NORMAL = 600;
+    public static final int HARD = 300;
+
     String difficulty;
 
     public Option(String difficulty) {
@@ -13,13 +17,13 @@ public class Option {
     public void properties(){
         switch (difficulty){
             case "easy":
-                Encounter.difficulty = 1200;
+                Encounter.difficulty = EASY;
                 break;
             case "normal":
-                Encounter.difficulty = 600;
+                Encounter.difficulty = NORMAL;
                 break;
             case "hard":
-                Encounter.difficulty = 300;
+                Encounter.difficulty = HARD;
                 break;
         }
     }

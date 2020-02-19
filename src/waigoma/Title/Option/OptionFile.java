@@ -19,7 +19,7 @@ public class OptionFile {
             e.printStackTrace();
         }
 
-        difficulty = properties.getProperty("difficulty");    //文字列
+        difficulty = properties.getProperty("difficulty");
     }
 
     public String getDifficulty(){
