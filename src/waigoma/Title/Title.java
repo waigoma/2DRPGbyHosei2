@@ -48,7 +48,7 @@ public class Title {//最初に表示されるタイトル画面
         plet.background(0);//背景色：黒
         plet.fill(230);//文字の色：白
         plet.textFont(font, 72);//フォント指定・フォントサイズ指定
-        plet.text("2DRPG by Hosei2", plet.width/2f, plet.height/3.8f);
+        plet.text("2DRPG by Shirouto", plet.width/2f, plet.height/3.8f);
 
         if (plet.keyPressed || plet.mousePressed){//いずれかのキーorマウスが押された時の処理
             titleScene = 1;
