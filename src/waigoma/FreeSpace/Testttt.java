@@ -35,6 +35,6 @@ public class Testttt{
     }
 
     public void close(){
-        clip.close();
+        if(clip != null) clip.close();
     }
 }

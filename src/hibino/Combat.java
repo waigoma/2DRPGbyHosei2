@@ -8,6 +8,7 @@ import processing.core.PFont;
 import processing.core.PImage;
 import takano.Takano1;
 import taku.Encounter;
+import waigoma.FreeSpace.Testttt;
 import waigoma.Map.LocalMap.LocalMap;
 import waigoma.StateType;
 import waigoma.Title.Option.Option;
@@ -101,6 +102,7 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
     public static boolean magic_event = false;    //魔法を使ったとき-----------(これいらないかも)
     public static boolean heal_event = false;    //回復したとき
     //-----------------------------------------------------
+    Testttt sample1,sample2,sample3,sample4,sample5,sample6,sample7,sample9,sample10,sample11,sample12,sample13,sample15,sample16,sample17,sample19,sample20,sample21,sample22;
 
 
 
@@ -245,6 +247,26 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
             m_money = 1000000;
             m_hp_max = 500;
         }
+
+        sample1 = new Testttt("src/takano/bgm/キラーズ・シルエット.wav", true); // [3]
+        sample2 = new Testttt("src/takano/bgm/item-01.wav", false); // [3]
+        sample3 = new Testttt("src/takano/bgm/game_explosion3_1.wav", false); // [3]
+        sample4 = new Testttt("src/takano/bgm/kaifuku.wav", false); // [3]
+        sample5 = new Testttt("src/takano/bgm/skill.wav", false); // [3]
+        sample6 = new Testttt("src/takano/bgm/magic-flame1.wav", false); // [3]
+        sample7 = new Testttt("src/takano/bgm/magic-electron2.wav", false); // [3]
+        sample9 = new Testttt("src/takano/bgm/斬撃音_1.wav", false); // [3]
+        sample10 = new Testttt("src/takano/bgm/斬撃音_1.wav", false); // [3]
+        sample11 = new Testttt("src/takano/bgm/シャキーンという斬撃音.wav", false); // [3]
+        sample12 = new Testttt("src/takano/bgm/斬撃音_1.wav", false); // [3]
+        sample13 = new Testttt("src/takano/bgm/sentoufunou.wav", false); // [3]
+        sample15 = new Testttt("src/takano/bgm/始まりを告げる喇叭.wav", false); // [3]
+        sample16 = new Testttt("src/takano/bgm/キラキラした音.wav", false); // [3]
+        sample17 = new Testttt("src/takano/bgm/miss.wav", false); // [3]
+        sample22 = new Testttt("src/takano/bgm/斬撃音_1.wav", false); // [3]
+        sample19 = new Testttt("src/takano/bgm/シャキーンという斬撃音.wav", false); // [3]
+        sample20 = new Testttt("src/takano/bgm/sentoufunou.wav", false); // [3]
+        sample21 = new Testttt("src/takano/bgm/tousou-01.wav", false); // [3]
     }
 
         //これを全部消す
@@ -258,9 +280,29 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
 
         myimage.draw();
         if (p_attack_count == 0) {
-            Takano1 sample1 = new Takano1("src/takano/bgm/キラーズ・シルエット.wav", 1000, true); // [3]
-            sample1.start(); // [4]
+            sample1.clip.start(); // [4]
             p_attack_count++;
+        }
+        if (finish_event){
+            sample1.close();
+            sample2.close();
+            sample3.close();
+            sample4.close();
+            sample5.close();
+            sample6.close();
+            sample7.close();
+            sample9.close();
+            sample10.close();
+            sample11.close();
+            sample12.close();
+            sample13.close();
+            sample15.close();
+            sample16.close();
+            sample17.close();
+            sample19.close();
+            sample20.close();
+            sample21.close();
+            sample22.close();
         }
 //-----------        mysound.sound();
         //mysample.init();
@@ -342,8 +384,7 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
                     // if(!item_event){
                     item_event = true;
                     if (p_attack_count == 0) {
-                        Takano1 sample2 = new Takano1("src/takano/bgm/item-01.wav", 2, false); // [3]
-                        sample2.start(); // [4]
+                        sample2.clip.start(); // [4]
                         p_attack_count++;
                     }
                     if(keika > 1000*1)
@@ -363,8 +404,7 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
 
                             m_damage_event = true;
                             if (p_attack_count == 0) {
-                                Takano1 sample3 = new Takano1("src/takano/bgm/game_explosion3_1.wav", 2, false); // [3]
-                                sample3.start(); // [4]
+                                sample3.clip.start(); // [4]
                                 p_attack_count++;
                             }
 //------------------------                            myimage.draw();
@@ -388,8 +428,7 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
 
                             heal_event = true;
                             if (p_attack_count == 0) {
-                                Takano1 sample4 = new Takano1("src/takano/bgm/kaifuku.wav", 2, false); // [3]
-                                sample4.start(); // [4]
+                                sample4.clip.start(); // [4]
                                 p_attack_count++;
                             }
                             if(keika >1000*4)
@@ -422,8 +461,7 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
 
                 magic_event = true;
                 if (p_attack_count == 0) {
-                    Takano1 sample5 = new Takano1("src/takano/bgm/skill.wav", 2, false); // [3]
-                    sample5.start(); // [4]
+                    sample5.clip.start(); // [4]
                     p_attack_count++;
                 }
                 if(keika>1000*1)
@@ -439,8 +477,7 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
 
                             m_damage_event = true;
                             if (p_attack_count == 0) {
-                                Takano1 sample6 = new Takano1("src/takano/bgm/magic-flame1.wav", 2, false); // [3]
-                                sample6.start(); // [4]
+                                sample6.clip.start(); // [4]
                                 p_attack_count++;
                             }
 //------------------------                            myimage.draw();
@@ -464,8 +501,7 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
 
                             m_damage_event = true;
                             if (p_attack_count == 0) {
-                                Takano1 sample7 = new Takano1("src/takano/bgm/magic-electron2.wav", 2, false); // [3]
-                                sample7.start(); // [4]
+                                sample7.clip.start(); // [4]
                                 p_attack_count++;
                             }
 //------------------------                            myimage.draw();
@@ -511,8 +547,7 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
 
                         m_damage_event = true;
                         if (p_attack_count == 0) {
-                            Takano1 sample9 = new Takano1("src/takano/bgm/斬撃音_1.wav", 2, false); // [3]
-                            sample9.start(); // [4]
+                            sample9.clip.start(); // [4]
                             p_attack_count++;
                         }
 //------------------------                        myimage.draw();
@@ -551,8 +586,7 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
             pApplet.text(m_name + "の攻撃", 440, 560);
             m_attack_event = true;
             if (p_attack_count == 0) {
-                Takano1 sample10 = new Takano1("src/takano/bgm/斬撃音_1.wav", 2, false); // [3]
-                sample10.start(); // [4]
+                sample10.clip.start(); // [4]
                 p_attack_count++;
             }
         }
@@ -569,8 +603,7 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
 
                 p_damage_event = true;
                 if (p_attack_count == 0) {
-                    Takano1 sample11 = new Takano1("src/takano/bgm/シャキーンという斬撃音", 2, false); // [3]
-                    sample11.start(); // [4]
+                    sample11.clip.start(); // [4]
                     p_attack_count++;
                 }
                 if(keika >1000*9.5)
@@ -584,8 +617,7 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
 
                 p_damage_event = true;
                 if (p_attack_count == 0) {
-                    Takano1 sample12 = new Takano1("src/takano/bgm/斬撃音_1.wav", 2, false); // [3]
-                    sample12.start(); // [4]
+                    sample12.clip.start(); // [4]
                     p_attack_count++;
                 }
                 if(keika >1000*9.5)
@@ -615,8 +647,7 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
 
             finish_event = true;
             if (p_attack_count == 0) {
-                Takano1 sample13 = new Takano1("src/takano/bgm/sentouhunou.wav", 2, false); // [3]
-                sample13.start(); // [4]
+                sample13.clip.start(); // [4]
                 p_attack_count++;
             }
 //------------------------                myimage.draw();
@@ -656,8 +687,7 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
 
             finish_event = true;
             if (p_attack_count == 0) {
-                Takano1 sample15 = new Takano1("src/takano/bgm/始まりを告げる喇叭.wav", 2, false); // [3]
-                sample15.start(); // [4]
+                sample15.clip.start(); // [4]
                 p_attack_count++;
             }
 //------------------------                myimage.draw();
@@ -743,8 +773,7 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
 
                 Lvup_event = true;
                 if (p_attack_count == 0) {
-                    Takano1 sample16 = new Takano1("src/takano/bgm/キラキラした音.wa", 2, false); // [3]
-                    sample16.start(); // [4]
+                    sample16.clip.start(); // [4]
                     p_attack_count++;
                 }
 //------------------------                    myimage.draw();
@@ -786,8 +815,7 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
 
                     escape_event = true;
                     if (p_attack_count == 0) {
-                        Takano1 sample17 = new Takano1("src/takano/bgm/miss.wav", 2, false); // [3]
-                        sample17.start(); // [4]
+                        sample17.clip.start(); // [4]
                         p_attack_count++;
                     }
 //------------------------                    myimage.draw();
@@ -800,8 +828,7 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
                     m_attack_event = true;
                 }
                 if (p_attack_count == 0) {
-                    Takano1 sample22 = new Takano1("src/takano/bgm/斬撃音_1.wav", 2, false); // [3]
-                    sample22.start(); // [4]
+                    sample22.clip.start(); // [4]
                     p_attack_count++;
                 }
                 if(keika >1000*4)
@@ -816,8 +843,7 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
 
                         p_damage_event = true;
                         if (p_attack_count == 0) {
-                            Takano1 sample19 = new Takano1("src/takano/bgm/シャキーンという斬撃音", 2, false); // [3]
-                            sample19.start(); // [4]
+                            sample19.clip.start(); // [4]
                             p_attack_count++;
                         }
                         if(keika > 1000*6.5)
@@ -856,8 +882,7 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
 
                     finish_event = true;
                     if (p_attack_count == 0) {
-                        Takano1 sample20 = new Takano1("src/takano/bgm/sentouhunou.wav", 2, false); // [3]
-                        sample20.start(); // [4]
+                        sample20.clip.start(); // [4]
                         p_attack_count++;
                     }
 //------------------------                myimage.draw();
@@ -902,8 +927,7 @@ public class Combat {      //extends PApplet消す    MainをCombatに変えるa
 
                 escape_event = true;
                 if (p_attack_count == 0) {
-                    Takano1 sample21 = new Takano1("src/takano/bgm/tousou-01.wav", 2, false); // [3]
-                    sample21.start(); // [4]
+                    sample21.clip.start(); // [4]
                     p_attack_count++;
                 }
 //------------------------                myimage.draw();
